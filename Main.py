@@ -7,13 +7,11 @@ It launches the application.
 
 #------------------------------------------------------------------------------#
 
-from MarcoNeo import MarcoNeo
+from SRC.MarcoNeo import MarcoNeo
 
 #------------------------------------------------------------------------------#
 
 if __name__ == "__main__":
     print("Starting MarcoNeo...")
     marco = MarcoNeo()
-    marco.start()
-    marco.quit()
     print("MarcoNeo stopped.")

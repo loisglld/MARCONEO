@@ -17,25 +17,26 @@ class DataBase:
     It will be able to return information or modify values in the database.
     """
 
-    def __init__(self, logs, logins:dict):
+    def __init__(self, loggers, logins:dict):
         """
         DataBase's constructor.
         """
-        self.loggers = logs
+        self.loggers = loggers
         self.connexion = None
         host, database, user, password, port = logins.values()
-
-        self.loggers.log.info("Connecting to the database...")
+        
+        self.loggers.log.debug("Connecting to the database...")
         try:           
             self.connexion = mysql.connect(host=host,
-                                      database=database,
-                                      user=user,
-                                      password=password,
-                                      port=port)
+                                            database=database,
+                                            user=user,
+                                            password=password,
+                                            port=port)
         except:
-            self.logs.log.warning("Unable to connect to the database.")
+            self.loggers.log.warning("Unable to connect to the database.")
             exit(1)
-            
+        
+        self.loggers.log.info("Connected to the database.")
         self.cursor = self.connexion.cursor()
     
     def close(self):

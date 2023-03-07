@@ -8,8 +8,9 @@ as well as the connections to the database and the RFID reader.
 
 #-------------------------------------------------------------------#
 
-from Loggers import Loggers
-from DataBase import DataBase
+from SRC.Loggers import Loggers
+from SRC.DataBase import DataBase
+from SRC.INTERFACE.GUI import GUI
 
 import os
 import json
@@ -31,27 +32,24 @@ class MarcoNeo:
         """
         MarcoNeo's app class's constructor.
         """
+        # Setup the logger
         self.loggers = Loggers(MarcoNeo.NAME)
         self.loggers.log.info("Starting MarcoNeo v" + MarcoNeo.VERSION + "...")
         
-        self.conn_info = self.get_pwd()
-        
+        # Setup config
         self.config = self.setup_config()
         self.default_config = self.config 
         
-        self.rfid = None
-        self.gui = None
-        
-    def start(self):
-        """
-        Start the application.
-        """
+        # Setup the database
+        self.conn_info = self.get_pwd()
         self.db = DataBase(self.loggers, self.conn_info)
 
-        #self.rfid.start()
-        #self.gui.start()
+        # Setup the GUI
+        self.gui = GUI(self.loggers)
+        self.gui.protocol("WM_DELETE_WINDOW", self.close)
         
         self.loggers.log.info("MarcoNeo launched.")
+        self.gui.start()
         
     def setup_config(self):
         """
@@ -62,14 +60,14 @@ class MarcoNeo:
         (items, prices, etc.)
         """
         
-        file_object = open("config.json", "r")
+        file_object = open(os.path.join("DATA", "config.json"), "r")
         json_content = file_object.read()
         file_object.close()
         
         try:
             config = json.loads(json_content, parse_float=decimal.Decimal)
         except json.JSONDecodeError as decode_err:
-            self.loggers.log(f"Error while parsing the config.json file at line {decode_err.lineno}")
+            self.loggers.log.warn(f"Error while parsing the config.json file at line {decode_err.lineno}")
             quit()
             
         return config
@@ -85,11 +83,12 @@ class MarcoNeo:
                         'port': int(lines[4].strip()),
                         }
         return conn_info
-        
-    def quit(self):
+      
+    def close(self):
         """
         Quits the application.
         """
+        # Close the database connection safely
         for i in range(5):
             try:
                 self.db.close()
@@ -99,6 +98,7 @@ class MarcoNeo:
         else:
             self.loggers.log.error("Could not close the database connection after 5 attempts.")
 
-        #self.gui.quit()
-        self.loggers.close()
+        # Close the rest of the application
+        self.gui.close()
         self.loggers.log.info("Closing MARCONEO...")
+        self.loggers.close()
