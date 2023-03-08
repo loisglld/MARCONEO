@@ -1,7 +1,7 @@
 """
-MainMenu.py
+CreditsMenu.py.py
 
-Configure MarcoNeo's main page.
+Configure MarcoNeo's credits page.
 """
 
 #-------------------------------------------------------------------#
@@ -10,11 +10,11 @@ import tkinter as tk
 
 #-------------------------------------------------------------------#
 
-class MainMenu(tk.Frame):
+class CreditsMenu(tk.Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
-        #self.gui.loggers.log.debug("(Main menu)")
+        #self.gui.loggers.log.debug("(Credits menu)")
         
         self.setup_images()
         self.setup_label()
@@ -30,16 +30,12 @@ class MainMenu(tk.Frame):
         """
         Defines the labels used in the main menu.
         """
-        tk.Label(self, text="Main menu").pack()
+        tk.Label(self, text="Credits menu").pack()
     
     def setup_buttons(self):
         """
         Defines the buttons used in the main menu.
         """
-        self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.gui.change_menu(self.gui.settings_menu))
-        self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.gui.change_menu(self.gui.credits_menu))
-        self.power_btn = tk.Button(self, text="Power off", command=lambda: self.app.close())
+        self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.main_menu))
         
-        for btn in [self.settings_btn, self.credits_btn, self.power_btn]:
-            btn.pack()
-        
+        self.back_btn.pack()
