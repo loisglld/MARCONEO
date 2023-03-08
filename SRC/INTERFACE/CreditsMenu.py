@@ -36,6 +36,6 @@ class CreditsMenu(tk.Frame):
         """
         Defines the buttons used in the main menu.
         """
-        self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.main_menu))
+        self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
         
         self.back_btn.pack()

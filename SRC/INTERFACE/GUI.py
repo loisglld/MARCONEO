@@ -7,9 +7,11 @@ It is responsible for the GUI of the BT application.
 
 #------------------------------------------------------------#
 
-from SRC.INTERFACE.MainMenu import MainMenu
+from SRC.INTERFACE.WelcomeMenu import WelcomeMenu
 from SRC.INTERFACE.CreditsMenu import CreditsMenu
 from SRC.INTERFACE.SettingsMenu import SettingsMenu
+
+from SRC.INTERFACE.MainMenu import MainMenu
 
 from SRC.INTERFACE.RFID import RFID
 
@@ -19,9 +21,10 @@ import os
 #------------------------------------------------------------#
 
 class GUI(tk.Tk):
-    def __init__(self, loggers):
+    def __init__(self, app):
         super().__init__()
-        self.loggers = loggers
+        self.app = app
+        self.loggers = self.app.loggers
         
         self.rfid = RFID(self.loggers)
         self.bind("<Key>", self.rfid.rfid_callback) # Listen to the RFID reader
@@ -57,18 +60,19 @@ class GUI(tk.Tk):
         self.geometry("800x480")
         self.resizable(False, False)
         #self.iconbitmap(os.path.join(os.getcwd(),"DATA","IMAGES","logo.ico"))
-        self.config(bg="black")
+        #self.config(bg="black")
                 
     def setup_menus(self):
         """
         Setup the different menus of the application.
         """
-        self.main_menu = MainMenu(self)
+        self.welcome_menu = WelcomeMenu(self)
         self.credits_menu = CreditsMenu(self)
         self.settings_menu = SettingsMenu(self)
+        self.main_menu = MainMenu(self)
                 
-        self.main_menu.pack(fill=tk.BOTH, expand=True)
-        self.current_menu = self.main_menu
+        self.welcome_menu.pack(fill=tk.BOTH, expand=True)
+        self.current_menu = self.welcome_menu
         
     def start(self):
         """
@@ -82,3 +86,4 @@ class GUI(tk.Tk):
         """
         self.quit()
         self.loggers.log.debug("GUI closed.")
+        

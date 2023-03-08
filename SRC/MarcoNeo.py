@@ -45,7 +45,7 @@ class MarcoNeo:
         self.db = DataBase(self.loggers, self.conn_info)
 
         # Setup the GUI
-        self.gui = GUI(self.loggers)
+        self.gui = GUI(self)
         self.gui.protocol("WM_DELETE_WINDOW", self.close)
         
         self.loggers.log.info("MarcoNeo launched.")

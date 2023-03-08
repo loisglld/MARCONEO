@@ -14,7 +14,6 @@ class MainMenu(tk.Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
-        #self.gui.loggers.log.debug("(Main menu)")
         
         self.setup_images()
         self.setup_label()
@@ -36,10 +35,6 @@ class MainMenu(tk.Frame):
         """
         Defines the buttons used in the main menu.
         """
-        self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.gui.change_menu(self.gui.settings_menu))
-        self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.gui.change_menu(self.gui.credits_menu))
-        self.power_btn = tk.Button(self, text="Power off", command=lambda: self.app.close())
-        
-        for btn in [self.settings_btn, self.credits_btn, self.power_btn]:
-            btn.pack()
+        self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        self.back_btn.pack()
         

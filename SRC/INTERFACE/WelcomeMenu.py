@@ -1,7 +1,7 @@
 """
-SettingsMenu.py.py
+WelcomeMenu.py
 
-Configure MarcoNeo's settings page.
+Configure MarcoNeo's welcome page.
 """
 
 #-------------------------------------------------------------------#
@@ -10,11 +10,10 @@ import tkinter as tk
 
 #-------------------------------------------------------------------#
 
-class SettingsMenu(tk.Frame):
+class WelcomeMenu(tk.Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
-        #self.gui.loggers.log.debug("(Main menu)")
         
         self.setup_images()
         self.setup_label()
@@ -30,16 +29,17 @@ class SettingsMenu(tk.Frame):
         """
         Defines the labels used in the main menu.
         """
-        tk.Label(self, text="Settings menu").pack()
+        tk.Label(self, text="MarcoNeo").pack()
     
     def setup_buttons(self):
         """
         Defines the buttons used in the main menu.
         """
-        self.language = tk.Button(self, text="Language", command=None)
-        self.credits_btn = tk.Button(self, text="Light/Dark", command=None)
-        self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
-                
-        for btn in [self.language, self.credits_btn, self.back_btn]:
+        self.enter_btn = tk.Button(self, text="Enter", command=lambda: self.gui.change_menu(self.gui.main_menu))
+        self.settings_btn = tk.Button(self, text="Settings", command=lambda: self.gui.change_menu(self.gui.settings_menu))
+        self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.gui.change_menu(self.gui.credits_menu))
+        self.power_btn = tk.Button(self, text="Power off", command=lambda: self.gui.app.close())
+        
+        for btn in [self.settings_btn, self.credits_btn, self.power_btn]:
             btn.pack()
         
