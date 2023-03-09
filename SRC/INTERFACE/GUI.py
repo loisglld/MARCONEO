@@ -12,6 +12,7 @@ from SRC.INTERFACE.CreditsMenu import CreditsMenu
 from SRC.INTERFACE.SettingsMenu import SettingsMenu
 
 from SRC.INTERFACE.MainMenu import MainMenu
+from SRC.INTERFACE.SHOPPING.ShoppingMenu import ShoppingMenu
 
 from SRC.INTERFACE.RFID import RFID
 
@@ -70,6 +71,8 @@ class GUI(tk.Tk):
         self.credits_menu = CreditsMenu(self)
         self.settings_menu = SettingsMenu(self)
         self.main_menu = MainMenu(self)
+        
+        self.shopping_menu = ShoppingMenu(self)
                 
         self.welcome_menu.pack(fill=tk.BOTH, expand=True)
         self.current_menu = self.welcome_menu

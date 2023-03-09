@@ -35,6 +35,13 @@ class MainMenu(tk.Frame):
         """
         Defines the buttons used in the main menu.
         """
+        self.shopping_btn = tk.Button(self, text="Shopping", command=lambda: self.gui.change_menu(self.gui.shopping_menu))
+        self.refill_btn = tk.Button(self, text="Refill", command=lambda: self.gui.change_menu(self.gui.refill_menu))
+        self.stats_btn = tk.Button(self, text="Stats", command=lambda: self.gui.change_menu(self.gui.stats_menu))
+        self.history_btn = tk.Button(self, text="History", command=lambda: self.gui.change_menu(self.gui.history_menu))
         self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
-        self.back_btn.pack()
+        
+        
+        for btn in [self.shopping_btn, self.refill_btn, self.stats_btn, self.history_btn, self.back_btn]:
+            btn.pack()
         

@@ -40,6 +40,6 @@ class WelcomeMenu(tk.Frame):
         self.credits_btn = tk.Button(self, text="Credits", command=lambda: self.gui.change_menu(self.gui.credits_menu))
         self.power_btn = tk.Button(self, text="Power off", command=lambda: self.gui.app.close())
         
-        for btn in [self.settings_btn, self.credits_btn, self.power_btn]:
+        for btn in [self.enter_btn, self.settings_btn, self.credits_btn, self.power_btn]:
             btn.pack()
         
