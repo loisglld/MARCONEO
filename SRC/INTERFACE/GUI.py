@@ -73,6 +73,8 @@ class GUI(tk.Tk):
         self.main_menu = MainMenu(self)
         
         self.shopping_menu = ShoppingMenu(self)
+        self.history_menu = tk.Frame(self)
+        self.stats_menu = tk.Frame(self)
                 
         self.welcome_menu.pack(fill=tk.BOTH, expand=True)
         self.current_menu = self.welcome_menu
