@@ -24,7 +24,6 @@ class ShoppingMenu(tk.Frame):
         self.navbar.grid(row=0, column=0, rowspan=2, sticky='nsew')
         
         self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=3)
+        self.grid_columnconfigure(1, weight=8)
         self.grid_rowconfigure(0, weight=1)
-        
         

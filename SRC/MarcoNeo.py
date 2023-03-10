@@ -60,7 +60,7 @@ class MarcoNeo:
         (items, prices, etc.)
         """
         
-        file_object = open(os.path.join("DATA", "config.json"), "r")
+        file_object = open(os.path.join(os.getcwd(),"DATA", "config.json"), "r")
         json_content = file_object.read()
         file_object.close()
         
