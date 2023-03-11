@@ -24,15 +24,17 @@ class ShopItem:
         """
         Defines the container of the item.
         """
-        self.container = Container(self.master)
-        
+        self.container = tk.Frame(self.master)
+        self.container.configure(bg="white")
         self.container.pack()
+        
         self.name_label = tk.Label(self.container, text=self.name)
         self.amount_label = tk.Label(self.container, text=self.amount)
         
         self.name_label.pack()
         self.amount_label.pack()
         
+        self.container.bind("<Button-1>", self.buy)
         for children in self.container.winfo_children():
             children.bind("<Button-1>", self.buy)
                
@@ -42,10 +44,4 @@ class ShopItem:
         """
         self.amount += 1
         self.amount_label.configure(text=self.amount) # Actualize the amount label.
-        
-class Container(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.master = master
-        self.configure(bg="white")
         

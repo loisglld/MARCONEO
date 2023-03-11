@@ -14,28 +14,11 @@ class CreditsMenu(tk.Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
-        #self.gui.loggers.log.debug("(Credits menu)")
+        self.gui.loggers.log.debug("(Credits menu)")
         
-        self.setup_images()
-        self.setup_label()
-        self.setup_buttons()
+        self.credits = """Contributors:\nMarc Mounissens\nClément Rossetti
+Hugo Chambon, Nathan Favriou, Jade Touresse\nYannick Hénin\nGatien Chenu, Mathieu Martin\nLoïs Gallaud"""
         
-    def setup_images(self):
-        """
-        Defines the images used in the main menu.
-        """
-        return
-    
-    def setup_label(self):
-        """
-        Defines the labels used in the main menu.
-        """
-        tk.Label(self, text="Credits menu").pack()
-    
-    def setup_buttons(self):
-        """
-        Defines the buttons used in the main menu.
-        """
-        self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        self.credits_label = tk.Label(self, text=self.credits)
+        self.credits_label.pack()
         
-        self.back_btn.pack()
