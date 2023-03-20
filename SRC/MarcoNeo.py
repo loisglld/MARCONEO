@@ -9,7 +9,7 @@ as well as the connections to the database and the RFID reader.
 #-------------------------------------------------------------------#
 
 from SRC.Loggers import Loggers
-from SRC.DataBase import DataBase
+from SRC.DATABASE.DataBase import DataBase
 from SRC.INTERFACE.GUI import GUI
 
 import os

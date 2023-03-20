@@ -56,7 +56,7 @@ class Loggers:
         Add to the log of the day the log of the passed session.
         """
         # Actualize the log file
-        now = datetime.datetime.now() # Current date and hour
+        now = datetime.now() # Current date and hour
         day_log_path = os.path.join(self.log_out_path, now.strftime("%d-%m-%Y.log"))
         
         # Copy each line of the log file in the log of the day

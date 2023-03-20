@@ -34,6 +34,3 @@ class RFID:
     
     def set_current_user_id(self, id):
         self.current_user_id = id
-        
-    def get_current_user_id(self):
-        return self.current_user_id
