@@ -6,7 +6,7 @@ Configures the items that can be bought in the shop.
 
 #-------------------------------------------------------------------#
 
-import tkinter as tk
+from SRC.INTERFACE.tkinter_utils import Frame, Label
 
 #-------------------------------------------------------------------#
 
@@ -24,12 +24,12 @@ class ShopItem:
         """
         Defines the container of the item.
         """
-        self.container = tk.Frame(self.master)
+        self.container = Frame(self.master)
         self.container.configure(bg="white")
         self.container.pack()
         
-        self.name_label = tk.Label(self.container, text=self.name)
-        self.amount_label = tk.Label(self.container, text=self.amount)
+        self.name_label = Label(self.container, text=self.name)
+        self.amount_label = Label(self.container, text=self.amount)
         
         self.name_label.pack()
         self.amount_label.pack()

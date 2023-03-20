@@ -6,11 +6,11 @@ Configure MarcoNeo's main page.
 
 #-------------------------------------------------------------------#
 
-import tkinter as tk
+from SRC.INTERFACE.tkinter_utils import Frame, Label, Button
 
 #-------------------------------------------------------------------#
 
-class MainMenu(tk.Frame):
+class MainMenu(Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
@@ -29,16 +29,16 @@ class MainMenu(tk.Frame):
         """
         Defines the labels used in the main menu.
         """
-        tk.Label(self, text="Main menu").pack()
+        Label(self, text="Main menu").pack()
     
     def setup_buttons(self):
         """
         Defines the buttons used in the main menu.
         """
-        self.shopping_btn = tk.Button(self, text="Shopping", command=lambda: self.gui.change_menu(self.gui.shopping_menu))
-        self.stats_btn = tk.Button(self, text="Stats", command=lambda: self.gui.change_menu(self.gui.stats_menu))
-        self.history_btn = tk.Button(self, text="History", command=lambda: self.gui.change_menu(self.gui.history_menu))
-        self.back_btn = tk.Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        self.shopping_btn = Button(self, text="Shopping", command=lambda: self.gui.change_menu(self.gui.shopping_menu))
+        self.stats_btn = Button(self, text="Stats", command=lambda: self.gui.change_menu(self.gui.stats_menu))
+        self.history_btn = Button(self, text="History", command=lambda: self.gui.change_menu(self.gui.history_menu))
+        self.back_btn = Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
         
         
         for btn in [self.shopping_btn, self.stats_btn, self.history_btn, self.back_btn]:

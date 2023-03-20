@@ -6,12 +6,12 @@ Configure MarcoNeo's body on its shopping menu.
 
 #-------------------------------------------------------------------#
 
-import tkinter as tk
+from SRC.INTERFACE.tkinter_utils import Frame
 from SRC.INTERFACE.SHOPPING.ShopItem import ShopItem
 
 #-------------------------------------------------------------------#
 
-class Body(tk.Frame):
+class Body(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.configure(bg="#333333")

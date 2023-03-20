@@ -6,11 +6,11 @@ Configure MarcoNeo's credits page.
 
 #-------------------------------------------------------------------#
 
-import tkinter as tk
+from SRC.INTERFACE.tkinter_utils import Frame, Label
 
 #-------------------------------------------------------------------#
 
-class CreditsMenu(tk.Frame):
+class CreditsMenu(Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
@@ -19,6 +19,6 @@ class CreditsMenu(tk.Frame):
         self.credits = """Contributors:\nMarc Mounissens\nClément Rossetti
 Hugo Chambon, Nathan Favriou, Jade Touresse\nYannick Hénin\nGatien Chenu, Mathieu Martin\nLoïs Gallaud"""
         
-        self.credits_label = tk.Label(self, text=self.credits)
+        self.credits_label = Label(self, text=self.credits)
         self.credits_label.pack()
         

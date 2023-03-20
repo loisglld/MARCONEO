@@ -6,11 +6,11 @@ Configure MarcoNeo's navbar on its shopping menu.
 
 #-------------------------------------------------------------------#
 
-import tkinter as tk
+from SRC.INTERFACE.tkinter_utils import Frame, Label, Button
 
 #-------------------------------------------------------------------#
 
-class Navbar(tk.Frame):
+class Navbar(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.configure(bg="black")
@@ -28,17 +28,17 @@ class Navbar(tk.Frame):
         """
         Defines the labels used in the main menu.
         """
-        tk.Label(self, text="Navbar").pack()
+        Label(self, text="Navbar").pack()
     
     def setup_buttons(self):
         """
         Defines the buttons used in the main menu.
         """
-        self.lunch_btn = tk.Button(self, text="Lunch", command=None)
-        self.snack_btn = tk.Button(self, text="Snack", command=None)
-        self.party_btn = tk.Button(self, text="Party", command=None)
-        self.refill_btn = tk.Button(self, text="Refill", command=None)
-        self.back_btn = tk.Button(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
+        self.lunch_btn = Button(self, text="Lunch", command=None)
+        self.snack_btn = Button(self, text="Snack", command=None)
+        self.party_btn = Button(self, text="Party", command=None)
+        self.refill_btn = Button(self, text="Refill", command=None)
+        self.back_btn = Button(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
         
         for btn in [self.lunch_btn, self.snack_btn, self.party_btn, self.refill_btn, self.back_btn]:
             btn.pack()

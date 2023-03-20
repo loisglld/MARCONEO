@@ -8,12 +8,12 @@ Configure MarcoNeo's shopping page.
 
 from SRC.INTERFACE.SHOPPING.Navbar import Navbar
 from SRC.INTERFACE.SHOPPING.Body import Body
-import tkinter as tk
+from SRC.INTERFACE.tkinter_utils import Frame
 
 #-------------------------------------------------------------------#
 
 
-class ShoppingMenu(tk.Frame):
+class ShoppingMenu(Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui

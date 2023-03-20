@@ -8,7 +8,7 @@ This scripts contains the Logs class.
 
 import logging
 import os
-import datetime
+from datetime import datetime
 
 #------------------------------------------------------------------------------#
 
