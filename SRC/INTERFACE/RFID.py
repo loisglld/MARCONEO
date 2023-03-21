@@ -12,10 +12,8 @@ binding tkinter method to listen to the RFID reader.
 class RFID:
     def __init__(self, loggers, event=None):
         self.loggers = loggers
-        self.loggers.log.debug("Starting RFID...")
         self.current_user_id = None
         self.buffer = ""
-        self.loggers.log.debug("RFID launched.")
         
     def rfid_callback(self, event):
         # If the user presses the enter key (or keypad enter key), the buffer is parsed

@@ -7,11 +7,11 @@ It is responsible for the GUI of the BT application.
 
 #------------------------------------------------------------#
 
-from SRC.INTERFACE.WelcomeMenu import WelcomeMenu
-from SRC.INTERFACE.CreditsMenu import CreditsMenu
-from SRC.INTERFACE.SettingsMenu import SettingsMenu
+from SRC.INTERFACE.MENUS.WelcomeMenu import WelcomeMenu
+from SRC.INTERFACE.MENUS.CreditsMenu import CreditsMenu
+from SRC.INTERFACE.MENUS.SettingsMenu import SettingsMenu
 
-from SRC.INTERFACE.MainMenu import MainMenu
+from SRC.INTERFACE.MENUS.MainMenu import MainMenu
 from SRC.INTERFACE.SHOPPING.ShoppingMenu import ShoppingMenu
 
 from SRC.INTERFACE.RFID import RFID
@@ -29,6 +29,7 @@ class GUI(tk.Tk):
         
         self.rfid = RFID(self.loggers)
         self.bind("<Key>", self.rfid.rfid_callback) # Listen to the RFID reader
+        self.loggers.log.debug("RFID is listening.")
         
         self.setup_window()
         self.setup_menus()
