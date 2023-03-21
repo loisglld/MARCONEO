@@ -49,7 +49,7 @@ class GUI(tk.Tk):
         self.loggers.log.debug(f"({type(next_menu).__name__})")
 
         # Re-bind the keyboard
-        self.bind("<Key>", self.rfid.rfid_callback)
+        self.bind("<Key>", self.app.rfid.rfid_callback)
     
     def setup_window(self):
         """
