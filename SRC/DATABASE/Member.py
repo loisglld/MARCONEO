@@ -26,6 +26,3 @@ class Member:
     
     def __repr__(self):
         return f"{self.first_name} {self.last_name} ({self.nickname})"
-    
-    def __eq__(self, other):
-        return self.card_id == other.card_id

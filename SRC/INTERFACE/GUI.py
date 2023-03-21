@@ -14,8 +14,6 @@ from SRC.INTERFACE.MENUS.SettingsMenu import SettingsMenu
 from SRC.INTERFACE.MENUS.MainMenu import MainMenu
 from SRC.INTERFACE.SHOPPING.ShoppingMenu import ShoppingMenu
 
-from SRC.INTERFACE.RFID import RFID
-
 import tkinter as tk
 import os
 
@@ -27,8 +25,7 @@ class GUI(tk.Tk):
         self.app = app
         self.loggers = self.app.loggers
         
-        self.rfid = RFID(self.loggers)
-        self.bind("<Key>", self.rfid.rfid_callback) # Listen to the RFID reader
+        self.bind("<Key>", self.app.rfid.rfid_callback) # Listen to the RFID reader
         self.loggers.log.debug("RFID is listening.")
         
         self.setup_window()
