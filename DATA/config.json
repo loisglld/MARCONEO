@@ -1,6 +1,6 @@
 {
-    "shopping": {
-        "lunch-menu": {
+    "Shopping": {
+        "Lunch": {
             "name": "lunch",
             "icon": "lunch.png",
             "require_admin": false,
@@ -32,7 +32,7 @@
                 }
             ]
         },
-        "party-menu": {
+        "Party": {
             "name": "party",
             "icon": "party.png",
             "require_admin": false,
@@ -64,7 +64,7 @@
                 }
             ]
         },
-        "shots-menu": {
+        "Shots": {
             "name": "shots",
             "icon": "shots-club.png",
             "require_admin": false,
@@ -81,7 +81,7 @@
                 }
             ]
         },
-        "oeno-menu": {
+        "Oeno": {
             "name": "oenology",
             "icon": "oenology-club.png",
             "require_admin": false,
@@ -108,7 +108,7 @@
                 }
             ]
         },
-        "snack-menu": {
+        "Snack": {
             "name": "snack",
             "icon": "snack.png",
             "require_admin": false,
@@ -140,7 +140,7 @@
                 }
             ]
         },
-        "refill-menu": {
+        "Refill": {
             "name": "refill",
             "icon": "refill.png",
             "require_admin": true,

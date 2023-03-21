@@ -24,10 +24,11 @@ class ShopItem:
         """
         Defines the container of the item.
         """
+        # The container is a Frame.
         self.container = Frame(self.master)
         self.container.configure(bg="white")
-        self.container.pack()
         
+        # The name and the amount are labels inside the Frame.
         self.name_label = Label(self.container, text=self.name)
         self.amount_label = Label(self.container, text=self.amount)
         
