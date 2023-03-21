@@ -27,6 +27,8 @@ class MarcoNeo:
 
     NAME = "MARCONEO"
     VERSION = "0.6.0"
+    LANGUAGE = "FR"
+    RELEASE_DATE = None
 
     def __init__(self):
         """
