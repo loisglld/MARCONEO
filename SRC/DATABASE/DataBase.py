@@ -39,6 +39,7 @@ class DataBase:
         
         self.loggers.log.info("Connected to the database.")
         self.cursor = self.connexion.cursor()
+        
     
     def close(self):
         """
@@ -46,21 +47,21 @@ class DataBase:
         """    
         self.cursor.close()
         self.connexion.close()
-        self.loggers.log.info("Disconnected from the database.")
+        self.loggers.log.debug("Disconnected from the database.")
         
-    def get_contributor(self, id: int):
+    def get_member(self, card_id: int):
         """
         Retrieves a user with the given ID from the database.
         Returns the user if a match is foundin the database, None otherwise
         """
-        if id < 0:
+        if card_id < 0:
             return None
         
         self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
         
         self.cursor.execute("""SELECT first_name, last_name, nickname, card_id, balance, isadmin, iscontributor
-                            FROM Cotisant
-                            WHERE card_id = %s""", (id,))
+                            FROM Member
+                            WHERE card_id = %s""", (card_id,))
         
         result = self.cursor.fetchone()
         
@@ -72,6 +73,8 @@ class DataBase:
                         'balance': result[4],
                         'is_admin': result[5],
                         'is_contributor': result[6]}
+            self.loggers.log.debug(f"Retrieving member {member_data['first_name']} {member_data['last_name']} (ID:{card_id})")
             return Member(member_data)
         else:
+            self.loggers.log.warn(f"No member found with card ID {card_id}")
             return None

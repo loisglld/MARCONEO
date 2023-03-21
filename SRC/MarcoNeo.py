@@ -10,6 +10,7 @@ as well as the connections to the database and the RFID reader.
 
 from SRC.Loggers import Loggers
 from SRC.DATABASE.DataBase import DataBase
+from SRC.DATABASE.RFID import RFID
 from SRC.INTERFACE.GUI import GUI
 
 import os
@@ -45,10 +46,16 @@ class MarcoNeo:
         # Setup the database
         self.conn_info = self.get_pwd()
         self.db = DataBase(self.loggers, self.conn_info)
-
+        
+        # Setup the RFID reader
+        self.rfid = RFID(self)
+        
         # Setup the GUI
         self.gui = GUI(self)
         self.gui.protocol("WM_DELETE_WINDOW", self.close)
+        
+        # Setup the current user
+        self.current_user = None
         
         self.loggers.log.info("MarcoNeo launched.")
         self.gui.start()
@@ -104,3 +111,10 @@ class MarcoNeo:
         self.gui.close()
         self.loggers.log.info("Closing MARCONEO...")
         self.loggers.close()
+
+    def update_user(self, user):
+        """
+        Updates the current user.
+        """
+        self.current_user = user
+        self.loggers.log.debug(f"Current user: {self.current_user.first_name} {self.current_user.last_name}")
