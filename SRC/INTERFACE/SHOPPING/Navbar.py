@@ -6,7 +6,7 @@ Configure MarcoNeo's navbar on its shopping menu.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.tkinter_utils import Frame, Label, Button
+from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
@@ -38,12 +38,12 @@ class Navbar(Frame):
         shopping_menus = self.master.gui.app.config['Shopping']
         row = 1
         for menu in shopping_menus:
-            button = Button(self, text=menu, command=lambda menu=menu: self.toggle(menu))
+            button = AppButton(self, text=menu, command=lambda menu=menu: self.toggle(menu))
             setattr(self, f"{menu.lower()}_btn", button)
             button.grid(row=row, column=0, padx=10, pady=10)
             row += 1
             
-        back_btn = Button(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
+        back_btn = AppButton(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
         setattr(self, "back_btn", back_btn)
         back_btn.grid(row=row, column=0, padx=10, pady=10)
 

@@ -8,7 +8,7 @@ Configure MarcoNeo's shopping page.
 
 from SRC.INTERFACE.SHOPPING.Navbar import Navbar
 from SRC.INTERFACE.SHOPPING.Body import Body
-from SRC.INTERFACE.tkinter_utils import Frame
+from SRC.INTERFACE.gui_utils import Frame
 
 #-------------------------------------------------------------------#
 

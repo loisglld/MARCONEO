@@ -6,7 +6,7 @@ Configure MarcoNeo's credits page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.tkinter_utils import Frame, Label
+from SRC.INTERFACE.gui_utils import Frame, Label
 
 #-------------------------------------------------------------------#
 
