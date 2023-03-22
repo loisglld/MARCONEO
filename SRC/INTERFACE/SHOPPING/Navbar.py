@@ -21,31 +21,32 @@ class Navbar(Frame):
         
     def setup_images(self):
         """
-        Defines the images used in the main menu.
+        Defines the images used in the menu.
         """
         return
     
     def setup_label(self):
         """
-        Defines the labels used in the main menu.
+        Defines the labels used in the menu.
         """
-        Label(self, text="Navbar").pack()
+        Label(self, text="Navbar").grid(row=0, column=0, padx=10, pady=10)
     
     def setup_buttons(self):
         """
-        Defines the buttons used in the main menu.
+        Defines the buttons used in the menu.
         """
-        self.lunch_btn = Button(self, text="Lunch", command=lambda: self.toggle("Lunch"))
-        self.snack_btn = Button(self, text="Snack", command=lambda: self.toggle("Snack"))
-        self.shots_btn = Button(self, text="Shots", command=lambda: self.toggle("Shots"))
-        self.oeno_btn = Button(self, text="Oeno", command=lambda: self.toggle("Oeno"))
-        self.party_btn = Button(self, text="Party", command=lambda: self.toggle("Party"))
-        self.refill_btn = Button(self, text="Refill", command=lambda: self.toggle("Refill"))
-        self.back_btn = Button(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
-        
-        for btn in [self.lunch_btn, self.snack_btn, self.party_btn, self.refill_btn, self.back_btn]:
-            btn.pack()
+        shopping_menus = self.master.gui.app.config['Shopping']
+        row = 1
+        for menu in shopping_menus:
+            button = Button(self, text=menu, command=lambda menu=menu: self.toggle(menu))
+            setattr(self, f"{menu.lower()}_btn", button)
+            button.grid(row=row, column=0, padx=10, pady=10)
+            row += 1
             
+        back_btn = Button(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
+        setattr(self, "back_btn", back_btn)
+        back_btn.grid(row=row, column=0, padx=10, pady=10)
+
     def toggle(self, toggle):
         """
         Changes the current toggle of the navbar.

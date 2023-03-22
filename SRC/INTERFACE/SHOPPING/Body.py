@@ -35,20 +35,13 @@ class Body(Frame):
             if column == self.item_per_row:
                 column = 0
                 row += 1
-            
-    def retrieve_items(self, toggle:str):
-        """
-        Retrieves the items to display.
-        """
-        items = self.master.gui.app.config['Shopping'][toggle]['items']
-        return items
     
     def update_body(self, toggle):
         """
-        Updates the body.
+        Updates the items displayed in the body.
         """
         self.clear_body()
-        items_to_display = self.retrieve_items(toggle)
+        items_to_display = self.master.retrieve_shopping_items(toggle)
         self.display_items(items_to_display)
         
     def clear_body(self):

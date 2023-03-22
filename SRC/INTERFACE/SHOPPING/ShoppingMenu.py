@@ -31,4 +31,11 @@ class ShoppingMenu(Frame):
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=8)
         self.grid_rowconfigure(0, weight=1)
+        
+    def retrieve_shopping_items(self, toggle:str):
+        """
+        Retrieves the items to display.
+        """
+        items = self.gui.app.config['Shopping'][toggle]['items']
+        return items
                 
