@@ -6,7 +6,7 @@ Configure MarcoNeo's main page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.tkinter_utils import Frame, Label, Button
+from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
@@ -35,10 +35,10 @@ class MainMenu(Frame):
         """
         Defines the buttons used in the main menu.
         """
-        self.shopping_btn = Button(self, text="Shopping", command=lambda: self.gui.change_menu(self.gui.shopping_menu))
-        self.stats_btn = Button(self, text="Stats", command=lambda: self.gui.change_menu(self.gui.stats_menu))
-        self.history_btn = Button(self, text="History", command=lambda: self.gui.change_menu(self.gui.history_menu))
-        self.back_btn = Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        self.shopping_btn = AppButton(self, text="Shopping", command=lambda: self.gui.change_menu(self.gui.shopping_menu))
+        self.stats_btn = AppButton(self, text="Stats", command=lambda: self.gui.change_menu(self.gui.stats_menu))
+        self.history_btn = AppButton(self, text="History", command=lambda: self.gui.change_menu(self.gui.history_menu))
+        self.back_btn = AppButton(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
         
         
         for btn in [self.shopping_btn, self.stats_btn, self.history_btn, self.back_btn]:

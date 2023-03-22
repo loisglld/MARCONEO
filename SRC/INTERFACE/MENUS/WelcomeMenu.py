@@ -6,7 +6,7 @@ Configure MarcoNeo's welcome page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.tkinter_utils import Frame, Label, Button
+from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
@@ -35,10 +35,10 @@ class WelcomeMenu(Frame):
         """
         Defines the buttons used in the main menu.
         """
-        self.enter_btn = Button(self, text="Enter", command=lambda: self.gui.change_menu(self.gui.main_menu))
-        self.settings_btn = Button(self, text="Settings", command=lambda: self.gui.change_menu(self.gui.settings_menu))
-        self.credits_btn = Button(self, text="Credits", command=lambda: self.gui.change_menu(self.gui.credits_menu))
-        self.power_btn = Button(self, text="Power off", command=lambda: self.gui.app.close())
+        self.enter_btn = AppButton(self, text="Enter", command=lambda: self.gui.change_menu(self.gui.main_menu))
+        self.settings_btn = AppButton(self, text="Settings", command=lambda: self.gui.change_menu(self.gui.settings_menu))
+        self.credits_btn = AppButton(self, text="Credits", command=lambda: self.gui.change_menu(self.gui.credits_menu))
+        self.power_btn = AppButton(self, text="Power off", command=lambda: self.gui.app.close())
         
         for btn in [self.enter_btn, self.settings_btn, self.credits_btn, self.power_btn]:
             btn.pack()

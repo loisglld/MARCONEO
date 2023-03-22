@@ -6,7 +6,7 @@ Configure MarcoNeo's settings page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.tkinter_utils import Frame, Label, Button
+from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
@@ -14,7 +14,6 @@ class SettingsMenu(Frame):
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
-        #self.gui.loggers.log.debug("(Main menu)")
         
         self.setup_images()
         self.setup_label()
@@ -36,9 +35,9 @@ class SettingsMenu(Frame):
         """
         Defines the buttons used in the main menu.
         """
-        self.language = Button(self, text="Language", command=None)
-        self.credits_btn = Button(self, text="Light/Dark", command=None)
-        self.back_btn = Button(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        self.language = AppButton(self, text="Language", command=None)
+        self.credits_btn = AppButton(self, text="Light/Dark", command=None)
+        self.back_btn = AppButton(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
                 
         for btn in [self.language, self.credits_btn, self.back_btn]:
             btn.pack()

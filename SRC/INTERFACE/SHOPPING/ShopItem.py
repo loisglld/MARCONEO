@@ -6,7 +6,7 @@ Configures the items that can be bought in the shop.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.tkinter_utils import Frame, Label
+from SRC.INTERFACE.gui_utils import Frame, Label
 
 #-------------------------------------------------------------------#
 
