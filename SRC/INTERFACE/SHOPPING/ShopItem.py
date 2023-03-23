@@ -35,14 +35,17 @@ class ShopItem:
         self.name_label.pack()
         self.amount_label.pack()
         
-        self.container.bind("<Button-1>", self.buy)
+        self.container.bind("<Button-1>", self.add_item)
         for children in self.container.winfo_children():
-            children.bind("<Button-1>", self.buy)
+            children.bind("<Button-1>", self.add_item)
                
-    def buy(self, event=None):
+    def add_item(self, event=None):
         """
         Adds one to the amount of the item.
         """
         self.amount += 1
+        self.master.master.gui.app.current_user.cart.add_to_cart(self)
+        self.master.master.footer.update_total_label()
         self.amount_label.configure(text=self.amount) # Actualize the amount label.
-        
+        self.master.master.footer.update_total_label() # Actualize the total label.
+    

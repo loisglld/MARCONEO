@@ -8,6 +8,7 @@ Configure MarcoNeo's shopping page.
 
 from SRC.INTERFACE.SHOPPING.Navbar import Navbar
 from SRC.INTERFACE.SHOPPING.Body import Body
+from SRC.INTERFACE.SHOPPING.Footer import Footer
 from SRC.INTERFACE.gui_utils import Frame
 
 #-------------------------------------------------------------------#
@@ -26,6 +27,10 @@ class ShoppingMenu(Frame):
         # Setup the navbar
         self.navbar = Navbar(self)
         self.navbar.grid(row=0, column=0, rowspan=2, sticky='nsew')
+        
+        # Setup the footer
+        self.footer = Footer(self)
+        self.footer.grid(row=1, column=1, sticky='nsew')
         
         # Setup proportions
         self.grid_columnconfigure(0, weight=1)
