@@ -15,9 +15,13 @@ class ShopItem:
         """
         Item's constructor.
         """
-        self.master = master
+        self.body_master = master
+        self.cart = self.body_master.master.gui.app.current_user.cart
+        self.footer = self.body_master.shopping_master.footer
+        
         self.name = name
         self.amount = 0
+        
         self.setup_container()
         
     def setup_container(self):
@@ -25,7 +29,7 @@ class ShopItem:
         Defines the container of the item.
         """
         # The container is a Frame.
-        self.container = Frame(self.master)
+        self.container = Frame(self.body_master)
         self.container.configure(bg="white")
         
         # The name and the amount are labels inside the Frame.
@@ -42,10 +46,20 @@ class ShopItem:
     def add_item(self, event=None):
         """
         Adds one to the amount of the item.
+        The amount is increased by one inside the body of ShoppingMenu.
+        The item is added to the cart. The footer's total label is actualized.       
         """
+        # Body's modification
         self.amount += 1
-        self.master.master.gui.app.current_user.cart.add_to_cart(self)
-        self.master.master.footer.update_total_label()
-        self.amount_label.configure(text=self.amount) # Actualize the amount label.
-        self.master.master.footer.update_total_label() # Actualize the total label.
+        self.amount_label.configure(text=self.amount)
+        
+        # Cart's modification
+        self.cart.add_to_cart(self)
+        self.total_in_cart = self.cart.get_total()
+        
+        # Footer's modification
+        self.footer.update_total_label(self.total_in_cart)
+        
+    def __str__(self) -> str:
+        return f"{self.name} x{self.amount}"
     

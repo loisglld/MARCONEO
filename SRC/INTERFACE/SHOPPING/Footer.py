@@ -13,11 +13,11 @@ from SRC.INTERFACE.gui_utils import Frame, AppButton, Label
 class Footer(Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.master = master
+        self.shopping_master = master
         self.grid_propagate(False)
         self.configure(bg="#555555")
         
-        self.cart = self.master.gui.app.current_user.cart
+        self.cart = self.shopping_master.gui.app.current_user.cart
         self.total = str(self.cart.total)
         
         self.setup_container()
@@ -40,9 +40,9 @@ class Footer(Frame):
         self.cart.reset()
         self.update_total_label()
         
-    def update_total_label(self):
+    def update_total_label(self, total=None):
         """
         Updates the total label.
         """
-        self.total_label.configure(text=f"Cart: {self.total}")
+        self.total_label.configure(text=f"Cart: {total}")
     

@@ -20,6 +20,10 @@ class ShoppingMenu(Frame):
         self.gui = gui
         self.current_toggle = "Lunch"
         
+        # Setup the footer
+        self.footer = Footer(self)
+        self.footer.grid(row=1, column=1, sticky='nsew')
+        
         # Setup the body
         self.body = Body(self)
         self.body.grid(row=0, column=1, sticky='nsew')
@@ -27,10 +31,6 @@ class ShoppingMenu(Frame):
         # Setup the navbar
         self.navbar = Navbar(self)
         self.navbar.grid(row=0, column=0, rowspan=2, sticky='nsew')
-        
-        # Setup the footer
-        self.footer = Footer(self)
-        self.footer.grid(row=1, column=1, sticky='nsew')
         
         # Setup proportions
         self.grid_columnconfigure(0, weight=1)
