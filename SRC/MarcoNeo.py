@@ -49,7 +49,7 @@ class MarcoNeo:
         
         # Setup the database
         self.conn_info = self.get_pwd()
-        self.db = DataBase(self.loggers, self.conn_info)
+        self.db = DataBase(self, self.conn_info)
         
         # Setup the RFID reader
         self.rfid = RFID(self)

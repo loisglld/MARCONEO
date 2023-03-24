@@ -18,11 +18,12 @@ class DataBase:
     It will be able to return information or modify values in the database.
     """
 
-    def __init__(self, loggers, logins:dict):
+    def __init__(self, app, logins:dict):
         """
         DataBase's constructor.
         """
-        self.loggers = loggers
+        self.app = app
+        self.loggers = self.app.loggers
         self.connexion = None
         host, database, user, password, port = logins.values()
         
@@ -33,12 +34,15 @@ class DataBase:
                                             user=user,
                                             password=password,
                                             port=port)
+            self.cursor = self.connexion.cursor()
         except:
             self.loggers.log.warning("Unable to connect to the database.")
+            print("Unable to connect to the database.\nPlease check your credentials or internet connection and try again.")
+            self.loggers.log.info("Closing MARCONEO...")
+            self.loggers.close()
             exit(1)
         
         self.loggers.log.info("Connected to the database.")
-        self.cursor = self.connexion.cursor()
         
     
     def close(self):
