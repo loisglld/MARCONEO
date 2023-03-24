@@ -12,6 +12,7 @@ from SRC.Loggers import Loggers
 from SRC.DATABASE.DataBase import DataBase
 from SRC.DATABASE.RFID import RFID
 from SRC.INTERFACE.GUI import GUI
+from SRC.DATABASE.Member import Member
 
 import os
 import json
@@ -39,13 +40,16 @@ class MarcoNeo:
         self.loggers = Loggers(MarcoNeo.NAME)
         self.loggers.log.info("Starting MarcoNeo v" + MarcoNeo.VERSION + "...")
         
+        # Setup the current user
+        self.current_user = Member(None)
+        
         # Setup config
         self.config = self.setup_config()
         self.default_config = self.config 
         
         # Setup the database
         self.conn_info = self.get_pwd()
-        self.db = DataBase(self.loggers, self.conn_info)
+        self.db = DataBase(self, self.conn_info)
         
         # Setup the RFID reader
         self.rfid = RFID(self)
@@ -53,9 +57,7 @@ class MarcoNeo:
         # Setup the GUI
         self.gui = GUI(self)
         self.gui.protocol("WM_DELETE_WINDOW", self.close)
-        
-        # Setup the current user
-        self.current_user = None
+    
         
         self.loggers.log.info("MarcoNeo launched.")
         self.gui.start()

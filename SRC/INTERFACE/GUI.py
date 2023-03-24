@@ -12,7 +12,7 @@ from SRC.INTERFACE.MENUS.CreditsMenu import CreditsMenu
 from SRC.INTERFACE.MENUS.SettingsMenu import SettingsMenu
 
 from SRC.INTERFACE.MENUS.MainMenu import MainMenu
-from SRC.INTERFACE.SHOPPING.ShoppingMenu import ShoppingMenu
+from SRC.INTERFACE.MENUS.SHOPPING.ShoppingMenu import ShoppingMenu
 
 import tkinter as tk
 import os

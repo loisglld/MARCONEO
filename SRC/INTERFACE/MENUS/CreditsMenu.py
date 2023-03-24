@@ -6,7 +6,7 @@ Configure MarcoNeo's credits page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.tkinter_utils import Frame, Label
+from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
@@ -20,5 +20,8 @@ class CreditsMenu(Frame):
 Hugo Chambon, Nathan Favriou, Jade Touresse\nYannick Hénin\nGatien Chenu, Mathieu Martin\nLoïs Gallaud"""
         
         self.credits_label = Label(self, text=self.credits)
+        self.back_btn = AppButton(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        
         self.credits_label.pack()
+        self.back_btn.pack()
         
