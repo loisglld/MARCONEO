@@ -16,7 +16,6 @@ class Cart:
         
     def add_to_cart(self, item):
         self.items.append(item)
-        print(item.__str__())
         
     def reset(self):
         self.items = []
@@ -30,7 +29,9 @@ class Cart:
         
     def get_total(self):
         total = 0
+        print("--------------------")
         for item in self.items:
+            print(item.__str__())
             total += item.amount
         self.total = total
         return total

@@ -49,12 +49,14 @@ class ShopItem:
         The amount is increased by one inside the body of ShoppingMenu.
         The item is added to the cart. The footer's total label is actualized.       
         """
-        # Body's modification
+        # Self's modification
         self.amount += 1
+        
+        # Body's modification
         self.amount_label.configure(text=self.amount)
         
         # Cart's modification
-        self.cart.add_to_cart(self)
+        if not self in self.cart.items: self.cart.add_to_cart(self)
         self.total_in_cart = self.cart.get_total()
         
         # Footer's modification
@@ -62,4 +64,3 @@ class ShopItem:
         
     def __str__(self) -> str:
         return f"{self.name} x{self.amount}"
-    

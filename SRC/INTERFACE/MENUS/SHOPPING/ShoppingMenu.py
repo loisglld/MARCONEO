@@ -6,9 +6,9 @@ Configure MarcoNeo's shopping page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.SHOPPING.Navbar import Navbar
-from SRC.INTERFACE.SHOPPING.Body import Body
-from SRC.INTERFACE.SHOPPING.Footer import Footer
+from SRC.INTERFACE.MENUS.SHOPPING.Navbar import Navbar
+from SRC.INTERFACE.MENUS.SHOPPING.Body import Body
+from SRC.INTERFACE.MENUS.SHOPPING.Footer import Footer
 from SRC.INTERFACE.gui_utils import Frame
 
 #-------------------------------------------------------------------#

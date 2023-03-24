@@ -38,7 +38,8 @@ class Footer(Frame):
         Reset the cart.
         """
         self.cart.reset()
-        self.update_total_label()
+        self.shopping_master.body.update_body(self.shopping_master.current_toggle)
+        self.update_total_label(self.cart.total)
         
     def update_total_label(self, total=None):
         """
