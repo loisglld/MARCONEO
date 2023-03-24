@@ -30,7 +30,8 @@ class Body(Frame):
         row, column = 0, 0
         for i, item in enumerate(items):
             name = item["name"]
-            setattr(self, f"{name}_item", ShopItem(name, self))
+            price = item["price"]
+            setattr(self, f"{name}_item", ShopItem(name, price, self))
             item_frame = getattr(self, f"{name}_item").container
             item_frame.grid(row=row, column=column, padx=10, pady=10)
             column += 1

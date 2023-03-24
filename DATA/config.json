@@ -8,27 +8,27 @@
                 {
                     "name": "pizza",
                     "icon": "pizza.png",
-                    "value": 2.60
+                    "price": 2.60
                 },
                 {
                     "name": "sandwich",
                     "icon": "sandwich.png",
-                    "value": 1.60
+                    "price": 1.60
                 },
                 {
                     "name": "noodles",
                     "icon": "noodles.png",
-                    "value": 1.0
+                    "price": 1.0
                 },
                 {
                     "name": "dish",
                     "icon": "dish.png",
-                    "value": 1.0
+                    "price": 1.0
                 },
                 {
                     "name": "dessert",
                     "icon": "dessert.png",
-                    "value": 0.50
+                    "price": 0.50
                 }
             ]
         },
@@ -40,27 +40,27 @@
                 {
                 "name": "beer12",
                 "icon": "beer12.jpg",
-                "value": 1.2
+                "price": 1.2
                 },
                 {
                     "name": "biere16",
                     "icon": "biere16.jpg",
-                    "value": 1.6
+                    "price": 1.6
                 },
                 {
                     "name": "cocktail12",
                     "icon": "cocktail12.png",
-                    "value": 1.2
+                    "price": 1.2
                 },
                 {
                     "name": "cocktail16",
                     "icon": "cocktail16.png",
-                    "value": 1.6
+                    "price": 1.6
                 },
                 {
                     "name": "bottled-beer",
                     "icon": "bottled-beer.png",
-                    "value": 3.6
+                    "price": 3.6
                 }
             ]
         },
@@ -72,12 +72,12 @@
                 {
                     "name": "shot",
                     "icon": "shot.png",
-                    "value": 0.5
+                    "price": 0.5
                 },
                 {
                     "name": "shot-meter",
                     "icon": "shot-meter.png",
-                    "value": 4
+                    "price": 4
                 }
             ]
         },
@@ -89,22 +89,22 @@
                 {
                     "name": "delicatessen",
                     "icon": "delicatessen.png",
-                    "value": 0.75
+                    "price": 0.75
                 },
                 {
                     "name": "cheese",
                     "icon": "cheese.png",
-                    "value": 0.75
+                    "price": 0.75
                 },
                 {
                     "name": "glass of wine",
                     "icon": "wine-glass.png",
-                    "value": 2
+                    "price": 2
                 },
                 {
                     "name": "wine-bottle",
                     "icon": "wine-bottle.png",
-                    "value": 8
+                    "price": 8
                 }
             ]
         },
@@ -116,27 +116,27 @@
                 {
                     "name": "doowap",
                     "icon": "doowap.png",
-                    "value": 0.2
+                    "price": 0.2
                 },
                 {
                     "name": "muffin",
                     "icon": "muffin.png",
-                    "value": 0.3
+                    "price": 0.3
                 },
                 {
                     "name": "waffle",
                     "icon": "waffle.png",
-                    "value": 0.4
+                    "price": 0.4
                 },
                 {
                     "name": "can",
                     "icon": "can.png",
-                    "value": 0.7
+                    "price": 0.7
                 },
                 {
                     "name": "cookies",
                     "icon": "cookies.png",
-                    "value": 1
+                    "price": 1
                 }
             ]
         },
@@ -148,27 +148,27 @@
                 {
                     "name": "one",
                     "icon": "one.png",
-                    "value": -1
+                    "price": -1
                 },
                 {
                     "name": "five",
                     "icon": "five.png",
-                    "value": -5
+                    "price": -5
                 },
                 {
                     "name": "ten",
                     "icon": "ten.png",
-                    "value": -10
+                    "price": -10
                 },
                 {
                     "name": "twenty",
                     "icon": "twenty.png",
-                    "value": -20
+                    "price": -20
                 },
                 {
                     "name": "fifty",
                     "icon": "fifty.png",
-                    "value": -50
+                    "price": -50
                 }
             ]
         }

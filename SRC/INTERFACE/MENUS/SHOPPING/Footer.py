@@ -26,12 +26,13 @@ class Footer(Frame):
         """
         Sets up the container of the footer.
         """
-        #self.confirm_btn = AppButton(self, text="Confirm", command=self.confirm)
+        self.confirm_btn = AppButton(self, text="Confirm", command=self.confirm_purchase)
         self.reset_btn = AppButton(self, text="Reset cart", command=self.reset_cart)
         self.total_label = Label(self, text=f"Cart: {self.total}")
         
         self.total_label.pack()
         self.reset_btn.pack()
+        self.confirm_btn.pack()
         
     def reset_cart(self):
         """
@@ -46,4 +47,11 @@ class Footer(Frame):
         Updates the total label.
         """
         self.total_label.configure(text=f"Cart: {total}")
+    
+    def confirm_purchase(self):
+        """
+        Confirms the purchase.
+        """
+        self.shopping_master.gui.app.current_user.confirm_purchase()
+        self.reset_cart()
     

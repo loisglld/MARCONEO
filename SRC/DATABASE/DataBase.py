@@ -78,3 +78,20 @@ class DataBase:
         else:
             self.loggers.log.warn(f"No member found with card ID {card_id}")
             return None
+        
+    def purchase_cart(self, member: Member):
+        """
+        Confirms the purchase of a member.
+        """
+        if member is None:
+            return
+        
+        self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
+        
+        self.cursor.execute("""UPDATE Member
+                            SET balance = %s
+                            WHERE card_id = %s""", (member.balance, member.card_id))
+        self.connexion.commit()
+        
+        self.loggers.log.debug(f"Member {member} has purchased {member.cart.items.__str__()}")
+        
