@@ -58,10 +58,11 @@ class ShopItem:
         
         # Cart's modification
         if not self in self.cart.items: self.cart.add_to_cart(self)
-        self.total_in_cart = self.cart.get_total_price()
-        
+        self.cart.total += self.price
+        print(self.cart.total)
+    
         # Footer's modification
-        self.footer.update_total_label(self.total_in_cart)
+        self.footer.update_footer()
         
     def __str__(self) -> str:
         return f"{self.name} x{self.amount}"

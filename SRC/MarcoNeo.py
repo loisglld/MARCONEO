@@ -41,7 +41,7 @@ class MarcoNeo:
         self.loggers.log.info("Starting MarcoNeo v" + MarcoNeo.VERSION + "...")
         
         # Setup the current user
-        self.current_user = Member(None)
+        self.current_user = Member(self.loggers, None)
         
         # Setup config
         self.config = self.setup_config()
@@ -119,4 +119,6 @@ class MarcoNeo:
         Updates the current user.
         """
         self.current_user = user
-        self.loggers.log.debug(f"Current user: {self.current_user.first_name} {self.current_user.last_name}")
+        self.gui.shopping_menu.body.update_body(self.gui.shopping_menu.current_toggle)
+        self.gui.shopping_menu.footer.update_footer()
+        print(str(self.current_user.cart))
