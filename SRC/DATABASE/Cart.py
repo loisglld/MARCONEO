@@ -12,7 +12,8 @@ store the items caracteristics bought by a member.
 #-------------------------------------------------------------------#
 
 class Cart:
-    def __init__(self, member):
+    def __init__(self, loggers, member):
+        self.loggers = loggers
         self.member = member
         self.items = []
         self.total = 0
@@ -25,6 +26,8 @@ class Cart:
         self.total = 0   
     
     def __str__(self):
+        if self.member is None:
+            return "No user is logged in."
         return f"Cart of {self.member.nickname}: {self.items.__str__()}"
     
     def __repr__(self):

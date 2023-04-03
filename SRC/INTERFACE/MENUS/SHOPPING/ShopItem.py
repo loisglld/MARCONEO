@@ -16,7 +16,7 @@ class ShopItem:
         Item's constructor.
         """
         self.body_master = master
-        self.cart = self.body_master.master.gui.app.current_user.cart
+        self.cart = self.body_master.master.gui.app.cart
         self.footer = self.body_master.shopping_master.footer
         
         self.name = name

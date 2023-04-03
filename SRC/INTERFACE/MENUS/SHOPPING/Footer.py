@@ -17,7 +17,7 @@ class Footer(Frame):
         self.grid_propagate(False)
         self.configure(bg="#555555")
         
-        self.cart = self.shopping_master.gui.app.current_user.cart
+        self.cart = self.shopping_master.gui.app.cart
         
         self.setup_container()
         
@@ -45,13 +45,12 @@ class Footer(Frame):
         """
         Updates the total label.
         """
-        
         self.total_label.configure(text=f"Cart: {self.cart.total}")
     
     def confirm_purchase(self):
         """
         Confirms the purchase.
         """
-        self.shopping_master.gui.app.current_user.confirm_purchase()
+        self.shopping_master.gui.app.confirm_purchase()
         self.reset_cart()
     
