@@ -43,9 +43,8 @@ class Navbar(Frame):
             button.grid(row=row, column=0, padx=10, pady=10)
             row += 1
             
-        back_btn = AppButton(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
-        setattr(self, "back_btn", back_btn)
-        back_btn.grid(row=row, column=0, padx=10, pady=10)
+        self.back_btn = AppButton(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
+        self.back_btn.grid(row=row, column=0, padx=10, pady=10)
 
     def toggle(self, toggle):
         """
