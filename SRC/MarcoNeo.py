@@ -123,7 +123,6 @@ class MarcoNeo:
         self.cart.__init__(self.loggers, self.current_user)
         self.gui.shopping_menu.body.update_body(self.gui.shopping_menu.current_toggle)
         self.gui.shopping_menu.footer.update_footer()
-        print(str(self.cart))
             
     def confirm_purchase(self, ):
         """
