@@ -59,7 +59,6 @@ class ShopItem:
         # Cart's modification
         if not self in self.cart.items: self.cart.add_to_cart(self)
         self.cart.total += self.price
-        print(self.cart.total)
     
         # Footer's modification
         self.footer.update_footer()
