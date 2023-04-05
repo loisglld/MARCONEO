@@ -124,7 +124,7 @@ class MarcoNeo:
         self.gui.shopping_menu.body.update_body(self.gui.shopping_menu.current_toggle)
         self.gui.shopping_menu.footer.update_footer()
             
-    def confirm_purchase(self, ):
+    def confirm_purchase(self):
         """
         Confirms the purchase.
         """
@@ -133,9 +133,7 @@ class MarcoNeo:
             return
         self.current_user.balance -= self.cart.total
         
-        #
-        # Insert the purchase in the database here
-        #
+        self.db.update_balance(self.current_user)
         
         self.loggers.log.info(f"Purchase confirmed. New balance of {self.current_user.first_name} is {self.current_user.balance}€.")
         print(f"Purchase confirmed. Your new balance is {self.current_user.balance}€.")

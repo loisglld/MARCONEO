@@ -23,11 +23,10 @@ class Member:
         self.is_admin = member_data['is_admin']
         self.is_contributor = member_data['is_contributor']
         
-        print(f"Current user: {self.first_name} {self.last_name}")  
+        print(f"Current user: {self.first_name} {self.last_name} ({self.balance}€)")
         self.loggers.log.info(f"Current user: {self.first_name} {self.last_name}")
         
     def __str__(self):
-        print(self.member_data)
         if self.member_data is None:
             return "No user is logged in."
         return f"{self.first_name} {self.last_name} ({self.nickname})"

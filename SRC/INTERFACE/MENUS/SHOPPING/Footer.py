@@ -42,7 +42,7 @@ class Footer(Frame):
         self.cart.reset()
         self.shopping_master.body.update_body(self.shopping_master.current_toggle)
         self.update_footer()
-        self.loggers.log.warn("Cart has been reset by the user.")
+        self.loggers.log.debug("Cart has been reset.")
         
     def update_footer(self):
         """

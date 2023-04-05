@@ -79,9 +79,9 @@ class DataBase:
             self.loggers.log.warn(f"No member found with card ID {card_id}")
             return None
         
-    def purchase_cart(self, member: Member):
+    def update_balance(self, member: Member):
         """
-        Confirms the purchase of a member.
+        Updates the balance of the given member in the database.
         """
         if member is None:
             return
@@ -93,5 +93,5 @@ class DataBase:
                             WHERE card_id = %s""", (member.balance, member.card_id))
         self.connexion.commit()
         
-        self.loggers.log.debug(f"Member {member} has purchased {member.cart.items.__str__()}")
+        self.loggers.log.debug(f"Member {member.first_name} (ID:{member.card_id}) balance updated to {member.balance}")
         
