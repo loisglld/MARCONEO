@@ -9,10 +9,11 @@ as well as the connections to the database and the RFID reader.
 #-------------------------------------------------------------------#
 
 from SRC.Loggers import Loggers
+from SRC.DATABASE.Member import Member
+from SRC.DATABASE.Cart import Cart
 from SRC.DATABASE.DataBase import DataBase
 from SRC.DATABASE.RFID import RFID
 from SRC.INTERFACE.GUI import GUI
-from SRC.DATABASE.Member import Member
 
 import os
 import json
@@ -41,7 +42,8 @@ class MarcoNeo:
         self.loggers.log.info("Starting MarcoNeo v" + MarcoNeo.VERSION + "...")
         
         # Setup the current user
-        self.current_user = Member(None)
+        self.current_user = None
+        self.cart = Cart(self.loggers, self.current_user)
         
         # Setup config
         self.config = self.setup_config()
@@ -58,7 +60,6 @@ class MarcoNeo:
         self.gui = GUI(self)
         self.gui.protocol("WM_DELETE_WINDOW", self.close)
     
-        
         self.loggers.log.info("MarcoNeo launched.")
         self.gui.start()
         
@@ -119,4 +120,20 @@ class MarcoNeo:
         Updates the current user.
         """
         self.current_user = user
-        self.loggers.log.debug(f"Current user: {self.current_user.first_name} {self.current_user.last_name}")
+        self.cart.__init__(self.loggers, self.current_user)
+        self.gui.shopping_menu.body.update_body(self.gui.shopping_menu.current_toggle)
+        self.gui.shopping_menu.footer.update_footer()
+            
+    def confirm_purchase(self):
+        """
+        Confirms the purchase.
+        """
+        if self.current_user is None:
+            self.loggers.log.warning("No user is logged in. Can't purchase.")
+            return
+        self.current_user.balance -= self.cart.total
+        
+        self.db.update_balance(self.current_user)
+        
+        self.loggers.log.info(f"Purchase confirmed. New balance of {self.current_user.first_name} is {self.current_user.balance}€.")
+        print(f"Purchase confirmed. Your new balance is {self.current_user.balance}€.")

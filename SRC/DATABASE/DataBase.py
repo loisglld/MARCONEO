@@ -64,9 +64,9 @@ class DataBase:
         self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
         
         self.cursor.execute("""SELECT first_name, last_name, nickname, card_id, balance, isadmin, iscontributor
-                            FROM Member
-                            WHERE card_id = %s""", (card_id,))
-        
+                                FROM Member
+                                WHERE card_id = %s""", (card_id,))
+            
         result = self.cursor.fetchone()
         
         if result is not None:
@@ -78,14 +78,14 @@ class DataBase:
                         'is_admin': result[5],
                         'is_contributor': result[6]}
             self.loggers.log.debug(f"Retrieving member {member_data['first_name']} {member_data['last_name']} (ID:{card_id})")
-            return Member(member_data)
+            return Member(self.loggers, member_data)
         else:
             self.loggers.log.warn(f"No member found with card ID {card_id}")
             return None
         
-    def purchase_cart(self, member: Member):
+    def update_balance(self, member: Member):
         """
-        Confirms the purchase of a member.
+        Updates the balance of the given member in the database.
         """
         if member is None:
             return
@@ -97,5 +97,5 @@ class DataBase:
                             WHERE card_id = %s""", (member.balance, member.card_id))
         self.connexion.commit()
         
-        self.loggers.log.debug(f"Member {member} has purchased {member.cart.items.__str__()}")
+        self.loggers.log.debug(f"Member {member.first_name} (ID:{member.card_id}) balance updated to {member.balance}")
         

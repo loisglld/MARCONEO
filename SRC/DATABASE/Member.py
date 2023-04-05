@@ -8,22 +8,12 @@ of the BDE of Télécom Physique Strasbourg.
 
 #-------------------------------------------------------------------#
 
-from SRC.DATABASE.Cart import Cart
-
 #-------------------------------------------------------------------#
 
 class Member:
-    def __init__(self, member_data: dict):
-        if member_data is None:
-            self.first_name = None
-            self.last_name = None
-            self.nickname = None
-            self.card_id = None
-            self.balance = None
-            self.is_admin = None
-            self.is_contributor = None
-            self.cart = Cart(self)
-            return
+    def __init__(self, loggers, member_data: dict):
+        self.loggers = loggers
+        self.member_data = member_data
         
         self.first_name = member_data['first_name']
         self.last_name = member_data['last_name']
@@ -32,17 +22,14 @@ class Member:
         self.balance = member_data['balance']
         self.is_admin = member_data['is_admin']
         self.is_contributor = member_data['is_contributor']
-        self.cart = Cart(self)
         
-    def confirm_purchase(self):
-        """
-        Confirms the purchase.
-        """
-        self.balance -= self.cart.total
-        self.cart.reset()
+        print(f"Current user: {self.first_name} {self.last_name} ({self.balance}€)")
+        self.loggers.log.info(f"Current user: {self.first_name} {self.last_name}")
         
     def __str__(self):
+        if self.member_data is None:
+            return "No user is logged in."
         return f"{self.first_name} {self.last_name} ({self.nickname})"
     
     def __repr__(self):
-        return f"{self.first_name} {self.last_name} ({self.nickname})"
+        return self.__str__()

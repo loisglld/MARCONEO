@@ -16,7 +16,7 @@ class ShopItem:
         Item's constructor.
         """
         self.body_master = master
-        self.cart = self.body_master.master.gui.app.current_user.cart
+        self.cart = self.body_master.master.gui.app.cart
         self.footer = self.body_master.shopping_master.footer
         
         self.name = name
@@ -58,10 +58,10 @@ class ShopItem:
         
         # Cart's modification
         if not self in self.cart.items: self.cart.add_to_cart(self)
-        self.total_in_cart = self.cart.get_total_price()
-        
+        self.cart.total += self.price
+    
         # Footer's modification
-        self.footer.update_total_label(self.total_in_cart)
+        self.footer.update_footer()
         
     def __str__(self) -> str:
         return f"{self.name} x{self.amount}"
