@@ -13,11 +13,12 @@ from SRC.INTERFACE.WIDGETS.MemberCard import MemberCard
 
 
 class Header(Frame):
-    def __init__(self, master):
-        super().__init__(master)
-        self.master = master
+    def __init__(self, rigth_grid):
+        super().__init__(rigth_grid)
+        self.master = rigth_grid.master
         self.loggers = self.master.gui.loggers
-        self.member_card = MemberCard(self.master.gui.app.current_user, self.master)
+        self.member_card = MemberCard(self.master.gui.app.current_user, self)
+        self.member_card.pack()
     
     def update_header(self):
         pass

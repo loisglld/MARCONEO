@@ -11,8 +11,9 @@ from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
 #-------------------------------------------------------------------#
 
 class Navbar(Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
+    def __init__(self, left_grid=None):
+        super().__init__(left_grid)
+        self.master = left_grid.master
         
         self.configure(bg="black")
         self.setup_images()

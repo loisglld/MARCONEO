@@ -16,8 +16,9 @@ class ShopItem:
         Item's constructor.
         """
         self.body_master = master
-        self.cart = self.body_master.master.gui.app.cart
-        self.footer = self.body_master.shopping_master.footer
+        self.cart = self.body_master.shopping_master.gui.app.cart
+        self.footer = self.body_master.shopping_master.right_grid
+        print(self.footer)
         
         self.name = name
         self.price = price
@@ -62,6 +63,6 @@ class ShopItem:
     
         # Footer's modification
         self.footer.update_footer()
-        
-    def __str__(self) -> str:
+    
+    def __repr__(self) -> str:
         return f"{self.name} x{self.amount}"

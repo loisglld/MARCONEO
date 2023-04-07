@@ -11,9 +11,9 @@ from SRC.INTERFACE.gui_utils import Frame, AppButton, Label
 #-------------------------------------------------------------------#
 
 class Footer(Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.shopping_master = master
+    def __init__(self, rigth_grid=None):
+        super().__init__(rigth_grid)
+        self.shopping_master = rigth_grid.master
         self.loggers = self.shopping_master.gui.app.loggers
         self.grid_propagate(False)
         self.configure(bg="#555555")

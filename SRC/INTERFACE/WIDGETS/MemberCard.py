@@ -15,7 +15,7 @@ class MemberCard(Frame):
         super().__init__(master)
         self.member = member
         self.master =  master
-        self.loggers = self.master.gui.loggers
+        self.loggers = self.master.master.gui.loggers
         self.grid_propagate(False)
         self.configure(bg="#555555")
         
