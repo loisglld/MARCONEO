@@ -12,9 +12,9 @@ from SRC.INTERFACE.MENUS.SHOPPING.ShopItem import ShopItem
 #-------------------------------------------------------------------#
 
 class Body(Frame):
-    def __init__(self, rigth_grid=None):
-        super().__init__(rigth_grid)
-        self.shopping_master = rigth_grid.master
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.shopping_master = master.master
         self.grid_propagate(False)
         self.configure(bg="#333333")
         self.item_per_row = 3
