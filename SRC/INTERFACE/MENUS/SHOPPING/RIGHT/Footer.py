@@ -11,9 +11,9 @@ from SRC.INTERFACE.gui_utils import Frame, AppButton, Label
 #-------------------------------------------------------------------#
 
 class Footer(Frame):
-    def __init__(self, rigth_grid=None):
-        super().__init__(rigth_grid)
-        self.shopping_manager = rigth_grid.manager
+    def __init__(self, manager=None):
+        super().__init__(manager)
+        self.shopping_manager = manager.manager
         self.loggers = self.shopping_manager.gui.app.loggers
         self.grid_propagate(False)
         self.configure(bg="#555555")
@@ -38,10 +38,10 @@ class Footer(Frame):
         """
         Reset the cart.
         """
-        if not self.cart.total: 
+        if not self.cart.total:
             return
         self.cart.reset()
-        self.shopping_manager.body.update_body(self.shopping_manager.current_toggle)
+        self.shopping_manager.right_grid.body.update_body(self.shopping_manager.current_toggle)
         self.update_footer()
         self.loggers.log.debug("Cart has been reset.")
         

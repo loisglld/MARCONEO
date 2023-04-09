@@ -1,3 +1,5 @@
+# pylint: disable=C0303
+
 """
 MarcoNeo.py
 
@@ -38,7 +40,7 @@ class MarcoNeo:
         """
         # Setup the logger
         self.loggers = Loggers(MarcoNeo.NAME)
-        self.loggers.log.info(f"Starting MarcoNeo v{MarcoNeo.VERSION}...")
+        self.loggers.log.info("Starting MarcoNeo v%s...", MarcoNeo.VERSION)
         
         # Setup the current user
         self.current_user = None
@@ -120,8 +122,8 @@ class MarcoNeo:
         """
         self.current_user = user
         self.cart.__init__(self.loggers, self.current_user)
-        self.gui.shopping_menu.body.update_body(self.gui.shopping_menu.current_toggle)
-        self.gui.shopping_menu.footer.update_footer()
+        self.gui.shopping_menu.right_grid.body.update_body(self.gui.shopping_menu.current_toggle)
+        self.gui.shopping_menu.right_grid.footer.update_footer()
             
     def confirm_purchase(self):
         """
@@ -134,5 +136,5 @@ class MarcoNeo:
         
         self.db.update_balance(self.current_user)
         
-        self.loggers.log.info(f"Purchase confirmed. New balance of {self.current_user.first_name} is {self.current_user.balance}€.")
+        self.loggers.log.info("Purchase confirmed. New balance of %s is %s€.", self.current_user.first_name, self.current_user.balance)
         print(f"Purchase confirmed. Your new balance is {self.current_user.balance}€.")
