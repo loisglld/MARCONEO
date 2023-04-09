@@ -11,11 +11,17 @@ from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
 #-------------------------------------------------------------------#
 
 class Navbar(Frame):
+    """
+    Contains the different toggles of the shopping menu.
+    Is used to navigate between the different toggles.
+    """
     def __init__(self, left_grid=None):
         super().__init__(left_grid)
-        self.master = left_grid.master
+        self.manager = left_grid
         
+        self.grid_propagate(False)
         self.configure(bg="black")
+        
         self.setup_images()
         self.setup_label()
         self.setup_buttons()
@@ -36,15 +42,15 @@ class Navbar(Frame):
         """
         Defines the buttons used in the menu.
         """
-        shopping_menus = self.master.gui.app.config['Shopping']
+        shopping_menus = self.manager.manager.gui.app.config['Shopping']
         row = 1
         for menu in shopping_menus:
             button = AppButton(self, text=menu, command=lambda menu=menu: self.toggle(menu))
             setattr(self, f"{menu.lower()}_btn", button)
             button.grid(row=row, column=0, padx=10, pady=10)
             row += 1
-            
-        self.back_btn = AppButton(self, text="Back", command=lambda: self.master.gui.change_menu(self.master.gui.main_menu))
+           
+        self.back_btn = AppButton(self, text="Back", command=lambda: self.manager.gui.change_menu(self.master.gui.main_menu))
         self.back_btn.grid(row=row, column=0, padx=10, pady=10)
 
     def toggle(self, toggle):

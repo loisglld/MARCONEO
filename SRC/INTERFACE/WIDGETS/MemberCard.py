@@ -11,17 +11,18 @@ from SRC.INTERFACE.gui_utils import Frame, Label
 #------------------------------------------------------------------------------#
 
 class MemberCard(Frame):
-    def __init__(self, member, master):
-        super().__init__(master)
+    def __init__(self, member, manager):
+        super().__init__(manager)
         self.member = member
-        self.master =  master
-        self.loggers = self.master.master.gui.loggers
+        self.manager =  manager
+        self.loggers = self.manager.manager.manager.gui.loggers
+        
         self.grid_propagate(False)
         self.configure(bg="#555555")
         
         self.setup_labels()
         
-        self.card = self.create_card()
+        self.create_card()
         
     def setup_images(self):
         """
@@ -34,15 +35,18 @@ class MemberCard(Frame):
         Defines the labels used in the menu.
         """        
         
-        
         self.first_name_label = Label(self, text="-")
         self.last_name_label = Label(self, text="-")
         self.balance_label = Label(self, text="_")
         
-        self.first_name_label.pack()
-        self.last_name_label.pack()
-        self.balance_label.pack()
+        self.first_name_label.grid(row=0, column=0, sticky='nsew')
+        self.last_name_label.grid(row=0, column=1, sticky='nsew')
+        self.balance_label.grid(row=0, column=2, sticky='nsew')
         
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_columnconfigure(2, weight=1)
+        self.grid_rowconfigure(0, weight=1)
         
         
     def setup_buttons(self):

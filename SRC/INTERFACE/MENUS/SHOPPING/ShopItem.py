@@ -11,14 +11,13 @@ from SRC.INTERFACE.gui_utils import Frame, Label
 #-------------------------------------------------------------------#
 
 class ShopItem:
-    def __init__(self, name, price, master=None):
+    def __init__(self, name, price, manager=None):
         """
         Item's constructor.
         """
-        self.body_master = master
-        self.cart = self.body_master.shopping_master.gui.app.cart
-        self.footer = self.body_master.shopping_master.right_grid
-        print(self.footer)
+        self.manager = manager
+        self.cart = self.manager.manager.manager.gui.app.cart
+        self.footer = self.manager.manager.footer
         
         self.name = name
         self.price = price
@@ -31,7 +30,7 @@ class ShopItem:
         Defines the container of the item.
         """
         # The container is a Frame.
-        self.container = Frame(self.body_master)
+        self.container = Frame(self.manager)
         self.container.configure(bg="white")
         
         # The name and the amount are labels inside the Frame.
@@ -53,14 +52,12 @@ class ShopItem:
         """
         # Self's modification
         self.amount += 1
-        
         # Body's modification
         self.amount_label.configure(text=self.amount)
-        
         # Cart's modification
-        if not self in self.cart.items: self.cart.add_to_cart(self)
+        if not self in self.cart.items:
+            self.cart.add_to_cart(self)
         self.cart.total += self.price
-    
         # Footer's modification
         self.footer.update_footer()
     

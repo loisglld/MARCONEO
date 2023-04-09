@@ -8,16 +8,15 @@ as well as the connections to the database and the RFID reader.
 
 #-------------------------------------------------------------------#
 
+import os
+import json
+import decimal
+
 from SRC.Loggers import Loggers
-from SRC.DATABASE.Member import Member
 from SRC.DATABASE.Cart import Cart
 from SRC.DATABASE.DataBase import DataBase
 from SRC.DATABASE.RFID import RFID
 from SRC.INTERFACE.GUI import GUI
-
-import os
-import json
-import decimal
 
 #-------------------------------------------------------------------#
 
@@ -39,7 +38,7 @@ class MarcoNeo:
         """
         # Setup the logger
         self.loggers = Loggers(MarcoNeo.NAME)
-        self.loggers.log.info("Starting MarcoNeo v" + MarcoNeo.VERSION + "...")
+        self.loggers.log.info(f"Starting MarcoNeo v{MarcoNeo.VERSION}...")
         
         # Setup the current user
         self.current_user = None
