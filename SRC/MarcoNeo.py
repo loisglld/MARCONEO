@@ -80,12 +80,15 @@ class MarcoNeo:
         try:
             config = json.loads(json_content, parse_float=decimal.Decimal)
         except json.JSONDecodeError as decode_err:
-            self.loggers.log.warn(f"Error while parsing the config.json file at line {decode_err.lineno}")
+            self.loggers.log.warning("Error while parsing the config.json file at line %s", decode_err.lineno)
             quit()
             
         return config
         
     def get_pwd(self):
+        """
+        Gets the database connection information from the pwd.txt file.
+        """
         pwd_path = os.path.join(os.path.abspath(os.getcwd()),'pwd.txt')
         with open(pwd_path, 'r') as f:
             lines = f.readlines()
