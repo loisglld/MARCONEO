@@ -6,7 +6,7 @@ Describes the footer of the shopping menu.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.gui_utils import Frame, AppButton, Label
+from SRC.utils.gui_utils import Frame, AppButton, Label
 
 #-------------------------------------------------------------------#
 

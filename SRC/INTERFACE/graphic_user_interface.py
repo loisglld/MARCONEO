@@ -1,5 +1,5 @@
 """
-GUI.py
+graphic_user_interface.py
 
 This script describes the GUI class.
 It is responsible for the GUI of the BT application.
@@ -7,31 +7,35 @@ It is responsible for the GUI of the BT application.
 
 #------------------------------------------------------------#
 
+from SRC.utils.gui_utils import Tk, Frame, BOTH
+
 from SRC.INTERFACE.MENUS.WelcomeMenu import WelcomeMenu
 from SRC.INTERFACE.MENUS.CreditsMenu import CreditsMenu
 from SRC.INTERFACE.MENUS.SETTINGS.SettingsMenu import SettingsMenu
-
 from SRC.INTERFACE.MENUS.MainMenu import MainMenu
 from SRC.INTERFACE.MENUS.SHOPPING.ShoppingMenu import ShoppingMenu
 
-import tkinter as tk
-import os
+from SRC.utils.decorators import close_service, launch_service
 
 #------------------------------------------------------------#
 
-class GUI(tk.Tk):
+class GUI(Tk):
+    """
+    Graphic User Interface of the application.
+    """
     def __init__(self, app):
         super().__init__()
         self.app = app
         self.loggers = self.app.loggers
-        
+        self.current_menu = None
+
         self.bind("<Key>", self.app.rfid.rfid_callback) # Listen to the RFID reader
         self.loggers.log.debug("RFID is listening.")
-        
+
         self.setup_window()
         self.setup_menus()
-        
-    def change_menu(self, next_menu: tk.Frame):
+
+    def change_menu(self, next_menu: Frame):
         """
         This function changes the current view to the desired menu.
         """
@@ -43,14 +47,15 @@ class GUI(tk.Tk):
         self.unbind("<Key>")
 
         self.current_menu.pack_forget()
-        next_menu.pack(fill=tk.BOTH, expand=True)
+        next_menu.pack(fill=BOTH, expand=True)
         # Update the current menu reference
         self.current_menu = next_menu
         self.loggers.log.debug(f"({type(next_menu).__name__})")
 
         # Re-bind the keyboard
         self.bind("<Key>", self.app.rfid.rfid_callback)
-    
+
+    @launch_service
     def setup_window(self):
         """
         Setup the window of the application.
@@ -60,7 +65,7 @@ class GUI(tk.Tk):
         self.resizable(False, False)
         #self.iconbitmap(os.path.join(os.getcwd(),"DATA","IMAGES","logo.ico"))
         #self.config(bg="black")
-                
+
     def setup_menus(self):
         """
         Setup the different menus of the application.
@@ -69,24 +74,25 @@ class GUI(tk.Tk):
         self.credits_menu = CreditsMenu(self)
         self.settings_menu = SettingsMenu(self)
         self.main_menu = MainMenu(self)
-        
+
         self.shopping_menu = ShoppingMenu(self)
-        self.history_menu = tk.Frame(self)
-        self.stats_menu = tk.Frame(self)
-                
-        self.welcome_menu.pack(fill=tk.BOTH, expand=True)
+        self.history_menu = Frame(self)
+        self.stats_menu = Frame(self)
+
+        self.welcome_menu.pack(fill=BOTH, expand=True)
         self.current_menu = self.welcome_menu
-        
+
     def start(self):
         """
         Displays the GUI.
         """
         self.mainloop()
-        
+
+    @close_service
     def close(self):
         """
         This function is called when the user closes the application.
         """
         self.quit()
         self.loggers.log.debug("GUI closed.")
-        
+        return True

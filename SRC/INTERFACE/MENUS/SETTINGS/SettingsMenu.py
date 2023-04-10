@@ -6,7 +6,7 @@ Configure MarcoNeo's settings page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
+from SRC.utils.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 

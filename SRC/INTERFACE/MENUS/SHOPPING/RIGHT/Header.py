@@ -6,7 +6,7 @@ Top section of the shopping menu.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.gui_utils import Frame
+from SRC.utils.gui_utils import Frame
 from SRC.INTERFACE.WIDGETS.MemberCard import MemberCard
 
 #-------------------------------------------------------------------#

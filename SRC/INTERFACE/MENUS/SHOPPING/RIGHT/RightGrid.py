@@ -9,7 +9,7 @@ Container of the header, body and footer of the shopping page.
 from SRC.INTERFACE.MENUS.SHOPPING.RIGHT.Header import Header
 from SRC.INTERFACE.MENUS.SHOPPING.RIGHT.Body import Body
 from SRC.INTERFACE.MENUS.SHOPPING.RIGHT.Footer import Footer
-from SRC.INTERFACE.gui_utils import Frame
+from SRC.utils.gui_utils import Frame
 
 #-------------------------------------------------------------------#
 

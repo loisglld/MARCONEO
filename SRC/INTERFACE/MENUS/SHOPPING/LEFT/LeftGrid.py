@@ -7,7 +7,7 @@ Container of the navbar of the shopping page.
 #-------------------------------------------------------------------#
 
 from SRC.INTERFACE.MENUS.SHOPPING.LEFT.Navbar import Navbar
-from SRC.INTERFACE.gui_utils import Frame
+from SRC.utils.gui_utils import Frame
 
 #-------------------------------------------------------------------#
 

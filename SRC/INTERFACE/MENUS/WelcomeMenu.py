@@ -6,7 +6,7 @@ Configure MarcoNeo's welcome page.
 
 #-------------------------------------------------------------------#
 
-from SRC.INTERFACE.gui_utils import Frame, Label, AppButton
+from SRC.utils.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 

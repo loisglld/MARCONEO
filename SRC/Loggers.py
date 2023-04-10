@@ -10,6 +10,8 @@ import logging
 import os
 from datetime import datetime
 
+from SRC.utils.decorators import close_service, launch_service
+
 #------------------------------------------------------------------------------#
 
 class Loggers:
@@ -20,7 +22,7 @@ class Loggers:
         """
         Constructor of the Logs class.
         """
-        
+
         self.log_level = logging.DEBUG # Configure log error level
         self.log_name = name
         self.log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s" # Display format in the log
@@ -30,13 +32,14 @@ class Loggers:
 
         self.create_root_dir()
         self.create_log_file()
-        
+
     def create_root_dir(self):
         """
         Create the root directory of the logs.
         """
         if not os.path.exists(self.log_out_path): os.makedirs(self.log_out_path)
-    
+
+    @launch_service
     def create_log_file(self):
         """
         Create the log file.
@@ -46,11 +49,13 @@ class Loggers:
             os.remove(self.log_path)
         except OSError:
             pass
-        
+
         self.log = logging.getLogger(self.log_name)
         self.log.setLevel(self.log_level)
         logging.basicConfig(filename=self.log_path, format=self.log_format, datefmt=self.log_date_format, level=self.log_level)
-    
+        return True
+
+    @close_service
     def close(self):
         """
         Add to the log of the day the log of the passed session.
@@ -58,14 +63,16 @@ class Loggers:
         # Actualize the log file
         now = datetime.now() # Current date and hour
         day_log_path = os.path.join(self.log_out_path, now.strftime("%d-%m-%Y.log"))
-        
+
         # Copy each line of the log file in the log of the day
         with open(day_log_path, "a", encoding="UTF-8") as day_log, open(self.log_path, "r", encoding="UTF-8") as session_log:
             for line in session_log:
                 day_log.write(line)
-                
+
             # Separate each session in the log of the day
             day_log.write("--------------------------------------------------------------\n")
             # Close files
             day_log.close()
             session_log.close()
+
+        return True
