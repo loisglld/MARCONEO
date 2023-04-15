@@ -37,7 +37,7 @@ def launch_service(func):
         class_name = args[0].__class__.__name__
         attempt = 1
         while attempt <= 5:
-            print(f"Lanching {class_name} (attempt {attempt})...")
+            print(f"Launching {class_name} (attempt {attempt})...")
             if result := func(*args, **kwargs):
                 return result
             attempt += 1
