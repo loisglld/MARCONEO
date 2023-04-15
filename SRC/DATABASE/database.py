@@ -10,7 +10,7 @@ related to the connexion to the database.
 import mysql.connector as mysql
 
 from SRC.utils.decorators import close_service, launch_service
-from SRC.DATABASE.Member import Member
+from SRC.DATABASE.member import Member
 
 #-------------------------------------------------------------------#
 
