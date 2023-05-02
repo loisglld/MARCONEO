@@ -9,10 +9,10 @@ It is responsible for the GUI of the BT application.
 
 from SRC.utils.gui_utils import Tk, Frame, BOTH
 
-from SRC.INTERFACE.MENUS.WelcomeMenu import WelcomeMenu
+from SRC.INTERFACE.MENUS.welcome_menu import WelcomeMenu
 from SRC.INTERFACE.MENUS.credits_menu import CreditsMenu
-from SRC.INTERFACE.MENUS.SETTINGS.SettingsMenu import SettingsMenu
-from SRC.INTERFACE.MENUS.MainMenu import MainMenu
+from SRC.INTERFACE.MENUS.SETTINGS.settings_menu import SettingsMenu
+from SRC.INTERFACE.MENUS.main_menu import MainMenu
 from SRC.INTERFACE.MENUS.SHOPPING.ShoppingMenu import ShoppingMenu
 
 from SRC.utils.decorators import close_service, launch_service

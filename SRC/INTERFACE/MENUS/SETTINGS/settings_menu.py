@@ -1,7 +1,7 @@
 """
-WelcomeMenu.py
+settings_menu.py
 
-Configure MarcoNeo's welcome page.
+Configure MarcoNeo's settings page.
 """
 
 #-------------------------------------------------------------------#
@@ -10,36 +10,39 @@ from SRC.utils.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
-class WelcomeMenu(Frame):
+class SettingsMenu(Frame):
+    """
+    MarcoNeo's settings page.
+
+    Contains the settings of the application such as language, light/dark mode, etc.
+    """
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
-        
+
         self.setup_images()
         self.setup_label()
         self.setup_buttons()
-        
+
     def setup_images(self):
         """
         Defines the images used in the main menu.
         """
         return
-    
+
     def setup_label(self):
         """
         Defines the labels used in the main menu.
         """
-        Label(self, text="MarcoNeo").pack()
-    
+        Label(self, text="Settings menu").pack()
+
     def setup_buttons(self):
         """
         Defines the buttons used in the main menu.
         """
-        self.enter_btn = AppButton(self, text="Enter", command=lambda: self.gui.change_menu(self.gui.main_menu))
-        self.settings_btn = AppButton(self, text="Settings", command=lambda: self.gui.change_menu(self.gui.settings_menu))
-        self.credits_btn = AppButton(self, text="Credits", command=lambda: self.gui.change_menu(self.gui.credits_menu))
-        self.power_btn = AppButton(self, text="Power off", command=lambda: self.gui.app.close())
-        
-        for btn in [self.enter_btn, self.settings_btn, self.credits_btn, self.power_btn]:
+        self.language = AppButton(self, text="Language", command=None)
+        self.credits_btn = AppButton(self, text="Light/Dark", command=None)
+        self.back_btn = AppButton(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+
+        for btn in [self.language, self.credits_btn, self.back_btn]:
             btn.pack()
-        
