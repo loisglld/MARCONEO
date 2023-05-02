@@ -10,7 +10,7 @@ It is responsible for the GUI of the BT application.
 from SRC.utils.gui_utils import Tk, Frame, BOTH
 
 from SRC.INTERFACE.MENUS.WelcomeMenu import WelcomeMenu
-from SRC.INTERFACE.MENUS.CreditsMenu import CreditsMenu
+from SRC.INTERFACE.MENUS.credits_menu import CreditsMenu
 from SRC.INTERFACE.MENUS.SETTINGS.SettingsMenu import SettingsMenu
 from SRC.INTERFACE.MENUS.MainMenu import MainMenu
 from SRC.INTERFACE.MENUS.SHOPPING.ShoppingMenu import ShoppingMenu
