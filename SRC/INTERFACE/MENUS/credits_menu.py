@@ -11,6 +11,11 @@ from SRC.utils.gui_utils import Frame, Label, AppButton
 #-------------------------------------------------------------------#
 
 class CreditsMenu(Frame):
+    """
+    MarcoNeo's credits page.
+
+    It contains every contributor to the project.
+    """
     def __init__(self, gui=None):
         super().__init__(gui)
         self.gui = gui
