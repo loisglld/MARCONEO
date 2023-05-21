@@ -42,7 +42,8 @@ class SettingsMenu(Frame):
         """
         self.language = AppButton(self, text="Language", command=None)
         self.credits_btn = AppButton(self, text="Light/Dark", command=None)
-        self.back_btn = AppButton(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        self.back_btn = AppButton(self, text="Back",
+                                  command=lambda: self.gui.change_menu(self.gui.welcome_menu))
 
         for btn in [self.language, self.credits_btn, self.back_btn]:
             btn.pack()

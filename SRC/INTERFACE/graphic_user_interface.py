@@ -67,7 +67,7 @@ class GUI(Tk):
         #self.config(bg="black")
         return True
 
-    def setup_menus(self) -> None:
+    def setup_menus(self) -> bool:
         """
         Setup the different menus of the application.
         """
@@ -82,12 +82,14 @@ class GUI(Tk):
 
         self.welcome_menu.pack(fill=BOTH, expand=True)
         self.current_menu = self.welcome_menu
+        return True
 
-    def start(self):
+    def start(self) -> bool:
         """
         Displays the GUI.
         """
         self.mainloop()
+        return True
 
     @close_service
     def close(self) -> bool:
