@@ -14,7 +14,7 @@ class Member:
     Has a first name, a last name, a nickname, a card ID,
     a balance and a status (admin and contributor of BDE).
     """
-    def __init__(self, loggers, member_data: dict):
+    def __init__(self, loggers, member_data:dict) -> None:
         self.loggers = loggers
         self.member_data = member_data
 
@@ -29,10 +29,10 @@ class Member:
         print(f"Current user: {self.first_name} {self.last_name} ({self.balance}€)")
         self.loggers.log.info(f"Current user: {self.first_name} {self.last_name}")
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.member_data is None:
             return "No user is logged in."
         return f"{self.first_name} {self.last_name} ({self.nickname})"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()

@@ -16,7 +16,7 @@ class SettingsMenu(Frame):
 
     Contains the settings of the application such as language, light/dark mode, etc.
     """
-    def __init__(self, gui=None):
+    def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
 
@@ -24,19 +24,19 @@ class SettingsMenu(Frame):
         self.setup_label()
         self.setup_buttons()
 
-    def setup_images(self):
+    def setup_images(self) -> None:
         """
         Defines the images used in the main menu.
         """
         return
 
-    def setup_label(self):
+    def setup_label(self) -> None:
         """
         Defines the labels used in the main menu.
         """
         Label(self, text="Settings menu").pack()
 
-    def setup_buttons(self):
+    def setup_buttons(self) -> bool:
         """
         Defines the buttons used in the main menu.
         """
@@ -46,3 +46,4 @@ class SettingsMenu(Frame):
 
         for btn in [self.language, self.credits_btn, self.back_btn]:
             btn.pack()
+        return True

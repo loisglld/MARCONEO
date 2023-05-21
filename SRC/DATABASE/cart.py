@@ -18,23 +18,23 @@ class Cart:
         self.items = []
         self.total = 0
 
-    def add_to_cart(self, item):
+    def add_to_cart(self, item) -> None:
         """
         Adds an item to the cart.
         """
         self.items.append(item)
 
-    def reset(self):
+    def reset(self) -> None:
         """
         Resets the cart.
         """
         self.items = []
         self.total = 0
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.member is None:
             return "No user is logged in."
         return f"Cart of {self.member.nickname}: {self.items.__str__()}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()

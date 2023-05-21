@@ -48,7 +48,7 @@ class MarcoNeo:
         self.config = self.setup_config()
         self.default_config = self.config
 
-        # Setup the database
+        # Setup the database connection
         self.conn_info = self.get_pwd()
         self.database = DataBase(self, self.conn_info)
 

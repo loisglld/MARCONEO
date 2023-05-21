@@ -20,13 +20,12 @@ class DataBase:
     It will be able to return information or modify values in the database.
     """
 
-    def __init__(self, app, logins:dict):
+    def __init__(self, app, logins:dict) -> None:
         """
         DataBase's constructor.
         """
-        self.app = app
-        self.loggers = self.app.loggers
-        self.connexion = None
+        self.loggers = app.loggers
+        self.connection = None
         self._host, self._database, self._user, self._password, self._port = logins.values()
 
         self.connect()
@@ -37,25 +36,25 @@ class DataBase:
         Connects to the database.
         """
         self.loggers.log.debug("Connecting to the database...")
-        self.connexion = mysql.connect(host=self._host,
+        self.connection = mysql.connect(host=self._host,
                                             database=self._database,
                                             user=self._user,
                                             password=self._password,
                                             port=self._port)
-        self.cursor = self.connexion.cursor()
+        self.cursor = self.connection.cursor()
         self.loggers.log.info("Connected to the database.")
-        return False
+        return True
 
     @close_service
     def close(self) -> bool:
         """
         Ferme la session MySQL.
         """
-        self.connexion.close()
+        self.connection.close()
         self.loggers.log.debug("Disconnected from the database.")
         return True
 
-    def get_member(self, card_id: int):
+    def get_member(self, card_id:int) -> Member:
         """
         Retrieves a user with the given ID from the database.
         Returns the user if a match is foundin the database, None otherwise
@@ -86,7 +85,7 @@ class DataBase:
             self.loggers.log.warn(f"No member found with card ID {card_id}")
             return None
 
-    def update_balance(self, member: Member):
+    def update_balance(self, member:Member) -> None:
         """
         Updates the balance of the given member in the database.
         """
@@ -98,6 +97,6 @@ class DataBase:
         self.cursor.execute("""UPDATE Member
                             SET balance = %s
                             WHERE card_id = %s""", (member.balance, member.card_id))
-        self.connexion.commit()
+        self.connection.commit()
 
         self.loggers.log.debug(f"Member {member.first_name} (ID:{member.card_id}) balance updated to {member.balance}")

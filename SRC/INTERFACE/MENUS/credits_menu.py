@@ -16,7 +16,7 @@ class CreditsMenu(Frame):
 
     It contains every contributor to the project.
     """
-    def __init__(self, gui=None):
+    def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
         #self.gui.loggers.log.debug("(Credits menu)")
@@ -25,7 +25,8 @@ class CreditsMenu(Frame):
 Hugo Chambon, Nathan Favriou, Jade Touresse\nYannick Hénin\nGatien Chenu, Mathieu Martin\nLoïs Gallaud"""
 
         self.credits_label = Label(self, text=self.credits)
-        self.back_btn = AppButton(self, text="Back", command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        self.back_btn = AppButton(self, text="Back",
+                                  command=lambda: self.gui.change_menu(self.gui.welcome_menu))
 
         self.credits_label.pack()
         self.back_btn.pack()

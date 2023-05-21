@@ -2,7 +2,7 @@
 graphic_user_interface.py
 
 This script describes the GUI class.
-It is responsible for the GUI of the BT application.
+It is responsible for the GUI of the MarcoNeo application.
 """
 
 #------------------------------------------------------------#
@@ -21,9 +21,9 @@ from SRC.utils.decorators import close_service, launch_service
 
 class GUI(Tk):
     """
-    Graphic User Interface of the application.
+    Graphical User Interface of the application.
     """
-    def __init__(self, app):
+    def __init__(self, app) -> None:
         super().__init__()
         self.app = app
         self.loggers = self.app.loggers
@@ -35,7 +35,10 @@ class GUI(Tk):
         self.setup_window()
         self.setup_menus()
 
-    def change_menu(self, next_menu: Frame):
+        # Re-bind the keyboard
+        self.bind("<Key>", self.app.rfid.rfid_callback)
+
+    def change_menu(self, next_menu: Frame) -> None:
         """
         This function changes the current view to the desired menu.
         """
@@ -52,11 +55,8 @@ class GUI(Tk):
         self.current_menu = next_menu
         self.loggers.log.debug(f"({type(next_menu).__name__})")
 
-        # Re-bind the keyboard
-        self.bind("<Key>", self.app.rfid.rfid_callback)
-
     @launch_service
-    def setup_window(self):
+    def setup_window(self) -> bool:
         """
         Setup the window of the application.
         """
@@ -65,8 +65,9 @@ class GUI(Tk):
         self.resizable(False, False)
         #self.iconbitmap(os.path.join(os.getcwd(),"DATA","IMAGES","logo.ico"))
         #self.config(bg="black")
+        return True
 
-    def setup_menus(self):
+    def setup_menus(self) -> None:
         """
         Setup the different menus of the application.
         """
@@ -89,7 +90,7 @@ class GUI(Tk):
         self.mainloop()
 
     @close_service
-    def close(self):
+    def close(self) -> bool:
         """
         This function is called when the user closes the application.
         """

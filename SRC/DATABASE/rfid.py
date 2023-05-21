@@ -12,7 +12,7 @@ class RFID:
     """
     Defines the RFID reader.
     """
-    def __init__(self, app):
+    def __init__(self, app) -> None:
         """
         Constructor of the RFID class.
         """
@@ -26,7 +26,7 @@ class RFID:
         Callback function for the RFID reader.
         """
         # If the user presses the enter key (or keypad enter key), the buffer is parsed
-        if event.keysym == 'Return' or event.keysym == 'KP_Enter':
+        if event.keysym in ('Return', 'KP_Enter'):
             if self.buffer == "":
                 return # If the buffer is empty, do nothing
 
