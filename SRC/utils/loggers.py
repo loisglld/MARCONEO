@@ -1,5 +1,5 @@
 """
-Loggers.py
+loggers.py
 
 This scripts contains the Logs class.
 """
@@ -10,7 +10,7 @@ import logging
 import os
 from datetime import datetime
 
-from SRC.utils.decorators import close_service, launch_service
+from SRC.utils.decorators import close_service, setup_service
 
 #------------------------------------------------------------------------------#
 
@@ -41,7 +41,7 @@ class Loggers:
         if not os.path.exists(self.log_out_path):
             os.makedirs(self.log_out_path)
 
-    @launch_service
+    @setup_service
     def create_log_file(self):
         """
         Create the log file.
