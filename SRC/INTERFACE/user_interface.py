@@ -15,8 +15,6 @@ from SRC.INTERFACE.MENUS.SETTINGS.settings_menu import SettingsMenu
 from SRC.INTERFACE.MENUS.main_menu import MainMenu
 from SRC.INTERFACE.MENUS.SHOPPING.ShoppingMenu import ShoppingMenu
 
-from SRC.utils.decorators import close_service, launch_service
-
 #------------------------------------------------------------#
 
 class GUI(Tk):
@@ -55,7 +53,6 @@ class GUI(Tk):
         self.current_menu = next_menu
         self.loggers.log.debug(f"({type(next_menu).__name__})")
 
-    @launch_service
     def setup_window(self) -> bool:
         """
         Setup the window of the application.
@@ -91,7 +88,6 @@ class GUI(Tk):
         self.mainloop()
         return True
 
-    @close_service
     def close(self) -> bool:
         """
         This function is called when the user closes the application.

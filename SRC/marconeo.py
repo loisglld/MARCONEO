@@ -8,15 +8,11 @@ as well as the connections to the database and the RFID reader.
 
 #-------------------------------------------------------------------#
 
-import os
-import json
-import decimal
-
 from SRC.utils.loggers import Loggers
-from SRC.DATABASE.cart import Cart
-from SRC.DATABASE.database import DataBase
-from SRC.DATABASE.rfid import RFID
-from SRC.INTERFACE.graphic_user_interface import GUI
+from SRC.data.cart import Cart
+from SRC.data.database import DBCursor
+from SRC.data.rfid import RFID
+from SRC.INTERFACE.user_interface import GUI
 
 #-------------------------------------------------------------------#
 
@@ -32,7 +28,7 @@ class MarcoNeo:
     LANGUAGE = "FR"
     RELEASE_DATE = None
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         MarcoNeo's app class's constructor.
         """
@@ -45,12 +41,11 @@ class MarcoNeo:
         self.cart = Cart(self.loggers, self.current_user)
 
         # Setup config
-        self.config = self.setup_config()
+        self.config = None
         self.default_config = self.config
 
         # Setup the database connection
-        self.conn_info = self.get_pwd()
-        self.database = DataBase(self, self.conn_info)
+        self.database = DBCursor(self)
 
         # Setup the RFID reader
         self.rfid = RFID(self)
@@ -61,42 +56,6 @@ class MarcoNeo:
 
         self.loggers.log.info("MarcoNeo launched.")
         self.gui.start()
-
-    def setup_config(self):
-        """
-        Reads the json file (./config.json).
-        Shuts down the process if an error occurs.
-
-        The json file is used to configure the images and the shopping menus
-        (items, prices, etc.)
-        """
-
-        with open(os.path.join(os.getcwd(),"DATA", "config.json"), 'r', encoding="utf-8") as f:
-            json_content = f.read()
-
-        try:
-            config = json.loads(json_content, parse_float=decimal.Decimal)
-        except json.JSONDecodeError as decode_err:
-            self.loggers.log.warning("Error while parsing the config.json file at line %s",
-                                     decode_err.lineno)
-            quit()
-
-        return config
-
-    def get_pwd(self):
-        """
-        Gets the database connection information from the pwd.txt file.
-        """
-        pwd_path = os.path.join(os.path.abspath(os.getcwd()),'pwd.txt')
-        with open(pwd_path, 'r', encoding="utf-8") as f:
-            lines = f.readlines()
-            conn_info = {'host': lines[0].strip(),
-                        'database': lines[1].strip(),
-                        'user': lines[2].strip(),
-                        'password': lines[3].strip(),
-                        'port': int(lines[4].strip()),
-                        }
-        return conn_info
 
     def close(self):
         """

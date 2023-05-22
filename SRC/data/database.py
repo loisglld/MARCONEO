@@ -1,7 +1,7 @@
 """
-database.py
+dbcursor.py
 
-Defines the DataBase class and everything
+Defines the DBCursor class and everything
 related to the connexion to the database.
 """
 
@@ -9,38 +9,38 @@ related to the connexion to the database.
 
 import mysql.connector as mysql
 
-from SRC.utils.decorators import close_service, launch_service
-from SRC.DATABASE.member import Member
+from SRC.utils.decorators import close_service, setup_service
+from SRC.data.member import Member
+from SRC.data.logins import Logins
 
 #-------------------------------------------------------------------#
 
-class DataBase:
+class DBCursor:
     """
     Defines the objects of type cursors that point on the MySQL database.
     It will be able to return information or modify values in the database.
     """
 
-    def __init__(self, app, logins:dict) -> None:
+    def __init__(self, app) -> None:
         """
         DataBase's constructor.
         """
         self.loggers = app.loggers
         self.connection = None
-        self._host, self._database, self._user, self._password, self._port = logins.values()
-
+        self.logins = Logins()
         self.connect()
 
-    @launch_service
+    @setup_service
     def connect(self) -> bool:
         """
         Connects to the database.
         """
         self.loggers.log.debug("Connecting to the database...")
-        self.connection = mysql.connect(host=self._host,
-                                            database=self._database,
-                                            user=self._user,
-                                            password=self._password,
-                                            port=self._port)
+        self.connection = mysql.connect(host=self.logins.get_host(),
+                                        database=self.logins.get_database(),
+                                        user=self.logins.get_user(),
+                                        password=self.logins.get_password(),
+                                        port=self.logins.get_port())
         self.cursor = self.connection.cursor()
         self.loggers.log.info("Connected to the database.")
         return True
@@ -99,4 +99,4 @@ class DataBase:
                             WHERE card_id = %s""", (member.balance, member.card_id))
         self.connection.commit()
 
-        self.loggers.log.debug(f"Member {member.first_name} (ID:{member.card_id}) balance updated to {member.balance}")
+        self.loggers.log.debug(f"Member {member.first_name} (ID:{member.card_id}) Balance: {member.balance}")
