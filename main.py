@@ -7,7 +7,7 @@ It launches the application.
 
 #------------------------------------------------------------------------------#
 
-from SRC.marconeo import MarcoNeo
+from src.marconeo import MarcoNeo
 
 #------------------------------------------------------------------------------#
 

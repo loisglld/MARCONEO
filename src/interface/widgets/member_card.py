@@ -6,7 +6,7 @@ Member id card displayed on the window.
 
 #------------------------------------------------------------------------------#
 
-from SRC.utils.gui_utils import Frame, Label
+from src.utils.gui_utils import Frame, Label
 
 #------------------------------------------------------------------------------#
 
