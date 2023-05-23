@@ -6,11 +6,11 @@ Configure MarcoNeo's settings page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, Label, AppButton
+from src.utils.gui_utils import AppFrame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
-class SettingsMenu(Frame):
+class SettingsMenu(AppFrame):
     """
     MarcoNeo's settings page.
 

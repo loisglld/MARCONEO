@@ -24,3 +24,4 @@ class AppFrame(Frame):
     def __init__(self, master) -> None:
         super().__init__(master)
         self.master = master
+        self.config(bg=self.DARK)

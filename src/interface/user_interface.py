@@ -25,6 +25,7 @@ class GUI(Tk):
         super().__init__()
         self.app = app
         self.loggers = self.app.loggers
+        self.protocol("WM_DELETE_WINDOW", self.app.close)
         self.current_menu = None
 
         self.bind("<Key>", self.app.rfid.rfid_callback) # Listen to the RFID reader
@@ -48,6 +49,8 @@ class GUI(Tk):
         self.unbind("<Key>")
 
         self.current_menu.pack_forget()
+        # Check night mode
+
         next_menu.pack(fill=BOTH, expand=True)
         # Update the current menu reference
         self.current_menu = next_menu

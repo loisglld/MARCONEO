@@ -25,8 +25,7 @@ class MarcoNeo:
     """
 
     NAME = "MARCONEO"
-    VERSION = "0.6.0"
-    LANGUAGE = "FR"
+    VERSION = "0.6"
     RELEASE_DATE = None
 
     def __init__(self) -> None:
@@ -41,18 +40,10 @@ class MarcoNeo:
         self.current_user = None
         self.cart = Cart(self.loggers, self.current_user)
 
-        # Setup config
         self.config = Config(self)
-
-        # Setup the database connection
-        self.database = DBCursor(self)
-
-        # Setup the RFID reader
+        self.db_cursor = DBCursor(self)
         self.rfid = RFID(self)
-
-        # Setup the GUI
         self.gui = GUI(self)
-        self.gui.protocol("WM_DELETE_WINDOW", self.close)
 
         self.loggers.log.info("MarcoNeo launched.")
         self.gui.start()
@@ -62,7 +53,7 @@ class MarcoNeo:
         Quits the application.
         """
         # Close the database connection safely
-        self.database.close()
+        self.db_cursor.close()
         # Close the rest of the application
         self.gui.close()
         self.loggers.log.info("Closing MARCONEO...")
@@ -85,9 +76,7 @@ class MarcoNeo:
             self.loggers.log.warning("No user is logged in. Can't purchase.")
             return
         self.current_user.balance -= self.cart.total
-
-        self.database.update_balance(self.current_user)
-
+        self.db_cursor.update_balance(self.current_user)
         self.loggers.log.info("Purchase confirmed. New balance of %s is %s€.",
                               self.current_user.first_name, self.current_user.balance)
         print(f"Purchase confirmed. Your new balance is {self.current_user.balance}€.")

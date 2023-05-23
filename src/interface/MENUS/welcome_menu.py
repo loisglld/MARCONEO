@@ -6,11 +6,11 @@ Configure MarcoNeo's welcome page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, Label, AppButton
+from src.utils.gui_utils import Label, AppButton, AppFrame
 
 #-------------------------------------------------------------------#
 
-class WelcomeMenu(Frame):
+class WelcomeMenu(AppFrame):
     """
     MarcoNeo's welcome page.
 
@@ -39,9 +39,12 @@ class WelcomeMenu(Frame):
         self.settings_btn = AppButton(self, text="Settings",
                                       command=lambda: self.gui.change_menu(self.gui.settings_menu))
         self.credits_btn = AppButton(self, text="Credits",
-                                     command=lambda: self.gui.change_menu(self.gui.credits_menu))
+                                     command=self.change_color)
         self.power_btn = AppButton(self, text="Power off",
                                    command=self.gui.app.close)
 
         for btn in [self.enter_btn, self.settings_btn, self.credits_btn, self.power_btn]:
             btn.pack()
+
+    def change_color(self):
+        AppFrame.config(self, bg=AppFrame.DARKGRAY)
