@@ -14,9 +14,19 @@ class Member:
     Has a first name, a last name, a nickname, a card ID,
     a balance and a status (admin and contributor of BDE).
     """
-    def __init__(self, loggers, member_data:dict) -> None:
-        self.loggers = loggers
+    def __init__(self, app, member_data:dict=None) -> None:
+        self.loggers = app.loggers
         self.member_data = member_data
+
+        if member_data is None:
+            self.first_name = None
+            self.last_name = None
+            self.nickname = None
+            self.card_id = None
+            self.balance = None
+            self.is_admin = None
+            self.is_contributor = None
+            return
 
         self.first_name = member_data['first_name']
         self.last_name = member_data['last_name']

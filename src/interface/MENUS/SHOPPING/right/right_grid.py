@@ -1,14 +1,14 @@
 """
-RightGrid.py
+right_grid.py
 
 Container of the header, body and footer of the shopping page.
 """
 
 #-------------------------------------------------------------------#
 
-from src.interface.MENUS.SHOPPING.RIGHT.Header import Header
-from src.interface.MENUS.SHOPPING.RIGHT.Body import Body
-from src.interface.MENUS.SHOPPING.RIGHT.Footer import Footer
+from src.interface.MENUS.SHOPPING.right.header import Header
+from src.interface.MENUS.SHOPPING.right.body import Body
+from src.interface.MENUS.SHOPPING.right.footer import Footer
 from src.utils.gui_utils import Frame
 
 #-------------------------------------------------------------------#
@@ -41,4 +41,3 @@ class RightGrid(Frame):
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=4)
         self.grid_rowconfigure(2, weight=2)
-

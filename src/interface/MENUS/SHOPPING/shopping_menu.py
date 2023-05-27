@@ -1,13 +1,13 @@
 """
-ShoppingMenu.py
+shopping_menu.py
 
 Configure MarcoNeo's shopping page.
 """
 
 #-------------------------------------------------------------------#
 
-from src.interface.MENUS.SHOPPING.LEFT.LeftGrid import LeftGrid
-from src.interface.MENUS.SHOPPING.RIGHT.RightGrid import RightGrid
+from src.interface.MENUS.SHOPPING.left.left_grid import LeftGrid
+from src.interface.MENUS.SHOPPING.right.right_grid import RightGrid
 from src.utils.gui_utils import Frame
 
 #-------------------------------------------------------------------#

@@ -13,7 +13,7 @@ from src.interface.MENUS.welcome_menu import WelcomeMenu
 from src.interface.MENUS.credits_menu import CreditsMenu
 from src.interface.MENUS.SETTINGS.settings_menu import SettingsMenu
 from src.interface.MENUS.main_menu import MainMenu
-from src.interface.MENUS.SHOPPING.ShoppingMenu import ShoppingMenu
+from src.interface.MENUS.SHOPPING.shopping_menu import ShoppingMenu
 
 #------------------------------------------------------------#
 

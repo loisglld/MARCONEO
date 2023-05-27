@@ -72,14 +72,14 @@ class DBCursor:
 
         if result is not None:
             member_data = {'first_name': result[0],
-                        'last_name': result[1],
-                        'nickname': result[2],
-                        'card_id': result[3],
-                        'balance': result[4],
-                        'is_admin': result[5],
-                        'is_contributor': result[6]}
+                            'last_name': result[1],
+                            'nickname': result[2],
+                            'card_id': result[3],
+                            'balance': result[4],
+                            'is_admin': result[5],
+                            'is_contributor': result[6]}
             self.loggers.log.debug(f"Retrieving member {member_data['first_name']} (ID:{card_id})")
-            return Member(self.loggers, member_data)
+            return member_data
         else:
             self.loggers.log.warn(f"No member found with card ID {card_id}")
             return None

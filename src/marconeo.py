@@ -9,9 +9,11 @@ as well as the connections to the database and the RFID reader.
 #-------------------------------------------------------------------#
 
 from src.utils.loggers import Loggers
+from src.data.member import Member
 from src.data.cart import Cart
 from src.data.config import Config
 from src.data.db_cursor import DBCursor
+from src.data.payment_service import PaymentService
 from src.data.rfid import RFID
 from src.interface.user_interface import GUI
 
@@ -26,7 +28,6 @@ class MarcoNeo:
 
     NAME = "MARCONEO"
     VERSION = "0.6"
-    RELEASE_DATE = None
 
     def __init__(self) -> None:
         """
@@ -36,10 +37,16 @@ class MarcoNeo:
         self.loggers = Loggers(MarcoNeo.NAME)
         self.loggers.log.info("Starting MarcoNeo v%s...", MarcoNeo.VERSION)
 
-        self.current_user = None
+        # Setup the client user
+        self.current_user = Member(self)
         self.cart = Cart(self.loggers, self.current_user)
+
+        # Setup the database cursor and payment service
         self.config = Config(self)
         self.db_cursor = DBCursor(self)
+        self.payment_service = PaymentService(self)
+
+        # Setup the RFID reader and the GUI
         self.rfid = RFID(self)
         self.gui = GUI(self)
 
@@ -57,26 +64,14 @@ class MarcoNeo:
         self.loggers.log.info("Closing MARCONEO...")
         self.loggers.close()
 
-    def update_user(self, user):
+    def update_user(self, user_data:dict) -> None:
         """
         Updates the current user.
         """
-        self.current_user = user
+        del self.current_user
+        self.current_user = Member(self, user_data)
         del self.cart
         self.cart = Cart(self.loggers, self.current_user)
         self.gui.shopping_menu.right_grid.header.member_card.update_card(self.current_user)
         self.gui.shopping_menu.right_grid.body.update_body(self.gui.shopping_menu.current_toggle)
         self.gui.shopping_menu.right_grid.footer.update_footer()
-
-    def confirm_purchase(self):
-        """
-        Confirms the purchase.
-        """
-        if self.current_user is None:
-            self.loggers.log.warning("No user is logged in. Can't purchase.")
-            return
-        self.current_user.balance -= self.cart.total
-        self.db_cursor.update_balance(self.current_user)
-        self.loggers.log.info("Purchase confirmed. New balance of %s is %s€.",
-                              self.current_user.first_name, self.current_user.balance)
-        print(f"Purchase confirmed. Your new balance is {self.current_user.balance}€.")
