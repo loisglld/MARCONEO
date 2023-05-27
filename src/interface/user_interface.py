@@ -34,9 +34,6 @@ class GUI(Tk):
         self.setup_window()
         self.setup_menus()
 
-        # Re-bind the keyboard
-        self.bind("<Key>", self.app.rfid.rfid_callback)
-
     def change_menu(self, next_menu: Frame) -> None:
         """
         This function changes the current view to the desired menu.
@@ -48,10 +45,15 @@ class GUI(Tk):
         # Unbind the keyboard
         self.unbind("<Key>")
 
-        self.current_menu.pack_forget()
+        next_menu.pack(fill=BOTH, expand=True)
+
         # Check night mode
 
-        next_menu.pack(fill=BOTH, expand=True)
+        self.current_menu.pack_forget()
+
+        # Re-bind the keyboard
+        self.bind("<Key>", self.app.rfid.rfid_callback)
+
         # Update the current menu reference
         self.current_menu = next_menu
         self.loggers.log.debug(f"({type(next_menu).__name__})")

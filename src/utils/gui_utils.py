@@ -13,4 +13,5 @@ from src.interface.widgets.app_frame import AppFrame
 
 #-------------------------------------------------------------------#
 
-__all__ = ['Tk', 'Frame', 'Label', 'AppButton', 'Entry', 'BOTH', 'AppFrame', 'AppButton']
+__all__ = ['Tk', 'Frame', 'Label', 'AppButton',
+           'Entry', 'BOTH', 'AppFrame', 'AppButton']

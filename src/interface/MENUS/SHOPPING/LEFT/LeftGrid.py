@@ -21,7 +21,6 @@ class LeftGrid(Frame):
         self.manager = manager
 
         self.grid_propagate(False)
-        self.configure(bg="blue")
 
         self.navbar = Navbar(self)
         self.navbar.grid(row=0, column=0, sticky='nsew')

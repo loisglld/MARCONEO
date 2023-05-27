@@ -25,5 +25,5 @@ class Header(Frame):
         self.configure(bg="#555555")
 
         self.loggers = self.shopping_manager.gui.loggers
-        self.member_card = MemberCard(self.shopping_manager.gui.app.current_user, self)
-        self.member_card.grid(row=0, column=0, sticky='nsew')
+        self.member_card = MemberCard(self)
+        self.member_card.grid(row=0, column=0, sticky="nsew")

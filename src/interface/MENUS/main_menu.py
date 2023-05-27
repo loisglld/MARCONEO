@@ -6,11 +6,11 @@ Configure MarcoNeo's main page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, Label, AppButton
+from src.utils.gui_utils import AppFrame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
-class MainMenu(Frame):
+class MainMenu(AppFrame):
     """
     MarcoNeo's main page.
 

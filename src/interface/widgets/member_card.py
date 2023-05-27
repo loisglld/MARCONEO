@@ -14,9 +14,8 @@ class MemberCard(Frame):
     """
     Member card displayed on the window.
     """
-    def __init__(self, member, manager) -> None:
+    def __init__(self, manager) -> None:
         super().__init__(manager)
-        self.member = member
         self.manager =  manager
         self.loggers = self.manager.manager.manager.gui.loggers
 
@@ -25,35 +24,25 @@ class MemberCard(Frame):
 
         self.setup_labels()
 
-        self.create_card()
-
     def setup_labels(self) -> bool:
         """
         Defines the labels used in the menu.
         """
-
         self.first_name_label = Label(self, text="-")
         self.last_name_label = Label(self, text="-")
         self.balance_label = Label(self, text="_")
 
-        self.first_name_label.grid(row=0, column=0, sticky='nsew')
-        self.last_name_label.grid(row=0, column=1, sticky='nsew')
-        self.balance_label.grid(row=0, column=2, sticky='nsew')
+        self.first_name_label.pack()
+        self.last_name_label.pack()
+        self.balance_label.pack()
 
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure(2, weight=1)
-        self.grid_rowconfigure(0, weight=1)
         return True
 
-    def setup_buttons(self):
+    def update_card(self, member):
         """
-        Defines the buttons used in the menu.
+        Updates the member card with
+        the current member's informations.
         """
-        return
-
-    def create_card(self):
-        pass
-
-    def update_card(self):
-        pass
+        self.first_name_label.configure(text=member.first_name)
+        self.last_name_label.configure(text=member.last_name)
+        self.balance_label.configure(text=member.balance)

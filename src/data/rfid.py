@@ -28,19 +28,22 @@ class RFID:
         # If the user presses the enter key (or keypad enter key), the buffer is parsed
         if event.keysym in ('Return', 'KP_Enter'):
             if self.buffer == "":
-                return # If the buffer is empty, do nothing
+                return  # If the buffer is empty, do nothing
 
             self.loggers.log.debug(f"Parsing RFID card number {self.buffer}...")
             try:
                 id_in_buffer = int(self.buffer)
             except ValueError:
                 self.loggers.log.error("RFID card corrupted.")
-                self.buffer = "" # Reset the buffer
+                self.buffer = ""  # Reset the buffer
                 self.app.update_user(None)
                 return
-            self.app.update_user(self.app.db.get_member(id_in_buffer))
+            user = self.app.db_cursor.get_member(id_in_buffer)
+            if user is None:
+                self.buffer = ""  # Reset the buffer
+            self.app.update_user(user)
 
-            self.buffer = "" # Reset the buffer
+            self.buffer = ""  # Reset the buffer
 
         else:
             self.buffer += event.char

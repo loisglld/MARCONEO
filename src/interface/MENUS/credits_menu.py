@@ -6,11 +6,11 @@ Configure MarcoNeo's credits page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, Label, AppButton
+from src.utils.gui_utils import AppFrame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
-class CreditsMenu(Frame):
+class CreditsMenu(AppFrame):
     """
     MarcoNeo's credits page.
 

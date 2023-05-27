@@ -1,7 +1,6 @@
 """
 app_frame.py
 
-
 Contains the custom frame class used
 in the application's GUI.
 """
@@ -24,4 +23,4 @@ class AppFrame(Frame):
     def __init__(self, master) -> None:
         super().__init__(master)
         self.master = master
-        self.config(bg=self.DARK)
+        self.config(bg=self.LIGHT)

@@ -27,7 +27,9 @@ def setup_service(max_attempts:int=5):
             while attempt <= max_attempts:
                 loggers.log.debug(f"Setup {class_name} (attempt {attempt})")
                 try:
-                    func(*args, **kwargs)
+                    if func(*args, **kwargs):
+                        loggers.log.debug(f"{class_name} setup complete.")
+                        return
                 except InterfaceError as setup_error:
                     loggers.log.debug(f"Unable to setup {class_name}: {type(setup_error).__name__}")
                 attempt += 1

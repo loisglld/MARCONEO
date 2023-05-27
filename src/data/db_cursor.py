@@ -20,27 +20,26 @@ class DBCursor:
     Defines the objects of type cursors that point on the MySQL database.
     It will be able to return information or modify values in the database.
     """
-
     def __init__(self, app) -> None:
         """
         DataBase's constructor.
         """
         self.loggers = app.loggers
         self.connection = None
-        self.logins = Logins()
-        self.connect()
+        self.cursor = None
+        self._logins = Logins()
+        self.connect_to_db()
 
-    @setup_service
-    def connect(self) -> bool:
+    @setup_service(max_attempts=5)
+    def connect_to_db(self) -> bool:
         """
         Connects to the database.
         """
-        self.loggers.log.debug("Connecting to the database...")
-        self.connection = mysql.connect(host=self.logins.get_host(),
-                                        database=self.logins.get_database(),
-                                        user=self.logins.get_user(),
-                                        password=self.logins.get_password(),
-                                        port=self.logins.get_port())
+        self.connection = mysql.connect(host=self._logins.get_host(),
+                                        database=self._logins.get_database(),
+                                        user=self._logins.get_user(),
+                                        password=self._logins.get_password(),
+                                        port=self._logins.get_port())
         self.cursor = self.connection.cursor()
         self.loggers.log.info("Connected to the database.")
         return True

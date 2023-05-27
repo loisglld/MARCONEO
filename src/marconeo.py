@@ -11,7 +11,7 @@ as well as the connections to the database and the RFID reader.
 from src.utils.loggers import Loggers
 from src.data.cart import Cart
 from src.data.config import Config
-from src.data.database import DBCursor
+from src.data.db_cursor import DBCursor
 from src.data.rfid import RFID
 from src.interface.user_interface import GUI
 
@@ -32,14 +32,12 @@ class MarcoNeo:
         """
         MarcoNeo's app class's constructor.
         """
-        # Setup the logger
+        # Setup the loggers
         self.loggers = Loggers(MarcoNeo.NAME)
         self.loggers.log.info("Starting MarcoNeo v%s...", MarcoNeo.VERSION)
 
-        # Setup the current user
         self.current_user = None
         self.cart = Cart(self.loggers, self.current_user)
-
         self.config = Config(self)
         self.db_cursor = DBCursor(self)
         self.rfid = RFID(self)
@@ -64,7 +62,9 @@ class MarcoNeo:
         Updates the current user.
         """
         self.current_user = user
-        self.cart.__init__(self.loggers, self.current_user)
+        del self.cart
+        self.cart = Cart(self.loggers, self.current_user)
+        self.gui.shopping_menu.right_grid.header.member_card.update_card(self.current_user)
         self.gui.shopping_menu.right_grid.body.update_body(self.gui.shopping_menu.current_toggle)
         self.gui.shopping_menu.right_grid.footer.update_footer()
 

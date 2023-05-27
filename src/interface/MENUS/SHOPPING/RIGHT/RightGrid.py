@@ -23,7 +23,6 @@ class RightGrid(Frame):
         self.manager = manager
 
         self.grid_propagate(False)
-        self.configure(bg="red")
 
         # Setup the header inside the right grid
         self.header = Header(self)
