@@ -6,8 +6,8 @@ Configure MarcoNeo's shopping page.
 
 #-------------------------------------------------------------------#
 
-from src.interface.MENUS.SHOPPING.left.left_grid import LeftGrid
-from src.interface.MENUS.SHOPPING.right.right_grid import RightGrid
+from src.interface.menus.shopping.left.left_grid import LeftGrid
+from src.interface.menus.shopping.right.right_grid import RightGrid
 from src.utils.gui_utils import Frame
 
 #-------------------------------------------------------------------#

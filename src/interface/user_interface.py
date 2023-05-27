@@ -9,11 +9,11 @@ It is responsible for the GUI of the MarcoNeo application.
 
 from src.utils.gui_utils import Tk, Frame, BOTH
 
-from src.interface.MENUS.welcome_menu import WelcomeMenu
-from src.interface.MENUS.credits_menu import CreditsMenu
-from src.interface.MENUS.SETTINGS.settings_menu import SettingsMenu
-from src.interface.MENUS.main_menu import MainMenu
-from src.interface.MENUS.SHOPPING.shopping_menu import ShoppingMenu
+from src.interface.menus.welcome_menu import WelcomeMenu
+from src.interface.menus.credits_menu import CreditsMenu
+from src.interface.menus.settings.settings_menu import SettingsMenu
+from src.interface.menus.main_menu import MainMenu
+from src.interface.menus.shopping.shopping_menu import ShoppingMenu
 
 #------------------------------------------------------------#
 

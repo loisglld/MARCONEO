@@ -10,8 +10,8 @@ related to the connexion to the database.
 import mysql.connector as mysql
 
 from src.utils.decorators import close_service, setup_service
-from src.data.member import Member
-from src.data.logins import Logins
+from src.client.member import Member
+from src.client.logins import Logins
 
 #-------------------------------------------------------------------#
 
