@@ -29,7 +29,7 @@ class Config(dict):
         """
         self.loggers = app.loggers
 
-        with open(os.path.join(os.getcwd(),"DATA", "config.json"), 'r', encoding="utf-8") as f:
+        with open(os.path.join(os.getcwd(),"data", "config.json"), 'r', encoding="utf-8") as f:
             json_content = f.read()
 
         try:

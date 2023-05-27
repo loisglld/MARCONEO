@@ -9,12 +9,12 @@ as well as the connections to the database and the RFID reader.
 #-------------------------------------------------------------------#
 
 from src.utils.loggers import Loggers
-from src.data.member import Member
-from src.data.cart import Cart
-from src.data.config import Config
-from src.data.db_cursor import DBCursor
-from src.data.payment_service import PaymentService
-from src.data.rfid import RFID
+from src.client.member import Member
+from src.client.cart import Cart
+from src.client.config import Config
+from src.client.db_cursor import DBCursor
+from src.client.payment_service import PaymentService
+from src.client.rfid import RFID
 from src.interface.user_interface import GUI
 
 #-------------------------------------------------------------------#

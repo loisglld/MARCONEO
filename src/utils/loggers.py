@@ -25,7 +25,7 @@ class Loggers:
         # Display format in the log
         self.log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
         self.log_date_format = "%Y-%m-%d %I:%M:%S"
-        self.log_out_path = os.path.join(os.getcwd(), "DATA", "LOGS") # Path of the log file
+        self.log_out_path = os.path.join(os.getcwd(), "data", "logs") # Path of the log file
         self.log_path = os.path.join(self.log_out_path, self.log_name + ".log")
         self.create_root_dir()
         self.create_log_file()
