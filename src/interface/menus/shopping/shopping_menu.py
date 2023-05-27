@@ -17,7 +17,7 @@ class ShoppingMenu(Frame):
     """
     Menu for the shopping page.
     """
-    def __init__(self, gui=None):
+    def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
         self.current_toggle = "Party"
@@ -35,7 +35,7 @@ class ShoppingMenu(Frame):
         self.grid_columnconfigure(1, weight=4)
         self.grid_rowconfigure(0, weight=1)
 
-    def retrieve_shopping_items(self, toggle:str):
+    def retrieve_shopping_items(self, toggle:str) -> list:
         """
         Retrieves the items to display.
         """

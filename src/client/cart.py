@@ -10,9 +10,9 @@ store the items caracteristics bought by a member.
 
 class Cart:
     """
-    Cart of the member of the BDE logged on the current session.
+    Cart of the member logged on the current session.
     """
-    def __init__(self, loggers, member):
+    def __init__(self, loggers, member=None):
         self.loggers = loggers
         self.member = member
         self.items = []

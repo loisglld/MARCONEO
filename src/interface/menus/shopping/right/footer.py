@@ -27,16 +27,16 @@ class Footer(Frame):
         Sets up the container of the footer.
         """
         self.confirm_btn = AppButton(self, text="Confirm", command=self.confirm_purchase)
-        self.reset_btn = AppButton(self, text="Reset cart", command=self.reset_cart)
+        self.reset_btn = AppButton(self, text="Reset cart", command=self.reset)
         self.total_label = Label(self, text=f"Cart: {self.cart.total}")
 
         self.total_label.grid(row=0, column=0, sticky='nsew')
         self.reset_btn.grid(row=0, column=1, sticky='nsew')
         self.confirm_btn.grid(row=0, column=2, sticky='nsew')
 
-    def reset_cart(self):
+    def reset(self):
         """
-        Reset the cart.
+        Reset the page.
         """
         if not self.cart.total:
             return
@@ -56,4 +56,4 @@ class Footer(Frame):
         Confirms the purchase.
         """
         self.shopping_manager.gui.app.payment_service.confirm_purchase()
-        self.reset_cart()
+        self.reset()

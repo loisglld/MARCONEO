@@ -38,11 +38,16 @@ class MemberCard(Frame):
 
         return True
 
-    def update_card(self, member):
+    def update_card(self, member) -> None:
         """
         Updates the member card with
         the current member's informations.
         """
+        if member is None:
+            self.first_name_label.configure(text="-")
+            self.last_name_label.configure(text="-")
+            self.balance_label.configure(text="_")
+            return
         self.first_name_label.configure(text=member.first_name)
         self.last_name_label.configure(text=member.last_name)
         self.balance_label.configure(text=member.balance)

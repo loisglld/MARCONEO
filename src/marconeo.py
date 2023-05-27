@@ -64,14 +64,13 @@ class MarcoNeo:
         self.loggers.log.info("Closing MARCONEO...")
         self.loggers.close()
 
-    def update_user(self, user_data:dict) -> None:
+    def update_user(self, user_data:dict=None) -> None:
         """
         Updates the current user.
         """
-        del self.current_user
-        self.current_user = Member(self, user_data)
-        del self.cart
-        self.cart = Cart(self.loggers, self.current_user)
+        self.current_user.__init__(self, user_data)
+        self.cart.__init__(self.loggers, self.current_user)
+
         self.gui.shopping_menu.right_grid.header.member_card.update_card(self.current_user)
         self.gui.shopping_menu.right_grid.body.update_body(self.gui.shopping_menu.current_toggle)
         self.gui.shopping_menu.right_grid.footer.update_footer()
