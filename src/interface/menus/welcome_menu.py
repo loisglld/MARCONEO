@@ -43,5 +43,6 @@ class WelcomeMenu(AppFrame):
         self.power_btn = AppButton(self, text="Power off",
                                    command=self.gui.app.close)
 
-        for btn in [self.enter_btn, self.settings_btn, self.credits_btn, self.power_btn]:
-            btn.pack()
+        for btn in [self.enter_btn, self.settings_btn, self.credits_btn]:
+            btn.pack(side="top", pady=10, padx=10, fill="x")
+        self.power_btn.pack(side="bottom", pady=10, padx=10, fill="x")
