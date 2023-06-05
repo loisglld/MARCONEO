@@ -12,7 +12,7 @@ class Cart:
     """
     Cart of the member logged on the current session.
     """
-    def __init__(self, loggers, member=None):
+    def __init__(self, loggers, member=None) -> None:
         self.loggers = loggers
         self.member = member
         self.items = []

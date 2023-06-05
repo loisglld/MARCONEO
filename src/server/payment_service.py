@@ -24,14 +24,17 @@ class PaymentService:
         """
         Confirms the purchase.
         """
-        if self.current_user is None:
+        if self.current_user.card_id is None:
             self.loggers.log.warning("No user is logged in. Can't purchase.")
             return
         self.current_user.balance -= self.cart.total
-        self.app.db_cursor.update_balance(self.current_user)
 
-        self.app.update_user()
+        # Update the database data
+        print("Updating database...")
+        self.app.db_cursor.update_balance(self.current_user)
 
         self.loggers.log.info("Purchase confirmed. New balance of %s is %s€.",
                               self.current_user.first_name, self.current_user.balance)
         print(f"Purchase confirmed. Your new balance is {self.current_user.balance}€.")
+
+        self.app.update_user()

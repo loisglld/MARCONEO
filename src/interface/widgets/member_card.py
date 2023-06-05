@@ -43,7 +43,7 @@ class MemberCard(Frame):
         Updates the member card with
         the current member's informations.
         """
-        if member is None:
+        if member.card_id is None:
             self.first_name_label.configure(text="-")
             self.last_name_label.configure(text="-")
             self.balance_label.configure(text="_")

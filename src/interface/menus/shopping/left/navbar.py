@@ -18,28 +18,21 @@ class Navbar(Frame):
     def __init__(self, left_grid=None):
         super().__init__(left_grid)
         self.manager = left_grid
-        self.navbar_current_toggle = None
+        self.current_toggle = "Party"
 
         self.grid_propagate(False)
         self.configure(bg="black")
-
-        self.setup_images()
         self.setup_label()
         self.setup_buttons()
 
-    def setup_images(self):
-        """
-        Defines the images used in the menu.
-        """
-        return
-
-    def setup_label(self):
+    def setup_label(self) -> bool:
         """
         Defines the labels used in the menu.
         """
         Label(self, text="Navbar").grid(row=0, column=0, padx=10, pady=10)
+        return True
 
-    def setup_buttons(self):
+    def setup_buttons(self) -> bool:
         """
         Defines the buttons used in the menu.
         """
@@ -52,12 +45,15 @@ class Navbar(Frame):
             row += 1
 
         self.back_btn = AppButton(self, text="Back",
-                                  command=lambda: self.manager.manager.gui.change_menu(self.manager.manager.gui.main_menu))
+                                  command=lambda: self.manager.manager.gui.change_menu(
+                                      self.manager.manager.gui.main_menu))
         self.back_btn.grid(row=row, column=0, padx=10, pady=10)
+        return True
 
-    def toggle(self, toggle):
+    def toggle(self, toggle: str) -> None:
         """
         Changes the current toggle of the navbar.
         """
-        self.navbar_current_toggle = toggle
+        self.current_toggle = toggle
         self.manager.manager.right_grid.body.update_body(toggle)
+        self.manager.manager.right_grid.footer.reset()

@@ -23,7 +23,7 @@ class Body(Frame):
         self.configure(bg="#333333")
         self.item_per_row = 3
 
-        self.update_body(self.shopping_manager.current_toggle)
+        self.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
 
     def display_items(self, items):
         """

@@ -53,6 +53,8 @@ class ShopItem:
         The amount is increased by one inside the body of ShoppingMenu.
         The item is added to the cart. The footer's total label is actualized.
         """
+        if self.manager.manager.manager.gui.app.current_user.card_id is None:
+            return
         # Self's modification
         self.amount += 1
         # Body's modification

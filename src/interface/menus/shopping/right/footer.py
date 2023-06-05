@@ -11,6 +11,11 @@ from src.utils.gui_utils import Frame, AppButton, Label
 #-------------------------------------------------------------------#
 
 class Footer(Frame):
+    """
+    Footer of the shopping menu.
+    Contains the confirm button and the reset button
+    and the total of the cart.
+    """
     def __init__(self, manager=None):
         super().__init__(manager)
         self.shopping_manager = manager.manager
@@ -41,8 +46,9 @@ class Footer(Frame):
         if not self.cart.total:
             return
         self.cart.reset()
-        self.shopping_manager.right_grid.body.update_body(self.shopping_manager.current_toggle)
         self.update_footer()
+        self.shopping_manager.right_grid.body.update_body(
+            self.shopping_manager.left_grid.navbar.current_toggle)
         self.loggers.log.debug("Cart has been reset.")
 
     def update_footer(self):
@@ -56,4 +62,6 @@ class Footer(Frame):
         Confirms the purchase.
         """
         self.shopping_manager.gui.app.payment_service.confirm_purchase()
+        self.shopping_manager.right_grid.body.update_body(
+            self.shopping_manager.left_grid.navbar.current_toggle)
         self.reset()

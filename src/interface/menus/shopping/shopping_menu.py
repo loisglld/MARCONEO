@@ -20,7 +20,6 @@ class ShoppingMenu(Frame):
     def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
-        self.current_toggle = "Party"
 
         # Setup the left grid for the navbar
         self.left_grid = LeftGrid(self)

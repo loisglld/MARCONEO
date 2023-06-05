@@ -11,7 +11,7 @@ import mysql.connector as mysql
 
 from src.utils.decorators import close_service, setup_service
 from src.client.member import Member
-from src.client.logins import Logins
+from src.server.logins import Logins
 
 #-------------------------------------------------------------------#
 
@@ -80,9 +80,8 @@ class DBCursor:
                             'is_contributor': result[6]}
             self.loggers.log.debug(f"Retrieving member {member_data['first_name']} (ID:{card_id})")
             return member_data
-        else:
-            self.loggers.log.warn(f"No member found with card ID {card_id}")
-            return None
+        self.loggers.log.warn(f"No member found with card ID {card_id}")
+        return None
 
     def update_balance(self, member:Member) -> None:
         """
@@ -92,7 +91,7 @@ class DBCursor:
             return
 
         self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
-
+        print(f"Balance is {member.balance}")
         self.cursor.execute("""UPDATE Member
                             SET balance = %s
                             WHERE card_id = %s""", (member.balance, member.card_id))
