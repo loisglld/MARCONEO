@@ -35,9 +35,9 @@ class Footer(Frame):
         self.reset_btn = AppButton(self, text="Reset cart", command=self.reset)
         self.total_label = Label(self, text=f"Cart: {self.cart.total}")
 
-        self.total_label.pack(side="left", padx=10)
         self.reset_btn.pack(side="left", padx=10)
-        self.confirm_btn.pack(side="left", padx=10)
+        self.total_label.pack(side="left", padx=10)
+        self.confirm_btn.pack(side="right", padx=10)
 
     def reset(self):
         """
@@ -61,7 +61,16 @@ class Footer(Frame):
         """
         Confirms the purchase.
         """
-        self.shopping_manager.gui.app.payment_service.confirm_purchase()
+        if not self.cart.total:
+            return
+        self.confirm_btn.configure(text="Sure?", command=self.do_purchase)
+
+    def do_purchase(self):
+        """
+        Does the purchase.
+        """
+        self.shopping_manager.gui.app.payment_service.commit_purchase()
         self.shopping_manager.right_grid.body.update_body(
             self.shopping_manager.left_grid.navbar.current_toggle)
         self.reset()
+        self.confirm_btn.configure(text="Confirm", command=self.confirm_purchase)

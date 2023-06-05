@@ -39,7 +39,7 @@ class Navbar(Frame):
         self.back_btn = AppButton(self, text="Back",
                                   command=lambda: self.manager.manager.gui.change_menu(
                                       self.manager.manager.gui.main_menu))
-        self.back_btn.pack(fill="both", expand=True, side="bottom", padx=10, pady=10)
+        self.back_btn.pack(fill="both", expand=True, side="top", padx=10, pady=10)
         return True
 
     def toggle(self, toggle: str) -> None:
