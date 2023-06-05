@@ -24,7 +24,7 @@ class Body(Frame):
         # Bind the security after the __init__ of body
         self.shopping_manager.left_grid.navbar.refill_btn.config(command=self.refill_security)
 
-        self.item_per_row = 3
+        self.item_per_row = 4
 
         self.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
 
@@ -40,7 +40,10 @@ class Body(Frame):
             price = item["price"]
             setattr(self, f"{name}_item", ShopItem(name, price, self))
             item_frame = getattr(self, f"{name}_item").container
-            item_frame.grid(row=row, column=column, padx=10, pady=10)
+            item_frame.grid(row=row, column=column, padx=10, pady=10, sticky="nsew")
+            self.grid_columnconfigure(column, weight=1)
+            self.grid_rowconfigure(row, weight=1)
+
             column += 1
             if column == self.item_per_row:
                 column = 0

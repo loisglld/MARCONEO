@@ -63,6 +63,11 @@ class Footer(Frame):
         """
         if not self.cart.total:
             return
+
+        if self.shopping_manager.gui.app.current_user.balance < self.cart.total:
+            self.loggers.log.warning("Not enough money to purchase.")
+            return
+
         self.confirm_btn.configure(text="Sure?", command=self.do_purchase)
 
     def do_purchase(self):

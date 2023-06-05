@@ -1,5 +1,5 @@
 """
-Nabar.py
+Navbar.py
 
 Configure MarcoNeo's navbar on its shopping menu.
 """
@@ -55,7 +55,6 @@ class Navbar(Frame):
                 button.configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
             else:
                 button.configure(bg=AppButton.DEFAULT_BG)  # set default color
-
 
         self.manager.manager.right_grid.body.update_body(toggle)
         self.manager.manager.right_grid.footer.reset()

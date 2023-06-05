@@ -6,7 +6,7 @@ Configure MarcoNeo's settings page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import AppFrame, Label, AppButton
+from src.utils.gui_utils import AppFrame, AppButton
 
 #-------------------------------------------------------------------#
 
@@ -20,21 +20,7 @@ class SettingsMenu(AppFrame):
         super().__init__(gui)
         self.gui = gui
 
-        self.setup_images()
-        self.setup_label()
         self.setup_buttons()
-
-    def setup_images(self) -> None:
-        """
-        Defines the images used in the main menu.
-        """
-        return
-
-    def setup_label(self) -> None:
-        """
-        Defines the labels used in the main menu.
-        """
-        Label(self, text="Settings menu").pack()
 
     def setup_buttons(self) -> bool:
         """

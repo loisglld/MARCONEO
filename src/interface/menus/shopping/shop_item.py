@@ -40,8 +40,8 @@ class ShopItem:
         self.name_label = Label(self.container, text=self.name)
         self.amount_label = Label(self.container, text=self.amount)
 
-        self.name_label.pack()
-        self.amount_label.pack()
+        self.name_label.pack(side="top", padx=10, pady=10, fill="both", expand=True)
+        self.amount_label.pack(side="top", padx=10, pady=10, fill="both", expand=True)
 
         self.container.bind("<Button-1>", self.add_item)
         for children in self.container.winfo_children():
