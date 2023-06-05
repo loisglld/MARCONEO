@@ -9,6 +9,7 @@ Configure MarcoNeo's shopping page.
 from src.interface.menus.shopping.left.left_grid import LeftGrid
 from src.interface.menus.shopping.right.right_grid import RightGrid
 from src.utils.gui_utils import Frame
+from src.interface.menus.shopping.right.price_modifier import PriceModifier
 
 #-------------------------------------------------------------------#
 
@@ -29,6 +30,9 @@ class ShoppingMenu(Frame):
         self.right_grid = RightGrid(self)
         self.right_grid.grid(row=0, column=1, sticky='nsew')
 
+        # Setup the price modifier
+        self.price_modifier = PriceModifier(self.right_grid)
+
         # Setup the grid
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=4)
@@ -40,3 +44,12 @@ class ShoppingMenu(Frame):
         """
         items = self.gui.app.config['Shopping'][toggle]['items']
         return items
+
+    def modify_prices(self):
+        """
+        Opens the price modifier.
+        """
+        self.price_modifier.pack(side="top", fill="both", expand=True)
+        self.right_grid.header.grid_forget()
+        self.right_grid.body.grid_forget()
+        self.right_grid.footer.grid_forget()
