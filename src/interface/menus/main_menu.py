@@ -51,6 +51,8 @@ class MainMenu(AppFrame):
                                   command=lambda: self.gui.change_menu(self.gui.welcome_menu))
 
 
-        for btn in [self.shopping_btn, self.stats_btn, self.history_btn, self.back_btn]:
-            btn.pack()
+        for btn in [self.shopping_btn, self.stats_btn, self.history_btn]:
+            btn.pack(side="top", pady=10, padx=10, fill="x")
+
+        self.back_btn.pack(side="bottom", pady=10, padx=10, fill="x")
         return True

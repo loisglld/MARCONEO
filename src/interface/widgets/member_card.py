@@ -32,9 +32,9 @@ class MemberCard(Frame):
         self.last_name_label = Label(self, text="-")
         self.balance_label = Label(self, text="_")
 
-        self.first_name_label.pack()
-        self.last_name_label.pack()
-        self.balance_label.pack()
+        self.first_name_label.pack(side="top")
+        self.last_name_label.pack(side="top")
+        self.balance_label.pack(side="top")
 
         return True
 

@@ -35,9 +35,9 @@ class Footer(Frame):
         self.reset_btn = AppButton(self, text="Reset cart", command=self.reset)
         self.total_label = Label(self, text=f"Cart: {self.cart.total}")
 
-        self.total_label.grid(row=0, column=0, sticky='nsew')
-        self.reset_btn.grid(row=0, column=1, sticky='nsew')
-        self.confirm_btn.grid(row=0, column=2, sticky='nsew')
+        self.total_label.pack(side="left", padx=10)
+        self.reset_btn.pack(side="left", padx=10)
+        self.confirm_btn.pack(side="left", padx=10)
 
     def reset(self):
         """
