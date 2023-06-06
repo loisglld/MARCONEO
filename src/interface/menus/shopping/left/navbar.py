@@ -48,6 +48,9 @@ class Navbar(Frame):
         """
         self.current_toggle = toggle
 
+        # Updates in the bg price modifier
+        self.manager.manager.right_grid.price_modifier.display_item_list()
+
         # Update button's colors
         for menu in self.shopping_menus:
             button = getattr(self, f"{menu.lower()}_btn")

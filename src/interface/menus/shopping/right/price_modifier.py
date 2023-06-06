@@ -38,9 +38,7 @@ class PriceModifier(Frame):
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=3)
-
-        current_toggle = self.shopping_manager.left_grid.navbar.current_toggle
-        self.display_item_list(self.shopping_manager.retrieve_shopping_items(current_toggle))
+        self.display_item_list()
 
     def show(self):
         """
@@ -117,10 +115,17 @@ class PriceModifier(Frame):
             self.shopping_manager.left_grid.navbar.current_toggle)
         self.loggers.log.debug("Price modifier has been closed.")
 
-    def display_item_list(self, items):
+    def display_item_list(self):
         """
         Displays the items in the list.
         """
+        # Clear the list
+        for child in self.list_frame.winfo_children():
+            child.destroy()
+
+        current_toggle = self.shopping_manager.left_grid.navbar.current_toggle
+        items = self.shopping_manager.retrieve_shopping_items(current_toggle)
+        # Display the items
         for item in items:
             LabelEntryPair(self.list_frame,
                            text=item["name"],
