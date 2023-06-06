@@ -6,7 +6,7 @@ Container of the navbar of the shopping page.
 
 #-------------------------------------------------------------------#
 
-from src.interface.menu_templates.navbar import Navbar
+from src.interface.menus.shopping.left.navbar import Navbar
 from src.utils.gui_utils import Frame
 
 #-------------------------------------------------------------------#

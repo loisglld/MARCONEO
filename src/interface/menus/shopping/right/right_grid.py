@@ -6,9 +6,9 @@ Container of the header, body and footer of the shopping page.
 
 #-------------------------------------------------------------------#
 
-from src.interface.menu_templates.header import Header
-from src.interface.menu_templates.body import Body
-from src.interface.menu_templates.footer import Footer
+from src.interface.menus.shopping.right.header import Header
+from src.interface.menus.shopping.right.body import Body
+from src.interface.menus.shopping.right.footer import Footer
 from src.utils.gui_utils import Frame
 from src.interface.menus.shopping.price_modifier import PriceModifier
 
