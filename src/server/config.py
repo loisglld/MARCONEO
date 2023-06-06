@@ -50,6 +50,5 @@ class Config(dict):
         items = self["Shopping"][toggle]['items']
         for index, item in enumerate(items):
             if item['name'] == item_name:
-                items[index]['price'] = new_price
-                print("New price:", items[index])
+                items[index]['price'] = decimal.Decimal(new_price)
                 break
