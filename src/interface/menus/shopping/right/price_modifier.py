@@ -8,7 +8,7 @@ to enter the new prices.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, AppButton, LabelEntryPair
+from src.utils.gui_utils import Frame, AppButton, LabelLabelPair
 
 #-------------------------------------------------------------------#
 
@@ -52,7 +52,13 @@ class PriceModifier(Frame):
         """
         Prints the digit clicked.
         """
-        print(f"Digit clicked: {digit}")
+        focused_widget = self.get_focused_item()
+        if focused_widget is None:
+            return
+        if len(focused_widget.entry['text'])>4:
+            return
+        print(focused_widget.entry.cget("text")+str(digit))
+        focused_widget.entry.configure(text=focused_widget.entry.cget("text")+str(digit))
 
     def on_clear_click(self):
         """
@@ -125,8 +131,18 @@ class PriceModifier(Frame):
 
         current_toggle = self.shopping_manager.left_grid.navbar.current_toggle
         items = self.shopping_manager.retrieve_shopping_items(current_toggle)
+
         # Display the items
         for item in items:
-            LabelEntryPair(self.list_frame,
-                           text=item["name"],
-                           entry_text=str(item["price"])).pack(fill="x", padx=10, pady=10)
+            LabelLabelPair(self.list_frame,
+                           name=item["name"],
+                           price=str(item["price"])).pack(fill="x", padx=10, pady=10)
+
+    def get_focused_item(self):
+        """
+        Returns the focused item.
+        """
+        for child in self.list_frame.winfo_children():
+            if child.focused:
+                return child
+        return None
