@@ -95,6 +95,7 @@ class PriceModifier(Frame):
 
         focused_widget.price = new_price
         focused_widget.entry.configure(text=new_price)
+        self.change_price_config(focused_widget, new_price)
 
     def create_digit_button(self, frame, digit):
         """
@@ -170,3 +171,12 @@ class PriceModifier(Frame):
             if child.focused:
                 return child
         return None
+
+    def change_price_config(self, item, new_price):
+        """
+        Changes the price configuration.
+        """
+        current_toggle = self.shopping_manager.left_grid.navbar.current_toggle
+        self.shopping_manager.gui.app.config.change_price(current_toggle, item.name, new_price)
+        self.loggers.log.debug("Price of item %s has been changed to %s.",
+                               item.name, new_price)
