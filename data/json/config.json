@@ -2,173 +2,161 @@
     "Shopping": {
         "Lunch": {
             "name": "lunch",
-            "icon": "lunch.png",
-            "require_admin": false,
             "items": [
                 {
                     "name": "pizza",
-                    "icon": "pizza.png",
-                    "price": 2.60
+                    "price": 2.60,
+                    "color": ""
                 },
                 {
                     "name": "sandwich",
-                    "icon": "sandwich.png",
-                    "price": 1.60
+                    "price": 1.60,
+                    "color": ""
                 },
                 {
                     "name": "noodles",
-                    "icon": "noodles.png",
-                    "price": 1.0
+                    "price": 1.0,
+                    "color": ""
                 },
                 {
                     "name": "dish",
-                    "icon": "dish.png",
-                    "price": 1.0
+                    "price": 1.0,
+                    "color": ""
                 },
                 {
                     "name": "dessert",
-                    "icon": "dessert.png",
-                    "price": 0.50
+                    "price": 0.50,
+                    "color": ""
                 }
             ]
         },
         "Party": {
             "name": "party",
-            "icon": "party.png",
-            "require_admin": false,
             "items": [
                 {
                 "name": "beer12",
-                "icon": "beer12.jpg",
-                "price": 1.2
+                "price": 1.2,
+                "color": ""
                 },
                 {
                     "name": "biere16",
-                    "icon": "biere16.jpg",
-                    "price": 1.6
+                    "price": 1.6,
+                    "color": ""
                 },
                 {
                     "name": "cocktail12",
-                    "icon": "cocktail12.png",
-                    "price": 1.2
+                    "price": 1.2,
+                    "color": ""
                 },
                 {
                     "name": "cocktail16",
-                    "icon": "cocktail16.png",
-                    "price": 1.6
+                    "price": 1.6,
+                    "color": ""
                 },
                 {
                     "name": "bottled-beer",
-                    "icon": "bottled-beer.png",
-                    "price": 3.6
+                    "price": 3.6,
+                    "color": ""
                 }
             ]
         },
         "Shots": {
             "name": "shots",
-            "icon": "shots-club.png",
-            "require_admin": false,
             "items": [
                 {
                     "name": "shot",
-                    "icon": "shot.png",
-                    "price": 0.5
+                    "price": 0.5,
+                    "color": ""
                 },
                 {
                     "name": "shot-meter",
-                    "icon": "shot-meter.png",
-                    "price": 4
+                    "price": 4,
+                    "color": ""
                 }
             ]
         },
         "Oeno": {
             "name": "oenology",
-            "icon": "oenology-club.png",
-            "require_admin": false,
             "items": [
                 {
                     "name": "delicatessen",
-                    "icon": "delicatessen.png",
-                    "price": 0.75
+                    "price": 0.75,
+                    "color": ""
                 },
                 {
                     "name": "cheese",
-                    "icon": "cheese.png",
-                    "price": 0.75
+                    "price": 0.75,
+                    "color": ""
                 },
                 {
                     "name": "glass of wine",
-                    "icon": "wine-glass.png",
-                    "price": 2
+                    "price": 2,
+                    "color": ""
                 },
                 {
                     "name": "wine-bottle",
-                    "icon": "wine-bottle.png",
-                    "price": 8
+                    "price": 8,
+                    "color": ""
                 }
             ]
         },
         "Snack": {
             "name": "snack",
-            "icon": "snack.png",
-            "require_admin": false,
             "items": [
                 {
                     "name": "doowap",
-                    "icon": "doowap.png",
-                    "price": 0.2
+                    "price": 0.2,
+                    "color": ""
                 },
                 {
                     "name": "muffin",
-                    "icon": "muffin.png",
-                    "price": 0.3
+                    "price": 0.3,
+                    "color": ""
                 },
                 {
                     "name": "waffle",
-                    "icon": "waffle.png",
-                    "price": 0.4
+                    "price": 0.4,
+                    "color": ""
                 },
                 {
                     "name": "can",
-                    "icon": "can.png",
-                    "price": 0.7
+                    "price": 0.7,
+                    "color": ""
                 },
                 {
                     "name": "cookies",
-                    "icon": "cookies.png",
-                    "price": 1
+                    "price": 1,
+                    "color": ""
                 }
             ]
         },
         "Refill": {
             "name": "refill",
-            "icon": "refill.png",
-            "require_admin": true,
             "items": [
                 {
                     "name": "one",
-                    "icon": "one.png",
-                    "price": -1
+                    "price": -1,
+                    "color": ""
                 },
                 {
                     "name": "five",
-                    "icon": "five.png",
-                    "price": -5
+                    "price": -5,
+                    "color": ""
                 },
                 {
                     "name": "ten",
-                    "icon": "ten.png",
-                    "price": -10
+                    "price": -10,
+                    "color": ""
                 },
                 {
                     "name": "twenty",
-                    "icon": "twenty.png",
-                    "price": -20
+                    "price": -20,
+                    "color": ""
                 },
                 {
                     "name": "fifty",
-                    "icon": "fifty.png",
-                    "price": -50
+                    "price": -50,
+                    "color": ""
                 }
             ]
         }

@@ -1,0 +1,39 @@
+{
+    "Shopping": {
+        "Lunch": {
+            "name": "lunch",
+            "items": [
+                {
+                    "name": "pizza",
+                    "price": 2.60,
+                    "color": ""
+                },
+                {
+                    "name": "dish",
+                    "price": 1.0,
+                    "color": ""
+                },
+                {
+                    "name": "dessert",
+                    "price": 0.50,
+                    "color": ""
+                }
+            ]
+        },
+        "Party": {
+            "name": "party",
+            "items": [
+                {
+                    "name": "cocktail12",
+                    "price": 1.2,
+                    "color": ""
+                },
+                {
+                    "name": "bottled-beer",
+                    "price": 3.6,
+                    "color": ""
+                }
+            ]
+        }
+    }
+}
