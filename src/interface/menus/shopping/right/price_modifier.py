@@ -75,13 +75,26 @@ class PriceModifier(Frame):
         """
         Clears the digital keyboard.
         """
-        print("Clear clicked")
+        focused_widget = self.get_focused_item()
+        if focused_widget is None:
+            return
+
+        focused_widget.entry.configure(text="")
 
     def on_enter_click(self):
         """
         Confirms the new price.
         """
-        print("Enter clicked")
+        focused_widget = self.get_focused_item()
+        if focused_widget is None:
+            return
+
+        new_price = focused_widget.entry.cget("text")
+        if new_price == "":
+            return
+
+        focused_widget.price = new_price
+        focused_widget.entry.configure(text=new_price)
 
     def create_digit_button(self, frame, digit):
         """
