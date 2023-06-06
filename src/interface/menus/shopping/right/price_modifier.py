@@ -32,7 +32,12 @@ class PriceModifier(Frame):
 
         # Widgets
         self.setup_digital_keyboard(self.control_frame)
-        self.back_btn = AppButton(self.control_frame, text="Back", command=self.back)
+        enter_button = AppButton(self.control_frame, text="Entrer",
+                                command=self.on_enter_click)
+        self.back_btn = AppButton(self.control_frame, text="Back",
+                                  command=self.back)
+
+        enter_button.pack(padx=10, pady=10, fill="both", expand=True)
         self.back_btn.pack(padx=10, pady=10, fill="both", expand=True)
 
         self.rowconfigure(0, weight=1)
@@ -48,17 +53,23 @@ class PriceModifier(Frame):
         self.manager.columnconfigure(0, weight=1)
         self.manager.rowconfigure(0, weight=1)
 
-    def on_digit_click(self, digit):
+    def on_button_click(self, value):
         """
-        Prints the digit clicked.
+        Handles the button click event.
         """
         focused_widget = self.get_focused_item()
         if focused_widget is None:
             return
-        if len(focused_widget.entry['text'])>4:
+
+        current_text = focused_widget.entry.cget("text")
+        if len(current_text) > 4:
             return
-        print(focused_widget.entry.cget("text")+str(digit))
-        focused_widget.entry.configure(text=focused_widget.entry.cget("text")+str(digit))
+
+        if value == "." and "." in current_text:
+            return
+
+        new_text = current_text + str(value)
+        focused_widget.entry.configure(text=new_text)
 
     def on_clear_click(self):
         """
@@ -77,7 +88,7 @@ class PriceModifier(Frame):
         Creates a digit button.
         """
         button = AppButton(frame, text=str(digit), width=5, height=2,
-                        command=lambda: self.on_digit_click(digit))
+                        command=lambda: self.on_button_click(digit))
         if digit == 0:
             button.grid(row=3, column=1, padx=5, pady=5)
         elif digit in [7, 8, 9]:
@@ -102,12 +113,12 @@ class PriceModifier(Frame):
         clear_button.grid(row=3, column=0, padx=5, pady=5)
 
         zero_button = AppButton(keyboard_frame, text="0", width=5, height=2,
-                                command=lambda: self.on_digit_click(0))
+                                command=lambda: self.on_button_click(0))
         zero_button.grid(row=3, column=1, padx=5, pady=5)
 
-        enter_button = AppButton(keyboard_frame, text="Entrer", width=5, height=2,
-                                command=self.on_enter_click)
-        enter_button.grid(row=3, column=2, padx=5, pady=5)
+        coma_button = AppButton(keyboard_frame, text=".", width=5, height=2,
+                                command=lambda: self.on_button_click("."))
+        coma_button.grid(row=3, column=2, padx=5, pady=5)
 
     def back(self):
         """
