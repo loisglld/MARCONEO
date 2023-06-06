@@ -10,6 +10,7 @@ from src.interface.menus.shopping.right.header import Header
 from src.interface.menus.shopping.right.body import Body
 from src.interface.menus.shopping.right.footer import Footer
 from src.utils.gui_utils import Frame
+from src.interface.menus.shopping.right.price_modifier import PriceModifier
 
 #-------------------------------------------------------------------#
 
@@ -22,7 +23,7 @@ class RightGrid(Frame):
         super().__init__(manager)
         self.manager = manager
 
-        self.grid_propagate(False)
+        self.propagate(False)
 
         # Setup the header inside the right grid
         self.header = Header(self)
@@ -36,8 +37,20 @@ class RightGrid(Frame):
         self.body = Body(self)
         self.body.grid(row=1, column=0, sticky='nsew')
 
+        # Setup the price modifier
+        self.price_modifier = PriceModifier(self)
+
         # Setup the grid
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=0)
         self.grid_rowconfigure(1, weight=4)
         self.grid_rowconfigure(2, weight=1)
+
+    def modify_prices(self):
+        """
+        Opens the price modifier.
+        """
+        self.price_modifier.pack(side="top", fill="both", expand=True)
+        self.header.grid_forget()
+        self.body.grid_forget()
+        self.footer.grid_forget()

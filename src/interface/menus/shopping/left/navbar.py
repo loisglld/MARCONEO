@@ -22,7 +22,7 @@ class Navbar(Frame):
         self.party_btn = None
         self.shopping_menus = list(self.manager.manager.gui.app.config['Shopping'].keys())
 
-        self.grid_propagate(False)
+        self.propagate(False)
         self.configure(bg="black")
         self.setup_buttons()
 

@@ -85,4 +85,4 @@ class Footer(Frame):
         """
         Opens the price modifier menu.
         """
-        self.shopping_manager.price_modifier.pack(side="bottom", fill="both", expand=True)
+        self.shopping_manager.right_grid.price_modifier.show()
