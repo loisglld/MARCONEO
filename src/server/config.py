@@ -29,8 +29,10 @@ class Config(dict):
         """
         self.loggers = app.loggers
 
-        with open(os.path.join(os.getcwd(),"data", "config.json"), 'r', encoding="utf-8") as f:
-            json_content = f.read()
+        with open(os.path.join(os.getcwd(),"data", "config.json"),
+                  'r',
+                  encoding="utf-8") as file:
+            json_content = file.read()
 
         try:
             self.update(json.loads(json_content, parse_float=decimal.Decimal))
@@ -40,3 +42,13 @@ class Config(dict):
             app.close()
 
         self.default_config = self.copy()
+
+    def change_price(self, toggle, item_name, new_price):
+        """
+        Changes the price of an item.
+        """
+        items = self["Shopping"][toggle]['items']
+        for index, item in enumerate(items):
+            if item['name'] == item_name:
+                items[index]['price'] = decimal.Decimal(new_price)
+                break

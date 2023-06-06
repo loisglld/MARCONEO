@@ -39,10 +39,13 @@ class ShopItem:
         # The name and the amount are labels inside the Frame.
         self.name_label = Label(self.container, text=self.name)
         self.amount_label = Label(self.container, text=self.amount)
+        self.price_label = Label(self.container, text=str(self.price)+"€")
 
-        self.name_label.pack(side="top", padx=10, pady=10, fill="both", expand=True)
-        self.amount_label.pack(side="top", padx=10, pady=10, fill="both", expand=True)
+        self.name_label.pack(side="top", padx=10, pady=5, fill="both", expand=True)
+        self.amount_label.pack(side="top", padx=10, pady=5, fill="both", expand=True)
+        self.price_label.pack(side="top", padx=10, pady=5, fill="both", expand=True)
 
+        # Binds to the whole widget
         self.container.bind("<Button-1>", self.add_item)
         for children in self.container.winfo_children():
             children.bind("<Button-1>", self.add_item)

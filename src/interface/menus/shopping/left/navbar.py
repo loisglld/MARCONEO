@@ -22,7 +22,7 @@ class Navbar(Frame):
         self.party_btn = None
         self.shopping_menus = list(self.manager.manager.gui.app.config['Shopping'].keys())
 
-        self.grid_propagate(False)
+        self.propagate(False)
         self.configure(bg="black")
         self.setup_buttons()
 
@@ -47,6 +47,9 @@ class Navbar(Frame):
         Changes the current toggle of the navbar.
         """
         self.current_toggle = toggle
+
+        # Updates in the bg price modifier
+        self.manager.manager.right_grid.price_modifier.display_item_list()
 
         # Update button's colors
         for menu in self.shopping_menus:

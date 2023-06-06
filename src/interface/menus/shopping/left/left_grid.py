@@ -20,10 +20,10 @@ class LeftGrid(Frame):
         super().__init__(manager)
         self.manager = manager
 
-        self.grid_propagate(False)
+        self.propagate(False)
 
         self.navbar = Navbar(self)
-        self.navbar.grid(row=0, column=0, sticky='nsew')
+        self.navbar.pack(fill="both", expand=True)
 
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(0, weight=1)
