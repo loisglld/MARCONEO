@@ -6,7 +6,9 @@ Configure MarcoNeo's settings page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import AppFrame, AppButton
+from src.utils.gui_utils import AppFrame
+from src.interface.menus.settings.left.left_sett import LeftSett
+from src.interface.menus.settings.right.right_sett import RightSett
 
 #-------------------------------------------------------------------#
 
@@ -20,17 +22,15 @@ class SettingsMenu(AppFrame):
         super().__init__(gui)
         self.gui = gui
 
-        self.setup_buttons()
+        # Setup the left grid for the navbar
+        self.left_grid = LeftSett(self)
+        self.left_grid.pack(side="left", fill="both", expand=True)
 
-    def setup_buttons(self) -> bool:
-        """
-        Defines the buttons used in the main menu.
-        """
-        self.language = AppButton(self, text="Language", command=None)
-        self.credits_btn = AppButton(self, text="Light/Dark", command=None)
-        self.back_btn = AppButton(self, text="Back",
-                                  command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+        # Setup the right grid for the header, body and footer
+        self.right_grid = RightSett(self)
+        self.right_grid.pack(side="right", fill="both", expand=True)
 
-        for btn in [self.language, self.credits_btn, self.back_btn]:
-            btn.pack()
-        return True
+        # Setup the grid
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=4)
+        self.rowconfigure(0, weight=1)
