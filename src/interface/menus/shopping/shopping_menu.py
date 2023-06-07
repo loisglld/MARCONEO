@@ -39,5 +39,4 @@ class ShoppingMenu(Frame):
         """
         Retrieves the items to display.
         """
-        items = self.gui.app.config['Shopping'][toggle]['items']
-        return items
+        return self.gui.app.config.json['Shopping'][toggle]['items']

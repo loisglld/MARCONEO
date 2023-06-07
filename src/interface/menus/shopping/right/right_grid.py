@@ -22,7 +22,6 @@ class RightGrid(Frame):
     def __init__(self, manager=None):
         super().__init__(manager)
         self.manager = manager
-
         self.propagate(False)
 
         # Setup the header inside the right grid

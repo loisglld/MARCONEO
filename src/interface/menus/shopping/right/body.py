@@ -7,7 +7,7 @@ Configure MarcoNeo's body on its shopping menu.
 #-------------------------------------------------------------------#
 
 from src.utils.gui_utils import Frame, Label
-from src.interface.menus.shopping.shop_item import ShopItem
+from src.interface.widgets.shop_item import ShopItem
 
 #-------------------------------------------------------------------#
 

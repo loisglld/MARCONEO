@@ -6,7 +6,7 @@ Header of the settings page of the app.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame
+from src.utils.gui_utils import Frame, Label
 
 #-------------------------------------------------------------------#
 
@@ -20,3 +20,9 @@ class SettHeader(Frame):
         self.propagate(False)
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
+        Label(self,
+                text="CUSTOM YOUR MARCO").pack(side="left",
+                                        expand=True)
+        Label(self,
+              text="Select item by clicking on them. \n(Green: item selected)").pack(side="left",
+                                                                                    expand=True)

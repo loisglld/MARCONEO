@@ -1,0 +1,32 @@
+{
+    "Refill": {
+        "name": "refill",
+        "items": [
+            {
+                "name": "one",
+                "price": -1,
+                "color": ""
+            },
+            {
+                "name": "five",
+                "price": -5,
+                "color": ""
+            },
+            {
+                "name": "ten",
+                "price": -10,
+                "color": ""
+            },
+            {
+                "name": "twenty",
+                "price": -20,
+                "color": ""
+            },
+            {
+                "name": "fifty",
+                "price": -50,
+                "color": ""
+            }
+        ]
+    }
+}

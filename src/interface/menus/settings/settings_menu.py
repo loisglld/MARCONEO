@@ -23,16 +23,24 @@ class SettingsMenu(AppFrame):
     def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
+        self.propagate(False)
 
         # Setup the left grid for the navbar
         self.left_grid = LeftSett(self)
-        self.left_grid.pack(side="left", fill="both", expand=True)
+        self.left_grid.grid(row=0, column=0, sticky="nsew")
 
         # Setup the right grid for the header, body and footer
         self.right_grid = RightSett(self)
-        self.right_grid.pack(side="right", fill="both", expand=True)
+        self.right_grid.grid(row=0, column=1, sticky="nsew")
 
         # Setup the grid
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=4)
         self.rowconfigure(0, weight=1)
+
+    def retrieve_settings_items(self, toggle):
+        """
+        Retrieves from api_config.json the items
+        following the toggle.
+        """
+        return self.gui.app.config.api_config[toggle]['items']

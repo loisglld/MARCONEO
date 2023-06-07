@@ -13,9 +13,11 @@ import json
 import os
 import decimal
 
+from src.server.api_config import APIConfig
+
 #-------------------------------------------------------------------#
 
-class Config(dict):
+class Config:
     """
     Stores the configuration data of the application.
     """
@@ -30,12 +32,16 @@ class Config(dict):
         """
         self.loggers = app.loggers
         self.app = app
-        self.default_config = None
+
+        self.base_config = None
         self.name = self.DEFAULT
+
+        self.api_config = APIConfig(app)
+        self.json = {}
 
         self.load(self.DEFAULT)
 
-    def load(self, file_name):
+    def load(self, file_name:str=None) -> None:
         """
         Loads the config.json file.
         """
@@ -50,20 +56,20 @@ class Config(dict):
             json_content = file.read()
 
         try:
-            self.update(json.loads(json_content, parse_float=decimal.Decimal))
+            self.json.update(json.loads(json_content, parse_float=decimal.Decimal))
         except json.JSONDecodeError as decode_err:
             self.loggers.log.warning("Error while parsing the config.json file at line %s",
                                      decode_err.lineno)
             self.app.close()
 
         # Save the default config to be able to reset the config
-        self.default_config = self.copy()
+        self.base_config = self.json.copy()
 
     def change_price(self, toggle, item_name, new_price):
         """
         Changes the price of an item.
         """
-        items = self["Shopping"][toggle]['items']
+        items = self.json["Shopping"][toggle]['items']
         for index, item in enumerate(items):
             if item['name'] == item_name:
                 items[index]['price'] = decimal.Decimal(new_price)

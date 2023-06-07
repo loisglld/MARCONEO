@@ -20,7 +20,7 @@ class Navbar(Frame):
         self.manager = left_grid
         self.current_toggle = "Party"
         self.party_btn = None
-        self.shopping_menus = list(self.manager.manager.gui.app.config['Shopping'].keys())
+        self.categories = list(self.manager.manager.gui.app.config.json['Shopping'].keys())
 
         self.propagate(False)
         self.configure(bg="black")
@@ -30,7 +30,7 @@ class Navbar(Frame):
         """
         Defines the buttons used in the menu.
         """
-        for menu in self.shopping_menus:
+        for menu in self.categories:
             button = AppButton(self, text=menu, command=lambda menu=menu: self.toggle(menu))
             setattr(self, f"{menu.lower()}_btn", button)
             button.pack(fill="both", expand=True, side="top", padx=10, pady=10)
@@ -52,7 +52,7 @@ class Navbar(Frame):
         self.manager.manager.right_grid.price_modifier.display_item_list()
 
         # Update button's colors
-        for menu in self.shopping_menus:
+        for menu in self.categories:
             button = getattr(self, f"{menu.lower()}_btn")
             if menu == self.current_toggle:
                 button.configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
