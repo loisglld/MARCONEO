@@ -29,7 +29,7 @@ class SettItem:
         self.container.configure(bg="#333333")
 
         self.name_label = Label(self.container, text=self.name)
-        self.name_label.pack(side="top", padx=10, pady=5, fill="both", expand=True)
+        self.name_label.pack(side="top", padx=10, pady=10, expand=True)
 
         # Binds to the whole widget
         self.container.bind("<Button-1>", self.on_click_item)

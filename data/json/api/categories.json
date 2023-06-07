@@ -1,0 +1,12 @@
+{
+    "product_type": [
+        {
+            "id": 1,
+            "type": "midi"
+        },
+        {
+            "id": 2,
+            "type": "soiree"
+        }
+    ]
+}

@@ -43,4 +43,5 @@ class SettingsMenu(AppFrame):
         Retrieves from api_config.json the items
         following the toggle.
         """
-        return self.gui.app.config.api_config[toggle]['items']
+
+        return self.gui.app.config.api_config["config"][toggle]['items']

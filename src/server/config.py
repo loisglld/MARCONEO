@@ -13,7 +13,7 @@ import json
 import os
 import decimal
 
-from src.server.api_config import APIConfig
+from src.server.api_config import APIJsons
 
 #-------------------------------------------------------------------#
 
@@ -36,7 +36,7 @@ class Config:
         self.base_config = None
         self.name = self.DEFAULT
 
-        self.api_config = APIConfig(app)
+        self.api_config = APIJsons(app)
         self.json = {}
 
         self.load(self.DEFAULT)

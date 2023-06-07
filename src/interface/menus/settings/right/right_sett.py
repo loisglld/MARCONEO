@@ -19,7 +19,7 @@ class RightSett(Frame):
     def __init__(self, manager=None):
         super().__init__(manager)
         self.manager = manager
-        self.propagate(False)
+        self.grid_propagate(False)
 
         self.header = SettHeader(self)
         self.header.grid(row=0, column=0, sticky="nsew")

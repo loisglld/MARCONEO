@@ -14,7 +14,7 @@ import requests
 
 #-------------------------------------------------------------------#
 
-class APIConfig(dict):
+class APIJsons:
     """
     A dictionary containing every json retrieved from the BDE API.
     """
@@ -23,31 +23,47 @@ class APIConfig(dict):
         self.app = app
         self.loggers = app.loggers
         self.loggers.log.info("Retrieving API config...")
+        self.config, self.categories = {}, {}
 
-        self.load("config")
+        self.generate_json("config",
+                           self.get_api("https://fouaille.bde-tps.fr/api/product/index"))
+        self.config = self.load("api_config")
+        self.generate_json("categories",
+                           self.get_api("https://fouaille.bde-tps.fr/api/productType/index"))
+        self.categories = self.load("categories")
 
-        self.loggers.log.info("API config retrieved.")
+        self.loggers.log.info("API configurations files retrieved.")
 
-    def get_api_config(self) -> dict:
+    def get_api(self, url) -> dict:
         """
         Retrieves the API config from the BDE API.
         """
         try:
-            api_config = requests.get("https://fouaille.bde-tps.fr/api/product",
+            api_config_resp = requests.get(url,
                                       timeout=5)
-            api_config.raise_for_status()
-
+            api_config_resp.raise_for_status()
         except requests.exceptions.HTTPError as err:
             self.loggers.log.error(err)
             return {}
-        return api_config.json(parse_float=decimal.Decimal)
+        return api_config_resp.json(parse_float=decimal.Decimal)
 
-    def load(self, file_name:str=None) -> None:
+    def generate_json(self, name,  json_retrieved:json) -> bool:
+        """
+        Generate a json file corresponding
+        to the request response given.
+        """
+        with open(os.path.join(os.getcwd(),"data","json", "api", f"{name}.json"),
+                  'w',
+                  encoding="utf-8") as file:
+            file.write(json.dumps(json_retrieved, indent=4))
+
+    def load(self, file_name:str=None) -> dict:
         """
         Loads the json file.
         """
         if file_name is None:
             return
+        dictionary = {}
 
         with open(os.path.join(os.getcwd(),"data","json", "api", f"{file_name}.json"),
                   'r',
@@ -55,8 +71,10 @@ class APIConfig(dict):
             json_content = file.read()
 
         try:
-            self.update(json.loads(json_content, parse_float=decimal.Decimal))
+            dictionary.update(json.loads(json_content, parse_float=decimal.Decimal))
         except json.JSONDecodeError as decode_err:
             self.loggers.log.warning("Error while parsing the config.json file at line %s",
                                      decode_err.lineno)
             self.app.close()
+
+        return dictionary

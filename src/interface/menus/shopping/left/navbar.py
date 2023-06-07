@@ -20,7 +20,7 @@ class Navbar(Frame):
         self.manager = left_grid
         self.current_toggle = "Party"
         self.party_btn = None
-        self.categories = list(self.manager.manager.gui.app.config.json['Shopping'].keys())
+        self.categories = list(self.manager.manager.gui.app.config.json.keys())
 
         self.propagate(False)
         self.configure(bg="black")
