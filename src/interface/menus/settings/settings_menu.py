@@ -16,7 +16,9 @@ class SettingsMenu(AppFrame):
     """
     MarcoNeo's settings page.
 
-    Contains the settings of the application such as language, light/dark mode, etc.
+    Contains the settings of the application:
+    Fouaille will be able to config the items
+    they want to see in the shopping menu.
     """
     def __init__(self, gui=None) -> None:
         super().__init__(gui)

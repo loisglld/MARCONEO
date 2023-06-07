@@ -20,6 +20,9 @@ class MainMenu(AppFrame):
     def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
+        if self.gui.app.config is None:
+            self.gui.app.loggers.log.warn("There is no config file loaded.")
+            return
 
         self.setup_images()
         self.setup_label()
@@ -49,7 +52,6 @@ class MainMenu(AppFrame):
                                      command=lambda: self.gui.change_menu(self.gui.history_menu))
         self.back_btn = AppButton(self, text="Back",
                                   command=lambda: self.gui.change_menu(self.gui.welcome_menu))
-
 
         for btn in [self.shopping_btn, self.stats_btn, self.history_btn]:
             btn.pack(side="top", pady=10, padx=10, fill="x")

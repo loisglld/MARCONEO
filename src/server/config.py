@@ -19,6 +19,7 @@ class Config(dict):
     """
     Stores the configuration data of the application.
     """
+    DEFAULT = "default"
     def __init__(self, app) -> None:
         """
         Reads the json file (./config.json).
@@ -28,8 +29,22 @@ class Config(dict):
         (items, prices, etc.)
         """
         self.loggers = app.loggers
+        self.app = app
+        self.default_config = None
+        self.name = self.DEFAULT
 
-        with open(os.path.join(os.getcwd(),"data", "config.json"),
+        self.load(self.DEFAULT)
+
+    def load(self, file_name):
+        """
+        Loads the config.json file.
+        """
+        if file_name is None:
+            return
+
+        self.name = file_name
+
+        with open(os.path.join(os.getcwd(),"data","json", f"{file_name}.json"),
                   'r',
                   encoding="utf-8") as file:
             json_content = file.read()
@@ -39,8 +54,9 @@ class Config(dict):
         except json.JSONDecodeError as decode_err:
             self.loggers.log.warning("Error while parsing the config.json file at line %s",
                                      decode_err.lineno)
-            app.close()
+            self.app.close()
 
+        # Save the default config to be able to reset the config
         self.default_config = self.copy()
 
     def change_price(self, toggle, item_name, new_price):

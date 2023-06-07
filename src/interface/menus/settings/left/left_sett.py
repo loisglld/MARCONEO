@@ -21,7 +21,6 @@ class LeftSett(Frame):
         self.propagate(False)
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
-        self.config(bg="pink")
 
         self.navbar = SettNavbar(self)
-        self.navbar.pack(fill="both", expand=True, padx=10, pady=10)
+        self.navbar.pack(fill="both", expand=True)
