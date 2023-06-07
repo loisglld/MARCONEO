@@ -30,21 +30,4 @@ class SettNavbar(Frame):
                                         self.manager.manager.gui.change_menu(
                                             self.manager.manager.gui.welcome_menu))
 
-        self.change_config_btn = AppButton(self, text="Change config",
-                                    command=self.change_config)
-
-
-        self.change_config_btn.pack(side="top", pady=10, padx=10, fill="x")
         self.back_btn.pack(side="bottom", pady=10, padx=10, fill="x")
-
-    def change_config(self) -> None:
-        """
-        Changes the menu to the main menu.
-        """
-        # Generate a new config file
-
-        # Change the current config file loaded
-        self.manager.manager.gui.app.config.load("config")
-
-        # Actualise the welcome menu
-        self.manager.manager.gui.welcome_menu.config_loaded_lbl.config(text="Config loaded: config")

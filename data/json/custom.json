@@ -1,0 +1,64 @@
+{
+    "Shopping": {
+        "Lunch": {
+            "name": "lunch",
+            "items": [
+                {
+                    "name": "pizza",
+                    "price": 2.60,
+                    "color": ""
+                },
+                {
+                    "name": "dessert",
+                    "price": 0.50,
+                    "color": ""
+                }
+            ]
+        },
+        "Party": {
+            "name": "party",
+            "items": [
+                {
+                "name": "beer12",
+                "price": 1.2,
+                "color": ""
+                },
+                {
+                    "name": "bottled-beer",
+                    "price": 3.6,
+                    "color": ""
+                }
+            ]
+        },
+        "Refill": {
+            "name": "refill",
+            "items": [
+                {
+                    "name": "one",
+                    "price": -1,
+                    "color": ""
+                },
+                {
+                    "name": "five",
+                    "price": -5,
+                    "color": ""
+                },
+                {
+                    "name": "ten",
+                    "price": -10,
+                    "color": ""
+                },
+                {
+                    "name": "twenty",
+                    "price": -20,
+                    "color": ""
+                },
+                {
+                    "name": "fifty",
+                    "price": -50,
+                    "color": ""
+                }
+            ]
+        }
+    }
+}
