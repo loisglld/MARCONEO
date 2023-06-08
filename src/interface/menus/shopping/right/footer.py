@@ -20,7 +20,7 @@ class Footer(Frame):
         super().__init__(manager)
         self.shopping_manager = manager.manager
         self.loggers = self.shopping_manager.gui.app.loggers
-        self.grid_propagate(False)
+        self.propagate(False)
         self.configure(bg="#555555")
         self.cart = self.shopping_manager.gui.app.cart
 

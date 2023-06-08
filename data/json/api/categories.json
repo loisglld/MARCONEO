@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": 14,
+            "type": "CharcutFromage"
+        },
+        {
+            "id": 13,
+            "type": "Go\u00fbter"
+        },
+        {
+            "id": 10,
+            "type": "Midi"
+        },
+        {
+            "id": 12,
+            "type": "Oeno"
+        },
+        {
+            "id": 11,
+            "type": "Shots"
+        },
+        {
+            "id": 9,
+            "type": "Soir\u00e9e"
+        }
+    ]
+}

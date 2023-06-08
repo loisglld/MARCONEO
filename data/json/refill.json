@@ -1,0 +1,43 @@
+{
+    "refill": {
+        "id": 1,
+        "product_type": "Rechargement",
+        "products": [
+            {
+                "id": 2,
+                "name": "one",
+                "slug": "one",
+                "price": -1,
+                "color": "#000000"
+            },
+            {
+                "id": 3,
+                "name": "five",
+                "slug": "five",
+                "price": -5,
+                "color": "#000000"
+            },
+            {
+                "id": 4,
+                "name": "ten",
+                "slug": "ten",
+                "price": -10,
+                "color": "#000000"
+            },
+            {
+                "id": 5,
+                "name": "twenty",
+                "slug": "twenty",
+                "price": -20,
+                "color": "#000000"
+            },
+            {
+                "id": 6,
+                "name": "fifty",
+                "slug": "fifty",
+                "price": -50,
+                "color": "#000000"
+            }
+        ]
+    }
+}

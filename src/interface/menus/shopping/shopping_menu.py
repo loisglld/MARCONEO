@@ -8,7 +8,7 @@ Configure MarcoNeo's shopping page.
 
 from src.interface.menus.shopping.left.left_grid import LeftGrid
 from src.interface.menus.shopping.right.right_grid import RightGrid
-from src.utils.gui_utils import Frame
+from src.utils.gui_utils import Frame, Label
 
 #-------------------------------------------------------------------#
 
@@ -20,24 +20,46 @@ class ShoppingMenu(Frame):
     def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
-        self.propagate(False)
+        self.grid_propagate(False)
 
         # Setup the left grid for the navbar
         self.left_grid = LeftGrid(self)
-        self.left_grid.pack(side="left", fill="both", expand=True)
+        self.left_grid.grid(row=0, column=0, sticky="nsew")
 
         # Setup the right grid for the header, body and footer
         self.right_grid = RightGrid(self)
-        self.right_grid.pack(side="right", fill="both", expand=True)
+        self.right_grid.grid(row=0, column=1, sticky="nsew")
 
         # Setup the grid
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=4)
-        self.rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=4)
+        self.grid_rowconfigure(0, weight=1)
 
-    def retrieve_shopping_items(self, toggle:str) -> list:
+    def retrieve_shopping_items(self, product_type:str) -> list:
         """
         Retrieves the items to display.
         """
-        items = self.gui.app.config['Shopping'][toggle]['items']
-        return items
+        products = []
+        for objet in self.gui.app.config.loaded_config:
+            if objet["product_type"] == product_type:
+                products = objet["products"]
+        return products
+
+
+    def refill_security(self):
+        """
+        If the curretn user isn't an admin,
+        then an error message is displayed and,
+        asks the user to scan an admin card.
+        """
+        self.right_grid.body.clear_body()
+        if self.gui.app.current_user.is_admin:
+            self.left_grid.navbar.current_toggle = "Rechargement"
+            self.left_grid.navbar.toggle("Rechargement")
+            self.right_grid.body.update_body(self.left_grid.navbar.current_toggle)
+            return
+        Label(self.right_grid.body, text="""To refill you need to be an admin.
+        Please scan an admin card and click again on refill.
+
+        Only next, you will be able to refill any other card.""",
+        bg="red", fg="white").pack(padx=10, pady=10, fill="both", expand=True)

@@ -1,30 +1,30 @@
 """
-body.py
+sett_body.py
 
-Configure MarcoNeo's body on its shopping menu.
+Body of the settings page of the app.
 """
 
 #-------------------------------------------------------------------#
 
 from src.utils.gui_utils import Frame
-from src.interface.widgets.shop_item import ShopItem
+from src.interface.widgets.sett_item import SettItem
 
 #-------------------------------------------------------------------#
 
-class Body(Frame):
+class SettBody(Frame):
     """
-    Contains the items to be displayed in the shopping page.
+    Body of the settings page of the app.
     """
-    def __init__(self, manager=None):
+    def __init__(self, manager=None) -> None:
         super().__init__(manager)
-        self.manager = manager
-        self.shopping_manager = manager.manager
-        self.grid_propagate(False)
+        self.settings_manager = manager.manager
         self.propagate(False)
-        self.configure(bg="#333333")
+        self.config(bg="#444444")
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
         self.item_per_row = 4
 
-        self.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
+        self.update_body(self.settings_manager.left_grid.navbar.current_toggle)
 
     def display_items(self, items):
         """
@@ -35,10 +35,9 @@ class Body(Frame):
         row, column = 0, 0
         for item in items:
             name = item["name"]
-            price = item["price"]
-            setattr(self, f"{name}_item", ShopItem(name, price, self))
-            item_frame = getattr(self, f"{name}_item").container
-            item_frame.grid(row=row, column=column, padx=10, pady=10, sticky="nsew")
+            item_frame = SettItem(self, name).container
+            item_frame.grid(row=row, column=column, padx=30, pady=30, sticky="nsew")
+            # Actualise the grid
             self.grid_columnconfigure(column, weight=1)
             self.grid_rowconfigure(row, weight=1)
 
@@ -52,7 +51,7 @@ class Body(Frame):
         Updates the items displayed in the body.
         """
         self.clear_body()
-        items_to_display = self.shopping_manager.retrieve_shopping_items(toggle)
+        items_to_display = self.settings_manager.retrieve_settings_items(toggle)
         self.display_items(items_to_display)
 
     def clear_body(self):

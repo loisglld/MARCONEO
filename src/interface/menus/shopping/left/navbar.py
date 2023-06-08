@@ -18,9 +18,8 @@ class Navbar(Frame):
     def __init__(self, left_grid=None):
         super().__init__(left_grid)
         self.manager = left_grid
-        self.current_toggle = "Party"
-        self.party_btn = None
-        self.shopping_menus = list(self.manager.manager.gui.app.config['Shopping'].keys())
+        self.categories = self.manager.manager.gui.app.config.get_loaded_categories()
+        self.current_toggle = self.categories[0]
 
         self.propagate(False)
         self.configure(bg="black")
@@ -30,12 +29,16 @@ class Navbar(Frame):
         """
         Defines the buttons used in the menu.
         """
-        for menu in self.shopping_menus:
+        buttons = []
+        print(self.categories)
+        for i, menu in enumerate(self.categories):
             button = AppButton(self, text=menu, command=lambda menu=menu: self.toggle(menu))
-            setattr(self, f"{menu.lower()}_btn", button)
+            setattr(self, f"btn{i}", button)
             button.pack(fill="both", expand=True, side="top", padx=10, pady=10)
-
-        self.party_btn.configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
+            buttons.append(button)
+        if buttons:
+            buttons[0].configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
+            buttons[-1].config(command=self.manager.manager.refill_security)
         self.back_btn = AppButton(self, text="Back",
                                   command=lambda: self.manager.manager.gui.change_menu(
                                       self.manager.manager.gui.main_menu))
@@ -52,8 +55,8 @@ class Navbar(Frame):
         self.manager.manager.right_grid.price_modifier.display_item_list()
 
         # Update button's colors
-        for menu in self.shopping_menus:
-            button = getattr(self, f"{menu.lower()}_btn")
+        for i, menu in enumerate(self.categories):
+            button = getattr(self, f"btn{i}")
             if menu == self.current_toggle:
                 button.configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
             else:

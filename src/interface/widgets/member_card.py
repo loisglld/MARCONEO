@@ -19,8 +19,10 @@ class MemberCard(Frame):
         self.manager =  manager
         self.loggers = self.manager.manager.manager.gui.loggers
 
-        self.grid_propagate(False)
+        self.propagate(True)
         self.configure(bg="#555555")
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
 
         self.setup_labels()
 
@@ -32,9 +34,9 @@ class MemberCard(Frame):
         self.last_name_label = Label(self, text="-")
         self.balance_label = Label(self, text="_")
 
-        self.first_name_label.pack(side="top")
-        self.last_name_label.pack(side="top")
-        self.balance_label.pack(side="top")
+        self.first_name_label.pack(side="top", fill="both", expand=True)
+        self.last_name_label.pack(side="top", fill="both", expand=True)
+        self.balance_label.pack(side="top", fill="both", expand=True)
 
         return True
 
