@@ -63,11 +63,14 @@ class WelcomeMenu(AppFrame):
     def load_marco(self) -> None:
         """
         Changes the menu to the main menu.
+        Config are already loaded, so it just
+        changes the menu.
         """
-        self.gui.app.config.load(self.gui.app.config.name)
-        if self.gui.app.config == {}:
-            self.gui.loggers.log.fatal("No config file found.")
-            return
+        if self.gui.app.config.loaded_config == self.gui.app.config.custom_config:
+            # f there is only the refill menu, it means that the user didn't change anything.
+            if len(self.gui.app.config.get_loaded_categories()) <= 1:
+                self.gui.loggers.log.warn("Config needs to be customed before loading it.")
+                return
         self.gui.setup_menus()
         self.gui.change_menu(self.gui.main_menu)
 

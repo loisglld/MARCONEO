@@ -30,7 +30,6 @@ class Navbar(Frame):
         Defines the buttons used in the menu.
         """
         buttons = []
-        print(self.categories)
         for i, menu in enumerate(self.categories):
             button = AppButton(self, text=menu, command=lambda menu=menu: self.toggle(menu))
             setattr(self, f"btn{i}", button)

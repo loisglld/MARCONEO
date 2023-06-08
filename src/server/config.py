@@ -65,6 +65,7 @@ class Config:
         if not os.path.exists(os.path.join(os.getcwd(),"data","json", "custom.json")):
             self.generate_json("custom", json.loads("{'custom':{}}"))
         self.custom_config = self.load("custom")
+        self.cat_refill(self.custom_config)
 
     def load(self, file_name:str=None, api:bool=0) -> dict:
         """
@@ -93,7 +94,7 @@ class Config:
 
         self.name = file_name
         self.loaded_config = dictionary["data"].copy()
-        self.cat_refill()
+        self.cat_refill(self.loaded_config)
         self.initial_config = self.loaded_config.copy()
         return dictionary["data"]
 
@@ -107,7 +108,7 @@ class Config:
                 items[index]['price'] = decimal.Decimal(new_price)
                 break
 
-    def cat_refill(self) -> None:
+    def cat_refill(self, config) -> None:
         """
         Concatenates the refill toggle to the loaded json.
         """
@@ -117,7 +118,7 @@ class Config:
             refill_content = file.read()
 
         refill_dict = json.loads(refill_content, parse_float=decimal.Decimal)
-        self.loaded_config.append(refill_dict['refill'])
+        config.append(refill_dict['refill'])
 
     def get_loaded_categories(self) -> list:
         """
