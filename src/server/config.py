@@ -61,6 +61,7 @@ class Config:
 
         self.name = file_name
         self.loaded_config = dictionary.copy()
+        self.cat_refill(self.loaded_config)
         self.initial_config = self.loaded_config.copy()
         return dictionary
 
@@ -73,3 +74,15 @@ class Config:
             if item['name'] == item_name:
                 items[index]['price'] = decimal.Decimal(new_price)
                 break
+
+    def cat_refill(self, dictionary:dict=None) -> None:
+        """
+        Concatenates the refill toggle to the loaded json.
+        """
+        with open(os.path.join(os.getcwd(),"data","json", "refill.json"),
+                  'r',
+                  encoding="utf-8") as file:
+            refill_content = file.read()
+
+        refill_dict = json.loads(refill_content, parse_float=decimal.Decimal)
+        dictionary.update(refill_dict)
