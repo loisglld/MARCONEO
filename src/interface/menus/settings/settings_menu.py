@@ -34,9 +34,9 @@ class SettingsMenu(AppFrame):
         self.right_grid.grid(row=0, column=1, sticky="nsew")
 
         # Setup the grid
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=4)
-        self.rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=4)
+        self.grid_rowconfigure(0, weight=1)
 
     def retrieve_settings_items(self, toggle):
         """

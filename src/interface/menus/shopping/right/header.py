@@ -20,10 +20,11 @@ class Header(Frame):
         super().__init__(manager)
         self.manager = manager
         self.shopping_manager = manager.manager
-
-        self.grid_propagate(False)
-        self.configure(bg="#555555")
-
         self.loggers = self.shopping_manager.gui.loggers
+        self.propagate(True)
+        self.configure(bg="#555555")
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
+
         self.member_card = MemberCard(self)
-        self.member_card.pack()
+        self.member_card.pack(side="top", fill="both", expand=True)

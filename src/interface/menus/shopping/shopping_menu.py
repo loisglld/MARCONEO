@@ -20,20 +20,20 @@ class ShoppingMenu(Frame):
     def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
-        self.propagate(False)
+        self.grid_propagate(False)
 
         # Setup the left grid for the navbar
         self.left_grid = LeftGrid(self)
-        self.left_grid.pack(side="left", fill="both", expand=True)
+        self.left_grid.grid(row=0, column=0, sticky="nsew")
 
         # Setup the right grid for the header, body and footer
         self.right_grid = RightGrid(self)
-        self.right_grid.pack(side="right", fill="both", expand=True)
+        self.right_grid.grid(row=0, column=1, sticky="nsew")
 
         # Setup the grid
-        self.columnconfigure(0, weight=1)
-        self.columnconfigure(1, weight=4)
-        self.rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=4)
+        self.grid_rowconfigure(0, weight=1)
 
     def retrieve_shopping_items(self, toggle:str) -> list:
         """

@@ -22,6 +22,11 @@ class ShopItem:
         self.cart = self.manager.manager.manager.gui.app.cart
         self.footer = self.manager.manager.footer
 
+        # The container is a Frame.
+        self.container = Frame(self.manager)
+        self.container.configure(bg="white")
+        self.container.propagate(False)
+
         self.name = name
         self.price = price
         self.amount = 0
@@ -32,9 +37,6 @@ class ShopItem:
         """
         Defines the container of the item.
         """
-        # The container is a Frame.
-        self.container = Frame(self.manager)
-        self.container.configure(bg="white")
 
         # The name and the amount are labels inside the Frame.
         self.name_label = Label(self.container, text=self.name)

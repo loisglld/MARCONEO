@@ -38,6 +38,7 @@ class SettBody(Frame):
             setattr(self, f"{name}_item", SettItem(self, name))
             item_frame = getattr(self, f"{name}_item").container
             item_frame.grid(row=row, column=column, padx=30, pady=30, sticky="nsew")
+            # Actualise the grid
             self.grid_columnconfigure(column, weight=1)
             self.grid_rowconfigure(row, weight=1)
 

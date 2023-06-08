@@ -18,6 +18,9 @@ class SettItem:
         self.manager = manager
         self.name = name
         self.selected = False
+        self.container = Frame(self.manager)
+        self.container.configure(bg="#333333")
+        self.container.propagate(False)
 
         self.setup_container()
 
@@ -25,8 +28,6 @@ class SettItem:
         """
         Defines the container of the item.
         """
-        self.container = Frame(self.manager)
-        self.container.configure(bg="#333333")
 
         self.name_label = Label(self.container, text=self.name)
         self.name_label.pack(side="top", padx=10, pady=10, expand=True)

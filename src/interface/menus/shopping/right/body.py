@@ -20,6 +20,7 @@ class Body(Frame):
         self.manager = manager
         self.shopping_manager = manager.manager
         self.grid_propagate(False)
+        self.propagate(False)
         self.configure(bg="#333333")
         # Bind the security after the __init__ of body
         self.shopping_manager.left_grid.navbar.refill_btn.config(command=self.refill_security)
@@ -80,4 +81,4 @@ class Body(Frame):
         Please scan an admin card and click again on refill.
 
         Only next, you will be able to refill any other card.""",
-        bg="#333333", fg="white").pack()
+        bg="red", fg="white").pack(padx=10, pady=10, fill="both", expand=True)
