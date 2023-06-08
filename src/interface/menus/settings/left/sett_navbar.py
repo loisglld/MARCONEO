@@ -20,8 +20,7 @@ class SettNavbar(Frame):
         self.config(bg="#000000")
         self.back_btn = None
         self.current_toggle = "Lunch"
-        self.categories = list(self.manager.manager.gui.app.config.api_config.categories.values())
-        print(self.categories)
+        self.categories = self.manager.manager.gui.app.config.api_config.categories
         self.setup_buttons()
 
     def setup_buttons(self) -> bool:

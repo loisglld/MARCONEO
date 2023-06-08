@@ -1,6 +1,11 @@
 {
     "config": [
         {
+            "id": 4,
+            "name": "gouter",
+            "products": []
+        },
+        {
             "id": 1,
             "name": "midi",
             "products": [

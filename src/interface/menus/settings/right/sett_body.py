@@ -19,7 +19,7 @@ class SettBody(Frame):
         super().__init__(manager)
         self.settings_manager = manager.manager
         self.propagate(False)
-        self.config(bg="blue")
+        self.config(bg="#444444")
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.item_per_row = 4

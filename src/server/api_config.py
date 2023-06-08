@@ -23,14 +23,16 @@ class APIJsons:
         self.app = app
         self.loggers = app.loggers
         self.loggers.log.info("Retrieving API config...")
-        self.config, self.categories = {}, {}
+        self.config_json, self.categories_json = {}, {}
 
         self.generate_json("config",
                            self.get_api("https://fouaille.bde-tps.fr/api/product/index"))
-        self.config = self.load("api_config")
+        self.config_json = self.load("config")
         self.generate_json("categories",
                            self.get_api("https://fouaille.bde-tps.fr/api/productType/index"))
-        self.categories = self.load("categories")
+        self.categories_json = self.load("categories")
+
+        self.categories = self.retrieve_categories()
 
         self.loggers.log.info("API configurations files retrieved.")
 
@@ -78,3 +80,9 @@ class APIJsons:
             self.app.close()
 
         return dictionary
+
+    def retrieve_categories(self) -> list:
+        """
+        Retrieves the categories from the API.
+        """
+        return [product_type["type"] for product_type in self.categories_json["product_type"]]
