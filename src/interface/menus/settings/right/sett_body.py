@@ -35,8 +35,7 @@ class SettBody(Frame):
         row, column = 0, 0
         for item in items:
             name = item["name"]
-            setattr(self, f"{name}_item", SettItem(self, name))
-            item_frame = getattr(self, f"{name}_item").container
+            item_frame = SettItem(self, name).container
             item_frame.grid(row=row, column=column, padx=30, pady=30, sticky="nsew")
             # Actualise the grid
             self.grid_columnconfigure(column, weight=1)

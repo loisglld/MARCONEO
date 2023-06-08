@@ -45,8 +45,8 @@ class SettingsMenu(AppFrame):
         """
         data = self.gui.app.config.api_config.config_json
         items = []
-        for menu in data["config"]:
-            if menu["name"] == toggle:
+        for menu in data:
+            if menu["product_type"] == toggle:
                 items = menu["products"]
                 break
         return items

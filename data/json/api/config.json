@@ -1,56 +1,157 @@
 {
-    "config": [
+    "data": [
         {
-            "id": 1,
-            "name": "midi",
+            "id": 14,
+            "product_type": "CharcutFromage",
             "products": [
                 {
-                    "id": 1,
-                    "name": "pizza",
-                    "slug": "pizza",
-                    "price": "2.50",
-                    "color": "#ff0000"
+                    "id": 21,
+                    "name": "charcuterie",
+                    "slug": "charcuterie",
+                    "price": "1.50",
+                    "color": "#000000"
                 },
                 {
-                    "id": 2,
-                    "name": "nouilles",
-                    "slug": "nouilles",
-                    "price": "1.00",
-                    "color": "#00ff00"
-                },
-                {
-                    "id": 6,
-                    "name": "chips",
-                    "slug": "chips",
-                    "price": "0.50",
-                    "color": "#ffd500"
+                    "id": 22,
+                    "name": "fromage",
+                    "slug": "fromage",
+                    "price": "1.50",
+                    "color": "#000000"
                 }
             ]
         },
         {
-            "id": 2,
-            "name": "soiree",
+            "id": 13,
+            "product_type": "Go\u00fbter",
             "products": [
                 {
-                    "id": 3,
-                    "name": "meteor",
-                    "slug": "meteor",
-                    "price": "1.20",
-                    "color": "#0000ff"
-                },
-                {
-                    "id": 4,
-                    "name": "kastel",
-                    "slug": "kastel",
-                    "price": "3.00",
-                    "color": "#ff00ff"
-                },
-                {
-                    "id": 5,
-                    "name": "primus",
-                    "slug": "primus",
+                    "id": 25,
+                    "name": "cookies",
+                    "slug": "cookies",
                     "price": "1.00",
-                    "color": "#ffff00"
+                    "color": "#000000"
+                },
+                {
+                    "id": 26,
+                    "name": "brownie",
+                    "slug": "brownie",
+                    "price": "0.40",
+                    "color": "#000000"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "product_type": "Midi",
+            "products": [
+                {
+                    "id": 15,
+                    "name": "pizza",
+                    "slug": "pizza",
+                    "price": "2.60",
+                    "color": "#000000"
+                },
+                {
+                    "id": 16,
+                    "name": "nouilles",
+                    "slug": "nouilles",
+                    "price": "1.00",
+                    "color": "#000000"
+                },
+                {
+                    "id": 17,
+                    "name": "plat",
+                    "slug": "plat",
+                    "price": "1.00",
+                    "color": "#000000"
+                },
+                {
+                    "id": 18,
+                    "name": "dessert",
+                    "slug": "dessert",
+                    "price": "0.50",
+                    "color": "#000000"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "product_type": "Oeno",
+            "products": [
+                {
+                    "id": 23,
+                    "name": "verre de vin",
+                    "slug": "verre de vin",
+                    "price": "2.00",
+                    "color": "#000000"
+                },
+                {
+                    "id": 24,
+                    "name": "vin bouteille",
+                    "slug": "vin bouteille",
+                    "price": "8.00",
+                    "color": "#000000"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "product_type": "Shots",
+            "products": [
+                {
+                    "id": 19,
+                    "name": "shot",
+                    "slug": "shot",
+                    "price": "0.50",
+                    "color": "#000000"
+                },
+                {
+                    "id": 20,
+                    "name": "m\u00e8tre shot",
+                    "slug": "m\u00e8tre shot",
+                    "price": "4.00",
+                    "color": "#000000"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "product_type": "Soir\u00e9e",
+            "products": [
+                {
+                    "id": 10,
+                    "name": "bi\u00e8re12",
+                    "slug": "bi\u00e8re12",
+                    "price": "1.20",
+                    "color": "#000000"
+                },
+                {
+                    "id": 11,
+                    "name": "bi\u00e8re16",
+                    "slug": "bi\u00e8re16",
+                    "price": "1.60",
+                    "color": "#000000"
+                },
+                {
+                    "id": 12,
+                    "name": "cocktail12",
+                    "slug": "cocktail12",
+                    "price": "1.20",
+                    "color": "#000000"
+                },
+                {
+                    "id": 13,
+                    "name": "cocktail16",
+                    "slug": "cocktail16",
+                    "price": "1.60",
+                    "color": "#000000"
+                },
+                {
+                    "id": 14,
+                    "name": "bi\u00e8re bouteille",
+                    "slug": "bi\u00e8re bouteille",
+                    "price": "3.60",
+                    "color": "#000000"
                 }
             ]
         }

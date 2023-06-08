@@ -6,7 +6,7 @@ Configure MarcoNeo's body on its shopping menu.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, Label
+from src.utils.gui_utils import Frame
 from src.interface.widgets.shop_item import ShopItem
 
 #-------------------------------------------------------------------#
@@ -22,9 +22,6 @@ class Body(Frame):
         self.grid_propagate(False)
         self.propagate(False)
         self.configure(bg="#333333")
-        # Bind the security after the __init__ of body
-        self.shopping_manager.left_grid.navbar.refill_btn.config(command=self.refill_security)
-
         self.item_per_row = 4
 
         self.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
@@ -64,21 +61,3 @@ class Body(Frame):
         """
         for child in self.winfo_children():
             child.destroy()
-
-    def refill_security(self):
-        """
-        If the curretn user isn't an admin,
-        then an error message is displayed and,
-        asks the user to scan an admin card.
-        """
-        self.clear_body()
-        if self.shopping_manager.gui.app.current_user.is_admin:
-            self.shopping_manager.left_grid.navbar.current_toggle = "Refill"
-            self.shopping_manager.left_grid.navbar.toggle("Refill")
-            self.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
-            return
-        Label(self, text="""To refill you need to be an admin.
-        Please scan an admin card and click again on refill.
-
-        Only next, you will be able to refill any other card.""",
-        bg="red", fg="white").pack(padx=10, pady=10, fill="both", expand=True)

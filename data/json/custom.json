@@ -1,17 +1,5 @@
 {
-    "Lunch": {
-        "name": "lunch",
-        "items": [
-            {
-                "name": "pizza",
-                "price": 2.60,
-                "color": ""
-            },
-            {
-                "name": "dessert",
-                "price": 0.50,
-                "color": ""
-            }
-        ]
-    }
+    "data": [
+
+    ]
 }

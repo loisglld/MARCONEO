@@ -34,13 +34,39 @@ class Config:
         self.loggers = app.loggers
         self.app = app
 
-        self.api_config = APIJsons(app)
-        self.default_config = self.load(self.DEFAULT)
+        self.api_config = APIJsons(self)
         self.name = self.DEFAULT
         self.loaded_config = {}
         self.initial_config = {}
+        self.custom_config = {}
 
-    def load(self, file_name:str=None) -> dict:
+        self.setup_custom()
+        self.default_config = self.load(self.DEFAULT)
+
+    def generate_json(self, name,  json_retrieved:json, api:bool=0) -> bool:
+        """
+        Generate a json file corresponding
+        to the request response given.
+        """
+        if api:
+            path = "api"
+        else:
+            path = ""
+
+        with open(os.path.join(os.getcwd(),"data","json", path, f"{name}.json"),
+                  'w',
+                  encoding="utf-8") as file:
+            file.write(json.dumps(json_retrieved, indent=4))
+
+    def setup_custom(self) -> None:
+        """
+        Setup the custom config.
+        """
+        if not os.path.exists(os.path.join(os.getcwd(),"data","json", "custom.json")):
+            self.generate_json("custom", json.loads("{'custom':{}}"))
+        self.custom_config = self.load("custom")
+
+    def load(self, file_name:str=None, api:bool=0) -> dict:
         """
         Loads the json file onto loaded_config and copies it to initial_config.
         Returns a dictionary containing the json file data.
@@ -48,7 +74,13 @@ class Config:
         if file_name is None:
             return {}
         dictionary = {}
-        with open(os.path.join(os.getcwd(),"data","json", f"{file_name}.json"),
+
+        if api:
+            path = "api"
+        else:
+            path = ""
+
+        with open(os.path.join(os.getcwd(),"data","json", path, f"{file_name}.json"),
                   'r',
                   encoding="utf-8") as file:
             json_content = file.read()
@@ -60,10 +92,10 @@ class Config:
             self.app.close()
 
         self.name = file_name
-        self.loaded_config = dictionary.copy()
-        self.cat_refill(self.loaded_config)
+        self.loaded_config = dictionary["data"].copy()
+        self.cat_refill()
         self.initial_config = self.loaded_config.copy()
-        return dictionary
+        return dictionary["data"]
 
     def change_price(self, toggle, item_name, new_price):
         """
@@ -75,7 +107,7 @@ class Config:
                 items[index]['price'] = decimal.Decimal(new_price)
                 break
 
-    def cat_refill(self, dictionary:dict=None) -> None:
+    def cat_refill(self) -> None:
         """
         Concatenates the refill toggle to the loaded json.
         """
@@ -85,4 +117,10 @@ class Config:
             refill_content = file.read()
 
         refill_dict = json.loads(refill_content, parse_float=decimal.Decimal)
-        dictionary.update(refill_dict)
+        self.loaded_config.append(refill_dict['refill'])
+
+    def get_loaded_categories(self) -> list:
+        """
+        Returns the categories of the loaded config.
+        """
+        return [product_type["product_type"] for product_type in self.loaded_config]
