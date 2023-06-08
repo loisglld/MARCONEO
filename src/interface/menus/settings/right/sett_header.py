@@ -6,7 +6,7 @@ Header of the settings page of the app.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, Label
+from src.utils.gui_utils import Frame, Label, AppButton
 
 #-------------------------------------------------------------------#
 
@@ -26,3 +26,6 @@ class SettHeader(Frame):
         Label(self,
               text="Select item by clicking on them. \n(Green: item selected)").pack(side="left",
                                                                                     expand=True)
+        AppButton(self, text="Refresh",
+                  command=self.manager.manager.refresh).pack(side="right",
+                                                            expand=True)

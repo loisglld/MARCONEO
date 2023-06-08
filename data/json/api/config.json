@@ -3,7 +3,15 @@
         {
             "id": 4,
             "name": "gouter",
-            "products": []
+            "products": [
+                {
+                    "id": 8,
+                    "name": "oui",
+                    "slug": "szdevf",
+                    "price": "0.03",
+                    "color": "#a72a2a"
+                }
+            ]
         },
         {
             "id": 1,

@@ -50,3 +50,10 @@ class SettingsMenu(AppFrame):
                 items = menu["products"]
                 break
         return items
+
+    def refresh(self):
+        """
+        Refreshes the settings page.
+        """
+        self.gui.app.config.api_config.setup_jsons()
+        self.right_grid.body.update_body(self.left_grid.navbar.current_toggle)
