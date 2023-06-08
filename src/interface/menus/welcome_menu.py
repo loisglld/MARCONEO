@@ -77,9 +77,9 @@ class WelcomeMenu(AppFrame):
         Changes the menu to the main menu.
         """
         if self.gui.app.config.name == "custom":
-            self.gui.app.config.load("default")
+            self.gui.app.config.load(self.gui.app.config.DEFAULT)
             self.switch_config_btn.config(text="DEFAULT")
-        else:
-            self.gui.app.config.load("custom")
+        elif self.gui.app.config.name == "default":
+            self.gui.app.config.load(self.gui.app.config.CUSTOM)
             self.switch_config_btn.config(text="CUSTOM")
         self.gui.loggers.log.info("Config switched to " + self.gui.app.config.name)

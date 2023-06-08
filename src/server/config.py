@@ -22,6 +22,7 @@ class Config:
     Stores the configuration data of the application.
     """
     DEFAULT = "default"
+    CUSTOM = "custom"
     def __init__(self, app) -> None:
         """
         Reads the json file (./config.json).
@@ -33,43 +34,41 @@ class Config:
         self.loggers = app.loggers
         self.app = app
 
-        self.base_config = None
-        self.name = self.DEFAULT
-
         self.api_config = APIJsons(app)
-        self.json = {}
+        self.default_config = self.load(self.DEFAULT)
+        self.name = self.DEFAULT
+        self.loaded_config = {}
+        self.initial_config = {}
 
-        self.load(self.DEFAULT)
-
-    def load(self, file_name:str=None) -> None:
+    def load(self, file_name:str=None) -> dict:
         """
-        Loads the config.json file.
+        Loads the json file onto loaded_config and copies it to initial_config.
+        Returns a dictionary containing the json file data.
         """
         if file_name is None:
-            return
-
-        self.name = file_name
-
+            return {}
+        dictionary = {}
         with open(os.path.join(os.getcwd(),"data","json", f"{file_name}.json"),
                   'r',
                   encoding="utf-8") as file:
             json_content = file.read()
-
         try:
-            self.json.update(json.loads(json_content, parse_float=decimal.Decimal))
+            dictionary.update(json.loads(json_content, parse_float=decimal.Decimal))
         except json.JSONDecodeError as decode_err:
             self.loggers.log.warning("Error while parsing the config.json file at line %s",
                                      decode_err.lineno)
             self.app.close()
 
-        # Save the default config to be able to reset the config
-        self.base_config = self.json.copy()
+        self.name = file_name
+        self.loaded_config = dictionary.copy()
+        self.initial_config = self.loaded_config.copy()
+        return dictionary
 
     def change_price(self, toggle, item_name, new_price):
         """
         Changes the price of an item.
         """
-        items = self.json["Shopping"][toggle]['items']
+        items = self.loaded_config["Shopping"][toggle]['items']
         for index, item in enumerate(items):
             if item['name'] == item_name:
                 items[index]['price'] = decimal.Decimal(new_price)

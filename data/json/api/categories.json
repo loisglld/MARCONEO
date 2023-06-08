@@ -1,10 +1,6 @@
 {
     "product_type": [
         {
-            "id": 4,
-            "type": "gouter"
-        },
-        {
             "id": 1,
             "type": "midi"
         },

@@ -18,9 +18,8 @@ class Navbar(Frame):
     def __init__(self, left_grid=None):
         super().__init__(left_grid)
         self.manager = left_grid
-        self.current_toggle = "Party"
-        self.party_btn = None
-        self.categories = list(self.manager.manager.gui.app.config.json.keys())
+        self.categories = list(self.manager.manager.gui.app.config.loaded_config.keys())
+        self.current_toggle = self.categories[0]
 
         self.propagate(False)
         self.configure(bg="black")
@@ -30,12 +29,15 @@ class Navbar(Frame):
         """
         Defines the buttons used in the menu.
         """
+        buttons = []
         for menu in self.categories:
             button = AppButton(self, text=menu, command=lambda menu=menu: self.toggle(menu))
             setattr(self, f"{menu.lower()}_btn", button)
             button.pack(fill="both", expand=True, side="top", padx=10, pady=10)
+            buttons.append(button)
 
-        self.party_btn.configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
+        if buttons:
+            buttons[0].configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
         self.back_btn = AppButton(self, text="Back",
                                   command=lambda: self.manager.manager.gui.change_menu(
                                       self.manager.manager.gui.main_menu))
