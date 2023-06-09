@@ -63,7 +63,7 @@ class Config:
         Setup the custom config.
         """
         if os.path.exists(os.path.join(os.getcwd(),"data","json", "custom.json")):
-            self.check_difference_with_config_api()
+            self.custom_config = self.check_difference_with_config_api()
             return
 
         self.custom_config = self.load("config", api=1)
@@ -166,7 +166,6 @@ class Config:
 
         custom_products = []
         for custom_product_type in custom_config:
-            print(custom_product_type["products"])
             custom_products += [{product["name"]: custom_product_type["product_type"]}
                                 for product in custom_product_type["products"]]
 
@@ -178,9 +177,14 @@ class Config:
         # Difference between the two lists
         to_add_to_custom = [item for item in config_products if item not in custom_products]
 
-        print(to_add_to_custom)
+
+        # Add the selected bool parameter to the custom config
+        for items in custom_config:
+            for product in items["products"]:
+                product["selected"] = False
 
         self.add_to_custom(config_api, custom_config, to_add_to_custom)
+        return custom_config
 
     def add_to_custom(self, config_api, custom_config, to_add_to_custom) -> None:
         """

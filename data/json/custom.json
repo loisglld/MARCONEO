@@ -1,24 +1,32 @@
 {
     "data": [
         {
-            "id": 3,
-            "product_type": "CharcutFromage",
+            "id": 2,
+            "product_type": "Soir\u00e9e",
             "products": [
                 {
-                    "id": 6,
-                    "name": "charcuterie",
-                    "slug": "charcuterie",
-                    "price": "4.40",
-                    "color": "#7b6d02",
-                    "selected": false
+                    "id": 1,
+                    "name": "cocktail12",
+                    "slug": "cocktail12",
+                    "price": "1.20",
+                    "color": "#a6ba42",
+                    "selected": true
                 },
                 {
-                    "id": 7,
-                    "name": "fromage",
-                    "slug": "fromage",
-                    "price": "3.00",
-                    "color": "#55a991",
-                    "selected": false
+                    "id": 2,
+                    "name": "cocktail16",
+                    "slug": "cocktail16",
+                    "price": "1.60",
+                    "color": "#6fa5a7",
+                    "selected": true
+                },
+                {
+                    "id": 3,
+                    "name": "meteor",
+                    "slug": "meteor",
+                    "price": "1.20",
+                    "color": "#6f8949",
+                    "selected": true
                 }
             ]
         },
@@ -37,23 +45,23 @@
             ]
         },
         {
-            "id": 1,
-            "product_type": "Midi",
+            "id": 3,
+            "product_type": "CharcutFromage",
             "products": [
                 {
-                    "id": 4,
-                    "name": "pizza",
-                    "slug": "pizza",
-                    "price": "2.60",
-                    "color": "#336909",
-                    "selected": false
+                    "id": 6,
+                    "name": "charcuterie",
+                    "slug": "charcuterie",
+                    "price": "4.40",
+                    "color": "#7b6d02",
+                    "selected": true
                 },
                 {
-                    "id": 5,
-                    "name": "sandwich",
-                    "slug": "sandwich",
-                    "price": "2.00",
-                    "color": "#adc397",
+                    "id": 7,
+                    "name": "fromage",
+                    "slug": "fromage",
+                    "price": "3.00",
+                    "color": "#55a991",
                     "selected": false
                 }
             ]
@@ -73,6 +81,28 @@
             ]
         },
         {
+            "id": 1,
+            "product_type": "Midi",
+            "products": [
+                {
+                    "id": 4,
+                    "name": "pizza",
+                    "slug": "pizza",
+                    "price": "2.60",
+                    "color": "#336909",
+                    "selected": true
+                },
+                {
+                    "id": 5,
+                    "name": "sandwich",
+                    "slug": "sandwich",
+                    "price": "2.00",
+                    "color": "#adc397",
+                    "selected": false
+                }
+            ]
+        },
+        {
             "id": 5,
             "product_type": "Shots",
             "products": [
@@ -82,36 +112,6 @@
                     "slug": "metre",
                     "price": "1.20",
                     "color": "#a88d78",
-                    "selected": false
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "product_type": "Soir\u00e9e",
-            "products": [
-                {
-                    "id": 1,
-                    "name": "cocktail12",
-                    "slug": "cocktail12",
-                    "price": "1.20",
-                    "color": "#a6ba42",
-                    "selected": false
-                },
-                {
-                    "id": 2,
-                    "name": "cocktail16",
-                    "slug": "cocktail16",
-                    "price": "1.60",
-                    "color": "#6fa5a7",
-                    "selected": false
-                },
-                {
-                    "id": 3,
-                    "name": "meteor",
-                    "slug": "meteor",
-                    "price": "1.20",
-                    "color": "#6f8949",
                     "selected": false
                 }
             ]

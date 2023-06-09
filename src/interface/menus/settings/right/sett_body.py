@@ -26,25 +26,16 @@ class SettBody(Frame):
 
         self.update_body(self.settings_manager.left_grid.navbar.current_toggle)
 
-    def display_items(self, items, toggle) -> None:
+    def display_items(self, items) -> None:
         """
         Displays the items in the shop.
 
         Dynamically creates the ShopItem objects.
         """
         row, column = 0, 0
-        selected = False
         for item in items:
             name = item["name"]
-
-            # Check if the item is already selected
-            for product_type in self.settings_manager.gui.app.config.custom_config:
-                if product_type == toggle:
-                    for product in product_type["products"]:
-                        if product["name"] == name:
-                            selected = product["selected"]
-
-            item_frame = SettItem(self, name, selected)
+            item_frame = SettItem(self, name, self.is_selected(name))
             item_frame.grid(row=row, column=column, padx=30, pady=30, sticky="nsew")
             # Actualise the grid
             self.grid_columnconfigure(column, weight=1)
@@ -61,7 +52,7 @@ class SettBody(Frame):
         """
         self.clear_body()
         items_to_display = self.settings_manager.retrieve_settings_items(toggle)
-        self.display_items(items_to_display, toggle)
+        self.display_items(items_to_display)
 
     def clear_body(self) -> None:
         """
@@ -74,18 +65,19 @@ class SettBody(Frame):
         """
         Returns the selected items.
         """
+        #print(self.settings_manager.gui.app.config.custom_config)
         selected_items = []
+        for prod_type in self.settings_manager.gui.app.config.custom_config:
+            for product in prod_type["products"]:
+                if product["selected"]:
+                    selected_items.append(product)
 
-        # Add already selected items
-        for product_type in self.settings_manager.gui.app.config.custom_config:
-            for item in product_type["products"]:
-                selected_items.append(item["name"])
-
-        # Add new items
-        for child in self.winfo_children():
-            if child.selected:
-                selected_items.append(child.name)
-
-        selected_items = list(set(selected_items))
-        print(selected_items)
-        return selected_items
+    def is_selected(self, name:str=None) -> bool:
+        """
+        Returns True if the item is selected, else False.
+        """
+        for prod_type in self.settings_manager.gui.app.config.custom_config:
+            for product in prod_type["products"]:
+                if product["name"] == name:
+                    return product["selected"]
+        return None

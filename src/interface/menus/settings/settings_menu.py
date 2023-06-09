@@ -62,25 +62,5 @@ class SettingsMenu(AppFrame):
         """
         Saves the settings page's selections to the custom json file.
         """
-        custom_data = []
         custom_items_list = self.right_grid.body.get_selected_items()
-        for item_names in custom_items_list:
-            for item in self.gui.app.config.api_config.config_json:
-                for product in item["products"]:
-                    if product["name"] == item_names:
-                        # Vérifier si le type de produit existe déjà dans custom_data
-                        product_type_exists = False
-                        for custom_item in custom_data:
-                            if custom_item["product_type"] == item["product_type"]:
-                                custom_item["products"].append(product)
-                                product_type_exists = True
-                                break
-                        if not product_type_exists:
-                            custom_item = {
-                                "id": item["id"],
-                                "product_type": item["product_type"],
-                                "products": [product]
-                            }
-                            custom_data.append(custom_item)
-
-        self.gui.app.config.update_custom_file(custom_data)
+        return custom_items_list
