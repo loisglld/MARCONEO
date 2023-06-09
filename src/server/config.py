@@ -43,7 +43,7 @@ class Config:
         self.setup_custom()
         self.default_config = self.load(self.DEFAULT)
 
-    def generate_json(self, name,  json_retrieved:json, api:bool=0) -> bool:
+    def generate_json(self, name, json_retrieved:json, api:bool=0) -> bool:
         """
         Generate a json file corresponding
         to the request response given.
@@ -63,8 +63,16 @@ class Config:
         Setup the custom config.
         """
         if not os.path.exists(os.path.join(os.getcwd(),"data","json", "custom.json")):
-            self.generate_json("custom", json.loads("{'custom':{}}"))
-        self.custom_config = self.load("custom")
+            self.generate_json("custom", json.loads('{"data":[]}'))
+
+        self.custom_config = self.load("config", api=1)
+
+        # Add the selected bool parameter to the custom config
+        for items in self.custom_config:
+            for product in items["products"]:
+                product["selected"] = False
+
+        self.generate_json("custom", self.custom_config, api=0)
         self.cat_refill(self.custom_config)
 
     def load(self, file_name:str=None, api:bool=0) -> dict:
@@ -125,3 +133,14 @@ class Config:
         Returns the categories of the loaded config.
         """
         return [product_type["product_type"] for product_type in self.loaded_config]
+
+    def update_custom_file(self, list_of_items) -> None:
+        """
+        Adds every selected item to the custom config json.
+        """
+        self.custom_config = list_of_items
+        json_created = {"data": self.custom_config}
+        with open(os.path.join(os.getcwd(),"data","json", "custom.json"),
+                  'w',
+                  encoding="utf-8") as file:
+            file.write(json.dumps(json_created, indent=4))
