@@ -1,118 +1,120 @@
-[
-    {
-        "id": 3,
-        "product_type": "CharcutFromage",
-        "products": [
-            {
-                "id": 6,
-                "name": "charcuterie",
-                "slug": "charcuterie",
-                "price": "4.40",
-                "color": "#J27WhS",
-                "selected": false
-            },
-            {
-                "id": 7,
-                "name": "fromage",
-                "slug": "fromage",
-                "price": "3.00",
-                "color": "#zvA9kN",
-                "selected": false
-            }
-        ]
-    },
-    {
-        "id": 6,
-        "product_type": "Go\u00fbter",
-        "products": [
-            {
-                "id": 9,
-                "name": "cookies",
-                "slug": "cookies",
-                "price": "2.20",
-                "color": "#4aR0Fv",
-                "selected": false
-            }
-        ]
-    },
-    {
-        "id": 1,
-        "product_type": "Midi",
-        "products": [
-            {
-                "id": 4,
-                "name": "pizza",
-                "slug": "pizza",
-                "price": "2.60",
-                "color": "#blyL2x",
-                "selected": false
-            },
-            {
-                "id": 5,
-                "name": "sandwich",
-                "slug": "sandwich",
-                "price": "2.00",
-                "color": "#d2gJRv",
-                "selected": false
-            }
-        ]
-    },
-    {
-        "id": 4,
-        "product_type": "Oeno",
-        "products": [
-            {
-                "id": 8,
-                "name": "bordeaux",
-                "slug": "bordeaux",
-                "price": "1.60",
-                "color": "#DvhobK",
-                "selected": false
-            }
-        ]
-    },
-    {
-        "id": 5,
-        "product_type": "Shots",
-        "products": [
-            {
-                "id": 10,
-                "name": "metre",
-                "slug": "metre",
-                "price": "1.20",
-                "color": "#etAyVY",
-                "selected": false
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "product_type": "Soir\u00e9e",
-        "products": [
-            {
-                "id": 1,
-                "name": "cocktail12",
-                "slug": "cocktail12",
-                "price": "1.20",
-                "color": "#MbMhjG",
-                "selected": false
-            },
-            {
-                "id": 2,
-                "name": "cocktail16",
-                "slug": "cocktail16",
-                "price": "1.60",
-                "color": "#sMM8rH",
-                "selected": false
-            },
-            {
-                "id": 3,
-                "name": "meteor",
-                "slug": "meteor",
-                "price": "1.20",
-                "color": "#kF4FJ5",
-                "selected": false
-            }
-        ]
-    }
-]
+{
+    "data": [
+        {
+            "id": 3,
+            "product_type": "CharcutFromage",
+            "products": [
+                {
+                    "id": 6,
+                    "name": "charcuterie",
+                    "slug": "charcuterie",
+                    "price": "4.40",
+                    "color": "#7b6d02",
+                    "selected": false
+                },
+                {
+                    "id": 7,
+                    "name": "fromage",
+                    "slug": "fromage",
+                    "price": "3.00",
+                    "color": "#55a991",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "product_type": "Go\u00fbter",
+            "products": [
+                {
+                    "id": 9,
+                    "name": "cookies",
+                    "slug": "cookies",
+                    "price": "2.20",
+                    "color": "#175a89",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "product_type": "Midi",
+            "products": [
+                {
+                    "id": 4,
+                    "name": "pizza",
+                    "slug": "pizza",
+                    "price": "2.60",
+                    "color": "#336909",
+                    "selected": false
+                },
+                {
+                    "id": 5,
+                    "name": "sandwich",
+                    "slug": "sandwich",
+                    "price": "2.00",
+                    "color": "#adc397",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "product_type": "Oeno",
+            "products": [
+                {
+                    "id": 8,
+                    "name": "bordeaux",
+                    "slug": "bordeaux",
+                    "price": "1.60",
+                    "color": "#92948e",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "product_type": "Shots",
+            "products": [
+                {
+                    "id": 10,
+                    "name": "metre",
+                    "slug": "metre",
+                    "price": "1.20",
+                    "color": "#a88d78",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "product_type": "Soir\u00e9e",
+            "products": [
+                {
+                    "id": 1,
+                    "name": "cocktail12",
+                    "slug": "cocktail12",
+                    "price": "1.20",
+                    "color": "#a6ba42",
+                    "selected": false
+                },
+                {
+                    "id": 2,
+                    "name": "cocktail16",
+                    "slug": "cocktail16",
+                    "price": "1.60",
+                    "color": "#6fa5a7",
+                    "selected": false
+                },
+                {
+                    "id": 3,
+                    "name": "meteor",
+                    "slug": "meteor",
+                    "price": "1.20",
+                    "color": "#6f8949",
+                    "selected": false
+                }
+            ]
+        }
+    ]
+}
