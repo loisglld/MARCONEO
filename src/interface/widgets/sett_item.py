@@ -46,12 +46,14 @@ class SettItem(Frame):
         Select the item.
         Its background color changes.
         """
+        print("selected before click: ", self.selected)
         custom_config = self.manager.settings_manager.gui.app.config.custom_config
         if self.selected:
             for prod_type in custom_config:
                 for prod in prod_type["products"]:
                     if prod["name"] == self.name:
                         prod["selected"] = False
+            self.selected = False
             self.configure(bg="#333333")
         else:
             for prod_type in custom_config:
@@ -59,5 +61,7 @@ class SettItem(Frame):
                     if prod["name"] == self.name:
                         prod["selected"] = True
             self.configure(bg="#00ff00")
+            self.selected = True
+
         data_custom = {"data": custom_config}
         self.manager.settings_manager.gui.app.config.generate_json("custom", data_custom)

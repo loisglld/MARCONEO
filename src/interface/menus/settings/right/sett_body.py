@@ -61,17 +61,6 @@ class SettBody(Frame):
         for child in self.winfo_children():
             child.destroy()
 
-    def get_selected_items(self) -> list:
-        """
-        Returns the selected items.
-        """
-        #print(self.settings_manager.gui.app.config.custom_config)
-        selected_items = []
-        for prod_type in self.settings_manager.gui.app.config.custom_config:
-            for product in prod_type["products"]:
-                if product["selected"]:
-                    selected_items.append(product)
-
     def is_selected(self, name:str=None) -> bool:
         """
         Returns True if the item is selected, else False.

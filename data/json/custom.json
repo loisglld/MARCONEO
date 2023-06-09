@@ -10,7 +10,7 @@
                     "slug": "cocktail12",
                     "price": "1.20",
                     "color": "#a6ba42",
-                    "selected": true
+                    "selected": false
                 },
                 {
                     "id": 2,
@@ -18,7 +18,7 @@
                     "slug": "cocktail16",
                     "price": "1.60",
                     "color": "#6fa5a7",
-                    "selected": true
+                    "selected": false
                 },
                 {
                     "id": 3,
@@ -26,7 +26,7 @@
                     "slug": "meteor",
                     "price": "1.20",
                     "color": "#6f8949",
-                    "selected": true
+                    "selected": false
                 }
             ]
         },
@@ -62,7 +62,7 @@
                     "slug": "fromage",
                     "price": "3.00",
                     "color": "#55a991",
-                    "selected": false
+                    "selected": true
                 }
             ]
         },
@@ -76,7 +76,7 @@
                     "slug": "bordeaux",
                     "price": "1.60",
                     "color": "#92948e",
-                    "selected": false
+                    "selected": true
                 }
             ]
         },
@@ -90,7 +90,7 @@
                     "slug": "pizza",
                     "price": "2.60",
                     "color": "#336909",
-                    "selected": true
+                    "selected": false
                 },
                 {
                     "id": 5,

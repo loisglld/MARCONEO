@@ -29,6 +29,6 @@ class SettHeader(Frame):
         AppButton(self, text="Refresh",
                   command=self.manager.manager.refresh).pack(side="right",
                                                             expand=True)
-        AppButton(self, text="Save",
-                    command=self.manager.manager.save).pack(side="right",
+        AppButton(self, text="Reset selection",
+                    command=self.manager.manager.reset_modifications).pack(side="right",
                                                             expand=True)
