@@ -14,12 +14,14 @@ class SettItem(Frame):
     """
     Describes an item that can be selected or not in the settings.
     """
-    def __init__(self, manager:Frame=None, name:str=None, selected:bool=False) -> None:
+    def __init__(self, manager:Frame=None, name:str=None,
+                 selected:bool=False, color:str="gold") -> None:
         super().__init__(manager)
         self.manager = manager
         self.name = name
         self.selected = selected
-        self.configure(bg="#333333")
+        self.default_color = color
+        self.configure(bg=color)
         self.propagate(False)
 
         self.setup_container()
@@ -54,13 +56,13 @@ class SettItem(Frame):
                     if prod["name"] == self.name:
                         prod["selected"] = False
             self.selected = False
-            self.configure(bg="#333333")
+            self.configure(bg=self.default_color)
         else:
             for prod_type in custom_config:
                 for prod in prod_type["products"]:
                     if prod["name"] == self.name:
                         prod["selected"] = True
-            self.configure(bg="#00ff00")
+            self.configure(bg="#00cc00")
             self.selected = True
 
         data_custom = {"data": custom_config}

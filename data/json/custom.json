@@ -76,7 +76,7 @@
                     "slug": "bordeaux",
                     "price": "1.60",
                     "color": "#92948e",
-                    "selected": true
+                    "selected": false
                 }
             ]
         },

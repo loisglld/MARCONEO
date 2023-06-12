@@ -12,7 +12,6 @@ from src.utils.gui_utils import Frame, Label
 
 #-------------------------------------------------------------------#
 
-
 class ShoppingMenu(Frame):
     """
     Menu for the shopping page.
