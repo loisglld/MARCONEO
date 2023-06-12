@@ -134,7 +134,10 @@ class Config:
         """
         Returns the categories of the loaded config.
         """
-        return  [product_type["product_type"] for product_type in self.loaded_config if any(product["selected"] for product in product_type["products"])]
+        if self.name == self.DEFAULT:
+            return [product_type["product_type"] for product_type in self.loaded_config]
+        return  [product_type["product_type"] for product_type in self.loaded_config
+                 if any(product["selected"] for product in product_type["products"])]
 
     def update_custom_file(self, list_of_items) -> None:
         """

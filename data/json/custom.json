@@ -10,7 +10,7 @@
                     "slug": "cocktail12",
                     "price": "1.20",
                     "color": "#a6ba42",
-                    "selected": true
+                    "selected": false
                 },
                 {
                     "id": 2,
@@ -18,7 +18,7 @@
                     "slug": "cocktail16",
                     "price": "1.60",
                     "color": "#6fa5a7",
-                    "selected": true
+                    "selected": false
                 },
                 {
                     "id": 3,
@@ -26,7 +26,7 @@
                     "slug": "meteor",
                     "price": "1.20",
                     "color": "#6f8949",
-                    "selected": true
+                    "selected": false
                 }
             ]
         },
@@ -54,7 +54,7 @@
                     "slug": "charcuterie",
                     "price": "4.40",
                     "color": "#7b6d02",
-                    "selected": true
+                    "selected": false
                 },
                 {
                     "id": 7,
@@ -62,7 +62,7 @@
                     "slug": "fromage",
                     "price": "3.00",
                     "color": "#55a991",
-                    "selected": true
+                    "selected": false
                 }
             ]
         },
@@ -112,7 +112,7 @@
                     "slug": "metre",
                     "price": "1.20",
                     "color": "#a88d78",
-                    "selected": true
+                    "selected": false
                 }
             ]
         }
