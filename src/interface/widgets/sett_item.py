@@ -48,7 +48,6 @@ class SettItem(Frame):
         Select the item.
         Its background color changes.
         """
-        print("selected before click: ", self.selected)
         custom_config = self.manager.settings_manager.gui.app.config.custom_config
         if self.selected:
             for prod_type in custom_config:

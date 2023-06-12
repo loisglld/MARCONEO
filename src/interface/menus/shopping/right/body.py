@@ -35,8 +35,9 @@ class Body(Frame):
         row, column = 0, 0
         custom_bool = self.shopping_manager.gui.app.config.name == "custom"
         for item in items:
-            if not item["selected"] and custom_bool:
-                continue
+            if custom_bool:
+                if not item["selected"]:
+                    continue
             name = item["name"]
             price = item["price"]
             setattr(self, f"{name}_item", ShopItem(name, price, self))

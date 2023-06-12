@@ -40,7 +40,7 @@
                     "slug": "cookies",
                     "price": "2.20",
                     "color": "#175a89",
-                    "selected": false
+                    "selected": true
                 }
             ]
         },
@@ -62,7 +62,7 @@
                     "slug": "fromage",
                     "price": "3.00",
                     "color": "#55a991",
-                    "selected": true
+                    "selected": false
                 }
             ]
         },
