@@ -26,7 +26,7 @@ class SettBody(Frame):
 
         self.update_body(self.settings_manager.left_grid.navbar.current_toggle)
 
-    def display_items(self, items):
+    def display_items(self, items) -> None:
         """
         Displays the items in the shop.
 
@@ -35,7 +35,7 @@ class SettBody(Frame):
         row, column = 0, 0
         for item in items:
             name = item["name"]
-            item_frame = SettItem(self, name).container
+            item_frame = SettItem(self, name, self.is_selected(name))
             item_frame.grid(row=row, column=column, padx=30, pady=30, sticky="nsew")
             # Actualise the grid
             self.grid_columnconfigure(column, weight=1)
@@ -46,7 +46,7 @@ class SettBody(Frame):
                 column = 0
                 row += 1
 
-    def update_body(self, toggle):
+    def update_body(self, toggle) -> None:
         """
         Updates the items displayed in the body.
         """
@@ -54,9 +54,19 @@ class SettBody(Frame):
         items_to_display = self.settings_manager.retrieve_settings_items(toggle)
         self.display_items(items_to_display)
 
-    def clear_body(self):
+    def clear_body(self) -> None:
         """
         Clears the body.
         """
         for child in self.winfo_children():
             child.destroy()
+
+    def is_selected(self, name:str=None) -> bool:
+        """
+        Returns True if the item is selected, else False.
+        """
+        for prod_type in self.settings_manager.gui.app.config.custom_config:
+            for product in prod_type["products"]:
+                if product["name"] == name:
+                    return product["selected"]
+        return None

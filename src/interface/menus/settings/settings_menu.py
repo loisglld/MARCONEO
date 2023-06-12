@@ -57,3 +57,12 @@ class SettingsMenu(AppFrame):
         """
         self.gui.app.config.api_config.setup_jsons()
         self.right_grid.body.update_body(self.left_grid.navbar.current_toggle)
+
+    def reset_modifications(self) -> None:
+        """
+        Saves the settings page's selections to the custom json file.
+        """
+        for prod_type in self.gui.app.config.custom_config:
+            for product in prod_type["products"]:
+                product["selected"] = False
+        self.right_grid.body.update_body(self.left_grid.navbar.current_toggle)

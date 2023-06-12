@@ -66,11 +66,13 @@ class WelcomeMenu(AppFrame):
         Config are already loaded, so it just
         changes the menu.
         """
-        if self.gui.app.config.loaded_config == self.gui.app.config.custom_config:
-            # f there is only the refill menu, it means that the user didn't change anything.
+        self.gui.app.config.load(self.gui.app.config.name)
+        if self.gui.app.config.name == "custom":
+            # if there is only the refill menu, it means that the user didn't change anything.
             if len(self.gui.app.config.get_loaded_categories()) <= 1:
                 self.gui.loggers.log.warn("Config needs to be customed before loading it.")
                 return
+        self.gui.app.current_user.logout()
         self.gui.setup_menus()
         self.gui.change_menu(self.gui.main_menu)
 
@@ -80,9 +82,9 @@ class WelcomeMenu(AppFrame):
         Changes the menu to the main menu.
         """
         if self.gui.app.config.name == "custom":
-            self.gui.app.config.load(self.gui.app.config.DEFAULT)
+            self.gui.app.config.name = self.gui.app.config.DEFAULT
             self.switch_config_btn.config(text="DEFAULT")
         elif self.gui.app.config.name == "default":
-            self.gui.app.config.load(self.gui.app.config.CUSTOM)
+            self.gui.app.config.name = self.gui.app.config.CUSTOM
             self.switch_config_btn.config(text="CUSTOM")
         self.gui.loggers.log.info("Config switched to " + self.gui.app.config.name)

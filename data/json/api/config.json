@@ -1,157 +1,108 @@
 {
     "data": [
         {
-            "id": 14,
+            "id": 3,
             "product_type": "CharcutFromage",
             "products": [
                 {
-                    "id": 21,
+                    "id": 6,
                     "name": "charcuterie",
                     "slug": "charcuterie",
-                    "price": "1.50",
-                    "color": "#000000"
+                    "price": "4.40",
+                    "color": "#b35b54"
                 },
                 {
-                    "id": 22,
+                    "id": 7,
                     "name": "fromage",
                     "slug": "fromage",
-                    "price": "1.50",
-                    "color": "#000000"
+                    "price": "3.00",
+                    "color": "#4c1318"
                 }
             ]
         },
         {
-            "id": 13,
+            "id": 6,
             "product_type": "Go\u00fbter",
             "products": [
                 {
-                    "id": 25,
+                    "id": 9,
                     "name": "cookies",
                     "slug": "cookies",
-                    "price": "1.00",
-                    "color": "#000000"
-                },
-                {
-                    "id": 26,
-                    "name": "brownie",
-                    "slug": "brownie",
-                    "price": "0.40",
-                    "color": "#000000"
+                    "price": "2.20",
+                    "color": "#d5b404"
                 }
             ]
         },
         {
-            "id": 10,
+            "id": 1,
             "product_type": "Midi",
             "products": [
                 {
-                    "id": 15,
+                    "id": 4,
                     "name": "pizza",
                     "slug": "pizza",
                     "price": "2.60",
-                    "color": "#000000"
+                    "color": "#87e479"
                 },
                 {
-                    "id": 16,
-                    "name": "nouilles",
-                    "slug": "nouilles",
-                    "price": "1.00",
-                    "color": "#000000"
-                },
-                {
-                    "id": 17,
-                    "name": "plat",
-                    "slug": "plat",
-                    "price": "1.00",
-                    "color": "#000000"
-                },
-                {
-                    "id": 18,
-                    "name": "dessert",
-                    "slug": "dessert",
-                    "price": "0.50",
-                    "color": "#000000"
+                    "id": 5,
+                    "name": "sandwich",
+                    "slug": "sandwich",
+                    "price": "2.00",
+                    "color": "#35623b"
                 }
             ]
         },
         {
-            "id": 12,
+            "id": 4,
             "product_type": "Oeno",
             "products": [
                 {
-                    "id": 23,
-                    "name": "verre de vin",
-                    "slug": "verre de vin",
-                    "price": "2.00",
-                    "color": "#000000"
-                },
-                {
-                    "id": 24,
-                    "name": "vin bouteille",
-                    "slug": "vin bouteille",
-                    "price": "8.00",
-                    "color": "#000000"
+                    "id": 8,
+                    "name": "bordeaux",
+                    "slug": "bordeaux",
+                    "price": "1.60",
+                    "color": "#210433"
                 }
             ]
         },
         {
-            "id": 11,
+            "id": 5,
             "product_type": "Shots",
             "products": [
                 {
-                    "id": 19,
-                    "name": "shot",
-                    "slug": "shot",
-                    "price": "0.50",
-                    "color": "#000000"
-                },
-                {
-                    "id": 20,
-                    "name": "m\u00e8tre shot",
-                    "slug": "m\u00e8tre shot",
-                    "price": "4.00",
-                    "color": "#000000"
+                    "id": 10,
+                    "name": "metre",
+                    "slug": "metre",
+                    "price": "1.20",
+                    "color": "#8f62d0"
                 }
             ]
         },
         {
-            "id": 9,
+            "id": 2,
             "product_type": "Soir\u00e9e",
             "products": [
                 {
-                    "id": 10,
-                    "name": "bi\u00e8re12",
-                    "slug": "bi\u00e8re12",
-                    "price": "1.20",
-                    "color": "#000000"
-                },
-                {
-                    "id": 11,
-                    "name": "bi\u00e8re16",
-                    "slug": "bi\u00e8re16",
-                    "price": "1.60",
-                    "color": "#000000"
-                },
-                {
-                    "id": 12,
+                    "id": 1,
                     "name": "cocktail12",
                     "slug": "cocktail12",
                     "price": "1.20",
-                    "color": "#000000"
+                    "color": "#ca6af3"
                 },
                 {
-                    "id": 13,
+                    "id": 2,
                     "name": "cocktail16",
                     "slug": "cocktail16",
                     "price": "1.60",
-                    "color": "#000000"
+                    "color": "#9a08b1"
                 },
                 {
-                    "id": 14,
-                    "name": "bi\u00e8re bouteille",
-                    "slug": "bi\u00e8re bouteille",
-                    "price": "3.60",
-                    "color": "#000000"
+                    "id": 3,
+                    "name": "meteor",
+                    "slug": "meteor",
+                    "price": "1.20",
+                    "color": "#32d1da"
                 }
             ]
         }

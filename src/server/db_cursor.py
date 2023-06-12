@@ -7,6 +7,7 @@ related to the connexion to the database.
 
 #-------------------------------------------------------------------#
 
+import decimal
 import mysql.connector as mysql
 
 from src.utils.decorators import close_service, setup_service
@@ -29,6 +30,7 @@ class DBCursor:
         self.cursor = None
         self._logins = Logins()
         self.connect_to_db()
+        self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
 
     @setup_service(max_attempts=5)
     def connect_to_db(self) -> bool:
@@ -61,27 +63,26 @@ class DBCursor:
         if card_id < 0:
             return None
 
-        self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
 
-        self.cursor.execute("""SELECT first_name, last_name, nickname, card_id,\
-                            balance, isadmin, iscontributor
-                                FROM Member
-                                WHERE card_id = %s""", (card_id,))
+        self.cursor.execute("""SELECT id, first_name, last_name, nickname, card_number,\
+                            balance, admin, contributor
+                                FROM Members
+                                WHERE card_number = %s""", (card_id,))
 
         result = self.cursor.fetchone()
 
         if result is not None:
-            member_data = {'first_name': result[0],
-                            'last_name': result[1],
-                            'nickname': result[2],
-                            'card_id': result[3],
-                            'balance': result[4],
-                            'is_admin': result[5],
-                            'is_contributor': result[6]}
+            member_data = {'id':result[0],
+                            'first_name':result[1],
+                            'last_name':result[2],
+                            'nickname':result[3],
+                            'card_number':result[4],
+                            'balance':result[5],
+                            'admin':result[6],
+                            'contributor':result[7]}
             self.loggers.log.debug(f"Retrieving member {member_data['first_name']} (ID:{card_id})")
             return member_data
         self.loggers.log.warn(f"No member found with card ID {card_id}")
-        return None
 
     def update_balance(self, member:Member) -> None:
         """
@@ -90,11 +91,21 @@ class DBCursor:
         if member is None:
             return
 
-        self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
         print(f"Balance is {member.balance}")
-        self.cursor.execute("""UPDATE Member
+        self.cursor.execute("""UPDATE Members
                             SET balance = %s
-                            WHERE card_id = %s""", (member.balance, member.card_id))
+                            WHERE card_number = %s""", (member.balance, member.card_id))
         self.connection.commit()
 
         self.loggers.log.debug(f"Member {member.first_name} (ID:{member.card_id}) Balance: {member.balance}")
+
+    def send_order(self, id_product:int=None, id_member:int=None,
+                     price:decimal.Decimal=None, amount:int=None) -> None:
+        """
+        Sends a command to the database.
+        """
+        self.cursor.execute("""INSERT INTO Orders (id_product, id_member, price, amount)
+                               VALUES (%s, %s, %s, %s)
+                            """, (id_product, id_member, price*amount, amount))
+        self.connection.commit()
+        self.loggers.log.debug(f"Command sent to the database: {id_product}, {id_member}, {price}, {amount}")

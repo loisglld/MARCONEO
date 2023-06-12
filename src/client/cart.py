@@ -22,7 +22,15 @@ class Cart:
         """
         Adds an item to the cart.
         """
-        self.items.append(item)
+        item_name = list(item.keys())[0]
+        item_amount = item[item_name][0]
+        item_price = item[item_name][1]
+        for existing_item in self.items:
+            if item_name in existing_item:
+                existing_item[item_name] = (item_amount, item_price)
+                return
+
+        self.items.append({item_name: (item_amount, item_price)})
 
     def reset(self) -> None:
         """
