@@ -1,55 +1,22 @@
 {
     "data": [
         {
-            "id": 1,
-            "product_type": "Midi",
-            "products": [
-                {
-                    "id": 4,
-                    "name": "pizza",
-                    "slug": "pizza",
-                    "price": "2.60",
-                    "color": "#blyL2x"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "product_type": "Soir\u00e9e",
-            "products": [
-                {
-                    "id": 2,
-                    "name": "cocktail16",
-                    "slug": "cocktail16",
-                    "price": "1.60",
-                    "color": "#sMM8rH"
-                },
-                {
-                    "id": 1,
-                    "name": "cocktail12",
-                    "slug": "cocktail12",
-                    "price": "1.20",
-                    "color": "#MbMhjG"
-                }
-            ]
-        },
-        {
             "id": 3,
             "product_type": "CharcutFromage",
             "products": [
-                {
-                    "id": 7,
-                    "name": "fromage",
-                    "slug": "fromage",
-                    "price": "3.00",
-                    "color": "#zvA9kN"
-                },
                 {
                     "id": 6,
                     "name": "charcuterie",
                     "slug": "charcuterie",
                     "price": "4.40",
-                    "color": "#J27WhS"
+                    "color": "#e54e52"
+                },
+                {
+                    "id": 7,
+                    "name": "fromage",
+                    "slug": "fromage",
+                    "price": "3.00",
+                    "color": "#4f807d"
                 }
             ]
         },
@@ -62,7 +29,80 @@
                     "name": "cookies",
                     "slug": "cookies",
                     "price": "2.20",
-                    "color": "#4aR0Fv"
+                    "color": "#36cea8"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "product_type": "Midi",
+            "products": [
+                {
+                    "id": 4,
+                    "name": "pizza",
+                    "slug": "pizza",
+                    "price": "2.60",
+                    "color": "#b7c570"
+                },
+                {
+                    "id": 5,
+                    "name": "sandwich",
+                    "slug": "sandwich",
+                    "price": "2.00",
+                    "color": "#774807"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "product_type": "Oeno",
+            "products": [
+                {
+                    "id": 8,
+                    "name": "bordeaux",
+                    "slug": "bordeaux",
+                    "price": "1.60",
+                    "color": "#3421eb"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "product_type": "Shots",
+            "products": [
+                {
+                    "id": 10,
+                    "name": "metre",
+                    "slug": "metre",
+                    "price": "1.20",
+                    "color": "#232865"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "product_type": "Soir\u00e9e",
+            "products": [
+                {
+                    "id": 1,
+                    "name": "cocktail12",
+                    "slug": "cocktail12",
+                    "price": "1.20",
+                    "color": "#a96154"
+                },
+                {
+                    "id": 2,
+                    "name": "cocktail16",
+                    "slug": "cocktail16",
+                    "price": "1.60",
+                    "color": "#d167d9"
+                },
+                {
+                    "id": 3,
+                    "name": "meteor",
+                    "slug": "meteor",
+                    "price": "1.20",
+                    "color": "#fe7a80"
                 }
             ]
         }

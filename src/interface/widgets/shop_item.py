@@ -14,17 +14,18 @@ class ShopItem:
     """
     Describes an item that can be bought in the shop.
     """
-    def __init__(self, name, price, manager=None):
+    def __init__(self, name, price, manager=None, color:str="#333333"):
         """
         Item's constructor.
         """
+        self.color = color
         self.manager = manager
         self.cart = self.manager.manager.manager.gui.app.cart
         self.footer = self.manager.manager.footer
 
         # The container is a Frame.
         self.container = Frame(self.manager)
-        self.container.configure(bg="white")
+        self.container.configure(bg=self.color)
         self.container.propagate(False)
 
         self.name = name
