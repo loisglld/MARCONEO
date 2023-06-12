@@ -39,6 +39,19 @@ class Member:
         print(f"Current user: {self.first_name} {self.last_name} ({self.balance}€)")
         self.loggers.log.info(f"Current user: {self.first_name} {self.last_name}")
 
+    def logout(self) -> None:
+        """
+        Logs out the current user.
+        """
+        self.member_data = None
+        self.first_name = None
+        self.last_name = None
+        self.nickname = None
+        self.card_id = None
+        self.balance = None
+        self.is_admin = None
+        self.is_contributor = None
+
     def __str__(self) -> str:
         if self.member_data is None:
             return "No user is logged in."

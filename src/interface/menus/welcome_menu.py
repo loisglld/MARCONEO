@@ -72,6 +72,7 @@ class WelcomeMenu(AppFrame):
             if len(self.gui.app.config.get_loaded_categories()) <= 1:
                 self.gui.loggers.log.warn("Config needs to be customed before loading it.")
                 return
+        self.gui.app.current_user.logout()
         self.gui.setup_menus()
         self.gui.change_menu(self.gui.main_menu)
 

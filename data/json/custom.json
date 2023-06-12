@@ -40,7 +40,7 @@
                     "slug": "cookies",
                     "price": "2.20",
                     "color": "#175a89",
-                    "selected": true
+                    "selected": false
                 }
             ]
         },
@@ -54,7 +54,7 @@
                     "slug": "charcuterie",
                     "price": "4.40",
                     "color": "#7b6d02",
-                    "selected": true
+                    "selected": false
                 },
                 {
                     "id": 7,
