@@ -19,6 +19,7 @@ class Member:
         self.member_data = member_data
 
         if member_data is None:
+            self.id = None
             self.first_name = None
             self.last_name = None
             self.nickname = None
@@ -28,13 +29,14 @@ class Member:
             self.is_contributor = None
             return
 
+        self.id = member_data['id']
         self.first_name = member_data['first_name']
         self.last_name = member_data['last_name']
         self.nickname = member_data['nickname']
-        self.card_id = member_data['card_id']
+        self.card_id = member_data['card_number']
         self.balance = member_data['balance']
-        self.is_admin = member_data['is_admin']
-        self.is_contributor = member_data['is_contributor']
+        self.is_admin = member_data['admin']
+        self.is_contributor = member_data['contributor']
 
         print(f"Current user: {self.first_name} {self.last_name} ({self.balance}€)")
         self.loggers.log.info(f"Current user: {self.first_name} {self.last_name}")
@@ -43,6 +45,7 @@ class Member:
         """
         Logs out the current user.
         """
+        self.id = None
         self.member_data = None
         self.first_name = None
         self.last_name = None

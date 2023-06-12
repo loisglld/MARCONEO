@@ -6,6 +6,7 @@ Configures the items that can be bought in the shop.
 
 #-------------------------------------------------------------------#
 
+import decimal
 from src.utils.gui_utils import Frame, Label
 
 #-------------------------------------------------------------------#
@@ -14,7 +15,7 @@ class ShopItem:
     """
     Describes an item that can be bought in the shop.
     """
-    def __init__(self, name, price, manager=None, color:str="#333333"):
+    def __init__(self, name, price, id_product, manager=None, color:str="#333333"):
         """
         Item's constructor.
         """
@@ -29,7 +30,8 @@ class ShopItem:
         self.container.propagate(False)
 
         self.name = name
-        self.price = price
+        self.id_product = id_product
+        self.price = decimal.Decimal(price)
         self.amount = 0
 
         self.setup_container()
@@ -61,16 +63,17 @@ class ShopItem:
         """
         if self.manager.manager.manager.gui.app.current_user.card_id is None:
             return
-        # Self's modification
+
+        # Cart's modification
         self.amount += 1
+        self.cart.add_to_cart({self.id_product: (self.amount, self.price)})
+        self.cart.total += self.price
+
         # Body's modification
         self.amount_label.configure(text=self.amount)
-        # Cart's modification
-        if not self in self.cart.items:
-            self.cart.add_to_cart(self)
-        self.cart.total += self.price
+
         # Footer's modification
         self.footer.update_footer()
 
     def __repr__(self) -> str:
-        return f"{self.name} x{self.amount}"
+        return self.name

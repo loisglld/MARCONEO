@@ -39,7 +39,7 @@ class Body(Frame):
                 if not item["selected"]:
                     continue
             name = item["name"]
-            setattr(self, f"{name}_item", ShopItem(name, item["price"], self, item["color"]))
+            setattr(self, f"{name}_item", ShopItem(name, item["price"], item["id"], self, item["color"]))
             item_frame = getattr(self, f"{name}_item").container
             item_frame.grid(row=row, column=column, padx=10, pady=10, sticky="nsew")
             self.grid_columnconfigure(column, weight=1)

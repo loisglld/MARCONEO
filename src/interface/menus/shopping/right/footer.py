@@ -46,11 +46,9 @@ class Footer(Frame):
         """
         if not self.cart.total:
             return
-        self.cart.reset()
         self.update_footer()
         self.shopping_manager.right_grid.body.update_body(
             self.shopping_manager.left_grid.navbar.current_toggle)
-        self.loggers.log.debug("Cart has been reset.")
 
     def update_footer(self):
         """
@@ -75,7 +73,7 @@ class Footer(Frame):
         """
         Does the purchase.
         """
-        self.shopping_manager.gui.app.payment_service.commit_purchase()
+        self.shopping_manager.gui.app.payment_service.purchase()
         self.shopping_manager.right_grid.body.update_body(
             self.shopping_manager.left_grid.navbar.current_toggle)
         self.reset()
