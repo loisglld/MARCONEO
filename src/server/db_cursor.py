@@ -106,6 +106,6 @@ class DBCursor:
         """
         self.cursor.execute("""INSERT INTO Orders (id_product, id_member, price, amount)
                                VALUES (%s, %s, %s, %s)
-                            """, (id_product, id_member, price, amount))
+                            """, (id_product, id_member, price*amount, amount))
         self.connection.commit()
         self.loggers.log.debug(f"Command sent to the database: {id_product}, {id_member}, {price}, {amount}")
