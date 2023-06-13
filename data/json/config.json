@@ -1,0 +1,198 @@
+{
+    "data": [
+        {
+            "id": 3,
+            "product_type": "CharcutFromage",
+            "products": [
+                {
+                    "id": 6,
+                    "name": "charcuterie",
+                    "title": "charcuterie",
+                    "price": "4.40",
+                    "color": "#e1a7a2",
+                    "selected": false
+                },
+                {
+                    "id": 7,
+                    "name": "fromage",
+                    "title": "fromage",
+                    "price": "3.00",
+                    "color": "#1516f9",
+                    "selected": false
+                },
+                {
+                    "id": 15,
+                    "name": "eberga",
+                    "title": "bergaga",
+                    "price": "4.00",
+                    "color": "#8aff7a",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "product_type": "Go\u00fbter",
+            "products": [
+                {
+                    "id": 9,
+                    "name": "cookies",
+                    "title": "cookies",
+                    "price": "2.20",
+                    "color": "#df858a",
+                    "selected": false
+                },
+                {
+                    "id": 12,
+                    "name": "FEZFEFEF",
+                    "title": "doodoo",
+                    "price": "2.00",
+                    "color": "#00ffbf",
+                    "selected": false
+                },
+                {
+                    "id": 13,
+                    "name": "doowap",
+                    "title": "doodooo",
+                    "price": "12.00",
+                    "color": "#0011ff",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "product_type": "Midi",
+            "products": [
+                {
+                    "id": 4,
+                    "name": "pizza",
+                    "title": "pizza",
+                    "price": "2.60",
+                    "color": "#31b252",
+                    "selected": false
+                },
+                {
+                    "id": 5,
+                    "name": "sandwich",
+                    "title": "sandwich",
+                    "price": "2.00",
+                    "color": "#fc4665",
+                    "selected": false
+                },
+                {
+                    "id": 11,
+                    "name": "ses",
+                    "title": "ses",
+                    "price": "1.00",
+                    "color": "#000000",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "product_type": "Oeno",
+            "products": [
+                {
+                    "id": 8,
+                    "name": "bordeaux",
+                    "title": "bordeaux",
+                    "price": "1.60",
+                    "color": "#0c55ef",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "product_type": "Shots",
+            "products": [
+                {
+                    "id": 10,
+                    "name": "metre",
+                    "title": "metre",
+                    "price": "1.20",
+                    "color": "#463fbf",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "product_type": "Soir\u00e9e",
+            "products": [
+                {
+                    "id": 1,
+                    "name": "cocktail12",
+                    "title": "cocktail12",
+                    "price": "1.20",
+                    "color": "#ba70c9",
+                    "selected": false
+                },
+                {
+                    "id": 2,
+                    "name": "cocktail16",
+                    "title": "cocktail16",
+                    "price": "1.60",
+                    "color": "#b9def2",
+                    "selected": false
+                },
+                {
+                    "id": 3,
+                    "name": "meteor",
+                    "title": "meteor",
+                    "price": "1.20",
+                    "color": "#ad1cf5",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "product_type": "Rechargement",
+            "products": [
+                {
+                    "id": 2,
+                    "name": "one",
+                    "title": "one",
+                    "price": -1,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 3,
+                    "name": "five",
+                    "title": "five",
+                    "price": -5,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 4,
+                    "name": "ten",
+                    "title": "ten",
+                    "price": -10,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 5,
+                    "name": "twenty",
+                    "title": "twenty",
+                    "price": -20,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 6,
+                    "name": "fifty",
+                    "title": "fifty",
+                    "price": -50,
+                    "color": "#000000",
+                    "selected": true
+                }
+            ]
+        }
+    ]
+}

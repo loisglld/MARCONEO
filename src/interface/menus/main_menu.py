@@ -69,16 +69,20 @@ class MainMenu(AppFrame):
         Config are already loaded, so it just
         changes the menu.
         """
+        # Security check
         if self.gui.app.config is None:
             self.gui.app.loggers.log.warn("There is no config file loaded.")
             return
 
-        self.gui.app.config.load(self.gui.app.config.name)
-        if self.gui.app.config.name == "custom":
+        self.gui.app.config.update_loaded_config()
+        # Security check for custom config
+        if self.gui.app.config.name == self.gui.app.config.CUSTOM:
             # if there is only the refill menu, it means that the user didn't change anything.
-            if len(self.gui.app.config.get_loaded_categories()) <= 1:
+            if len(self.gui.app.config.get_custom_categories()) <= 1:
                 self.gui.loggers.log.warn("Config needs to be customed before loading it.")
                 return
+
+        # Fresh new start
         self.gui.app.current_user.logout()
         self.gui.shopping_menu = ShoppingMenu(self.gui)
         self.gui.change_menu(self.gui.shopping_menu)
@@ -87,12 +91,14 @@ class MainMenu(AppFrame):
         """
         Changes the menu to the main menu.
         """
-        if self.gui.app.config.name == "custom":
-            self.gui.app.config.name = self.gui.app.config.DEFAULT
-            self.switch_config_btn.config(text="DEFAULT")
-        elif self.gui.app.config.name == "default":
-            self.gui.app.config.name = self.gui.app.config.CUSTOM
-            self.switch_config_btn.config(text="CUSTOM")
+        custom = self.gui.app.config.CUSTOM
+        default = self.gui.app.config.DEFAULT
+        if self.gui.app.config.name == custom:
+            self.gui.app.config.name = default
+            self.switch_config_btn.config(text=default)
+        elif self.gui.app.config.name == default:
+            self.gui.app.config.name = custom
+            self.switch_config_btn.config(text=custom)
         self.gui.loggers.log.info("Config switched to " + self.gui.app.config.name)
 
     def history(self) -> True:

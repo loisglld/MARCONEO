@@ -22,7 +22,7 @@ class Config:
     Stores the configuration data of the application.
     """
     DEFAULT = "default"
-    CUSTOM = "custom"
+    CUSTOM = "config"
     def __init__(self, app) -> None:
         """
         Reads the json file (./config.json).
@@ -35,49 +35,25 @@ class Config:
         self.app = app
 
         self.api_config = APIJsons(self)
-        self.name = self.DEFAULT
         self.loaded_config = {}
         self.initial_config = {}
-        self.custom_config = {}
 
-        self.setup_custom()
+        # By default, the config is set to default.
+        self.name = self.DEFAULT
         self.default_config = self.load(self.DEFAULT)
 
-    def generate_json(self, name, json_retrieved:json, api:bool=0) -> bool:
+    def generate_json(self, name, json_retrieved:json) -> bool:
         """
         Generate a json file corresponding
         to the request response given.
         """
-        if api:
-            path = "api"
-        else:
-            path = ""
 
-        with open(os.path.join(os.getcwd(),"data","json", path, f"{name}.json"),
+        with open(os.path.join(os.getcwd(),"data","json", f"{name}.json"),
                   'w',
                   encoding="utf-8") as file:
             file.write(json.dumps(json_retrieved, indent=4))
 
-    def setup_custom(self) -> None:
-        """
-        Setup the custom config.
-        """
-        if os.path.exists(os.path.join(os.getcwd(),"data","json", "custom.json")):
-            self.custom_config = self.check_difference_with_config_api()
-            return
-
-        self.custom_config = self.load("config", api=1)
-
-        # Add the selected bool parameter to the custom config
-        for items in self.custom_config:
-            for product in items["products"]:
-                product["selected"] = False
-
-        custom_data = {"data": self.custom_config}
-        self.generate_json("custom", custom_data, api=0)
-        self.cat_refill(self.custom_config)
-
-    def load(self, file_name:str=None, api:bool=0) -> dict:
+    def load(self, file_name:str=None) -> dict:
         """
         Loads the json file onto loaded_config and copies it to initial_config.
         Returns a dictionary containing the json file data.
@@ -86,12 +62,7 @@ class Config:
             return {}
         dictionary = {}
 
-        if api:
-            path = "api"
-        else:
-            path = ""
-
-        with open(os.path.join(os.getcwd(),"data","json", path, f"{file_name}.json"),
+        with open(os.path.join(os.getcwd(),"data","json", f"{file_name}.json"),
                   'r',
                   encoding="utf-8") as file:
             json_content = file.read()
@@ -101,12 +72,24 @@ class Config:
             self.loggers.log.warning("Error while parsing the config.json file at line %s",
                                      decode_err.lineno)
             self.app.close()
-
-        self.name = file_name
-        self.loaded_config = dictionary["data"].copy()
-        self.cat_refill(self.loaded_config)
-        self.initial_config = self.loaded_config.copy()
         return dictionary["data"]
+
+    def update_custom_config(self, new_config:dict) -> None:
+        """
+        Updates the custom config.
+        """
+        self.api_config.config_json = new_config
+
+    def update_loaded_config(self) -> None:
+        """
+        Updates the loaded config.
+        """
+        match self.name:
+            case self.DEFAULT:
+                self.loaded_config = self.default_config
+            case self.CUSTOM:
+                self.loaded_config = self.api_config.config_json
+        self.initial_config = self.loaded_config.copy()
 
     def change_price(self, toggle, item_name, new_price):
         """
@@ -128,90 +111,29 @@ class Config:
             refill_content = file.read()
 
         refill_dict = json.loads(refill_content, parse_float=decimal.Decimal)
-        config.append(refill_dict['refill'])
+        config['data'].append(refill_dict['refill'])
 
-    def get_loaded_categories(self) -> list:
+    def get_custom_categories(self) -> list:
         """
         Returns the categories of the loaded config.
         """
-        if self.name == self.DEFAULT:
-            return [product_type["product_type"] for product_type in self.loaded_config]
-        return  [product_type["product_type"] for product_type in self.loaded_config
+        return [product_type["product_type"] for product_type in self.api_config.config_json
                  if any(product["selected"] for product in product_type["products"])]
 
-    def update_custom_file(self, list_of_items) -> None:
+    def get_product_types(self) -> list:
         """
-        Adds every selected item to the custom config json.
+        Returns the categories of the default config.
         """
-        self.custom_config = list_of_items
-        json_created = {"data": self.custom_config}
-        with open(os.path.join(os.getcwd(),"data","json", "custom.json"),
-                  'w',
-                  encoding="utf-8") as file:
-            file.write(json.dumps(json_created, indent=4))
+        match self.name:
+            case self.DEFAULT:
+                return [product_type["product_type"] for product_type in self.default_config]
+            case self.CUSTOM:
+                return self.get_custom_categories()
 
-    def check_difference_with_config_api(self) -> None:
+    def cat_selected_params(self, config) -> list:
         """
-        Checks if the custom config is different from the config api.
-        If it is, the custom config is updated.
+        Add the selected bool parameter to the custom config
         """
-        with open(os.path.join(os.getcwd(),"data", "json", "custom.json"),
-                  'r',
-                  encoding="utf-8") as file1, open(os.path.join(os.getcwd(),
-                                                                "data",
-                                                                "json",
-                                                                "api",
-                                                                "config.json"),
-                                                   'r',
-                                                   encoding="utf-8") as file2:
-            custom_config = json.load(file1)["data"]
-            config_api = json.load(file2)["data"]
-
-        custom_products = []
-        for custom_product_type in custom_config:
-            custom_products += [{product["name"]: custom_product_type["product_type"]}
-                                for product in custom_product_type["products"]]
-
-        config_products = []
-        for config_product_type in config_api:
-            config_products += [{product["name"]: config_product_type["product_type"]}
-                                for product in config_product_type["products"]]
-
-        # Difference between the two lists
-        to_add_to_custom = [item for item in config_products if item not in custom_products]
-
-
-        # Add the selected bool parameter to the custom config
-        for items in custom_config:
+        for items in config['data']:
             for product in items["products"]:
                 product["selected"] = False
-
-        self.add_to_custom(config_api, custom_config, to_add_to_custom)
-        return custom_config
-
-    def add_to_custom(self, config_api, custom_config, to_add_to_custom) -> None:
-        """
-        Adds to the custom json file the items
-        on the api it doesn't have.
-        """
-
-        # Adds the product inside custom config to the correct product_type
-        if to_add_to_custom:
-            for item_not_in_custom in to_add_to_custom:
-                item_to_add = {}
-                for prod_type in config_api:
-                    if prod_type["product_type"] == list(item_not_in_custom.values())[0]:
-                        for product in prod_type["products"]:
-                            if product["name"] == list(item_not_in_custom.keys())[0]:
-                                item_to_add = product
-                                break
-
-                for prod_type in custom_config:
-                    if item_not_in_custom[
-                        list(item_not_in_custom.keys())[0]] == prod_type["product_type"]:
-                        prod_type["products"].append(item_to_add)
-
-        with open(os.path.join(os.getcwd(),"data","json", "custom.json"),
-                  'w',
-                  encoding="utf-8") as file:
-            file.write(json.dumps({"data": custom_config}, indent=4))

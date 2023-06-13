@@ -33,7 +33,7 @@ class Body(Frame):
         Dynamically creates the ShopItem objects.
         """
         row, column = 0, 0
-        custom_bool = self.shopping_manager.gui.app.config.name == "custom"
+        custom_bool = self.shopping_manager.gui.app.config.name == self.shopping_manager.gui.app.config.CUSTOM
         for item in items:
             if custom_bool:
                 if not item["selected"]:

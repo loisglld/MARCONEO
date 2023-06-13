@@ -25,7 +25,7 @@ class APIJsons:
 
         self.setup_jsons()
 
-        self.categories = self.retrieve_categories()
+        self.categories = self.retrieve_categories(self.categories_json)
 
         self.loggers.log.info("API configurations files retrieved.")
 
@@ -42,21 +42,22 @@ class APIJsons:
             return {}
         return api_config_resp.json(parse_float=decimal.Decimal)
 
-    def retrieve_categories(self) -> list:
+    def retrieve_categories(self, config) -> list:
         """
         Retrieves the categories from the API.
         """
-        return [product_type["type"] for product_type in self.categories_json]
+        return [product_type["type"] for product_type in config]
 
     def setup_jsons(self) -> None:
         """
         Setup the jsons.
         """
-        self.config_manager.generate_json("config",
-                           self.get_api("https://bde-pprd.its-tps.fr/api/product"),
-                           api=1)
-        self.config_json = self.config_manager.load("config", api=1)
-        self.config_manager.generate_json("categories",
-                           self.get_api("https://bde-pprd.its-tps.fr/api/productType"),
-                           api=1)
-        self.categories_json = self.config_manager.load("categories", api=1)
+        config = self.get_api("https://bde-pprd.its-tps.fr/api/product")
+        self.config_manager.cat_selected_params(config)
+        self.config_manager.cat_refill(config)
+        self.config_manager.generate_json("config", config)
+        self.config_json = config['data']
+
+        config = self.get_api("https://bde-pprd.its-tps.fr/api/productType")
+        self.config_manager.generate_json("categories", config)
+        self.categories_json = config['data']

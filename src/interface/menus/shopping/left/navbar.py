@@ -18,8 +18,8 @@ class Navbar(Frame):
     def __init__(self, left_grid=None):
         super().__init__(left_grid)
         self.manager = left_grid
-        self.categories = self.manager.manager.gui.app.config.get_loaded_categories()
-        self.current_toggle = self.categories[0]
+        self.product_types = self.manager.manager.gui.app.config.get_product_types()
+        self.current_toggle = self.product_types[0]
 
         self.propagate(False)
         self.configure(bg="black")
@@ -30,7 +30,7 @@ class Navbar(Frame):
         Defines the buttons used in the menu.
         """
         buttons = []
-        for i, menu in enumerate(self.categories):
+        for i, menu in enumerate(self.product_types):
             button = AppButton(self, text=menu, command=lambda menu=menu: self.toggle(menu))
             setattr(self, f"btn{i}", button)
             button.pack(fill="both", expand=True, side="top", padx=10, pady=10)
@@ -54,7 +54,7 @@ class Navbar(Frame):
         self.manager.manager.right_grid.price_modifier.display_item_list()
 
         # Update button's colors
-        for i, menu in enumerate(self.categories):
+        for i, menu in enumerate(self.product_types):
             button = getattr(self, f"btn{i}")
             if menu == self.current_toggle:
                 button.configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color

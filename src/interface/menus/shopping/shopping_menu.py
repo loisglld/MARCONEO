@@ -36,14 +36,13 @@ class ShoppingMenu(Frame):
 
     def retrieve_shopping_items(self, product_type:str) -> list:
         """
-        Retrieves the items to display.
+        Retrieves the items to display for a product_type given.
         """
         products = []
         for objet in self.gui.app.config.loaded_config:
             if objet["product_type"] == product_type:
                 products = objet["products"]
         return products
-
 
     def refill_security(self):
         """

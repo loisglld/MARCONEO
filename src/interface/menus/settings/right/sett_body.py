@@ -34,8 +34,8 @@ class SettBody(Frame):
         """
         row, column = 0, 0
         for item in items:
-            name = item["name"]
-            item_frame = SettItem(self, name, self.is_selected(name))
+            name = item["title"]
+            item_frame = SettItem(self, name, self.is_selected(name), "red")
             item_frame.grid(row=row, column=column, padx=30, pady=30, sticky="nsew")
             # Actualise the grid
             self.grid_columnconfigure(column, weight=1)
@@ -65,7 +65,7 @@ class SettBody(Frame):
         """
         Returns True if the item is selected, else False.
         """
-        for prod_type in self.settings_manager.gui.app.config.custom_config:
+        for prod_type in self.settings_manager.gui.app.config.api_config.config_json:
             for product in prod_type["products"]:
                 if product["name"] == name:
                     return product["selected"]
