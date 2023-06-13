@@ -15,7 +15,7 @@ class ShopItem:
     """
     Describes an item that can be bought in the shop.
     """
-    def __init__(self, name, price, id_product, manager=None, color:str="#333333"):
+    def __init__(self, title, price, id_product, manager=None, color:str="#333333"):
         """
         Item's constructor.
         """
@@ -29,7 +29,7 @@ class ShopItem:
         self.container.configure(bg=self.color)
         self.container.propagate(False)
 
-        self.name = name
+        self.title = title
         self.id_product = id_product
         self.price = decimal.Decimal(price)
         self.amount = 0
@@ -42,7 +42,7 @@ class ShopItem:
         """
 
         # The name and the amount are labels inside the Frame.
-        self.name_label = Label(self.container, text=self.name)
+        self.name_label = Label(self.container, text=self.title)
         self.amount_label = Label(self.container, text=self.amount)
         self.price_label = Label(self.container, text=str(self.price)+"€")
 
@@ -76,4 +76,4 @@ class ShopItem:
         self.footer.update_footer()
 
     def __repr__(self) -> str:
-        return self.name
+        return self.title

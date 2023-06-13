@@ -6,7 +6,7 @@
             {
                 "id": 2,
                 "name": "one",
-                "slug": "one",
+                "title": "one",
                 "price": -1,
                 "color": "#000000",
                 "selected": true
@@ -14,7 +14,7 @@
             {
                 "id": 3,
                 "name": "five",
-                "slug": "five",
+                "title": "five",
                 "price": -5,
                 "color": "#000000",
                 "selected": true
@@ -22,7 +22,7 @@
             {
                 "id": 4,
                 "name": "ten",
-                "slug": "ten",
+                "title": "ten",
                 "price": -10,
                 "color": "#000000",
                 "selected": true
@@ -30,7 +30,7 @@
             {
                 "id": 5,
                 "name": "twenty",
-                "slug": "twenty",
+                "title": "twenty",
                 "price": -20,
                 "color": "#000000",
                 "selected": true
@@ -38,7 +38,7 @@
             {
                 "id": 6,
                 "name": "fifty",
-                "slug": "fifty",
+                "title": "fifty",
                 "price": -50,
                 "color": "#000000",
                 "selected": true

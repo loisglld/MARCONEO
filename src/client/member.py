@@ -19,7 +19,7 @@ class Member:
         self.member_data = member_data
 
         if member_data is None:
-            self.id = None
+            self.member_id = None
             self.first_name = None
             self.last_name = None
             self.nickname = None
@@ -29,7 +29,7 @@ class Member:
             self.is_contributor = None
             return
 
-        self.id = member_data['id']
+        self.member_id = member_data['id']
         self.first_name = member_data['first_name']
         self.last_name = member_data['last_name']
         self.nickname = member_data['nickname']
@@ -45,7 +45,7 @@ class Member:
         """
         Logs out the current user.
         """
-        self.id = None
+        self.member_id = None
         self.member_data = None
         self.first_name = None
         self.last_name = None

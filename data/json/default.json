@@ -7,14 +7,14 @@
                 {
                     "id": 6,
                     "name": "charcuterie",
-                    "slug": "charcuterie",
+                    "title": "charcuterie",
                     "price": "4.40",
                     "color": "#e54e52"
                 },
                 {
                     "id": 7,
                     "name": "fromage",
-                    "slug": "fromage",
+                    "title": "FROMETON",
                     "price": "3.00",
                     "color": "#4f807d"
                 }
@@ -27,7 +27,7 @@
                 {
                     "id": 9,
                     "name": "cookies",
-                    "slug": "cookies",
+                    "title": "cookies",
                     "price": "2.20",
                     "color": "#36cea8"
                 }
@@ -40,14 +40,14 @@
                 {
                     "id": 4,
                     "name": "pizza",
-                    "slug": "pizza",
+                    "title": "pizza",
                     "price": "2.60",
                     "color": "#b7c570"
                 },
                 {
                     "id": 5,
                     "name": "sandwich",
-                    "slug": "sandwich",
+                    "title": "sandwich",
                     "price": "2.00",
                     "color": "#774807"
                 }
@@ -60,7 +60,7 @@
                 {
                     "id": 8,
                     "name": "bordeaux",
-                    "slug": "bordeaux",
+                    "title": "bordeaux",
                     "price": "1.60",
                     "color": "#3421eb"
                 }
@@ -73,7 +73,7 @@
                 {
                     "id": 10,
                     "name": "metre",
-                    "slug": "metre",
+                    "title": "metre",
                     "price": "1.20",
                     "color": "#232865"
                 }
@@ -86,21 +86,21 @@
                 {
                     "id": 1,
                     "name": "cocktail12",
-                    "slug": "cocktail12",
+                    "title": "cocktail12",
                     "price": "1.20",
                     "color": "#a96154"
                 },
                 {
                     "id": 2,
                     "name": "cocktail16",
-                    "slug": "cocktail16",
+                    "title": "cocktail16",
                     "price": "1.60",
                     "color": "#d167d9"
                 },
                 {
                     "id": 3,
                     "name": "meteor",
-                    "slug": "meteor",
+                    "title": "meteor",
                     "price": "1.20",
                     "color": "#fe7a80"
                 }

@@ -91,21 +91,20 @@ class DBCursor:
         if member is None:
             return
 
-        print(f"Balance is {member.balance}")
         self.cursor.execute("""UPDATE Members
                             SET balance = %s
-                            WHERE card_number = %s""", (member.balance, member.card_id))
+                            WHERE id = %s""", (member.balance, member.member_id))
         self.connection.commit()
 
         self.loggers.log.debug(f"Member {member.first_name} (ID:{member.card_id}) Balance: {member.balance}")
 
-    def send_order(self, id_product:int=None, id_member:int=None,
+    def send_order(self, product_id:int=None, member_id:int=None,
                      price:decimal.Decimal=None, amount:int=None) -> None:
         """
         Sends a command to the database.
         """
-        self.cursor.execute("""INSERT INTO Orders (id_product, id_member, price, amount)
+        self.cursor.execute("""INSERT INTO Orders (product_id, member_id, price, amount)
                                VALUES (%s, %s, %s, %s)
-                            """, (id_product, id_member, price*amount, amount))
+                            """, (product_id, member_id, price*amount, amount))
         self.connection.commit()
-        self.loggers.log.debug(f"Command sent to the database: {id_product}, {id_member}, {price}, {amount}")
+        self.loggers.log.debug(f"Command sent to the database: {product_id}, {member_id}, {price}, {amount}")
