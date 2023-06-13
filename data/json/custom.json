@@ -54,7 +54,7 @@
                     "title": "charcuterie",
                     "price": "4.40",
                     "color": "#7b6d02",
-                    "selected": false
+                    "selected": true
                 },
                 {
                     "id": 7,
@@ -98,6 +98,14 @@
                     "title": "sandwich",
                     "price": "2.00",
                     "color": "#adc397",
+                    "selected": false
+                },
+                {
+                    "id": 11,
+                    "name": "ses",
+                    "title": "ses",
+                    "price": "1.00",
+                    "color": "#000000",
                     "selected": false
                 }
             ]

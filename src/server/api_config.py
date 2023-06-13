@@ -53,10 +53,10 @@ class APIJsons:
         Setup the jsons.
         """
         self.config_manager.generate_json("config",
-                           self.get_api("https://fouaille.bde-tps.fr/api/product/index"),
+                           self.get_api("https://bde-pprd.its-tps.fr/api/product"),
                            api=1)
         self.config_json = self.config_manager.load("config", api=1)
         self.config_manager.generate_json("categories",
-                           self.get_api("https://fouaille.bde-tps.fr/api/productType/index"),
+                           self.get_api("https://bde-pprd.its-tps.fr/api/productType"),
                            api=1)
         self.categories_json = self.config_manager.load("categories", api=1)

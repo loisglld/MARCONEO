@@ -7,16 +7,16 @@
                 {
                     "id": 6,
                     "name": "charcuterie",
-                    "slug": "charcuterie",
+                    "title": "charcuterie",
                     "price": "4.40",
-                    "color": "#b35b54"
+                    "color": "#e1a7a2"
                 },
                 {
                     "id": 7,
                     "name": "fromage",
-                    "slug": "fromage",
+                    "title": "fromage",
                     "price": "3.00",
-                    "color": "#4c1318"
+                    "color": "#1516f9"
                 }
             ]
         },
@@ -27,9 +27,9 @@
                 {
                     "id": 9,
                     "name": "cookies",
-                    "slug": "cookies",
+                    "title": "cookies",
                     "price": "2.20",
-                    "color": "#d5b404"
+                    "color": "#df858a"
                 }
             ]
         },
@@ -40,16 +40,23 @@
                 {
                     "id": 4,
                     "name": "pizza",
-                    "slug": "pizza",
+                    "title": "pizza",
                     "price": "2.60",
-                    "color": "#87e479"
+                    "color": "#31b252"
                 },
                 {
                     "id": 5,
                     "name": "sandwich",
-                    "slug": "sandwich",
+                    "title": "sandwich",
                     "price": "2.00",
-                    "color": "#35623b"
+                    "color": "#fc4665"
+                },
+                {
+                    "id": 11,
+                    "name": "ses",
+                    "title": "ses",
+                    "price": "1.00",
+                    "color": "#000000"
                 }
             ]
         },
@@ -60,9 +67,9 @@
                 {
                     "id": 8,
                     "name": "bordeaux",
-                    "slug": "bordeaux",
+                    "title": "bordeaux",
                     "price": "1.60",
-                    "color": "#210433"
+                    "color": "#0c55ef"
                 }
             ]
         },
@@ -73,9 +80,9 @@
                 {
                     "id": 10,
                     "name": "metre",
-                    "slug": "metre",
+                    "title": "metre",
                     "price": "1.20",
-                    "color": "#8f62d0"
+                    "color": "#463fbf"
                 }
             ]
         },
@@ -86,23 +93,23 @@
                 {
                     "id": 1,
                     "name": "cocktail12",
-                    "slug": "cocktail12",
+                    "title": "cocktail12",
                     "price": "1.20",
-                    "color": "#ca6af3"
+                    "color": "#ba70c9"
                 },
                 {
                     "id": 2,
                     "name": "cocktail16",
-                    "slug": "cocktail16",
+                    "title": "cocktail16",
                     "price": "1.60",
-                    "color": "#9a08b1"
+                    "color": "#b9def2"
                 },
                 {
                     "id": 3,
                     "name": "meteor",
-                    "slug": "meteor",
+                    "title": "meteor",
                     "price": "1.20",
-                    "color": "#32d1da"
+                    "color": "#ad1cf5"
                 }
             ]
         }

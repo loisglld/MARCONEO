@@ -9,12 +9,10 @@ It is responsible for the GUI of the MarcoNeo application.
 
 from src.utils.gui_utils import Tk, Frame, BOTH
 
-from src.interface.menus.welcome_menu import WelcomeMenu
+from src.interface.menus.main_menu import MainMenu
 from src.interface.menus.credits_menu import CreditsMenu
 from src.interface.menus.settings.settings_menu import SettingsMenu
 from src.interface.menus.history.history_menu import HistoryMenu
-from src.interface.menus.main_menu import MainMenu
-from src.interface.menus.shopping.shopping_menu import ShoppingMenu
 
 #------------------------------------------------------------#
 
@@ -36,11 +34,14 @@ class GUI(Tk):
         self.loggers.log.debug("RFID is listening.")
 
         self.setup_window()
-        self.welcome_menu = WelcomeMenu(self)
+
+        self.shopping_menu = None
+        self.main_menu = MainMenu(self)
         self.settings_menu = SettingsMenu(self)
         self.credits_menu = CreditsMenu(self)
-        self.welcome_menu.pack(fill=BOTH, expand=True)
-        self.current_menu = self.welcome_menu
+        self.history_menu = HistoryMenu(self)
+        self.main_menu.pack(fill=BOTH, expand=True)
+        self.current_menu = self.main_menu
 
     def change_menu(self, next_menu: Frame) -> None:
         """
@@ -75,16 +76,6 @@ class GUI(Tk):
         self.resizable(False, False)
         #self.iconbitmap(os.path.join(os.getcwd(),"DATA","IMAGES","logo.ico"))
         #self.config(bg="black")
-        return True
-
-    def setup_menus(self) -> bool:
-        """
-        Setup the different menus of the application.
-        These menus need a config to be loaded.
-        """
-        self.main_menu = MainMenu(self)
-        self.shopping_menu = ShoppingMenu(self)
-        self.history_menu = HistoryMenu(self)
         return True
 
     def start(self) -> bool:

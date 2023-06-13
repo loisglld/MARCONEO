@@ -34,7 +34,7 @@ class SettNavbar(Frame):
         self.back_btn = AppButton(self, text="Back",
                                     command=lambda:
                                         self.manager.manager.gui.change_menu(
-                                            self.manager.manager.gui.welcome_menu))
+                                            self.manager.manager.gui.main_menu))
 
         self.back_btn.pack(side="bottom", pady=10, padx=10, fill="x")
 

@@ -26,7 +26,7 @@ Hugo Chambon, Nathan Favriou, Jade Touresse\nYannick Hénin\nGatien Chenu, Mathi
 
         self.credits_label = Label(self, text=self.credits)
         self.back_btn = AppButton(self, text="Back",
-                                  command=lambda: self.gui.change_menu(self.gui.welcome_menu))
+                                  command=lambda: self.gui.change_menu(self.gui.main_menu))
 
         self.credits_label.pack()
         self.back_btn.pack()
