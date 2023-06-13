@@ -36,7 +36,6 @@ class Config:
 
         self.api_config = APIJsons(self)
         self.loaded_config = {}
-        self.initial_config = {}
 
         # By default, the config is set to default.
         self.name = self.DEFAULT
@@ -89,17 +88,17 @@ class Config:
                 self.loaded_config = self.default_config
             case self.CUSTOM:
                 self.loaded_config = self.api_config.config_json
-        self.initial_config = self.loaded_config.copy()
 
     def change_price(self, toggle, item_name, new_price):
         """
         Changes the price of an item.
         """
-        items = self.loaded_config["Shopping"][toggle]['items']
-        for index, item in enumerate(items):
-            if item['name'] == item_name:
-                items[index]['price'] = decimal.Decimal(new_price)
-                break
+        for product_type in self.loaded_config:
+            if product_type["product_type"] == toggle:
+                for item in product_type["products"]:
+                    if item['title'] == item_name:
+                        item['price'] = decimal.Decimal(new_price)
+                        break
 
     def cat_refill(self, config) -> None:
         """

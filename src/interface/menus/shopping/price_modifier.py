@@ -34,11 +34,14 @@ class PriceModifier(Frame):
         self.setup_digital_keyboard(self.control_frame)
         enter_button = AppButton(self.control_frame, text="Entrer",
                                 command=self.on_enter_click)
-        self.back_btn = AppButton(self.control_frame, text="Back",
+        back_btn = AppButton(self.control_frame, text="Back",
                                   command=self.back)
+        reset_btn = AppButton(self.control_frame, text="Reset",
+                                      command=self.reset)
 
         enter_button.pack(padx=10, pady=10, fill="both", expand=True)
-        self.back_btn.pack(padx=10, pady=10, fill="both", expand=True)
+        back_btn.pack(padx=10, pady=10, fill="both", expand=True)
+        reset_btn.pack(padx=10, pady=10, fill="both", expand=True)
 
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
@@ -138,6 +141,8 @@ class PriceModifier(Frame):
         """
         Goes back to the shopping menu.
         """
+        # Reset the cart
+        self.manager.manager.gui.app.cart.reset()
         self.pack_forget()
         self.shopping_manager.right_grid.header.grid(row=0, column=0, sticky='nsew')
         self.shopping_manager.right_grid.body.grid(row=1, column=0, sticky='nsew')
@@ -180,3 +185,12 @@ class PriceModifier(Frame):
         self.shopping_manager.gui.app.config.change_price(current_toggle, item.name, new_price)
         self.loggers.log.debug("Price of item %s has been changed to %s.",
                                item.name, new_price)
+
+    def reset(self):
+        """
+        Resets the price.
+        """
+        config_manager = self.manager.manager.gui.app.config
+        config_manager.loaded_config = config_manager.load(
+            self.manager.manager.gui.app.config.name)
+        self.display_item_list()
