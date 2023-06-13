@@ -12,6 +12,7 @@ from src.utils.gui_utils import Tk, Frame, BOTH
 from src.interface.menus.welcome_menu import WelcomeMenu
 from src.interface.menus.credits_menu import CreditsMenu
 from src.interface.menus.settings.settings_menu import SettingsMenu
+from src.interface.menus.history.history_menu import HistoryMenu
 from src.interface.menus.main_menu import MainMenu
 from src.interface.menus.shopping.shopping_menu import ShoppingMenu
 
@@ -83,8 +84,7 @@ class GUI(Tk):
         """
         self.main_menu = MainMenu(self)
         self.shopping_menu = ShoppingMenu(self)
-        self.history_menu = Frame(self)
-        self.stats_menu = Frame(self)
+        self.history_menu = HistoryMenu(self)
         return True
 
     def start(self) -> bool:

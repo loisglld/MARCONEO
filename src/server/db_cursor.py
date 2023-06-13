@@ -108,3 +108,22 @@ class DBCursor:
                             """, (product_id, member_id, price*amount, amount))
         self.connection.commit()
         self.loggers.log.debug(f"Command sent to the database: {product_id}, {member_id}, {price}, {amount}")
+
+    def get_history(self, member_id:int=None) -> list:
+        """
+        Retrieves the history of the given member, including member and product names.
+        """
+        self.cursor.execute("""SELECT Members.first_name AS member_first_name,
+                                Products.name AS product_name,
+                                Orders.price,
+                                Orders.amount,
+                                Orders.date
+                                FROM Orders
+                                INNER JOIN Members ON Orders.member_id = Members.id
+                                INNER JOIN Products ON Orders.product_id = Products.id
+                                ORDER BY Orders.date DESC
+                                LIMIT 10;
+                            """)
+        result = self.cursor.fetchall()
+        self.loggers.log.debug(f"Retrieving history of member ID {member_id}")
+        return result

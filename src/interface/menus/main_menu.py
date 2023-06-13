@@ -46,15 +46,21 @@ class MainMenu(AppFrame):
         """
         self.shopping_btn = AppButton(self, text="Shopping",
                                       command=lambda: self.gui.change_menu(self.gui.shopping_menu))
-        self.stats_btn = AppButton(self, text="Stats",
-                                   command=lambda: self.gui.change_menu(self.gui.stats_menu))
         self.history_btn = AppButton(self, text="History",
-                                     command=lambda: self.gui.change_menu(self.gui.history_menu))
+                                     command=self.history)
         self.back_btn = AppButton(self, text="Back",
                                   command=lambda: self.gui.change_menu(self.gui.welcome_menu))
 
-        for btn in [self.shopping_btn, self.stats_btn, self.history_btn]:
+        for btn in [self.shopping_btn, self.history_btn]:
             btn.pack(side="top", pady=10, padx=10, fill="x")
 
         self.back_btn.pack(side="bottom", pady=10, padx=10, fill="x")
+        return True
+
+    def history(self) -> True:
+        """
+        Change menu to history menu.
+        """
+        self.gui.history_menu.refresh_history()
+        self.gui.change_menu(self.gui.history_menu)
         return True
