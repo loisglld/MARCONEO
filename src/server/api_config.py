@@ -46,6 +46,10 @@ class APIJsons:
             self.loggers.log.error(err)
             print("Can't reach distant server, please check your internet connection.")
             sys.exit(1)
+        except requests.exceptions.Timeout as err:
+            self.loggers.log.error(err)
+            print("Timeout error, please check your internet connection.")
+            sys.exit(1)
         return api_config_resp.json(parse_float=decimal.Decimal)
 
     def retrieve_categories(self, config) -> list:

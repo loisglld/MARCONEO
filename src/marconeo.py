@@ -48,10 +48,10 @@ class MarcoNeo:
 
         # Setup the RFID reader and the GUI
         self.rfid = RFID(self)
-        self.gui = GUI(self)
-
         self.loggers.log.info("MarcoNeo launched.")
-        self.gui.start()
+
+        self.gui = None
+        GUI(self)
 
     def close(self):
         """

@@ -15,7 +15,7 @@ class AppFrame(Frame):
     """
     Custom frame class used in the application's GUI.
     """
-    DARK = "#111111"
+    DARK = "#000000"
     DARKGRAY = "#333333"
     GRAY = "#555555"
     LIGHTGRAY = "#777777"
@@ -23,4 +23,4 @@ class AppFrame(Frame):
     def __init__(self, master) -> None:
         super().__init__(master)
         self.master = master
-        self.config(bg=self.LIGHT)
+        self.config(bg=self.DARK)

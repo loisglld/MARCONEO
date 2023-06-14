@@ -6,7 +6,7 @@ Configure MarcoNeo's welcome page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Label, AppButton, AppFrame
+from src.utils.gui_utils import AppButton, AppFrame, AppLabel, ImageButton
 from src.interface.menus.shopping.shopping_menu import ShoppingMenu
 
 #-------------------------------------------------------------------#
@@ -29,38 +29,40 @@ class MainMenu(AppFrame):
         """
         Defines the labels used in the main menu.
         """
-        self.title_lbl = Label(self, text="MARCONEO")
+        self.title = AppLabel(self, image=self.gui.logo)
         self.config_frame = AppFrame(self)
-        self.config_loaded_lbl = Label(self.config_frame, text="Config loaded: ")
+        self.config_loaded_lbl = AppLabel(self.config_frame, text="Config loaded: ")
         self.switch_config_btn = AppButton(self.config_frame, text="DEFAULT",
                                             command=self.switch_config)
+        self.config_loaded_lbl.propagate(False)
+        self.switch_config_btn.propagate(False)
 
-        self.title_lbl.pack(side='top', pady=10, padx=10, fill="x")
-        self.config_frame.pack(side='top', pady=10, padx=10, fill="x")
-        self.config_loaded_lbl.pack(side='left', pady=10, padx=10, fill="x", expand=True)
-        self.switch_config_btn.pack(side='right', pady=10, padx=10, fill="x", expand=True)
+        self.title.place(relx=0.5, rely=0.3, anchor="center")
+        self.config_frame.place(relx=0.5, rely=0.9, anchor="center")
+        self.config_loaded_lbl.pack(side='left', pady=10, padx=10, fill="x")
+        self.switch_config_btn.pack(side='right', pady=10, padx=10, fill="x")
 
     def setup_buttons(self) -> bool:
         """
         Defines the buttons used in the main menu.
         """
-        self.custom_btn = AppButton(self, text="CUSTOM CONFIG",
+        self.custom_btn = ImageButton(self, image=self.gui.configuration,
                                       command=lambda: self.gui.change_menu(self.gui.settings_menu))
-        self.credits_btn = AppButton(self, text="CREDITS",
+        self.credits_btn = ImageButton(self, image=self.gui.credits,
                                      command=lambda: self.gui.change_menu(self.gui.credits_menu))
-        self.history_btn = AppButton(self, text="History",
+        self.history_btn = ImageButton(self, image=self.gui.history,
                                      command=self.history)
-        self.load_btn = AppButton(self, text="LOAD",
+        self.load_btn = ImageButton(self, image=self.gui.load,
                                    command=self.load_marco)
-        self.power_btn = AppButton(self, text="POWER OFF",
+        self.power_btn = ImageButton(self, image=self.gui.poweroff,
                                    command=self.gui.app.close)
 
-        self.custom_btn.pack(side="top", pady=10, padx=10, fill="x")
-        self.credits_btn.pack(side="top", pady=10, padx=10, fill="x")
-        self.history_btn.pack(side="top", padx=10, pady=10, fill="x")
 
-        self.power_btn.pack(side="bottom", pady=10, padx=10, fill="x")
-        self.load_btn.pack(side="bottom", pady=10, padx=10, fill="x")
+        self.load_btn.place(relx=0.5, rely=0.65, anchor="center")
+        self.power_btn.place(relx=0.03, rely=0.97, anchor="sw")
+        self.credits_btn.place(relx=0.23, rely=0.97, anchor="se")
+        self.history_btn.place(relx=0.97, rely=0.97, anchor="se")
+        self.custom_btn.place(relx=0.85, rely=0.97, anchor="se")
         return True
 
     def load_marco(self) -> None:
@@ -95,10 +97,10 @@ class MainMenu(AppFrame):
         default = self.gui.app.config.DEFAULT
         if self.gui.app.config.name == custom:
             self.gui.app.config.name = default
-            self.switch_config_btn.config(text=default)
+            self.switch_config_btn.config(text="DEFAULT")
         elif self.gui.app.config.name == default:
             self.gui.app.config.name = custom
-            self.switch_config_btn.config(text=custom)
+            self.switch_config_btn.config(text="CUSTOM")
         self.gui.loggers.log.info("Config switched to " + self.gui.app.config.name)
 
     def history(self) -> True:
