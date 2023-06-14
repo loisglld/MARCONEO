@@ -103,12 +103,25 @@ class GUI(Tk):
         """
         Load every image of the application.
         """
-        self.logo = self.open_image("MarcoNeo1.png")
+        # general
+        self.back = self.open_image("back.png", 70, 70)
+
+        # main_menu
+        self.logo = self.open_image("MarcoNeo.png")
         self.poweroff = self.open_image("power.png", 70, 70)
-        self.credits = self.open_image("credits.png", 70, 70)
-        self.history = self.open_image("history.png", 70, 70)
         self.configuration = self.open_image("config.png", 70, 70)
         self.load = self.open_image("load.png", 130, 130)
+
+        # credits_menu
+        self.credits = self.open_image("credits.png", 70, 70)
+
+        # history_menu
+        self.history = self.open_image("history.png", 70, 70)
+
+        # shopping_menu
+
+
+        # history_menu
 
     def open_image(self, file_name: str, width:int=None, height:int=None) -> ImageTk.PhotoImage:
         """
