@@ -105,6 +105,7 @@ class GUI(Tk):
         """
         # general
         self.back = self.open_image("back.png", 70, 70)
+        self.refresh = self.open_image("refresh.png", 70, 70)
 
         # main_menu
         self.logo = self.open_image("MarcoNeo.png")

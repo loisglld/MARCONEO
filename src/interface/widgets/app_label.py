@@ -18,9 +18,11 @@ class AppLabel(Label):
     DARKGRAY = "#333333"
     GRAY = "#555555"
     LIGHTGRAY = "#777777"
-    LIGHT = "#999999"
+    LIGHT = "#EEEEEE"
     def __init__(self, master, **kwargs) -> None:
         super().__init__(master, **kwargs)
         self.master = master
         self.config(bg=self.DARK, fg=self.LIGHT,
                     border=0, borderwidth=0)
+        if kwargs:
+            self.config(**kwargs)

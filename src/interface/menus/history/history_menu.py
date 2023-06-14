@@ -6,12 +6,12 @@ Configure MarcoNeo's history page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Label, AppButton, Frame
+from src.utils.gui_utils import AppLabel, ImageButton, AppFrame, Frame
 from src.interface.widgets.hist_item import HistoryItem
 
 #-------------------------------------------------------------------#
 
-class HistoryMenu(Frame):
+class HistoryMenu(AppFrame):
     """
     MarcoNeo's history page.
     """
@@ -19,32 +19,32 @@ class HistoryMenu(Frame):
     def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
-        self.config(bg="#333333")
-        self.setup_label()
+        self.setup_headers()
         self.setup_buttons()
-        self.history_frame = Frame(self, bg="#555555")
-        self.history_frame.pack(side="top", pady=5, padx=10, fill="x")
+        self.history_frame = Frame(self, borderwidth=5, border=5, bg="black",
+                                   highlightbackground="#4d88ff", highlightthickness=5)
+        self.history_frame.pack(expand=True, fill="both", padx=10, pady=(100, 10))
 
-    def setup_label(self) -> None:
+    def setup_headers(self) -> None:
         """
         Defines the labels used in the history menu.
         """
-        Label(self, text="History menu",
-              font="System").pack(side="top",
-                                    pady=10, padx=10, fill="x")
+        frame = AppFrame(self)
+        frame.place(relx=0.5, rely=0.10, anchor="center")
+        AppLabel(frame, image=self.gui.history).pack(side="left", padx=(0, 10))
+        AppLabel(frame, text="History",
+              font=("system", 30, "bold")).pack(side="left")
 
     def setup_buttons(self) -> bool:
         """
         Defines the buttons used in the history menu.
         """
-        bottom_widget = Frame(self, bg="#333333")
-        self.back_btn = AppButton(bottom_widget, text="Back",
+        self.back_btn = ImageButton(self, image=self.gui.back,
                                   command=lambda: self.gui.change_menu(self.gui.main_menu))
-        self.refresh_btn = AppButton(bottom_widget, text="Refresh",
+        self.refresh_btn = ImageButton(self, image=self.gui.refresh,
                                         command=self.refresh_history)
-        self.back_btn.pack(side="left", pady=10, padx=10, fill="x", expand=True)
-        self.refresh_btn.pack(side="left", pady=10, padx=10, fill="x", expand=True)
-        bottom_widget.pack(side="bottom", fill="x")
+        self.back_btn.place(relx=0.02, rely=0.01, anchor="nw")
+        self.refresh_btn.place(relx=0.98, rely=0.01, anchor="ne")
         return True
 
     def setup_history(self) -> None:
@@ -54,11 +54,7 @@ class HistoryMenu(Frame):
         history = self.gui.app.db_cursor.get_history()
         for item_purchased in history:
             HistoryItem(self.history_frame,
-                        item_purchased).pack(side="top",
-                                             pady=7, padx=10,
-                                             anchor="w",
-                                             fill="x")
-
+                        item_purchased).pack(expand=True, fill='x', pady=5)
     def refresh_history(self):
         """
         Refesh history on the page

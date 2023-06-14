@@ -7,11 +7,11 @@ Defines the HistoryItem class.
 #-------------------------------------------------------------------#
 
 import datetime
-from src.utils.gui_utils import Label, Frame
+from src.utils.gui_utils import AppLabel, AppFrame
 
 #-------------------------------------------------------------------#
 
-class HistoryItem(Frame):
+class HistoryItem(AppFrame):
     """
     Item in which is displayed an order from the history.
     """
@@ -22,22 +22,34 @@ class HistoryItem(Frame):
         self.price = item_purchased[2]
         self.amount = item_purchased[3]
         self.date = item_purchased[4].strftime("%d/%m/%Y %H:%M")
-        self.config(bg="#333333")
+        self.config(bg="#0b1a35")
         self.setup_label()
 
     def setup_label(self) -> None:
         """
         Defines the labels used in the history item.
         """
-        Label(self, text=f"{self.member_name}").pack(side="left", padx=10)
-        Label(self, text=f"-{self.price}€").pack(side="left", padx=10)
+        AppLabel(self, text=f"{self.member_name}",
+                 font=('system', 12, "bold"), bg="#0b1a35").pack(expand=True, fill='x',
+                     side="left", padx=10)
 
-        date_label = Label(self, text=f"{self.get_day_description(self.date)}")
-        date_label.pack(side="left", padx=10, expand=True, fill='x')
-        date_label.configure(anchor="center")
+        color = "white"
+        if self.price<0:
+            color = "green"
+        else:
+            color = "red"
 
-        Label(self, text=f"{self.amount}x{self.item_name}").pack(side="right", padx=10)
+        AppLabel(self, text=f"{-self.price}€",
+                 font=('system', 12, "bold"), bg="#0b1a35", fg=color).pack(expand=True, fill='x',
+                     side="left", padx=10)
 
+        date_lbl = AppLabel(self, text=f"{self.get_day_description(self.date)}",
+                 font=('system', 12), bg="#0b1a35")
+        date_lbl.pack(side="right", padx=10, expand=True, fill='x')
+        date_lbl.configure(anchor="center")
+
+        AppLabel(self, text=f"{self.amount} x {self.item_name}",
+                 font=('system', 12), bg="#0b1a35").pack(side="left", padx=10)
 
     def get_day_description(self, date:datetime.datetime):
         """

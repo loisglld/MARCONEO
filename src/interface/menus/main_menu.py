@@ -22,13 +22,6 @@ class MainMenu(AppFrame):
         super().__init__(gui)
         self.gui = gui
 
-        self.setup_headers()
-        self.setup_buttons()
-
-    def setup_headers(self) -> None:
-        """
-        Defines the labels used in the main menu.
-        """
         self.title = AppLabel(self, image=self.gui.logo)
         self.config_frame = AppFrame(self)
         self.config_loaded_lbl = AppLabel(self.config_frame, text="Config loaded: ")
@@ -37,33 +30,30 @@ class MainMenu(AppFrame):
         self.config_loaded_lbl.propagate(False)
         self.switch_config_btn.propagate(False)
 
+        self.custom_btn = ImageButton(self, image=self.gui.configuration,
+                                command=lambda: self.gui.change_menu(self.gui.settings_menu))
+        self.credits_btn = ImageButton(self, image=self.gui.credits,
+                                    command=lambda: self.gui.change_menu(self.gui.credits_menu))
+        self.history_btn = ImageButton(self, image=self.gui.history,
+                                    command=self.history)
+        self.load_btn = ImageButton(self, image=self.gui.load,
+                                command=self.load_marco)
+        self.power_btn = ImageButton(self, image=self.gui.poweroff,
+                                command=self.gui.app.close)
+
+
         self.title.place(relx=0.5, rely=0.3, anchor="center")
+
+        self.load_btn.place(relx=0.5, rely=0.65, anchor="center")
         self.config_frame.place(relx=0.5, rely=0.9, anchor="center")
         self.config_loaded_lbl.pack(side='left', pady=10, padx=10, fill="x")
         self.switch_config_btn.pack(side='right', pady=10, padx=10, fill="x")
 
-    def setup_buttons(self) -> bool:
-        """
-        Defines the buttons used in the main menu.
-        """
-        self.custom_btn = ImageButton(self, image=self.gui.configuration,
-                                      command=lambda: self.gui.change_menu(self.gui.settings_menu))
-        self.credits_btn = ImageButton(self, image=self.gui.credits,
-                                     command=lambda: self.gui.change_menu(self.gui.credits_menu))
-        self.history_btn = ImageButton(self, image=self.gui.history,
-                                     command=self.history)
-        self.load_btn = ImageButton(self, image=self.gui.load,
-                                   command=self.load_marco)
-        self.power_btn = ImageButton(self, image=self.gui.poweroff,
-                                   command=self.gui.app.close)
-
-
-        self.load_btn.place(relx=0.5, rely=0.65, anchor="center")
         self.power_btn.place(relx=0.03, rely=0.97, anchor="sw")
-        self.credits_btn.place(relx=0.23, rely=0.97, anchor="se")
+        self.credits_btn.place(relx=0.15, rely=0.97, anchor="sw")
+
         self.history_btn.place(relx=0.97, rely=0.97, anchor="se")
         self.custom_btn.place(relx=0.85, rely=0.97, anchor="se")
-        return True
 
     def load_marco(self) -> None:
         """

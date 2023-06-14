@@ -34,4 +34,4 @@ v0.4: Gatien Chenu, Mathieu Martin\nv0.5Loïs Gallaud\nv1.0: Loïs Gallaud, Enzo
         self.credits_img.pack(side="left", padx=(0, 10))
         self.title.pack(side="left")
         self.credits_label.place(relx=0.5, rely=0.5, anchor="center")
-        self.back_btn.place(relx=0.03, rely=0.03, anchor="nw")
+        self.back_btn.place(relx=0.02, rely=0.01, anchor="nw")
