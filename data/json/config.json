@@ -9,7 +9,7 @@
                     "name": "charcuterie",
                     "title": "charcuterie",
                     "price": "4.40",
-                    "color": "#e1a7a2",
+                    "color": "#6cc501",
                     "selected": false
                 },
                 {
@@ -17,15 +17,7 @@
                     "name": "fromage",
                     "title": "fromage",
                     "price": "3.00",
-                    "color": "#1516f9",
-                    "selected": false
-                },
-                {
-                    "id": 15,
-                    "name": "eberga",
-                    "title": "bergaga",
-                    "price": "4.00",
-                    "color": "#8aff7a",
+                    "color": "#9661da",
                     "selected": false
                 }
             ]
@@ -39,23 +31,7 @@
                     "name": "cookies",
                     "title": "cookies",
                     "price": "2.20",
-                    "color": "#df858a",
-                    "selected": false
-                },
-                {
-                    "id": 12,
-                    "name": "FEZFEFEF",
-                    "title": "doodoo",
-                    "price": "2.00",
-                    "color": "#00ffbf",
-                    "selected": false
-                },
-                {
-                    "id": 13,
-                    "name": "doowap",
-                    "title": "doodooo",
-                    "price": "12.00",
-                    "color": "#0011ff",
+                    "color": "#3d4cf7",
                     "selected": false
                 }
             ]
@@ -69,7 +45,7 @@
                     "name": "pizza",
                     "title": "pizza",
                     "price": "2.60",
-                    "color": "#31b252",
+                    "color": "#7ad967",
                     "selected": false
                 },
                 {
@@ -77,15 +53,7 @@
                     "name": "sandwich",
                     "title": "sandwich",
                     "price": "2.00",
-                    "color": "#fc4665",
-                    "selected": false
-                },
-                {
-                    "id": 11,
-                    "name": "ses",
-                    "title": "ses",
-                    "price": "1.00",
-                    "color": "#000000",
+                    "color": "#8291bf",
                     "selected": false
                 }
             ]
@@ -99,7 +67,7 @@
                     "name": "bordeaux",
                     "title": "bordeaux",
                     "price": "1.60",
-                    "color": "#0c55ef",
+                    "color": "#ca9a96",
                     "selected": false
                 }
             ]
@@ -113,7 +81,7 @@
                     "name": "metre",
                     "title": "metre",
                     "price": "1.20",
-                    "color": "#463fbf",
+                    "color": "#f9298a",
                     "selected": false
                 }
             ]
@@ -127,7 +95,7 @@
                     "name": "cocktail12",
                     "title": "cocktail12",
                     "price": "1.20",
-                    "color": "#ba70c9",
+                    "color": "#a869a5",
                     "selected": false
                 },
                 {
@@ -135,7 +103,7 @@
                     "name": "cocktail16",
                     "title": "cocktail16",
                     "price": "1.60",
-                    "color": "#b9def2",
+                    "color": "#e4a783",
                     "selected": false
                 },
                 {
@@ -143,7 +111,7 @@
                     "name": "meteor",
                     "title": "meteor",
                     "price": "1.20",
-                    "color": "#ad1cf5",
+                    "color": "#d88524",
                     "selected": false
                 }
             ]

@@ -74,6 +74,9 @@ class Footer(Frame):
         Does the purchase.
         """
         self.shopping_manager.gui.app.payment_service.purchase()
+        self.shopping_manager.gui.app.cart.reset()
+        self.loggers.log.debug("Cart has been reset.")
+        self.shopping_manager.gui.app.update_user()
         self.shopping_manager.right_grid.body.update_body(
             self.shopping_manager.left_grid.navbar.current_toggle)
         self.reset()

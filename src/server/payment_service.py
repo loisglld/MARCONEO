@@ -41,10 +41,6 @@ class PaymentService:
                                  price=price,
                                  quantity=quantity)
 
-        self.app.cart.reset()
-        self.loggers.log.debug("Cart has been reset.")
-        self.app.update_user()
-
     def commit_purchase(self, product_id:int=None, member_id:int=None,
                         price:int=None, quantity:int=None) -> None:
         """
