@@ -7,6 +7,7 @@ containing every json retrieved from the BDE API.
 
 #-------------------------------------------------------------------#
 
+import sys
 import decimal
 import requests
 
@@ -39,7 +40,12 @@ class APIJsons:
             api_config_resp.raise_for_status()
         except requests.exceptions.HTTPError as err:
             self.loggers.log.error(err)
-            return {}
+            print("Error with distant server, please try again later.")
+            sys.exit(1)
+        except requests.exceptions.ConnectionError as err:
+            self.loggers.log.error(err)
+            print("Can't reach distant server, please check your internet connection.")
+            sys.exit(1)
         return api_config_resp.json(parse_float=decimal.Decimal)
 
     def retrieve_categories(self, config) -> list:
