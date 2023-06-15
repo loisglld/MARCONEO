@@ -46,6 +46,7 @@ class Footer(Frame):
         """
         if not self.cart.total:
             return
+        self.cart.reset()
         self.update_footer()
         self.shopping_manager.right_grid.body.update_body(
             self.shopping_manager.left_grid.navbar.current_toggle)
