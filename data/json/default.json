@@ -9,14 +9,56 @@
                     "name": "charcuterie",
                     "title": "charcuterie",
                     "price": "4.40",
-                    "color": "#e54e52"
+                    "color": "#6cc501",
+                    "selected": false
                 },
                 {
                     "id": 7,
                     "name": "fromage",
-                    "title": "FROMETON",
+                    "title": "fromage",
                     "price": "3.00",
-                    "color": "#4f807d"
+                    "color": "#9661da",
+                    "selected": false
+                },
+                {
+                    "id": 11,
+                    "name": "FEZFEFEF",
+                    "title": "rdgg",
+                    "price": "1.00",
+                    "color": "#ff0000",
+                    "selected": false
+                },
+                {
+                    "id": 12,
+                    "name": "N'DuluCalvassMan",
+                    "title": "nigg",
+                    "price": "2.00",
+                    "color": "#ff0000",
+                    "selected": false
+                },
+                {
+                    "id": 13,
+                    "name": "Gallaud",
+                    "title": "tjrjj",
+                    "price": "1.00",
+                    "color": "#0033ff",
+                    "selected": false
+                },
+                {
+                    "id": 14,
+                    "name": "tykyr",
+                    "title": "kikol",
+                    "price": "4.00",
+                    "color": "#fb00ff",
+                    "selected": false
+                },
+                {
+                    "id": 15,
+                    "name": "wdrrehe",
+                    "title": "rehyy",
+                    "price": "7.00",
+                    "color": "#4c00ff",
+                    "selected": false
                 }
             ]
         },
@@ -29,7 +71,8 @@
                     "name": "cookies",
                     "title": "cookies",
                     "price": "2.20",
-                    "color": "#36cea8"
+                    "color": "#3d4cf7",
+                    "selected": false
                 }
             ]
         },
@@ -42,14 +85,16 @@
                     "name": "pizza",
                     "title": "pizza",
                     "price": "2.60",
-                    "color": "#b7c570"
+                    "color": "#7ad967",
+                    "selected": false
                 },
                 {
                     "id": 5,
                     "name": "sandwich",
                     "title": "sandwich",
                     "price": "2.00",
-                    "color": "#774807"
+                    "color": "#8291bf",
+                    "selected": false
                 }
             ]
         },
@@ -62,7 +107,8 @@
                     "name": "bordeaux",
                     "title": "bordeaux",
                     "price": "1.60",
-                    "color": "#3421eb"
+                    "color": "#ca9a96",
+                    "selected": false
                 }
             ]
         },
@@ -75,7 +121,8 @@
                     "name": "metre",
                     "title": "metre",
                     "price": "1.20",
-                    "color": "#232865"
+                    "color": "#f9298a",
+                    "selected": false
                 }
             ]
         },
@@ -88,21 +135,70 @@
                     "name": "cocktail12",
                     "title": "cocktail12",
                     "price": "1.20",
-                    "color": "#a96154"
+                    "color": "#a869a5",
+                    "selected": false
                 },
                 {
                     "id": 2,
                     "name": "cocktail16",
                     "title": "cocktail16",
                     "price": "1.60",
-                    "color": "#d167d9"
+                    "color": "#e4a783",
+                    "selected": false
                 },
                 {
                     "id": 3,
                     "name": "meteor",
                     "title": "meteor",
                     "price": "1.20",
-                    "color": "#fe7a80"
+                    "color": "#d88524",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "product_type": "Rechargement",
+            "products": [
+                {
+                    "id": 2,
+                    "name": "one",
+                    "title": "one",
+                    "price": -1,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 3,
+                    "name": "five",
+                    "title": "five",
+                    "price": -5,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 4,
+                    "name": "ten",
+                    "title": "ten",
+                    "price": -10,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 5,
+                    "name": "twenty",
+                    "title": "twenty",
+                    "price": -20,
+                    "color": "#000000",
+                    "selected": true
+                },
+                {
+                    "id": 6,
+                    "name": "fifty",
+                    "title": "fifty",
+                    "price": -50,
+                    "color": "#000000",
+                    "selected": true
                 }
             ]
         }

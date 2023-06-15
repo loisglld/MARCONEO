@@ -6,12 +6,12 @@ Configure MarcoNeo's body on its shopping menu.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame
+from src.utils.gui_utils import AppFrame
 from src.interface.widgets.shop_item import ShopItem
 
 #-------------------------------------------------------------------#
 
-class Body(Frame):
+class Body(AppFrame):
     """
     Contains the items to be displayed in the shopping page.
     """
@@ -21,7 +21,7 @@ class Body(Frame):
         self.shopping_manager = manager.manager
         self.grid_propagate(False)
         self.propagate(False)
-        self.configure(bg="#333333")
+        self.configure(bg="#000000")
         self.item_per_row = 4
 
         self.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
@@ -39,9 +39,10 @@ class Body(Frame):
                 if not item["selected"]:
                     continue
             name = item["title"]
-            setattr(self, f"{name}_item", ShopItem(name, item["price"], item["id"], self, item["color"]))
-            item_frame = getattr(self, f"{name}_item").container
-            item_frame.grid(row=row, column=column, padx=10, pady=10, sticky="nsew")
+            setattr(self, f"{name}_item",
+                    ShopItem(name, item["price"], item["id"], self, item["color"]))
+            item_frame = getattr(self, f"{name}_item")
+            item_frame.grid(row=row, column=column, padx=10, pady=10)
             self.grid_columnconfigure(column, weight=1)
             self.grid_rowconfigure(row, weight=1)
 

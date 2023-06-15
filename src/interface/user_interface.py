@@ -9,7 +9,7 @@ It is responsible for the GUI of the MarcoNeo application.
 
 import os
 
-from src.utils.gui_utils import Tk, Frame, BOTH, Image, ImageTk
+from src.utils.gui_utils import Tk, Frame, BOTH, Image, ImageTk, ImageOps
 from src.interface.menus.main_menu import MainMenu
 from src.interface.menus.credits_menu import CreditsMenu
 from src.interface.menus.settings.settings_menu import SettingsMenu
@@ -120,11 +120,13 @@ class GUI(Tk):
         self.history = self.open_image("history.png", 70, 70)
 
         # shopping_menu
-
+        self.basic_shop_item = self.open_image("shop_item.png", 120, 120)
+        self.load_shop_item_img()
 
         # history_menu
 
-    def open_image(self, file_name: str, width:int=None, height:int=None) -> ImageTk.PhotoImage:
+    def open_image(self, file_name: str,
+                   width:int=None, height:int=None, color=None) -> ImageTk.PhotoImage:
         """
         This function loads an image from the given path.
         """
@@ -132,5 +134,18 @@ class GUI(Tk):
         image = Image.open(image_path)
         if width and height:
             image = image.resize((width, height), Image.ANTIALIAS)
+        if color:
+            image = image.convert('L')
+            image = ImageOps.colorize(image, "#000000",
+                                      color,)
         photo = ImageTk.PhotoImage(image)
         return photo
+
+    def load_shop_item_img(self) -> ImageTk.PhotoImage:
+        """
+        This function loads the image of a shop item.
+        """
+        for product_type in self.app.config.api_config.config_json:
+            for item in product_type['products']:
+                setattr(self, f"img_{item['title'].lower().replace(' ', '')}",
+                        self.open_image("shop_item.png", 120, 120, item['color']))

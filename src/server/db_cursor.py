@@ -66,7 +66,7 @@ class DBCursor:
 
         self.cursor.execute("""SELECT id, first_name, last_name, nickname, card_number,\
                             balance, admin, contributor
-                                FROM Members
+                                FROM members
                                 WHERE card_number = %s""", (card_id,))
 
         result = self.cursor.fetchone()
@@ -91,7 +91,7 @@ class DBCursor:
         if member is None:
             return
 
-        self.cursor.execute("""UPDATE Members
+        self.cursor.execute("""UPDATE members
                             SET balance = %s
                             WHERE id = %s""", (member.balance, member.member_id))
         self.connection.commit()
@@ -103,7 +103,7 @@ class DBCursor:
         """
         Sends a command to the database.
         """
-        self.cursor.execute("""INSERT INTO Orders (product_id, member_id, price, amount)
+        self.cursor.execute("""INSERT INTO orders (product_id, member_id, price, amount)
                                VALUES (%s, %s, %s, %s)
                             """, (product_id, member_id, price*amount, amount))
         self.connection.commit()
@@ -113,15 +113,15 @@ class DBCursor:
         """
         Retrieves the history of the given member, including member and product names.
         """
-        self.cursor.execute("""SELECT Members.first_name AS member_first_name,
-                                Products.name AS product_name,
-                                Orders.price,
-                                Orders.amount,
-                                Orders.date
-                                FROM Orders
-                                INNER JOIN Members ON Orders.member_id = Members.id
-                                INNER JOIN Products ON Orders.product_id = Products.id
-                                ORDER BY Orders.date DESC
+        self.cursor.execute("""SELECT members.first_name AS member_first_name,
+                                products.name AS product_name,
+                                orders.price,
+                                orders.amount,
+                                orders.date
+                                FROM orders
+                                INNER JOIN members ON orders.member_id = members.id
+                                INNER JOIN products ON orders.product_id = products.id
+                                ORDER BY orders.date DESC
                                 LIMIT 10;
                             """)
         result = self.cursor.fetchall()

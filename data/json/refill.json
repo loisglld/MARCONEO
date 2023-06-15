@@ -8,7 +8,7 @@
                 "name": "one",
                 "title": "one",
                 "price": -1,
-                "color": "#000000",
+                "color": "#66b3ff",
                 "selected": true
             },
             {
@@ -16,7 +16,7 @@
                 "name": "five",
                 "title": "five",
                 "price": -5,
-                "color": "#000000",
+                "color": "#66b3ff",
                 "selected": true
             },
             {
@@ -24,7 +24,7 @@
                 "name": "ten",
                 "title": "ten",
                 "price": -10,
-                "color": "#000000",
+                "color": "#66b3ff",
                 "selected": true
             },
             {
@@ -32,7 +32,7 @@
                 "name": "twenty",
                 "title": "twenty",
                 "price": -20,
-                "color": "#000000",
+                "color": "#66b3ff",
                 "selected": true
             },
             {
@@ -40,7 +40,7 @@
                 "name": "fifty",
                 "title": "fifty",
                 "price": -50,
-                "color": "#000000",
+                "color": "#66b3ff",
                 "selected": true
             }
         ]

@@ -19,6 +19,46 @@
                     "price": "3.00",
                     "color": "#9661da",
                     "selected": false
+                },
+                {
+                    "id": 11,
+                    "name": "FEZFEFEF",
+                    "title": "rdgg",
+                    "price": "1.00",
+                    "color": "#ff0000",
+                    "selected": false
+                },
+                {
+                    "id": 12,
+                    "name": "N'DuluCalvassMan",
+                    "title": "nigg",
+                    "price": "2.00",
+                    "color": "#ff0000",
+                    "selected": false
+                },
+                {
+                    "id": 13,
+                    "name": "Gallaud",
+                    "title": "tjrjj",
+                    "price": "1.00",
+                    "color": "#0033ff",
+                    "selected": false
+                },
+                {
+                    "id": 14,
+                    "name": "tykyr",
+                    "title": "kikol",
+                    "price": "4.00",
+                    "color": "#fb00ff",
+                    "selected": false
+                },
+                {
+                    "id": 15,
+                    "name": "wdrrehe",
+                    "title": "rehyy",
+                    "price": "7.00",
+                    "color": "#4c00ff",
+                    "selected": false
                 }
             ]
         },
@@ -125,7 +165,7 @@
                     "name": "one",
                     "title": "one",
                     "price": -1,
-                    "color": "#000000",
+                    "color": "#66b3ff",
                     "selected": true
                 },
                 {
@@ -133,7 +173,7 @@
                     "name": "five",
                     "title": "five",
                     "price": -5,
-                    "color": "#000000",
+                    "color": "#66b3ff",
                     "selected": true
                 },
                 {
@@ -141,7 +181,7 @@
                     "name": "ten",
                     "title": "ten",
                     "price": -10,
-                    "color": "#000000",
+                    "color": "#66b3ff",
                     "selected": true
                 },
                 {
@@ -149,7 +189,7 @@
                     "name": "twenty",
                     "title": "twenty",
                     "price": -20,
-                    "color": "#000000",
+                    "color": "#66b3ff",
                     "selected": true
                 },
                 {
@@ -157,7 +197,7 @@
                     "name": "fifty",
                     "title": "fifty",
                     "price": -50,
-                    "color": "#000000",
+                    "color": "#66b3ff",
                     "selected": true
                 }
             ]
