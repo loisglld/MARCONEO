@@ -34,9 +34,9 @@ class MemberCard(Frame):
         Defines the labels used in the menu.
         """
         self.name_label = Label(self, text="-",
-                                      font=("system", 12), fg="#ffffff", bg="#000000")
+                                      font=("system", 16, "bold"), fg="#ffffff", bg="#000000")
         self.balance_label = Label(self, text="_", fg="gold",
-                                   font=("system", 12, "bold"), bg="#000000")
+                                   font=("system", 16, "bold"), bg="#000000")
 
         self.name_label.pack(padx=5, pady=10)
         self.balance_label.pack(padx=5, pady=(0, 5))
@@ -56,8 +56,8 @@ class MemberCard(Frame):
         elif not member.contributor:
             self.loggers.log.warning("Member %s is not a contributor.", member.first_name)
             self.manager.id_card.configure(image=self.gui_manager.warning)
-            self.manager.id_card.place(relx=0.05, rely=0.5, anchor="center")
-            self.noncotisant.place(relx=0.23, rely=0.5, anchor="center")
+            self.manager.id_card.place(relx=0.15, rely=0.3, anchor="center")
+            self.noncotisant.place(relx=0.15, rely=0.75, anchor="center")
         else:
             self.manager.id_card.configure(image=self.gui_manager.id)
             self.manager.id_card.place(relx=0.1, rely=0.5, anchor="center")

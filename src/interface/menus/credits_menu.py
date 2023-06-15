@@ -21,7 +21,7 @@ class CreditsMenu(AppFrame):
         self.gui = gui
         title_frame = AppFrame(self)
         title_frame.place(relx=0.5, rely=0.10, anchor="center")
-        self.title = AppLabel(title_frame, text="CREDITS", font=("system", 30, "bold"))
+        self.title = AppLabel(title_frame, image=self.gui.credits_lbl, font=("system", 30, "bold"))
         self.credits_img = AppLabel(title_frame, image=self.gui.credits)
 
         _credits = """Créateur:Marc Mounissens\nv0.2: Clément Rossetti

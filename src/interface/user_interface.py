@@ -127,6 +127,7 @@ class GUI(Tk):
 
         # history_menu
         self.history = self.open_image("history.png", 70, 70)
+        self.history_lbl = self.open_image("history_lbl.png", 400, 60)
 
         # shopping_menu
         self.discard = self.open_image("discard.png", 70, 70)
@@ -146,7 +147,7 @@ class GUI(Tk):
 
         # labels
         self.confirm_lbl = self.open_image("confirm_lbl.png", 450, 50)
-        self.credits_lbl = self.open_image("credits_lbl.png", 70, 70)
+        self.credits_lbl = self.open_image("credits_lbl.png", 260, 60)
         self.noncotisant_lbl = self.open_image("noncotisant.png", 150, 20)
         self.customisemarco = self.open_image("customisemarco.png", 70, 70)
         self.custommarco = self.open_image("custommarco.png", 135, 70)

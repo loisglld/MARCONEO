@@ -32,8 +32,7 @@ class HistoryMenu(AppFrame):
         frame = AppFrame(self)
         frame.place(relx=0.5, rely=0.10, anchor="center")
         AppLabel(frame, image=self.gui.history).pack(side="left", padx=(0, 10))
-        AppLabel(frame, text="History",
-              font=("system", 30, "bold")).pack(side="left")
+        AppLabel(frame, image=self.gui.history_lbl).pack(side="left")
 
     def setup_buttons(self) -> bool:
         """

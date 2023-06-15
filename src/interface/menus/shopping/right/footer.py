@@ -38,7 +38,7 @@ class Footer(Frame):
                                     bg="black", highlightthickness=0, borderwidth=0)
         self.cancel_btn = ImageButton(self.confirm_frame, image=self.shopping_manager.gui.cancel,
                                         command=self.cancel_purchase)
-        self.cancel_btn.pack(side="left", padx=(0, 5))
+        self.cancel_btn.pack(side="left", padx=5)
         self.confirm_lbl.pack(side="left", padx=5)
 
         self.setup_container()
@@ -64,7 +64,7 @@ class Footer(Frame):
 
         cart_frame.place(relx=0.5, rely=0.5, anchor="center")
         self.reset_btn.place(relx=0.02, rely=0.5, anchor="w")
-        self.confirm_btn.place(relx=0.98, rely=0.5, anchor="e")
+        self.confirm_btn.place(relx=0.99, rely=0.5, anchor="e")
 
     def reset(self):
         """
