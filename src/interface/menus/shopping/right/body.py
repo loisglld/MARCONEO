@@ -42,7 +42,7 @@ class Body(AppFrame):
             setattr(self, f"{name}_item",
                     ShopItem(name, item["price"], item["id"], self, item["color"]))
             item_frame = getattr(self, f"{name}_item")
-            item_frame.grid(row=row, column=column, padx=10, pady=10)
+            item_frame.grid(row=row, column=column, padx=5, pady=5)
             self.grid_columnconfigure(column, weight=1)
             self.grid_rowconfigure(row, weight=1)
 

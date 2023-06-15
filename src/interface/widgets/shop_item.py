@@ -7,7 +7,7 @@ Configures the items that can be bought in the shop.
 #-------------------------------------------------------------------#
 
 import decimal
-from src.utils.gui_utils import AppLabel, Frame, Label
+from src.utils.gui_utils import AppLabel, Frame
 
 #-------------------------------------------------------------------#
 
@@ -15,27 +15,19 @@ class ShopItem(Frame):
     """
     Describes an item that can be bought in the shop.
     """
-    def __init__(self, title:str, price, id_product, manager=None, color:str="#555555",
-                 width:int=120, height:int=120):
+    def __init__(self, title, price, id_product, manager=None, color:str="#555555"):
         """
         Item's constructor.
         """
         super().__init__(manager)
-        self.configure(bg="black", width=width, height=height)
+        self.configure(bg=color, width=120, height=120)
         self.color = color
         self.manager = manager
         self.gui_manager = self.manager.manager.manager.gui
         self.cart = self.gui_manager.app.cart
         self.footer = self.manager.manager.footer
 
-        # Background image
-        img = getattr(self.gui_manager, f"img_{title.lower().replace(' ', '')}")
-        self.bg_lbl = Label(self, image=img,
-                            borderwidth=0, highlightthickness=0)
-        # We use place so that the image is in the background
-        self.bg_lbl.place(x=0, y=0)
-
-        self.title = title.title()
+        self.title = title
         self.id_product = id_product
         self.price = decimal.Decimal(price)
         self.amount = 0
@@ -52,11 +44,11 @@ class ShopItem(Frame):
         """
         # The name and the amount are labels inside the Frame.
         self.name_label = AppLabel(self, text=self.title,
-                                   bg=self.color, font=("system", 15))
+                                   bg=self.color)
         self.amount_label = AppLabel(self, text=self.amount,
-                                     bg=self.color, font=("system", 15))
+                                     bg=self.color)
         self.price_label = AppLabel(self, text=str(self.price)+"€",
-                                    bg=self.color, font=("system", 15))
+                                    bg=self.color)
 
         self.name_label.place(relx=0.5, rely=0.2, anchor="center")
         self.amount_label.place(relx=0.5, rely=0.5, anchor="center")
