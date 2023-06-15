@@ -144,6 +144,11 @@ class PriceModifier(Frame):
         # Reset the cart
         self.manager.manager.gui.app.cart.reset()
         self.pack_forget()
+        # Setup the grid
+        self.manager.grid_columnconfigure(0, weight=1)
+        self.manager.grid_rowconfigure(0, weight=2)
+        self.manager.grid_rowconfigure(1, weight=5)
+        self.manager.grid_rowconfigure(2, weight=2)
         self.shopping_manager.right_grid.header.grid(row=0, column=0, sticky='nsew')
         self.shopping_manager.right_grid.body.grid(row=1, column=0, sticky='nsew')
         self.shopping_manager.right_grid.footer.grid(row=2, column=0, sticky='nsew')
