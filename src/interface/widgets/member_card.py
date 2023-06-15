@@ -17,10 +17,10 @@ class MemberCard(Frame):
     def __init__(self, manager) -> None:
         super().__init__(manager)
         self.manager =  manager
-        self.loggers = self.manager.manager.manager.gui.loggers
+        self.gui_manager = manager.manager.manager.gui
+        self.loggers = self.gui_manager.loggers
 
-        self.propagate(True)
-        self.configure(bg="#555555")
+        self.configure(bg="#000000")
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
 
@@ -30,13 +30,13 @@ class MemberCard(Frame):
         """
         Defines the labels used in the menu.
         """
-        self.first_name_label = Label(self, text="-")
-        self.last_name_label = Label(self, text="-")
-        self.balance_label = Label(self, text="_")
+        self.name_label = Label(self, text="-",
+                                      font=("system", 12), fg="#ffffff", bg="#000000")
+        self.balance_label = Label(self, text="_", fg="gold",
+                                   font=("system", 12, "bold"), bg="#000000")
 
-        self.first_name_label.pack(side="top", fill="both", expand=True)
-        self.last_name_label.pack(side="top", fill="both", expand=True)
-        self.balance_label.pack(side="top", fill="both", expand=True)
+        self.name_label.pack(padx=5, pady=10)
+        self.balance_label.pack(padx=5, pady=(0, 5))
 
         return True
 
@@ -45,11 +45,17 @@ class MemberCard(Frame):
         Updates the member card with
         the current member's informations.
         """
+        if member.admin:
+            self.loggers.log.warning("Member %s is an admin.", member.first_name)
+            self.manager.id_card.configure(image=self.gui_manager.crown)
+        elif not member.contributor:
+            self.loggers.log.warning("Member %s is not a contributor.", member.first_name)
+            self.manager.id_card.configure(image=self.gui_manager.warning)
+        else:
+            self.manager.id_card.configure(image=self.gui_manager.id)
         if member.card_id is None:
-            self.first_name_label.configure(text="-")
-            self.last_name_label.configure(text="-")
+            self.name_label.configure(text="-")
             self.balance_label.configure(text="_")
             return
-        self.first_name_label.configure(text=member.first_name)
-        self.last_name_label.configure(text=member.last_name)
-        self.balance_label.configure(text=member.balance)
+        self.name_label.configure(text=member.first_name + " " + member.last_name)
+        self.balance_label.configure(text=f"{member.balance}€")

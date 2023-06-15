@@ -41,9 +41,9 @@ class RightGrid(Frame):
 
         # Setup the grid
         self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=0)
-        self.grid_rowconfigure(1, weight=4)
-        self.grid_rowconfigure(2, weight=1)
+        self.grid_rowconfigure(0, weight=2)
+        self.grid_rowconfigure(1, weight=5)
+        self.grid_rowconfigure(2, weight=2)
 
     def modify_prices(self):
         """

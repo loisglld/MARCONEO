@@ -35,8 +35,8 @@ class Member:
         self.nickname = member_data['nickname']
         self.card_id = member_data['card_number']
         self.balance = member_data['balance']
-        self.is_admin = member_data['admin']
-        self.is_contributor = member_data['contributor']
+        self.admin = member_data['admin']
+        self.contributor = member_data['contributor']
 
         print(f"Current user: {self.first_name} {self.last_name} ({self.balance}€)")
         self.loggers.log.info(f"Current user: {self.first_name} {self.last_name}")

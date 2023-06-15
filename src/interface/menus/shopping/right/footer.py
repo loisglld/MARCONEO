@@ -6,7 +6,7 @@ Describes the footer of the shopping menu.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import Frame, AppButton, Label
+from src.utils.gui_utils import Frame, Label, ImageButton
 
 #-------------------------------------------------------------------#
 
@@ -21,7 +21,8 @@ class Footer(Frame):
         self.shopping_manager = manager.manager
         self.loggers = self.shopping_manager.gui.app.loggers
         self.propagate(False)
-        self.configure(bg="#555555")
+        self.configure(bg="#000000", borderwidth=5, border=5,
+                    highlightbackground="#4d88ff", highlightthickness=5)
         self.cart = self.shopping_manager.gui.app.cart
 
         self.setup_container()
@@ -30,15 +31,22 @@ class Footer(Frame):
         """
         Sets up the container of the footer.
         """
-        self.confirm_btn = AppButton(self, text="Confirm", command=self.confirm_purchase)
-        self.reset_btn = AppButton(self, text="Reset cart", command=self.reset)
-        self.total_label = Label(self, text=f"Cart: {self.cart.total}")
-        self.price_modifier_btn = AppButton(self, text="Price modifier", command=self.modify_prices)
+        self.confirm_btn = ImageButton(self, image=self.shopping_manager.gui.confirm, command=self.confirm_purchase)
+        self.reset_btn = ImageButton(self, image=self.shopping_manager.gui.discard, command=self.reset)
 
-        self.reset_btn.pack(side="left", padx=10)
+
+        cart_frame = Frame(self, bg="black")
+        self.cart_img = Label(cart_frame, image=self.shopping_manager.gui.cart,
+                              bg="black", border=0,
+                              borderwidth= 0, highlightthickness=0)
+        self.total_label = Label(cart_frame, text=f"{self.cart.total} €",
+                                 font=("System", 20, "bold"), bg="black", fg="white")
+        self.cart_img.pack(side="left", padx=10)
         self.total_label.pack(side="left", padx=10)
-        self.confirm_btn.pack(side="right", padx=10)
-        self.price_modifier_btn.pack(side="right", padx=10)
+
+        cart_frame.place(relx=0.5, rely=0.5, anchor="center")
+        self.reset_btn.place(relx=0.02, rely=0.5, anchor="w")
+        self.confirm_btn.place(relx=0.98, rely=0.5, anchor="e")
 
     def reset(self):
         """
@@ -55,7 +63,11 @@ class Footer(Frame):
         """
         Updates the total label.
         """
-        self.total_label.configure(text=f"Cart: {self.cart.total}")
+        self.total_label.configure(text=f"{self.cart.total} €")
+        if self.cart.total>self.shopping_manager.gui.app.current_user.balance:
+            self.total_label.configure(fg="red")
+        else:
+            self.total_label.configure(fg="white")
 
     def confirm_purchase(self):
         """
@@ -81,10 +93,4 @@ class Footer(Frame):
         self.shopping_manager.right_grid.body.update_body(
             self.shopping_manager.left_grid.navbar.current_toggle)
         self.reset()
-        self.confirm_btn.configure(text="Confirm", command=self.confirm_purchase)
-
-    def modify_prices(self):
-        """
-        Opens the price modifier menu.
-        """
-        self.shopping_manager.right_grid.price_modifier.show()
+        self.confirm_btn.configure(command=self.confirm_purchase)

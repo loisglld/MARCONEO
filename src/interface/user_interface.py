@@ -13,7 +13,7 @@ from src.utils.gui_utils import Tk, Frame, BOTH, Image, ImageTk, ImageOps, Image
 from src.interface.menus.main_menu import MainMenu
 from src.interface.menus.credits_menu import CreditsMenu
 from src.interface.menus.settings.settings_menu import SettingsMenu
-from src.interface.menus.history.history_menu import HistoryMenu
+from src.interface.menus.history_menu import HistoryMenu
 
 #------------------------------------------------------------#
 
@@ -120,8 +120,20 @@ class GUI(Tk):
         self.history = self.open_image("history.png", 70, 70)
 
         # shopping_menu
-
-        # history_menu
+        self.discard = self.open_image("discard.png", 70, 70)
+        self.cart = self.open_image("cart.png", 50, 50)
+        self.confirm = self.open_image("confirm.png", 70, 70)
+        self.party = self.open_image("party.png", 70, 70)
+        self.refill = self.open_image("refill.png", 70, 70)
+        self.oeno = self.open_image("oeno.png", 70, 70)
+        self.shots = self.open_image("shots.png", 70, 70)
+        self.crown = self.open_image("crown.png", 70, 70)
+        self.pricemodifier = self.open_image("pricemodifier.png", 50, 50)
+        self.cancel = self.open_image("cancel.png", 70, 70)
+        self.resetprice = self.open_image("resetprice.png", 70, 70)
+        self.logout = self.open_image("logout.png", 50, 50)
+        self.id = self.open_image("ID.png", 70, 70)
+        self.warning = self.open_image("warning.png", 70, 70)
 
     def open_image(self, file_name: str,
                    width:int=None, height:int=None, color=None) -> ImageTk.PhotoImage:

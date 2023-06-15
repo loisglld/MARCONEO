@@ -19,6 +19,14 @@
                     "price": "3.00",
                     "color": "#2d47f2",
                     "selected": false
+                },
+                {
+                    "id": 11,
+                    "name": "aFZEF",
+                    "title": "FZEfzfe",
+                    "price": "1.00",
+                    "color": "#ff00f7",
+                    "selected": false
                 }
             ]
         },

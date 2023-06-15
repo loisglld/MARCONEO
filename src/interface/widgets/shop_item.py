@@ -20,8 +20,10 @@ class ShopItem(Frame):
         Item's constructor.
         """
         super().__init__(manager)
-        self.configure(bg=color, width=120, height=120)
+        self.configure(bg=color, width=120, height=120,
+                       highlightbackground=self.darken(color), highlightthickness=6)
         self.color = color
+        manager = manager.master
         self.manager = manager
         self.gui_manager = self.manager.manager.manager.gui
         self.cart = self.gui_manager.app.cart
@@ -44,11 +46,11 @@ class ShopItem(Frame):
         """
         # The name and the amount are labels inside the Frame.
         self.name_label = AppLabel(self, text=self.title,
-                                   bg=self.color)
+                                   fg=self.darken(self.color), bg=self.color)
         self.amount_label = AppLabel(self, text=self.amount,
-                                     bg=self.color)
+                                     fg=self.darken(self.color), bg=self.color)
         self.price_label = AppLabel(self, text=str(self.price)+"€",
-                                    bg=self.color)
+                                    fg=self.darken(self.color), bg=self.color)
 
         self.name_label.place(relx=0.5, rely=0.2, anchor="center")
         self.amount_label.place(relx=0.5, rely=0.5, anchor="center")
@@ -78,6 +80,14 @@ class ShopItem(Frame):
 
         # Footer's modification
         self.footer.update_footer()
+
+    def darken(self, color:str):
+        """
+        Darkens the item.
+        """
+        factor = 0.4
+        red, green, blue = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
+        return f"#{hex(int(red*factor))[2:]}{hex(int(green*factor))[2:]}{hex(int(blue*factor))[2:]}"
 
     def __repr__(self) -> str:
         return self.title
