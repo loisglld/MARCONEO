@@ -8,12 +8,21 @@ It is responsible for the GUI of the MarcoNeo application.
 #------------------------------------------------------------#
 
 import os
+import logging
+
+
+
 
 from src.utils.gui_utils import Tk, Frame, BOTH, Image, ImageTk, ImageOps, ImageFilter
 from src.interface.menus.main_menu import MainMenu
 from src.interface.menus.credits_menu import CreditsMenu
 from src.interface.menus.settings.settings_menu import SettingsMenu
 from src.interface.menus.history_menu import HistoryMenu
+
+#------------------------------------------------------------#
+
+logger = logging.getLogger('PIL.PngImagePlugin')
+logger.setLevel(logging.WARNING)
 
 #------------------------------------------------------------#
 
@@ -140,8 +149,8 @@ class GUI(Tk):
         self.credits_lbl = self.open_image("credits_lbl.png", 70, 70)
         self.noncotisant_lbl = self.open_image("noncotisant.png", 150, 20)
         self.customisemarco = self.open_image("customisemarco.png", 70, 70)
-        self.custommarco = self.open_image("custommarco.png", 70, 70)
-        self.defaultmarco = self.open_image("defaultmarco.png", 70, 70)
+        self.custommarco = self.open_image("custommarco.png", 135, 70)
+        self.defaultmarco = self.open_image("defaultmarco.png", 200, 70)
         self.debiter = self.open_image("debiter.png", 500, 100)
 
     def open_image(self, file_name: str,

@@ -6,7 +6,7 @@ Configure MarcoNeo's welcome page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import AppButton, AppFrame, AppLabel, ImageButton
+from src.utils.gui_utils import AppFrame, AppLabel, ImageButton
 from src.interface.menus.shopping.shopping_menu import ShoppingMenu
 
 #-------------------------------------------------------------------#
@@ -23,12 +23,13 @@ class MainMenu(AppFrame):
         self.gui = gui
 
         self.title = AppLabel(self, image=self.gui.logo)
-        self.config_frame = AppFrame(self)
-        self.config_loaded_lbl = AppLabel(self.config_frame, text="Config loaded: ")
-        self.switch_config_btn = AppButton(self.config_frame, text="DEFAULT",
+        frame = AppFrame(self, highlightbackground="white",
+                         highlightthickness=4)
+        self.switch_config_btn = ImageButton(frame, image=self.gui.defaultmarco,
+                                             borderwidth=0,
+                                             highlightthickness=5,
+                                             highlightbackground="white",
                                             command=self.switch_config)
-        self.config_loaded_lbl.propagate(False)
-        self.switch_config_btn.propagate(False)
 
         self.custom_btn = ImageButton(self, image=self.gui.configuration,
                                 command=lambda: self.gui.change_menu(self.gui.settings_menu))
@@ -44,10 +45,9 @@ class MainMenu(AppFrame):
 
         self.title.place(relx=0.5, rely=0.3, anchor="center")
 
-        self.load_btn.place(relx=0.5, rely=0.65, anchor="center")
-        self.config_frame.place(relx=0.5, rely=0.9, anchor="center")
-        self.config_loaded_lbl.pack(side='left', pady=10, padx=10, fill="x")
-        self.switch_config_btn.pack(side='right', pady=10, padx=10, fill="x")
+        self.load_btn.place(relx=0.5, rely=0.60, anchor="center")
+        self.switch_config_btn.pack(padx=5, pady=5)
+        frame.place(relx=0.5, rely=0.88, anchor="center")
 
         self.power_btn.place(relx=0.03, rely=0.97, anchor="sw")
         self.credits_btn.place(relx=0.15, rely=0.97, anchor="sw")
@@ -87,10 +87,10 @@ class MainMenu(AppFrame):
         default = self.gui.app.config.DEFAULT
         if self.gui.app.config.name == custom:
             self.gui.app.config.name = default
-            self.switch_config_btn.config(text="DEFAULT")
+            self.switch_config_btn.config(image=self.gui.defaultmarco)
         elif self.gui.app.config.name == default:
             self.gui.app.config.name = custom
-            self.switch_config_btn.config(text="CUSTOM")
+            self.switch_config_btn.config(image=self.gui.custommarco)
         self.gui.loggers.log.info("Config switched to " + self.gui.app.config.name)
 
     def history(self) -> True:

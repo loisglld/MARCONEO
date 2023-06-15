@@ -20,7 +20,7 @@ class AppFrame(Frame):
     GRAY = "#555555"
     LIGHTGRAY = "#777777"
     LIGHT = "#999999"
-    def __init__(self, master) -> None:
-        super().__init__(master)
+    def __init__(self, master, **kwargs) -> None:
+        super().__init__(master, kwargs)
         self.master = master
         self.config(bg=self.DARK)

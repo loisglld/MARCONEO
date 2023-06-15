@@ -100,18 +100,20 @@ class Footer(Frame):
             self.loggers.log.warning("Not enough money to purchase.")
             return
 
+
+        for widget in self.manager.body.frame.winfo_children():
+            widget.destroy()
+
         # Popup displayed when confirming a purchase.
-        self.confirm_popup = Frame(self.manager.body, bg="black")
-        self.debiter_lbl = Label(self.confirm_popup, image=self.shopping_manager.gui.debiter,
+        debiter_lbl = Label(self.manager.body.frame, image=self.shopping_manager.gui.debiter,
                                     bg="black", highlightthickness=0, borderwidth=0)
-        self.debiter_total = Label(self.confirm_popup,
+        debiter_total = Label(self.manager.body.frame,
                                    text=f"{self.shopping_manager.gui.app.cart.total} €",
                                     font=("System", 40, "bold"), bg="black", fg="gold")
-        self.debiter_lbl.pack(side="top", pady=5)
-        self.debiter_total.pack(side="top", pady=5)
 
-        self.manager.body.frame.place_forget()
-        self.confirm_popup.place(relx=0.5, rely=0.5, anchor="center")
+        debiter_lbl.grid(row=0, column=0, columnspan=2, pady=5)
+        debiter_total.grid(row=1, column=0, columnspan=2, pady=5)
+
         self.confirm_frame.place(relx=0.43, rely=0.5, anchor="center")
         self.confirm_btn.configure(command=self.do_purchase)
 
@@ -119,7 +121,10 @@ class Footer(Frame):
         """
         Cancels the purchase.
         """
+        for widget in self.manager.body.frame.winfo_children():
+            widget.destroy()
         self.confirm_frame.place_forget()
+        self.manager.body.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
         self.confirm_btn.configure(command=self.confirm_purchase)
         self.reset()
 
@@ -127,7 +132,7 @@ class Footer(Frame):
         """
         Does the purchase.
         """
-        self.confirm_popup.place_forget()
+        self.manager.body.frame.place_forget()
         self.confirm_frame.place_forget()
 
         self.shopping_manager.gui.app.payment_service.purchase()

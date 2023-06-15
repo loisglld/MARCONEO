@@ -33,6 +33,7 @@ class Body(AppFrame):
 
         Dynamically creates the ShopItem objects.
         """
+        count = 1
         row, column = 0, 0
         custom_bool = self.shopping_manager.gui.app.config.name == self.shopping_manager.gui.app.config.CUSTOM
         self.frame = Frame(self, bg="black")
@@ -53,6 +54,11 @@ class Body(AppFrame):
             if column == self.item_per_row:
                 column = 0
                 row += 1
+
+            if count == 8:
+                break
+
+            count += 1
 
     def update_body(self, toggle):
         """

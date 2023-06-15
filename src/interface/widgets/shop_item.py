@@ -81,13 +81,17 @@ class ShopItem(Frame):
         # Footer's modification
         self.footer.update_footer()
 
-    def darken(self, color:str):
+    def darken(self, color: str) -> str:
         """
-        Darkens the item.
+        Darkens the color.
         """
-        factor = 0.4
+        factor = 0.5
         red, green, blue = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
-        return f"#{hex(int(red*factor))[2:]}{hex(int(green*factor))[2:]}{hex(int(blue*factor))[2:]}"
+        red_darkened = int(red * factor)
+        green_darkened = int(green * factor)
+        blue_darkened = int(blue * factor)
+        return f"#{format(red_darkened, '02x')}{format(green_darkened, '02x')}{format(blue_darkened, '02x')}"
+
 
     def __repr__(self) -> str:
         return self.title

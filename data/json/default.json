@@ -19,6 +19,62 @@
                     "price": "3.00",
                     "color": "#2d47f2",
                     "selected": false
+                },
+                {
+                    "id": 11,
+                    "name": "aFZEF",
+                    "title": "FZEfzfe",
+                    "price": "1.00",
+                    "color": "#ff00f7",
+                    "selected": false
+                },
+                {
+                    "id": 12,
+                    "name": "ereee",
+                    "title": "erreeee",
+                    "price": "2.00",
+                    "color": "#00ff11",
+                    "selected": false
+                },
+                {
+                    "id": 13,
+                    "name": "azer",
+                    "title": "azert",
+                    "price": "3.00",
+                    "color": "#bb00ff",
+                    "selected": false
+                },
+                {
+                    "id": 14,
+                    "name": "gjgykk",
+                    "title": "hukhgb",
+                    "price": "3.00",
+                    "color": "#fbff00",
+                    "selected": false
+                },
+                {
+                    "id": 15,
+                    "name": "jklhl",
+                    "title": "ljiljli",
+                    "price": "4.00",
+                    "color": "#4c00ff",
+                    "selected": false
+                },
+                {
+                    "id": 16,
+                    "name": "sregsgnj",
+                    "title": "fjfjgv",
+                    "price": "12.00",
+                    "color": "#c8ff00",
+                    "selected": false
+                },
+                {
+                    "id": 17,
+                    "name": "doowap",
+                    "title": "drhdh",
+                    "price": "12.00",
+                    "color": "#2fa027",
+                    "selected": false
                 }
             ]
         },
