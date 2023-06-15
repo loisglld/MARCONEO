@@ -23,6 +23,7 @@ class Body(AppFrame):
         self.propagate(False)
         self.configure(bg="black")
         self.item_per_row = 4
+        self.frame = None
 
         self.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
 
@@ -34,15 +35,15 @@ class Body(AppFrame):
         """
         row, column = 0, 0
         custom_bool = self.shopping_manager.gui.app.config.name == self.shopping_manager.gui.app.config.CUSTOM
-        frame = Frame(self, bg="black")
-        frame.place(relx=0.5, rely=0.5, anchor="center")
+        self.frame = Frame(self, bg="black")
+        self.frame.place(relx=0.5, rely=0.5, anchor="center")
         for item in items:
             if custom_bool:
                 if not item["selected"]:
                     continue
             name = item["title"]
             setattr(self, f"{name}_item",
-                    ShopItem(name, item["price"], item["id"], frame, item["color"]))
+                    ShopItem(name, item["price"], item["id"], self.frame, item["color"]))
             item_frame = getattr(self, f"{name}_item")
             item_frame.grid(row=row, column=column, padx=20, pady=5)
             self.grid_columnconfigure(column, weight=1)

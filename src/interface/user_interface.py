@@ -133,7 +133,16 @@ class GUI(Tk):
         self.resetprice = self.open_image("resetprice.png", 70, 70)
         self.logout = self.open_image("logout.png", 50, 50)
         self.id = self.open_image("ID.png", 70, 70)
-        self.warning = self.open_image("warning.png", 70, 70)
+        self.warning = self.open_image("warning.png", 50, 50)
+
+        # labels
+        self.confirm_lbl = self.open_image("confirm_lbl.png", 450, 50)
+        self.credits_lbl = self.open_image("credits_lbl.png", 70, 70)
+        self.noncotisant_lbl = self.open_image("noncotisant.png", 150, 20)
+        self.customisemarco = self.open_image("customisemarco.png", 70, 70)
+        self.custommarco = self.open_image("custommarco.png", 70, 70)
+        self.defaultmarco = self.open_image("defaultmarco.png", 70, 70)
+        self.debiter = self.open_image("debiter.png", 500, 100)
 
     def open_image(self, file_name: str,
                    width:int=None, height:int=None, color=None) -> ImageTk.PhotoImage:

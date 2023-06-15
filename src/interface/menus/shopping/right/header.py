@@ -48,6 +48,8 @@ class Header(Frame):
         """
         Log out the current user and update the page.
         """
+        self.shopping_manager.right_grid.footer.confirm_popup.place_forget()
+        self.shopping_manager.right_grid.footer.confirm_frame.place_forget()
         self.shopping_manager.gui.app.cart.reset()
         self.shopping_manager.gui.app.update_user()
         footer =  self.shopping_manager.right_grid.footer

@@ -24,6 +24,9 @@ class MemberCard(Frame):
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
 
+        self.noncotisant = Label(self.manager, image=self.gui_manager.noncotisant_lbl,
+                  bg="#000000", borderwidth=0)
+
         self.setup_labels()
 
     def setup_labels(self) -> bool:
@@ -48,11 +51,18 @@ class MemberCard(Frame):
         if member.admin:
             self.loggers.log.warning("Member %s is an admin.", member.first_name)
             self.manager.id_card.configure(image=self.gui_manager.crown)
+            self.manager.id_card.place(relx=0.1, rely=0.5, anchor="center")
+            self.noncotisant.place_forget()
         elif not member.contributor:
             self.loggers.log.warning("Member %s is not a contributor.", member.first_name)
             self.manager.id_card.configure(image=self.gui_manager.warning)
+            self.manager.id_card.place(relx=0.05, rely=0.5, anchor="center")
+            self.noncotisant.place(relx=0.23, rely=0.5, anchor="center")
         else:
             self.manager.id_card.configure(image=self.gui_manager.id)
+            self.manager.id_card.place(relx=0.1, rely=0.5, anchor="center")
+            self.noncotisant.place_forget()
+
         if member.card_id is None:
             self.name_label.configure(text="-")
             self.balance_label.configure(text="_")
