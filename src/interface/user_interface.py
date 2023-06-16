@@ -147,7 +147,7 @@ class GUI(Tk):
         self.logout = self.open_image("logout.png", 50, 50)
         self.id = self.open_image("ID.png", 70, 70)
         self.warning = self.open_image("warning.png", 50, 50)
-        self.refill_lbl = self.open_image("refill_lbl.png", 550, 180)
+        self.refill_lbl = self.open_image("refill_lbl.png", 550, 160)
         self.recharger_lbl = self.open_image("recharger_lbl.png", 550, 110)
 
         # labels

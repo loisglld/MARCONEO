@@ -72,6 +72,15 @@ class MarcoNeo:
         if self.gui.shopping_menu is None:
             return
 
+        # Refill security
+        if self.gui.shopping_menu.left_grid.navbar.current_toggle == "Rechargement":
+            if not self.gui.shopping_menu.refill_bool:
+                if user_data is not None:
+                    if user_data["admin"]:
+                        self.gui.shopping_menu.refill_bool = True
+                        self.gui.shopping_menu.refill_security()
+                        return
+
         # Update application's current data
         self.current_user.__init__(self, user_data)
         self.cart.__init__(self.loggers, self.current_user)

@@ -21,6 +21,8 @@ class ShoppingMenu(Frame):
         self.gui = gui
         self.grid_propagate(False)
 
+        self.refill_bool = False
+
         # Setup the left grid for the navbar
         self.left_grid = LeftGrid(self)
         self.left_grid.grid(row=0, column=0, sticky="nsew")
@@ -50,13 +52,16 @@ class ShoppingMenu(Frame):
         then an error message is displayed and,
         asks the user to scan an admin card.
         """
-        self.right_grid.body.clear_body()
-        if self.gui.app.current_user.admin:
-            self.right_grid.header.logout()
-            self.left_grid.navbar.current_toggle = "Rechargement"
-            self.left_grid.navbar.toggle("Rechargement")
-            self.right_grid.body.update_body(self.left_grid.navbar.current_toggle)
-            return
+        if self.refill_bool:
+            self.display_refill()
+        else:
+            Label(self.right_grid.body, image=self.gui.refill_lbl,
+            bg="black").place(relx=0.5, rely=0.5, anchor="center")
 
-        Label(self.right_grid.body, image=self.gui.refill_lbl,
-        bg="black").place(relx=0.5, rely=0.5, anchor="center")
+    def display_refill(self):
+        """
+        Displays the refill page.
+        """
+        self.right_grid.body.clear_body()
+        items_to_display = self.retrieve_shopping_items("Rechargement")
+        self.right_grid.body.display_items(items_to_display)

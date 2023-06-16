@@ -37,7 +37,6 @@ class Navbar(Frame):
             buttons.append(button)
         if buttons:
             buttons[0].configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
-            buttons[-1].config(command=self.manager.manager.refill_security)
 
         return True
 

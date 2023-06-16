@@ -65,6 +65,11 @@ class Body(AppFrame):
         Updates the items displayed in the body.
         """
         self.clear_body()
+        if toggle == "Rechargement":
+            self.shopping_manager.refill_security()
+            return
+        else:
+            self.shopping_manager.refill_bool = False
         items_to_display = self.shopping_manager.retrieve_shopping_items(toggle)
         self.display_items(items_to_display)
 
