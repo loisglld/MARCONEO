@@ -14,14 +14,15 @@ class AppButton(Button):
     """
     Custom button for MarcoNeo's app.
     """
-    DEFAULT_BG = "#555555"
-    ACTIVE_TOGGLE = "#999999"
+    DEFAULT_BG = "#66b3ff"
+    ACTIVE_TOGGLE = "#2683ff"
     def __init__(self, master=None, **kwargs) -> None:
         Button.__init__(self, master, **kwargs)
         self.configure(font=("System", 12), bg=self.DEFAULT_BG,
-                            fg="#FFFFFF", activebackground="#777777",
-                            activeforeground="#FFFFFF", bd=0, highlightthickness=0,
-                            relief="flat", padx=10, pady=10)
+                            fg="white", activebackground=self.ACTIVE_TOGGLE,
+                            activeforeground="#FFFFFF", bd=0, highlightthickness=3,
+                            highlightbackground=self.ACTIVE_TOGGLE,
+                            relief="flat", padx=10, pady=10, disabledforeground="#FFFFFF",)
 
 class ImageButton(Button):
     """

@@ -33,14 +33,6 @@ class Footer(Frame):
         self.footer_frame = Frame(self, bg="black")
         self.footer_frame.pack(fill="both", expand=True)
 
-        self.confirm_frame = Frame(self, bg="black")
-        self.confirm_lbl = Label(self.confirm_frame, image=self.shopping_manager.gui.confirm_lbl,
-                                    bg="black", highlightthickness=0, borderwidth=0)
-        self.cancel_btn = ImageButton(self.confirm_frame, image=self.shopping_manager.gui.cancel,
-                                        command=self.cancel_purchase)
-        self.cancel_btn.pack(side="left", padx=5)
-        self.confirm_lbl.pack(side="left", padx=5)
-
         self.setup_container()
 
     def setup_container(self):
@@ -49,8 +41,18 @@ class Footer(Frame):
         """
         self.confirm_btn = ImageButton(self.footer_frame, image=self.shopping_manager.gui.confirm,
                                        command=self.confirm_purchase)
-        self.reset_btn = ImageButton(self.footer_frame, image=self.shopping_manager.gui.discard,
-                                     command=self.reset)
+
+        self.back_btn = ImageButton(self, image=self.manager.manager.gui.back,
+                                  command=lambda: self.manager.manager.gui.change_menu(
+                                      self.manager.manager.gui.main_menu))
+
+        self.confirm_frame = Frame(self, bg="black")
+        self.confirm_lbl = Label(self.confirm_frame, image=self.shopping_manager.gui.confirm_lbl,
+                                    bg="black", highlightthickness=0, borderwidth=0)
+        self.cancel_btn = ImageButton(self.confirm_frame, image=self.shopping_manager.gui.cancel,
+                                        command=self.cancel_purchase)
+        self.cancel_btn.pack(side="left", padx=5)
+        self.confirm_lbl.pack(side="left", padx=5)
 
 
         cart_frame = Frame(self.footer_frame, bg="black")
@@ -63,7 +65,7 @@ class Footer(Frame):
         self.total_label.pack(side="left", padx=10)
 
         cart_frame.place(relx=0.5, rely=0.5, anchor="center")
-        self.reset_btn.place(relx=0.02, rely=0.5, anchor="w")
+        self.back_btn.place(relx=0.02, rely=0.5, anchor="w")
         self.confirm_btn.place(relx=0.99, rely=0.5, anchor="e")
 
     def reset(self):
@@ -82,6 +84,15 @@ class Footer(Frame):
         Updates the total label.
         """
         self.total_label.configure(text=f"{self.cart.total} €")
+
+        if not self.cart.total:
+            self.back_btn.configure(image=self.manager.manager.gui.back,
+            command=lambda: self.manager.manager.gui.change_menu(
+                self.manager.manager.gui.main_menu))
+        else:
+            self.back_btn.configure(image=self.manager.manager.gui.discard,
+            command=self.reset)
+
         if self.shopping_manager.gui.app.current_user.balance is None:
             return
         if self.cart.total>self.shopping_manager.gui.app.current_user.balance:
@@ -100,6 +111,8 @@ class Footer(Frame):
             self.loggers.log.warning("Not enough money to purchase.")
             return
 
+        for widget in self.manager.manager.left_grid.navbar.winfo_children():
+            widget.configure(state="disabled")
 
         for widget in self.manager.body.frame.winfo_children():
             widget.destroy()
@@ -123,6 +136,10 @@ class Footer(Frame):
         """
         for widget in self.manager.body.frame.winfo_children():
             widget.destroy()
+
+        for widget in self.manager.manager.left_grid.navbar.winfo_children():
+            widget.configure(state="normal")
+
         self.confirm_frame.place_forget()
         self.manager.body.update_body(self.shopping_manager.left_grid.navbar.current_toggle)
         self.confirm_btn.configure(command=self.confirm_purchase)
@@ -134,6 +151,8 @@ class Footer(Frame):
         """
         self.manager.body.frame.place_forget()
         self.confirm_frame.place_forget()
+        for widget in self.manager.manager.left_grid.navbar.winfo_children():
+            widget.configure(state="normal")
 
         self.shopping_manager.gui.app.payment_service.purchase()
         self.shopping_manager.gui.app.cart.reset()

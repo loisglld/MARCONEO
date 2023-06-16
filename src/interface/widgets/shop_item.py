@@ -45,11 +45,12 @@ class ShopItem(Frame):
         Defines the container of the item.
         """
         # The name and the amount are labels inside the Frame.
-        self.name_label = AppLabel(self, text=self.title,
+        self.name_label = AppLabel(self, text=self.title.capitalize(), font=("system", 12, "bold"),
                                    fg=self.darken(self.color), bg=self.color)
-        self.amount_label = AppLabel(self, text=self.amount,
+        self.amount_label = AppLabel(self, text=self.amount, font=("system", 10),
                                      fg=self.darken(self.color), bg=self.color)
         self.price_label = AppLabel(self, text=str(self.price)+"€",
+                                    font=("system", 12, "bold"),
                                     fg=self.darken(self.color), bg=self.color)
 
         self.name_label.place(relx=0.5, rely=0.2, anchor="center")

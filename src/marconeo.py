@@ -68,6 +68,10 @@ class MarcoNeo:
         """
         Updates the current user to a blank user or to the user_data.
         """
+        # If main menu is not loaded, return
+        if self.gui.shopping_menu is None:
+            return
+
         # Update application's current data
         self.current_user.__init__(self, user_data)
         self.cart.__init__(self.loggers, self.current_user)

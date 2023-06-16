@@ -49,6 +49,8 @@ class MemberCard(Frame):
         the current member's informations.
         """
         if member.card_id is None:
+            self.noncotisant.place_forget()
+            self.manager.id_card.place_forget()
             self.name_label.configure(text="-")
             self.balance_label.configure(text="_")
             return

@@ -29,7 +29,6 @@ class Header(Frame):
 
         self.id_card = Label(self, image=self.shopping_manager.gui.id,
                              bg="#000000", borderwidth=0, highlightthickness=0)
-        self.id_card.place(relx=0.1, rely=0.5, anchor="center")
 
         self.member_card = MemberCard(self)
         self.member_card.place(relx=0.5, rely=0.5, anchor="center")

@@ -19,7 +19,6 @@ class Navbar(Frame):
         super().__init__(left_grid)
         self.manager = left_grid
         self.product_types = self.manager.manager.gui.app.config.get_product_types()
-        print(self.product_types)
         self.current_toggle = self.product_types[0]
 
         self.propagate(False)
@@ -39,10 +38,7 @@ class Navbar(Frame):
         if buttons:
             buttons[0].configure(bg=AppButton.ACTIVE_TOGGLE)  # set active toggle color
             buttons[-1].config(command=self.manager.manager.refill_security)
-        self.back_btn = AppButton(self, text="Back",
-                                  command=lambda: self.manager.manager.gui.change_menu(
-                                      self.manager.manager.gui.main_menu))
-        self.back_btn.pack(fill="both", expand=True, side="top", padx=10, pady=10)
+
         return True
 
     def toggle(self, toggle: str) -> None:
