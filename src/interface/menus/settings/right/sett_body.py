@@ -18,8 +18,8 @@ class SettBody(Frame):
     def __init__(self, manager=None) -> None:
         super().__init__(manager)
         self.settings_manager = manager.manager
-        self.propagate(False)
-        self.config(bg="#444444")
+        self.grid_propagate(False)
+        self.config(bg="#000000")
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.item_per_row = 4
@@ -36,7 +36,7 @@ class SettBody(Frame):
         for item in items:
             name = item["title"]
             item_frame = SettItem(self, name, self.is_selected(name), "red")
-            item_frame.grid(row=row, column=column, padx=30, pady=30, sticky="nsew")
+            item_frame.grid(row=row, column=column, padx=5, pady=5, sticky="nsew")
             # Actualise the grid
             self.grid_columnconfigure(column, weight=1)
             self.grid_rowconfigure(row, weight=1)

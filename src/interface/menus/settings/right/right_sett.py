@@ -28,4 +28,4 @@ class RightSett(Frame):
 
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
-        self.rowconfigure(1, weight=8)
+        self.rowconfigure(1, weight=4)

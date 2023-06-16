@@ -88,7 +88,7 @@ class GUI(Tk):
         """
         self.title("MarcoNeo")
         self.geometry("800x480")
-        self.resizable(True, True)
+        self.resizable(False, False)
         #self.iconbitmap(os.path.join(os.getcwd(),"DATA","IMAGES","logo.ico"))
         #self.config(bg="black")
         return True
@@ -173,6 +173,10 @@ class GUI(Tk):
         self.dot = self.open_image("dot.png", 78, 78)
         self.backspace = self.open_image("backspace.png", 78, 78)
         self.priceconfirm = self.open_image("priceconfirm.png", 3*78+30, 78)
+
+        # customize menu
+        self.customize_lbl = self.open_image("customisez.png", 200, 50)
+        self.select_lbl = self.open_image("selectionnez.png", 260, 50)
 
 
     def open_image(self, file_name: str,

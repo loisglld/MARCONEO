@@ -125,6 +125,14 @@
                     "price": "1.60",
                     "color": "#296195",
                     "selected": false
+                },
+                {
+                    "id": 18,
+                    "name": "wxw",
+                    "title": "ccccccc",
+                    "price": "52.00",
+                    "color": "#c8ff00",
+                    "selected": false
                 }
             ]
         },

@@ -56,12 +56,12 @@ class SettItem(Frame):
                     if prod["title"] == self.name:
                         prod["selected"] = False
             self.selected = False
-            self.configure(bg=self.default_color)
+            self.configure(bg=self.default_color, highlightbackground="#660000")
         else:
             for prod_type in custom_config:
                 for prod in prod_type["products"]:
                     if prod["title"] == self.name:
                         prod["selected"] = True
-            self.configure(bg="#00cc00")
+            self.configure(bg="#00cc00", highlightbackground="#004400")
             self.selected = True
         self.manager.settings_manager.gui.app.config.update_custom_config(custom_config)
