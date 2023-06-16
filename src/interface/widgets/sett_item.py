@@ -21,7 +21,8 @@ class SettItem(Frame):
         self.name = name
         self.selected = selected
         self.default_color = color
-        self.configure(bg=color)
+        self.configure(bg=color, width=120, height=120,
+                       highlightbackground="#660000", highlightthickness=6)
         self.propagate(False)
 
         self.setup_container()

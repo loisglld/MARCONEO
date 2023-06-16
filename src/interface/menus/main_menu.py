@@ -78,17 +78,10 @@ class MainMenu(AppFrame):
                     if self.tek==10:
                         for widget in self.gui.winfo_children():
                             widget.destroy()
-                        Label(self.gui,
-                              image=self.gui.tek).place(relx=0.5, rely=0.5, anchor="center")
-                        Label(self.gui,
-                              text="CONNARD DE FOUAILLE",
-                              font=("Arial", 30, "bold")).place(relx=0.5, rely=0.3, anchor="center")
-                        ImageButton(self.gui,
-                                    image=self.gui.configtek,
-                                    command=None
-                                    ).place(relx=0.8, rely=0.7, anchor="center")
-                        for widget in self.lightbulb_frame.winfo_children():
-                            widget.destroy()
+                        label = Label(self.gui,
+                              image=self.gui.tek)
+                        label.place(relx=0.5, rely=0.5, anchor="center")
+                        label.bind("<Button-1>", lambda e: self.gui.app.close())
                     return
                 AppLabel(self.lightbulb_frame, image=self.gui.lightbulb).pack(side='left')
                 AppLabel(self.lightbulb_frame, image=self.gui.lightbulb).pack(side='left')

@@ -52,6 +52,7 @@ class ShoppingMenu(Frame):
         """
         self.right_grid.body.clear_body()
         if self.gui.app.current_user.admin:
+            self.right_grid.header.logout()
             self.left_grid.navbar.current_toggle = "Rechargement"
             self.left_grid.navbar.toggle("Rechargement")
             self.right_grid.body.update_body(self.left_grid.navbar.current_toggle)

@@ -107,23 +107,32 @@ class DBCursor:
                                VALUES (%s, %s, %s, %s)
                             """, (product_id, member_id, price*amount, amount))
         self.connection.commit()
-        self.loggers.log.debug(f"Command sent to the database: {product_id}, {member_id}, {price}, {amount}")
 
-    def get_history(self, member_id:int=None) -> list:
+    def get_history(self) -> list:
         """
         Retrieves the history of the given member, including member and product names.
         """
         self.cursor.execute("""SELECT members.first_name AS member_first_name,
-                                products.name AS product_name,
+                                CASE WHEN products.name IS NULL AND orders.price < 0 THEN 'Rechargement'
+                                    ELSE products.name END AS product_name,
                                 orders.price,
                                 orders.amount,
                                 orders.date
                                 FROM orders
                                 INNER JOIN members ON orders.member_id = members.id
-                                INNER JOIN products ON orders.product_id = products.id
-                                ORDER BY orders.date DESC
+                                LEFT JOIN products ON orders.product_id = products.id
+                                WHERE orders.price >= 0 AND orders.product_id IS NOT NULL
+                                UNION
+                                SELECT members.first_name AS member_first_name,
+                                'rechargement' AS product_name,
+                                orders.price,
+                                orders.amount,
+                                orders.date
+                                FROM orders
+                                INNER JOIN members ON orders.member_id = members.id
+                                WHERE orders.price < 0 AND orders.product_id IS NULL
+                                ORDER BY date DESC
                                 LIMIT 10;
                             """)
-        result = self.cursor.fetchall()
-        self.loggers.log.debug(f"Retrieving history of member ID {member_id}")
-        return result
+        return self.cursor.fetchall()
+

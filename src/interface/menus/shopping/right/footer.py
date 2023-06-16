@@ -118,8 +118,13 @@ class Footer(Frame):
             widget.destroy()
 
         # Popup displayed when confirming a purchase.
-        debiter_lbl = Label(self.manager.body.frame, image=self.shopping_manager.gui.debiter,
-                                    bg="black", highlightthickness=0, borderwidth=0)
+        debiter_lbl = Label(self.manager.body.frame,
+                            bg="black", highlightthickness=0, borderwidth=0)
+        if self.shopping_manager.gui.app.cart.total>0:
+            debiter_lbl.configure(image=self.shopping_manager.gui.debiter)
+        else:
+            debiter_lbl.configure(image=self.shopping_manager.gui.recharger_lbl)
+
         debiter_total = Label(self.manager.body.frame,
                                    text=f"{self.shopping_manager.gui.app.cart.total} €",
                                     font=("System", 40, "bold"), bg="black", fg="gold")

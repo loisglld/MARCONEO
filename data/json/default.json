@@ -178,41 +178,41 @@
             "products": [
                 {
                     "id": null,
-                    "name": "one",
-                    "title": "one",
-                    "price": -1,
+                    "name": "un",
+                    "title": "un",
+                    "price": 1,
                     "color": "#66b3ff",
                     "selected": true
                 },
                 {
                     "id": null,
-                    "name": "five",
-                    "title": "five",
-                    "price": -5,
+                    "name": "cinq",
+                    "title": "cinq",
+                    "price": 5,
                     "color": "#66b3ff",
                     "selected": true
                 },
                 {
                     "id": null,
-                    "name": "ten",
-                    "title": "ten",
-                    "price": -10,
+                    "name": "dix",
+                    "title": "dix",
+                    "price": 10,
                     "color": "#66b3ff",
                     "selected": true
                 },
                 {
                     "id": null,
-                    "name": "twenty",
-                    "title": "twenty",
-                    "price": -20,
+                    "name": "vingt",
+                    "title": "vingt",
+                    "price": 20,
                     "color": "#66b3ff",
                     "selected": true
                 },
                 {
                     "id": null,
-                    "name": "fifty",
-                    "title": "fifty",
-                    "price": -50,
+                    "name": "cinquante",
+                    "title": "cinquante",
+                    "price": 50,
                     "color": "#66b3ff",
                     "selected": true
                 }

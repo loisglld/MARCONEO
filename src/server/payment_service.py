@@ -35,7 +35,14 @@ class PaymentService:
             values = list(item.values())[0]
             price = values[1]
             quantity = values[0]
-            self.current_user.balance -= price*quantity
+
+            # If the product is None, it means the user is adding money to his account.
+            # Only products with null id are refillments.
+            if product_id is None:
+                self.current_user.balance += price*quantity
+            else:
+                self.current_user.balance -= price*quantity
+
             self.commit_purchase(product_id=product_id,
                                  member_id=member_id,
                                  price=price,
