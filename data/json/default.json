@@ -177,7 +177,7 @@
             "product_type": "Rechargement",
             "products": [
                 {
-                    "id": 2,
+                    "id": null,
                     "name": "one",
                     "title": "one",
                     "price": -1,
@@ -185,7 +185,7 @@
                     "selected": true
                 },
                 {
-                    "id": 3,
+                    "id": null,
                     "name": "five",
                     "title": "five",
                     "price": -5,
@@ -193,7 +193,7 @@
                     "selected": true
                 },
                 {
-                    "id": 4,
+                    "id": null,
                     "name": "ten",
                     "title": "ten",
                     "price": -10,
@@ -201,7 +201,7 @@
                     "selected": true
                 },
                 {
-                    "id": 5,
+                    "id": null,
                     "name": "twenty",
                     "title": "twenty",
                     "price": -20,
@@ -209,7 +209,7 @@
                     "selected": true
                 },
                 {
-                    "id": 6,
+                    "id": null,
                     "name": "fifty",
                     "title": "fifty",
                     "price": -50,

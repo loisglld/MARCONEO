@@ -25,8 +25,8 @@ class Member:
             self.nickname = None
             self.card_id = None
             self.balance = None
-            self.is_admin = None
-            self.is_contributor = None
+            self.admin = None
+            self.contributor = None
             return
 
         self.member_id = member_data['id']
@@ -52,8 +52,8 @@ class Member:
         self.nickname = None
         self.card_id = None
         self.balance = None
-        self.is_admin = None
-        self.is_contributor = None
+        self.admin = None
+        self.contributor = None
 
     def __str__(self) -> str:
         if self.member_data is None:

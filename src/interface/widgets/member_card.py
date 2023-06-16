@@ -48,6 +48,11 @@ class MemberCard(Frame):
         Updates the member card with
         the current member's informations.
         """
+        if member.card_id is None:
+            self.name_label.configure(text="-")
+            self.balance_label.configure(text="_")
+            return
+
         if member.admin:
             self.loggers.log.info("Admin %s connected.", member.first_name)
             self.manager.id_card.configure(image=self.gui_manager.crown)
@@ -63,9 +68,5 @@ class MemberCard(Frame):
             self.manager.id_card.place(relx=0.1, rely=0.5, anchor="center")
             self.noncotisant.place_forget()
 
-        if member.card_id is None:
-            self.name_label.configure(text="-")
-            self.balance_label.configure(text="_")
-            return
         self.name_label.configure(text=member.first_name + " " + member.last_name)
         self.balance_label.configure(text=f"{member.balance}€")

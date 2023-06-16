@@ -19,6 +19,7 @@ class Navbar(Frame):
         super().__init__(left_grid)
         self.manager = left_grid
         self.product_types = self.manager.manager.gui.app.config.get_product_types()
+        print(self.product_types)
         self.current_toggle = self.product_types[0]
 
         self.propagate(False)

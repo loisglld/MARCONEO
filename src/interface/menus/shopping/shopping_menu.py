@@ -46,18 +46,16 @@ class ShoppingMenu(Frame):
 
     def refill_security(self):
         """
-        If the curretn user isn't an admin,
+        If the current user isn't an admin,
         then an error message is displayed and,
         asks the user to scan an admin card.
         """
         self.right_grid.body.clear_body()
-        if self.gui.app.current_user.is_admin:
+        if self.gui.app.current_user.admin:
             self.left_grid.navbar.current_toggle = "Rechargement"
             self.left_grid.navbar.toggle("Rechargement")
             self.right_grid.body.update_body(self.left_grid.navbar.current_toggle)
             return
-        Label(self.right_grid.body, text="""To refill you need to be an admin.
-        Please scan an admin card and click again on refill.
 
-        Only next, you will be able to refill any other card.""",
-        bg="red", fg="white").pack(padx=10, pady=10, fill="both", expand=True)
+        Label(self.right_grid.body, image=self.gui.refill_lbl,
+        bg="black").place(relx=0.5, rely=0.5, anchor="center")
