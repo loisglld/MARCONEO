@@ -120,7 +120,10 @@ class GUI(Tk):
         self.logo = self.open_image("MarcoNeo.png")
         self.poweroff = self.open_image("power.png", 70, 70)
         self.configuration = self.open_image("config.png", 70, 70)
+        self.lightbulb = self.open_image("lightbulb.png", 30, 30)
         self.load = self.open_image("load.png", 130, 130)
+        self.tek = self.open_image("tek.png", 1000, 480)
+        self.configtek = self.open_image("config.png", 300, 300)
 
         # credits_menu
         self.credits = self.open_image("credits.png", 70, 70)

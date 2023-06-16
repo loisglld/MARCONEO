@@ -6,7 +6,7 @@ Configure MarcoNeo's welcome page.
 
 #-------------------------------------------------------------------#
 
-from src.utils.gui_utils import AppFrame, AppLabel, ImageButton
+from src.utils.gui_utils import AppFrame, AppLabel, ImageButton, Label
 from src.interface.menus.shopping.shopping_menu import ShoppingMenu
 
 #-------------------------------------------------------------------#
@@ -21,7 +21,7 @@ class MainMenu(AppFrame):
     def __init__(self, gui=None) -> None:
         super().__init__(gui)
         self.gui = gui
-
+        self.tek=0
         self.title = AppLabel(self, image=self.gui.logo)
         frame = AppFrame(self, highlightbackground="white",
                          highlightthickness=4)
@@ -30,7 +30,8 @@ class MainMenu(AppFrame):
                                              highlightthickness=5,
                                              highlightbackground="white",
                                             command=self.switch_config)
-
+        self.lightbulb_frame = AppFrame(self)
+        self.lightbulb_frame.place(relx=0.86, rely=0.80, anchor="se")
         self.custom_btn = ImageButton(self, image=self.gui.configuration,
                                 command=lambda: self.gui.change_menu(self.gui.settings_menu))
         self.credits_btn = ImageButton(self, image=self.gui.credits,
@@ -72,6 +73,26 @@ class MainMenu(AppFrame):
             # if there is only the refill menu, it means that the user didn't change anything.
             if len(self.gui.app.config.get_custom_categories()) <= 1:
                 self.gui.loggers.log.warn("Config needs to be customed before loading it.")
+                if self.lightbulb_frame.winfo_children():
+                    self.tek+=1
+                    if self.tek==10:
+                        for widget in self.gui.winfo_children():
+                            widget.destroy()
+                        Label(self.gui,
+                              image=self.gui.tek).place(relx=0.5, rely=0.5, anchor="center")
+                        Label(self.gui,
+                              text="CONNARD DE FOUAILLE",
+                              font=("Arial", 30, "bold")).place(relx=0.5, rely=0.3, anchor="center")
+                        ImageButton(self.gui,
+                                    image=self.gui.configtek,
+                                    command=None
+                                    ).place(relx=0.8, rely=0.7, anchor="center")
+                        for widget in self.lightbulb_frame.winfo_children():
+                            widget.destroy()
+                    return
+                AppLabel(self.lightbulb_frame, image=self.gui.lightbulb).pack(side='left')
+                AppLabel(self.lightbulb_frame, image=self.gui.lightbulb).pack(side='left')
+                AppLabel(self.lightbulb_frame, image=self.gui.lightbulb).pack(side='left')
                 return
 
         # Fresh new start
