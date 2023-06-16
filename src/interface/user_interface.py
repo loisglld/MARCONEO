@@ -159,6 +159,22 @@ class GUI(Tk):
         self.defaultmarco = self.open_image("defaultmarco.png", 200, 70)
         self.debiter = self.open_image("debiter.png", 500, 100)
 
+        # price modifier
+        self.btn1 = self.open_image("1.png", 78, 78)
+        self.btn2 = self.open_image("2.png", 78, 78)
+        self.btn3 = self.open_image("3.png", 78, 78)
+        self.btn4 = self.open_image("4.png", 78, 78)
+        self.btn5 = self.open_image("5.png", 78, 78)
+        self.btn6 = self.open_image("6.png", 78, 78)
+        self.btn7 = self.open_image("7.png", 78, 78)
+        self.btn8 = self.open_image("8.png", 78, 78)
+        self.btn9 = self.open_image("9.png", 78, 78)
+        self.btn0 = self.open_image("0.png", 78, 78)
+        self.dot = self.open_image("dot.png", 78, 78)
+        self.backspace = self.open_image("backspace.png", 78, 78)
+        self.priceconfirm = self.open_image("priceconfirm.png", 3*78+30, 78)
+
+
     def open_image(self, file_name: str,
                    width:int=None, height:int=None, color=None) -> ImageTk.PhotoImage:
         """
