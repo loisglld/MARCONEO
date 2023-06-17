@@ -20,7 +20,6 @@ class PaymentService:
         self.cart = self.app.cart
         self.loggers = app.loggers
 
-
     def purchase(self):
         """
         Confirms the purchase.

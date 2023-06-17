@@ -85,6 +85,8 @@ class Footer(Frame):
         """
         self.total_label.configure(text=f"{self.cart.total} €")
 
+        # If the cart is empty, the back button is displayed.
+        # Else, the discard button is displayed.
         if not self.cart.total:
             self.back_btn.configure(image=self.manager.manager.gui.back,
             command=lambda: self.manager.manager.gui.change_menu(
@@ -95,6 +97,12 @@ class Footer(Frame):
 
         if self.shopping_manager.gui.app.current_user.balance is None:
             return
+
+        # If the user is recharging, the total label is not altered.
+        if self.manager.manager.left_grid.navbar.current_toggle == "Rechargement":
+            return
+
+        # If the user doesn't have enough money, the total label is red.
         if self.cart.total>self.shopping_manager.gui.app.current_user.balance:
             self.total_label.configure(fg="red")
         else:
@@ -107,9 +115,10 @@ class Footer(Frame):
         if not self.cart.total:
             return
 
-        if self.shopping_manager.gui.app.current_user.balance < self.cart.total:
-            self.loggers.log.warning("Not enough money to purchase.")
-            return
+        if self.shopping_manager.left_grid.navbar.current_toggle != "Rechargement":
+            if self.shopping_manager.gui.app.current_user.balance < self.cart.total:
+                self.loggers.log.warning("Not enough money to purchase.")
+                return
 
         for widget in self.manager.manager.left_grid.navbar.winfo_children():
             widget.configure(state="disabled")

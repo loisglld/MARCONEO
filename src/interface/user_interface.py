@@ -127,6 +127,7 @@ class GUI(Tk):
 
         # credits_menu
         self.credits = self.open_image("credits.png", 70, 70)
+        self.credits_txt = self.open_image("credits_txt.png", 450, 300)
 
         # history_menu
         self.history = self.open_image("history.png", 70, 70)

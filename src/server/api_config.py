@@ -36,7 +36,7 @@ class APIJsons:
         """
         try:
             api_config_resp = requests.get(url,
-                                      timeout=5)
+                                      timeout=20)
             api_config_resp.raise_for_status()
         except requests.exceptions.HTTPError as err:
             self.loggers.log.error(err)
