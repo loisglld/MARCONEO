@@ -29,4 +29,4 @@ class SettHeader(Frame):
         ImageButton(self, image=self.manager.manager.gui.refresh,
                   command=self.manager.manager.refresh).pack(side="right")
         ImageButton(self, image=self.manager.manager.gui.discard,
-                    command=self.manager.manager.reset_modifications).pack(side="right")
+                    command=self.manager.manager.refresh).pack(side="right")
