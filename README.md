@@ -168,6 +168,8 @@ L'application Marconeo est codée en Python et est liée à l'API du BDE ainsi q
 - ***Modification de prix :*** <img src='./data/images/pricemodifier.png' width=50>
 
     - Il possible de modifier le prix d'un article en cliquant sur "Modification de prix" en haut de l'écran. L'utilisateur peut choisir l'article dont il souhaite modifier le prix en cliquant sur le bouton correspondant. Il peut alors entrer le nouveau prix grâce au pad numérique. Il peut supprimer le prix actuel, remettre les prix par défaut ou valider le nouveau prix. Une fois le nouveau prix validé, le prix est modifié de manière temporaire. A la prochaine utilisation de la Marco, le prix modifié sera oublié.
+
+    <img src='./data/images/readme/pricemodifier.png' width=500>
 </div>
 </div>
 
