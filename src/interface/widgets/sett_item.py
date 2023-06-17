@@ -14,11 +14,11 @@ class SettItem(Frame):
     """
     Describes an item that can be selected or not in the settings.
     """
-    def __init__(self, manager:Frame=None, name:str=None,
+    def __init__(self, manager:Frame=None, title:str=None,
                  selected:bool=False, color:str="white") -> None:
         super().__init__(manager)
         self.manager = manager
-        self.name = name
+        self.title = title
         self.selected = selected
         self.default_color = color
         self.configure(bg=color, width=120, height=120,
@@ -32,10 +32,11 @@ class SettItem(Frame):
         Defines the container of the item.
         """
 
-        self.name_label = Label(self, text=self.name)
-        self.name_label.pack(side="top", padx=10, pady=10, expand=True)
+        Label(self, text=self.title).pack(side="top",
+                                          padx=10, pady=10,
+                                          expand=True)
         if self.selected:
-            self.configure(bg="#00ff00")
+            self.configure(bg="#00cc00", highlightbackground="#004400")
 
         # Binds to the whole widget
         self.bind("<Button-1>", self.on_click_item)
@@ -53,14 +54,14 @@ class SettItem(Frame):
         if self.selected:
             for prod_type in custom_config:
                 for prod in prod_type["products"]:
-                    if prod["title"] == self.name:
+                    if prod["title"] == self.title:
                         prod["selected"] = False
             self.selected = False
             self.configure(bg=self.default_color, highlightbackground="#660000")
         else:
             for prod_type in custom_config:
                 for prod in prod_type["products"]:
-                    if prod["title"] == self.name:
+                    if prod["title"] == self.title:
                         prod["selected"] = True
             self.configure(bg="#00cc00", highlightbackground="#004400")
             self.selected = True
