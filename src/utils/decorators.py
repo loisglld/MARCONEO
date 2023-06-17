@@ -13,7 +13,7 @@ from mysql.connector import InterfaceError
 
 #-------------------------------------------------------------------#
 
-def setup_service(max_attempts:int=5):
+def setup_service(max_attempts:int=5) -> callable:
     """
     Setups to the service when its setup method is done.
     This way, the application will try to connect to the service safely.
@@ -40,7 +40,7 @@ def setup_service(max_attempts:int=5):
         return wrapper
     return decorator_func
 
-def close_service(max_attempts:int=5):
+def close_service(max_attempts:int=5) -> callable:
     """
     Close the connection of the service when its closing method is done.
     This way, the application will try to close the connection to the service safely.
@@ -61,3 +61,15 @@ def close_service(max_attempts:int=5):
             return None
         return wrapper
     return decorator_func
+
+def logging_request(func:callable) -> callable:
+    """
+    Decorator that logs the request.
+    """
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs) -> None:
+        loggers = args[0].loggers
+        loggers.log.debug(f"Request: {func.__name__}")
+        loggers.log.info("Request has been sent.")
+        return func(*args, **kwargs)
+    return wrapper

@@ -35,7 +35,7 @@ class SettBody(Frame):
         row, column = 0, 0
         for item in items:
             title = item["title"]
-            item_frame = SettItem(self, title, self.is_selected(title), "red")
+            item_frame = SettItem(self, title, self.is_selected(title))
             item_frame.grid(row=row, column=column, padx=5, pady=5, sticky="nsew")
             # Actualise the grid
             self.grid_columnconfigure(column, weight=1)

@@ -15,13 +15,12 @@ class SettItem(Frame):
     Describes an item that can be selected or not in the settings.
     """
     def __init__(self, manager:Frame=None, title:str=None,
-                 selected:bool=False, color:str="white") -> None:
+                 selected:bool=False) -> None:
         super().__init__(manager)
         self.manager = manager
         self.title = title
         self.selected = selected
-        self.default_color = color
-        self.configure(bg=color, width=120, height=120,
+        self.configure(bg="#ff0000", width=120, height=120,
                        highlightbackground="#660000", highlightthickness=6)
         self.propagate(False)
 
@@ -32,9 +31,14 @@ class SettItem(Frame):
         Defines the container of the item.
         """
 
-        Label(self, text=self.title).pack(side="top",
-                                          padx=10, pady=10,
-                                          expand=True)
+        self.name_lbl = Label(self, text=self.title.capitalize(),
+                            font=("system", 12, "bold"),
+                            bg="#ff0000",
+                            fg="#660000")
+        self.name_lbl.pack(side="top",
+                            padx=10, pady=10,
+                            expand=True)
+
         if self.selected:
             self.configure(bg="#00cc00", highlightbackground="#004400")
 
@@ -57,12 +61,14 @@ class SettItem(Frame):
                     if prod["title"] == self.title:
                         prod["selected"] = False
             self.selected = False
-            self.configure(bg=self.default_color, highlightbackground="#660000")
+            self.configure(bg="#ff0000", highlightbackground="#660000")
+            self.name_lbl.configure(fg="#660000", bg="#ff0000")
         else:
             for prod_type in custom_config:
                 for prod in prod_type["products"]:
                     if prod["title"] == self.title:
                         prod["selected"] = True
             self.configure(bg="#00cc00", highlightbackground="#004400")
+            self.name_lbl.configure(fg="#004400", bg="#00cc00")
             self.selected = True
         self.manager.settings_manager.gui.app.config.update_custom_config(custom_config)
