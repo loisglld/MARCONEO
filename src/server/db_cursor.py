@@ -77,11 +77,10 @@ class DBCursor:
             member_data = {'id':result[0],
                             'first_name':result[1],
                             'last_name':result[2],
-                            'nickname':result[3],
-                            'card_number':result[4],
-                            'balance':result[5],
-                            'admin':result[6],
-                            'contributor':result[7]}
+                            'card_number':result[3],
+                            'balance':result[4],
+                            'admin':result[5],
+                            'contributor':result[6]}
             self.loggers.log.debug(f"Retrieving member {member_data['first_name']} (ID:{card_id})")
             return member_data
         self.loggers.log.warn(f"No member found with card ID {card_id}")

@@ -22,7 +22,6 @@ class Member:
             self.member_id = None
             self.first_name = None
             self.last_name = None
-            self.nickname = None
             self.card_id = None
             self.balance = None
             self.admin = None
@@ -32,7 +31,6 @@ class Member:
         self.member_id = member_data['id']
         self.first_name = member_data['first_name']
         self.last_name = member_data['last_name']
-        self.nickname = member_data['nickname']
         self.card_id = member_data['card_number']
         self.balance = member_data['balance']
         self.admin = member_data['admin']
@@ -49,7 +47,6 @@ class Member:
         self.member_data = None
         self.first_name = None
         self.last_name = None
-        self.nickname = None
         self.card_id = None
         self.balance = None
         self.admin = None
@@ -58,7 +55,7 @@ class Member:
     def __str__(self) -> str:
         if self.member_data is None:
             return "No user is logged in."
-        return f"{self.first_name} {self.last_name} ({self.nickname})"
+        return f"{self.first_name} {self.last_name}"
 
     def __repr__(self) -> str:
         return self.__str__()
