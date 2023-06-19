@@ -66,7 +66,7 @@ class DBCursor:
             return None
 
 
-        self.cursor.execute("""SELECT id, first_name, last_name, nickname, card_number,\
+        self.cursor.execute("""SELECT id, first_name, last_name, card_number,\
                             balance, admin, contributor
                                 FROM members
                                 WHERE card_number = %s""", (card_id,))
