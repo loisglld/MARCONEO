@@ -9,7 +9,7 @@
                     "name": "charcuterie",
                     "title": "charcuterie",
                     "price": "4.40",
-                    "color": "#0563d8",
+                    "color": "#f3308b",
                     "selected": false
                 },
                 {
@@ -17,7 +17,7 @@
                     "name": "fromage",
                     "title": "fromage",
                     "price": "3.00",
-                    "color": "#6a4f77",
+                    "color": "#3f4539",
                     "selected": false
                 }
             ]
@@ -31,7 +31,7 @@
                     "name": "cookies",
                     "title": "cookies",
                     "price": "2.20",
-                    "color": "#d61999",
+                    "color": "#cae083",
                     "selected": false
                 }
             ]
@@ -45,7 +45,7 @@
                     "name": "pizza",
                     "title": "pizza",
                     "price": "2.60",
-                    "color": "#d4217b",
+                    "color": "#d71c3f",
                     "selected": false
                 },
                 {
@@ -53,7 +53,7 @@
                     "name": "sandwich",
                     "title": "sandwich",
                     "price": "2.00",
-                    "color": "#7d644e",
+                    "color": "#663c92",
                     "selected": false
                 }
             ]
@@ -67,7 +67,7 @@
                     "name": "bordeaux",
                     "title": "bordeaux",
                     "price": "1.60",
-                    "color": "#799364",
+                    "color": "#151a60",
                     "selected": false
                 }
             ]
@@ -81,7 +81,7 @@
                     "name": "metre",
                     "title": "metre",
                     "price": "1.20",
-                    "color": "#b973b9",
+                    "color": "#5e9013",
                     "selected": false
                 }
             ]
@@ -94,8 +94,8 @@
                     "id": 1,
                     "name": "cocktail12",
                     "title": "cocktail12",
-                    "price": "1.20",
-                    "color": "#2eba3a",
+                    "price": "1.40",
+                    "color": "#106746",
                     "selected": false
                 },
                 {
@@ -103,7 +103,7 @@
                     "name": "cocktail16",
                     "title": "cocktail16",
                     "price": "1.60",
-                    "color": "#701d49",
+                    "color": "#3a40ba",
                     "selected": false
                 },
                 {
@@ -111,7 +111,87 @@
                     "name": "meteor",
                     "title": "meteor",
                     "price": "1.20",
-                    "color": "#11eb79",
+                    "color": "#410c9d",
+                    "selected": false
+                },
+                {
+                    "id": 11,
+                    "name": "a",
+                    "title": "a",
+                    "price": "1.00",
+                    "color": "#00fdff",
+                    "selected": false
+                },
+                {
+                    "id": 12,
+                    "name": "b",
+                    "title": "b",
+                    "price": "1.00",
+                    "color": "#74a7fe",
+                    "selected": false
+                },
+                {
+                    "id": 13,
+                    "name": "c",
+                    "title": "c",
+                    "price": "1.00",
+                    "color": "#ffe4a8",
+                    "selected": false
+                },
+                {
+                    "id": 14,
+                    "name": "d",
+                    "title": "d",
+                    "price": "1.00",
+                    "color": "#ff40ff",
+                    "selected": false
+                },
+                {
+                    "id": 15,
+                    "name": "e",
+                    "title": "e",
+                    "price": "1.00",
+                    "color": "#ff8647",
+                    "selected": false
+                },
+                {
+                    "id": 16,
+                    "name": "f",
+                    "title": "f",
+                    "price": "1.00",
+                    "color": "#942192",
+                    "selected": false
+                },
+                {
+                    "id": 17,
+                    "name": "g",
+                    "title": "g",
+                    "price": "3.00",
+                    "color": "#000000",
+                    "selected": false
+                },
+                {
+                    "id": 18,
+                    "name": "Q",
+                    "title": "Q",
+                    "price": "3.00",
+                    "color": "#000000",
+                    "selected": false
+                },
+                {
+                    "id": 20,
+                    "name": "p",
+                    "title": "p",
+                    "price": "1.00",
+                    "color": "#000000",
+                    "selected": false
+                },
+                {
+                    "id": 21,
+                    "name": "v",
+                    "title": "v",
+                    "price": "3.00",
+                    "color": "#000000",
                     "selected": false
                 }
             ]
